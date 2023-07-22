@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'general'=> 'Загальні',
+    'header'=> 'Заголовок',
+    'footer'=> 'Нижній Колонтитул',
+    'createNow' => 'Створити зараз',
+    'Show' => 'Пегеглянути',
+    'Edit' => 'Редагувати',
+    'Delete' => 'Видалити',
+    'CreateNews' => 'Створити Новину',
+    'Create' => 'Створити',
+    'UpdateNews' => 'Редагувати Новину',
+    'news' => 'Новина',
+    'category' => 'Категорія',
+    'author' => 'Автор',
+    'title' => 'Заголовок',
+    'subtitle' => 'Підзаголовок',
+    'miniDescription' => 'Міні опис',
+    'description' => 'Oпис',
+    'typePublication' => 'Тип ПублікаціЇ',
+    'type' => 'Тип',
+    'dateOfPublication' => 'Дата Публікації',
+    'image' => 'Зображення',
+];
