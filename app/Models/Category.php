@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property $id
  * @property $name
+ * @property $slug
  * @property $created_at
  * @property $updated_at
  *
@@ -17,7 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Category extends Model
 {
-    
+
     static $rules = [
 		'name' => 'required',
     ];
@@ -29,8 +30,16 @@ class Category extends Model
      *
      * @var array
      */
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'slug'];
 
+    public function getUrl()
+    {
+        return route('categories.show', $this->slug);
+    }
 
+    public function getName()
+    {
+        return $this->name;
+    }
 
 }

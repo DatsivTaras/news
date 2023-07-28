@@ -4,14 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Author;
-use App\Models\File;
-use App\Repositories\AuthorImagesRepository;
 use App\Repositories\AuthorsRepository;
-use App\Repositories\CategoryRepository;
-use App\Repositories\NewsCategoryRepository;
-use App\Repositories\NewsRepository;
 use App\Services\AuthorServices;
-use App\Services\NewsServices;
 use Illuminate\Http\Request;
 
 /**
@@ -20,30 +14,15 @@ use Illuminate\Http\Request;
  */
 class AuthorController extends Controller
 {
-    private $newsRepository;
-    private $newsServices;
-    private $categoryRepository;
-    private $newsCategoryRepository;
     private $authorsRepository;
     private $authorServices;
-    private $authorImagesRepository;
 
     public function __construct(
-        NewsRepository $newsRepository,
-        NewsServices $newsServices,
-        CategoryRepository $categoryRepository,
-        NewsCategoryRepository $newsCategoryRepository,
         AuthorsRepository $authorsRepository,
-        AuthorServices $authorServices,
-        AuthorImagesRepository $authorImagesRepository
+        AuthorServices $authorServices
     )
     {
-        $this->newsServices = $newsServices;
-        $this->newsRepository = $newsRepository;
-        $this->categoryRepository = $categoryRepository;
-        $this->newsCategoryRepository = $newsCategoryRepository;
         $this->authorsRepository = $authorsRepository;
-        $this->authorImagesRepository = $authorImagesRepository;
         $this->authorServices = $authorServices;
     }
     /**
@@ -53,7 +32,7 @@ class AuthorController extends Controller
      */
     public function index()
     {
-        $authors = Author::paginate();
+        $authors = $this->authorsRepository->getAuthorsPaginate();
 
         return view('admin.author.index', compact('authors'))
             ->with('i', (request()->input('page', 1) - 1) * $authors->perPage());
@@ -80,9 +59,9 @@ class AuthorController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Author::$rules);
+        $data = request()->validate(Author::$rules);
 
-        $author = $this->authorServices->saveAuthors($request);
+        $this->authorServices->saveAuthors($data);
 
         return redirect()->route('admin.authors.index')
             ->with('success', 'Author created successfully.');
@@ -96,7 +75,7 @@ class AuthorController extends Controller
      */
     public function show($id)
     {
-        $author = Author::find($id);
+        $author = $this->authorsRepository->getOneOrFail($id);
 
         return view('admin.author.show', compact('author'));
     }
@@ -109,7 +88,8 @@ class AuthorController extends Controller
      */
     public function edit($id)
     {
-        $author = Author::find($id);
+        $author = $this->authorsRepository->getOneOrFail($id);
+
         $image = implode("','", $author->image->pluck('name')->toArray());
 
         return view('admin.author.edit', compact('author', 'image'));
@@ -124,9 +104,9 @@ class AuthorController extends Controller
      */
     public function update(Request $request, Author $author)
     {
-        request()->validate(Author::$rules);
+        $data = request()->validate(Author::$rules);
 
-        $this->authorServices->updateAuthors($author, $request);
+        $this->authorServices->updateAuthors($author, $data);
 
         return redirect()->route('admin.authors.index')
             ->with('success', 'Author updated successfully');
@@ -139,7 +119,7 @@ class AuthorController extends Controller
      */
     public function destroy($id)
     {
-        $author = Author::find($id)->delete();
+        $this->authorsRepository->getOneOrFail($id)->delete();
 
         return redirect()->route('admin.authors.index')
             ->with('success', 'Author deleted successfully');

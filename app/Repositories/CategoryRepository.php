@@ -17,4 +17,11 @@ class CategoryRepository extends BaseRepository
 
         return $categories;
     }
+
+    public function getCategoryPaginate()
+    {
+        $categories = $this->getQuery()->paginate('15');
+
+        return $categories;
+    }
 }

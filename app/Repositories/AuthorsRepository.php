@@ -20,4 +20,11 @@ class AuthorsRepository extends BaseRepository
 
         return $authors;
     }
+
+    public function getAuthorsPaginate()
+    {
+        $authors = $this->getQuery()->paginate('15');
+
+        return $authors ;
+    }
 }

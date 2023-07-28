@@ -33,6 +33,7 @@ class User extends Authenticatable implements MustVerifyEmail
     static $rules = [
 		'name' => 'required',
 		'email' => 'required',
+		'password' => 'required',
     ];
 
     protected $perPage = 20;

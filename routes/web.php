@@ -26,11 +26,15 @@ Route::group(['middleware' => ['auth']], function() {
             Route::resource('authors', \App\Http\Controllers\Admin\AuthorController::class);
             Route::resource('pages', \App\Http\Controllers\Admin\PageController::class);
             Route::resource('settings', \App\Http\Controllers\Admin\SettingController::class);
+            Route::resource('sliders', \App\Http\Controllers\Admin\HomeSliderController::class);
             Route::post('addItemsSettings', [App\Http\Controllers\Admin\SettingController::class, 'addItemsSettings']);
-
+            Route::post('addNewsOnSlider', [App\Http\Controllers\Admin\NewsController::class, 'addNewsOnSlider']);
         });
     });
 });
+
+Route::resource('categories', \App\Http\Controllers\CategoryController::class);
+Route::resource('page', \App\Http\Controllers\PageController::class);
 
 Route::get('/', function () {
     return view('welcome');

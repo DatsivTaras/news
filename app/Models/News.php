@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property $description
  * @property $type_publication
  * @property $type
+ * @property $author_id
  * @property $date_of_publication
  * @property $created_at
  * @property $updated_at
@@ -26,14 +27,15 @@ use Illuminate\Database\Eloquent\Model;
  */
 class News extends Model
 {
-
     static $rules = [
         'tags' => 'required',
         'title' => 'required',
 		'image' => '',
+		'author_id' => '',
 		'subtitle' => 'required',
 		'mini_description' => 'required',
 		'description' => 'required',
+		'category_id' => 'required',
 		'type_publication' => 'required',
 		'type' => 'required',
 		'date_of_publication' => 'required',
@@ -41,12 +43,17 @@ class News extends Model
 //ate_format:d-m-Y H:i
     protected $perPage = 20;
 
+    public function home_slider()
+    {
+        return $this->hasOne(HomeSlider::class, 'news_id','id');
+    }
     public function getTypePublication()
     {
         $statuses = self::typePublicationList();
 
         return array_key_exists($this->type_publication, $statuses) ?  $statuses[$this->type_publication] : "";
     }
+
     public function getType()
     {
         $statuses = self::typeList();
@@ -59,9 +66,9 @@ class News extends Model
         return [
             NewsPublicationType::SIMPLE => 'Проста',
             NewsPublicationType::IMPORTANT => 'Важлива',
-
         ];
     }
+
     public function typePublicationList()
     {
         return [
@@ -87,6 +94,7 @@ class News extends Model
         return $this->belongsToMany(Category::class, 'news_categories', 'news_id', 'category_id')
             ->withTimestamps();
     }
+
     public function author()
     {
         return $this->belongsToMany(Author::class, 'news_authors', 'news_id', 'author_id')

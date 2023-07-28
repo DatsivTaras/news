@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property $id
  * @property $title
+ * @property $slug
  * @property $description
  * @property $created_at
  * @property $updated_at
@@ -33,6 +34,14 @@ class Page extends Model
      */
     protected $fillable = ['slug','title','description'];
 
+    public function getUrl()
+    {
+        return route('page.show', $this->slug);
+    }
 
+    public function getName()
+    {
+        return $this->title;
+    }
 
 }

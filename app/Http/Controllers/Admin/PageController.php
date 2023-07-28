@@ -10,6 +10,7 @@ use App\Repositories\CategoryRepository;
 use App\Repositories\NewsCategoryRepository;
 use App\Repositories\NewsRepository;
 use App\Repositories\PageRepository;
+use App\Repositories\SettingRepository;
 use App\Services\NewsServices;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -21,11 +22,14 @@ use Illuminate\Support\Str;
 class PageController extends Controller
 {
     private $pageRepository;
+    private $settingRepository;
     public function __construct(
-        PageRepository $pageRepository
+        PageRepository $pageRepository,
+        SettingRepository $settingRepository
     )
     {
         $this->pageRepository = $pageRepository;
+        $this->settingRepository = $settingRepository;
     }
     /**
      * Display a listing of the resource.
@@ -35,8 +39,9 @@ class PageController extends Controller
     public function index()
     {
         $pages = Page::paginate();
+        $settingHeadMenu = $this->settingRepository->getOneOrFail('header_items_menu', 'key');
 
-        return view('admin.page.index', compact('pages'))
+        return view('admin.page.index', compact('pages', 'settingHeadMenu'))
             ->with('i', (request()->input('page', 1) - 1) * $pages->perPage());
     }
 
@@ -61,7 +66,7 @@ class PageController extends Controller
     {
         $data = request()->validate(Page::$rules);
 
-        $data['slug'] = Str::slug($request->title, '_');
+        $data['slug'] = Str::slug($data['title'], '_');
         $this->pageRepository->create($data);
 
         return redirect()->route('admin.pages.index')
@@ -76,7 +81,7 @@ class PageController extends Controller
      */
     public function show($id)
     {
-        $page = Page::find($id);
+        $page = $this->pageRepository->getOneOrFail($id);
 
         return view('admin.page.show', compact('page'));
     }
@@ -89,7 +94,7 @@ class PageController extends Controller
      */
     public function edit($id)
     {
-        $page = Page::find($id);
+        $page = $this->pageRepository->getOneOrFail($id);
 
         return view('admin.page.edit', compact('page'));
     }
@@ -103,9 +108,9 @@ class PageController extends Controller
      */
     public function update(Request $request, Page $page)
     {
-        request()->validate(Page::$rules);
+        $data = request()->validate(Page::$rules);
 
-        $page->update($request->all());
+        $this->pageRepository->update($page, $data);
 
         return redirect()->route('admin.pages.index')
             ->with('success', 'Page updated successfully');
@@ -118,7 +123,7 @@ class PageController extends Controller
      */
     public function destroy($id)
     {
-        $page = Page::find($id)->delete();
+        $page = $this->pageRepository->getOneOrFail($id)->delete();
 
         return redirect()->route('admin.pages.index')
             ->with('success', 'Page deleted successfully');

@@ -4,7 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Repositories\CategoryRepository;
+use App\Repositories\SettingRepository;
+use App\Services\SettingServices;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 /**
  * Class CategoryController
@@ -12,6 +16,19 @@ use Illuminate\Http\Request;
  */
 class CategoryController extends Controller
 {
+
+    private $categoryRepository;
+
+    private $settingRepository;
+
+    public function __construct(
+        CategoryRepository $categoryRepository,
+        SettingRepository $settingRepository
+    )
+    {
+        $this->categoryRepository = $categoryRepository;
+        $this->settingRepository = $settingRepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -19,9 +36,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::paginate();
+        $categories = $this->categoryRepository->getCategoryPaginate();
+        $settingHeadMenu = $this->settingRepository->getOneOrFail('header_items_menu', 'key');
 
-        return view('admin.category.index', compact('categories'))
+        return view('admin.category.index', compact('categories', 'settingHeadMenu'))
             ->with('i', (request()->input('page', 1) - 1) * $categories->perPage());
     }
 
@@ -33,6 +51,7 @@ class CategoryController extends Controller
     public function create()
     {
         $category = new Category();
+
         return view('admin.category.create', compact('category'));
     }
 
@@ -44,9 +63,10 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Category::$rules);
+        $data = request()->validate(Category::$rules);
 
-        $category = Category::create($request->all());
+        $data['slug'] = Str::slug($data['name'], '_');
+        $this->categoryRepository->create($data);
 
         return redirect()->route('admin.categories.index')
             ->with('success', 'Category created successfully.');
@@ -60,7 +80,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $category = Category::find($id);
+        $category = $this->categoryRepository->getOneOrFail($id);
 
         return view('admin.category.show', compact('category'));
     }
@@ -73,7 +93,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::find($id);
+        $category = $this->categoryRepository->getOneOrFail($id);
 
         return view('admin.category.edit', compact('category'));
     }
@@ -87,9 +107,9 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        request()->validate(Category::$rules);
+        $data = request()->validate(Category::$rules);
 
-        $category->update($request->all());
+        $category->update($data);
 
         return redirect()->route('admin.categories.index')
             ->with('success', 'Category updated successfully');
@@ -102,7 +122,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::find($id)->delete();
+        $this->categoryRepository->getOneOrFail($id)->delete();
 
         return redirect()->route('admin.categories.index')
             ->with('success', 'Category deleted successfully');

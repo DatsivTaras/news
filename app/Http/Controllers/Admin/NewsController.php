@@ -7,6 +7,7 @@ use App\Models\News;
 use App\Repositories\AuthorImagesRepository;
 use App\Repositories\AuthorsRepository;
 use App\Repositories\CategoryRepository;
+use App\Repositories\HomeSliderRepository;
 use App\Repositories\NewsCategoryRepository;
 use App\Repositories\NewsRepository;
 use App\Services\NewsServices;
@@ -18,27 +19,26 @@ use Illuminate\Http\Request;
  */
 class NewsController extends Controller
 {
+
     private $newsRepository;
+
     private $newsServices;
+
     private $categoryRepository;
-    private $newsCategoryRepository;
+
     private $authorsRepository;
 
     public function __construct(
         NewsRepository $newsRepository,
         NewsServices $newsServices,
         CategoryRepository $categoryRepository,
-        NewsCategoryRepository $newsCategoryRepository,
-        AuthorsRepository $authorsRepository,
-        AuthorImagesRepository $authorImagesRepository
+        AuthorsRepository $authorsRepository
     )
     {
         $this->newsServices = $newsServices;
         $this->newsRepository = $newsRepository;
         $this->categoryRepository = $categoryRepository;
-        $this->newsCategoryRepository = $newsCategoryRepository;
         $this->authorsRepository = $authorsRepository;
-        $this->authorImagesRepository = $authorImagesRepository;
     }
     /**
      * Display a listing of the resource.
@@ -77,9 +77,9 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(News::$rules);
+        $data = request()->validate(News::$rules);
 
-        $this->newsServices->saveNews($request);
+        $this->newsServices->saveNews($data);
 
         return redirect()->route('admin.news.index')
             ->with('success', 'News created successfully.');
@@ -125,14 +125,20 @@ class NewsController extends Controller
      */
     public function update(Request $request, News $news)
     {
-        request()->validate(News::$rules);
+        $data = request()->validate(News::$rules);
 
-        $this->newsServices->updateNews($news, $request);
+        $this->newsServices->updateNews($news, $data);
 
         return redirect()->route('admin.news.index')
             ->with('success', 'News updated successfully');
     }
 
+    public function addNewsOnSlider(Request $request)
+    {
+        $this->newsServices->addNewsOnSlider($request);
+
+        return response()->json(true);
+    }
     /**
      * @param int $id
      * @return \Illuminate\Http\RedirectResponse

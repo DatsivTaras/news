@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid">
+    <br><div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
@@ -40,6 +40,7 @@
                                         <th>@lang('main.miniDescription')</th>
                                         <th>@lang('main.description')</th>
                                         <th>@lang('main.typePublication')</th>
+                                        <th>@lang('main.On Slider')</th>
                                         <th>@lang('main.type')</th>
                                         <th>@lang('main.dateOfPublication')</th>
                                         <th></th>
@@ -54,9 +55,10 @@
 											<td>{{ $new->mini_description }}</td>
 											<td>{{ $new->description }}</td>
 											<td>{{ $new->getTypePublication() }}</td>
+											<td align="center"><input  data-id="{{ $new->id }}" class="addNewsSlider" type="checkbox" {{ $new->home_slider ? 'checked' : '' }} ></td>
 											<td>{{ $new->getType() }}</td>
 											<td>{{ $new->date_of_publication }}</td>
-
+{{--                                            { !strripos($settingHeadMenu->value, $new->getUrl()) ? '' : 'checked' }}--}}
                                             <td>
                                                 <form action="{{ route('admin.news.destroy', $new->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('admin.news.show', $new->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('main.Show') }}</a>
@@ -78,3 +80,22 @@
         </div>
     </div>
 @endsection
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $(document).on('click', '.addNewsSlider', function(){
+            var id = $(this).data('id');
+            $.ajax({
+                method: 'post',
+                url: "/admin/addNewsOnSlider",
+                data:{
+                    id: id,
+                    "_token": "{{ csrf_token() }}"
+                },
+                dataType: 'json',
+            }).done(function(result) {
+                location.reload();
+            });
+        });
+    });
+</script>

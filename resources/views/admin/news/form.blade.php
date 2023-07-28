@@ -26,7 +26,7 @@
         </div>
         <div class="mb-3">
             {{ Form::label(__('main.title')) }}
-            {{ Form::text('title', $news->title, ['class' => 'form-control' . ($errors->has('title') ? ' is-invalid' : ''), 'placeholder' => 'Title']) }}
+            {{ Form::text('title', $news->title, ['class' => 'form-control' . ($errors->has('title') ? ' is-invalid' : ''), 'placeholder' => __('main.title') ]) }}
             {!! $errors->first('title', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="mb-3">
@@ -41,38 +41,38 @@
         </div>
         <div class="mb-3">
             {{ Form::label( __('main.subtitle')) }}
-            {{ Form::text('subtitle', $news->subtitle, ['class' => 'form-control' . ($errors->has('subtitle') ? ' is-invalid' : ''), 'placeholder' => 'Subtitle']) }}
+            {{ Form::text('subtitle', $news->subtitle, ['class' => 'form-control' . ($errors->has('subtitle') ? ' is-invalid' : ''), 'placeholder' =>  __('main.subtitle')]) }}
             {!! $errors->first('subtitle', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="mb-3">
             {{ Form::label(__('main.miniDescription')) }}
-            {{ Form::textarea('mini_description', $news->mini_description, ['class' => 'form-control' . ($errors->has('mini_description') ? ' is-invalid' : ''), 'rows' => '3', 'placeholder' => 'Mini Description']) }}
+            {{ Form::textarea('mini_description', $news->mini_description, ['class' => 'form-control' . ($errors->has('mini_description') ? ' is-invalid' : ''), 'rows' => '3', 'placeholder' => __('main.miniDescription') ]) }}
             {!! $errors->first('mini_description', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="mb-3">
             {{ Form::label(__('main.description')) }}
-            {{ Form::textarea('description', $news->description, ['class' => 'description form-control' . ($errors->has('description') ? ' is-invalid' : ''), 'placeholder' => 'Description']) }}
+            {{ Form::textarea('description', $news->description, ['class' => 'description form-control' . ($errors->has('description') ? ' is-invalid' : ''), 'placeholder' => __('main.description') ]) }}
             {!! $errors->first('description', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="mb-3">
             <div class="form-check form-check-inline">
-                {{ Form::label('Опублікувати') }}
-                {{ Form::radio('type_publication', 1, $news->type_publication == 1 ? true : false) }}
+                {{ Form::label(__('main.publish')) }}
+                {{ Form::radio('type_publication', 1, $news->type_publication == 1 ? true : false, ['checked' => 'checked']) }}
                 {!! $errors->first('type_publication', '<div class="invalid-feedback">:message</div>') !!}
             </div>
             <div class="form-check form-check-inline">
-                {{ Form::label('Чернетка') }}
+                {{ Form::label(__('main.draft')) }}
                 {{ Form::radio('type_publication', 2, $news->type_publication == 2 ? true : false) }}
                 {!! $errors->first('type_publication', '<div class="invalid-feedback">:message</div>') !!}
             </div>
         </div>
         <div class="form-check form-check-inline">
-            {{ Form::label('Проста новина') }}
-            {{ Form::radio('type', 1, $news->type == 1 ? true : false) }}
+            {{ Form::label(__('main.simpleNews')) }}
+            {{ Form::radio('type', 1, $news->type == 1 ? true : false, ['checked' => 'checked']) }}
             {!! $errors->first('type', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-check form-check-inline">
-            {{ Form::label('Важлива новина') }}
+            {{ Form::label(__('main.importantNews')) }}
             {{ Form::radio('type', 2, $news->type == 2 ? true : false) }}
             {!! $errors->first('type', '<div class="invalid-feedback">:message</div>') !!}
         </div><br><br>
@@ -81,10 +81,9 @@
             {{ Form::dateTimelocal('date_of_publication', date('Y-m-d H:i', strtotime($news->date_of_publication ? date('Y-m-d H:i', strtotime($news->date_of_publication)) : now())), ['class' => 'form-control' . ($errors->has('date_of_publication') ? ' is-invalid' : ''), 'placeholder' => 'Date Of Publication', 'min' => now()->format('Y-m-d H:i') ]) }}
             {!! $errors->first('date_of_publication', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-
     </div>
     <div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary">{{ __('main.Create') }}</button>
+        <button type="submit" class="btn btn-primary">{{ __('main.Submit') }}</button>
     </div>
 </div>
 

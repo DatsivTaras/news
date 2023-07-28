@@ -1,4 +1,4 @@
-@extends('layouts.adminMenu')
+ @extends('layouts.adminMenu')
 
 @section('template_title')
     {{ __('Update') }} Category
@@ -11,9 +11,9 @@
 
                 @includeif('partials.errors')
 
-                <div class="card card-default">
+                <br><div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Update') }} Category</span>
+                        <span class="card-title">{{ __('main.updateCategory') }}</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('admin.categories.update', $category->id) }}" role="form"

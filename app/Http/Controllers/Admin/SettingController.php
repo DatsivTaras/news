@@ -4,10 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
+use App\Repositories\CategoryRepository;
 use App\Repositories\ImageRepository;
+use App\Repositories\PageRepository;
 use App\Repositories\SettingRepository;
 use App\Services\SettingServices;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use function Illuminate\Events\queueable;
 
 /**
  * Class SettingController
@@ -17,14 +21,20 @@ class SettingController extends Controller
 {
     private $settingServices;
     private $settingRepository;
+    private $categoryRepository;
+    private $pageRepository;
 
     public function __construct(
         SettingServices $settingServices,
-        SettingRepository $settingRepository
+        SettingRepository $settingRepository,
+        CategoryRepository $categoryRepository,
+        PageRepository $pageRepository
     )
     {
         $this->settingServices = $settingServices;
         $this->settingRepository = $settingRepository;
+        $this->categoryRepository = $categoryRepository;
+        $this->pageRepository = $pageRepository;
     }
     /**
      * Display a listing of the resource.
@@ -45,17 +55,32 @@ class SettingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function addItemsSettings()
+    public function addItemsSettings(Request $request)
     {
         $setting = $this->settingRepository->getOneOrFail('header_items_menu', 'key');
+        if ($request->type == 'category') {
+            $model = $this->categoryRepository->getOneOrFail($request->id);
+        }
+        if ($request->type == 'page') {
+            $model = $this->pageRepository->getOneOrFail($request->id);
+        }
 
+        if(!strripos($setting->value, $model->getUrl())) {
+            $this->settingRepository->update($setting, [
+                'value' => $setting->value . ($setting->value ? PHP_EOL : '') . $model->getName() . ' | ' . $model->getUrl()
+            ]);
+        } else {
+            $this->settingRepository->update($setting, [
+                'value' => str_replace( $model->getName() . ' | ' . $model->getUrl(), "", $setting->value)
+            ]);
+        }
 
-        return response()->json($setting);
+        return response()->json($setting->value);
     }
 
     public function create()
     {
-        $setting = new Setting();
+
         return view('admin.setting.create', compact('setting'));
     }
 
@@ -81,7 +106,7 @@ class SettingController extends Controller
      */
     public function show($id)
     {
-        $setting = Setting::find($id);
+
 
         return view('setting.show', compact('setting'));
     }
@@ -94,9 +119,9 @@ class SettingController extends Controller
      */
     public function edit($id)
     {
-        $setting = Setting::find($id);
-
-        return view('setting.edit', compact('setting'));
+//        $setting = Setting::find($id);
+//
+//        return view('setting.edit', compact('setting'));
     }
 
     /**
@@ -108,12 +133,13 @@ class SettingController extends Controller
      */
     public function update(Request $request, Setting $setting)
     {
-        request()->validate(Setting::$rules);
-
-        $setting->update($request->all());
-
-        return redirect()->route('settings.index')
-            ->with('success', 'Setting updated successfully');
+//        dd('d');
+//        request()->validate(Setting::$rules);
+//
+//        $setting->update($request->all());
+//
+//        return redirect()->route('settings.index')
+//            ->with('success', 'Setting updated successfully');
     }
 
     /**
@@ -123,9 +149,9 @@ class SettingController extends Controller
      */
     public function destroy($id)
     {
-        $setting = Setting::find($id)->delete();
-
-        return redirect()->route('settings.index')
-            ->with('success', 'Setting deleted successfully');
+//        $setting = Setting::find($id)->delete();
+//
+//        return redirect()->route('settings.index')
+//            ->with('success', 'Setting deleted successfully');
     }
 }

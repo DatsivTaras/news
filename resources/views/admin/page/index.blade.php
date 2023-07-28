@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid">
+    <br><div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
@@ -13,12 +13,12 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Page') }}
+                                {{ __('main.pages') }}
                             </span>
 
                              <div class="float-right">
                                 <a href="{{ route('admin.pages.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                                  {{ __('main.CreatePage') }}
                                 </a>
                               </div>
                         </div>
@@ -34,31 +34,26 @@
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
-                                        <th>No</th>
-
-										<th>Slug</th>
-										<th>Title</th>
-										<th>Description</th>
-
-                                        <th></th>
+										<th>@lang('main.no')</th>
+										<th>@lang('main.title')</th>
+										<th>@lang('main.description')</th>
+                                        <th>@lang('main.OnTopMenu')</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($pages as $page)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-
-											<td>{{ $page->slug }}</td>
 											<td>{{ $page->title }}</td>
 											<td>{{ $page->description }}</td>
-
+                                            <td><input data-id="{{ $page->id }}" class="addItemMenu" type="checkbox" {{ !strripos($settingHeadMenu->value, $page->getUrl()) ? '' : 'checked' }}></td>
                                             <td>
                                                 <form action="{{ route('admin.pages.destroy',$page->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('admin.pages.show',$page->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('admin.pages.edit',$page->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('admin.pages.show',$page->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('main.Show') }}</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('admin.pages.edit',$page->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('main.Edit') }}</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('main.Delete') }}</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -73,3 +68,24 @@
         </div>
     </div>
 @endsection
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $(document).on('click', '.addItemMenu', function(){
+            var id = $(this).data('id');
+            var type = 'page';
+            $.ajax({
+                method: 'post',
+                url: "/admin/addItemsSettings",
+                data:{
+                    id: id,
+                    type: type,
+                    "_token": "{{ csrf_token() }}"
+                },
+                dataType: 'json',
+            }).done(function(result) {
+                console.log(result);
+            });
+        });
+    });
+</script>

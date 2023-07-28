@@ -37,27 +37,30 @@ class AuthorServices
         $this->newsAuthorsRepository = $newsAuthorsRepository;
         $this->imageRepository = $imageRepository;
     }
-    public function saveAuthors($request)
+    public function saveAuthors(array $data)
     {
-        $author = $this->authorsRepository->create($request->all());
-        $file = $request->image;
-        $data['name'] = $file->store('public/image/author');
-        $image = $this->imageRepository->create($data);
+        $author = $this->authorsRepository->create($data);
+        if (isset($data['image'])) {
+            $file = $data['image'];
 
-        $data['author_id'] = $author->id;
-        $data['image_id'] = $image->id;
-        $this->authorImagesRepository->create($data);
+            $data['name'] = $file->store('public/image/author');
+            $image = $this->imageRepository->create($data);
+
+            $data['author_id'] = $author->id;
+            $data['image_id'] = $image->id;
+            $this->authorImagesRepository->create($data);
+        }
     }
-    public function updateAuthors($author, $request)
+    public function updateAuthors($author, $data)
     {
-        $author->update($request->all());
+        $this->authorsRepository->update($author, $data);
 
-        if ($request->image) {
+        if (isset($data['image'])) {
             $imageDelete = $this->authorImagesRepository->getOne($author->id, 'author_id');
             if($imageDelete) {
                 $this->authorImagesRepository->delete($imageDelete);
             }
-            $file = $request->image;
+            $file = $data['image'];
 
             $data['name'] = $file->store('public/image/author');
             $image = $this->imageRepository->create($data);

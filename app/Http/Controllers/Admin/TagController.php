@@ -19,10 +19,10 @@ class TagController extends Controller
      */
     public function index()
     {
-        $tags = Tag::paginate();
-
-        return view('admin.tag.index', compact('tags'))
-            ->with('i', (request()->input('page', 1) - 1) * $tags->perPage());
+//        $tags = Tag::paginate();
+//
+//        return view('admin.tag.index', compact('tags'))
+//            ->with('i', (request()->input('page', 1) - 1) * $tags->perPage());
     }
 
     /**
@@ -32,8 +32,9 @@ class TagController extends Controller
      */
     public function create()
     {
-        $tag = new Tag();
-        return view('admin.tag.create', compact('tag'));
+//        $tag = new Tag();
+//
+//        return view('admin.tag.create', compact('tag'));
     }
 
     /**
@@ -44,12 +45,12 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Tag::$rules);
-
-        $tag = Tag::create($request->all());
-
-        return redirect()->route('admin.tags.index')
-            ->with('success', 'Tag created successfully.');
+//        $data request()->validate(Tag::$rules);
+//
+//        $tag = Tag::create($request->all());
+//
+//        return redirect()->route('admin.tags.index')
+//            ->with('success', 'Tag created successfully.');
     }
 
     /**
@@ -60,9 +61,9 @@ class TagController extends Controller
      */
     public function show($id)
     {
-        $tag = Tag::find($id);
-
-        return view('admin.tag.show', compact('tag'));
+//        $tag = Tag::find($id);
+//
+//        return view('admin.tag.show', compact('tag'));
     }
 
     /**
@@ -73,9 +74,9 @@ class TagController extends Controller
      */
     public function edit($id)
     {
-        $tag = Tag::find($id);
-
-        return view('admin.tag.edit', compact('tag'));
+//        $tag = Tag::find($id);
+//
+//        return view('admin.tag.edit', compact('tag'));
     }
 
     /**
@@ -87,12 +88,12 @@ class TagController extends Controller
      */
     public function update(Request $request, Tag $tag)
     {
-        request()->validate(Tag::$rules);
-
-        $tag->update($request->all());
-
-        return redirect()->route('admin.tags.index')
-            ->with('success', 'Tag updated successfully');
+//        request()->validate(Tag::$rules);
+//
+//        $tag->update($request->all());
+//
+//        return redirect()->route('admin.tags.index')
+//            ->with('success', 'Tag updated successfully');
     }
 
     /**
@@ -102,9 +103,9 @@ class TagController extends Controller
      */
     public function destroy($id)
     {
-        $tag = Tag::find($id)->delete();
-
-        return redirect()->route('admin.tags.index')
-            ->with('success', 'Tag deleted successfully');
+//        $tag = Tag::find($id)->delete();
+//
+//        return redirect()->route('admin.tags.index')
+//            ->with('success', 'Tag deleted successfully');
     }
 }

@@ -11,9 +11,9 @@
 
                 @includeif('partials.errors')
 
-                <div class="card card-default">
+                <br><div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Create') }} Category</span>
+                        <span class="card-title">{{ __('main.CreateCategory') }}</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('admin.categories.store') }}"  role="form" enctype="multipart/form-data">

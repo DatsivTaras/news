@@ -11,20 +11,13 @@
 
                 @includeif('partials.errors')
 
-                <div class="card card-default">
-                    <div class="card-header">
-                        <span class="card-title">{{ __('main.Create') }} Setting</span>
-                    </div>
-                    <div class="card-body">
-                        <form method="POST" action="{{ route('admin.settings.store') }}"  role="form" enctype="multipart/form-data">
-                            @csrf
+                <br><h2 class="card-title">{{ __('main.settings') }}</h2>
+                <form method="POST" action="{{ route('admin.settings.store') }}"  role="form" enctype="multipart/form-data">
+                    @csrf
 
-                            @include('admin.setting.form')
+                    @include('admin.setting.form')
 
-                        </form>
-                    </div>
-                </div>
-            </div>
+                </form>
         </div>
     </section>
 @endsection

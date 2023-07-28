@@ -174,7 +174,8 @@ abstract class BaseRepository
      * @param array $data
      * @return bool
      */
-    public function deleteByConditions(array $conditions)
+    public
+    function deleteByConditions(array $conditions)
     {
         /** @var Model $instance */
         $instance = $this->getOneByConditions($conditions);
@@ -248,6 +249,10 @@ abstract class BaseRepository
 
         if (!empty($options['limit'])) {
             $query->limit($options['limit']);
+        }
+
+        if (!empty($options['paginate'])) {
+            $query->paginate($options['paginate']);
         }
 
         if (!empty($options['offset'])) {

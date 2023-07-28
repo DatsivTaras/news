@@ -11,7 +11,7 @@
 
                 @includeif('partials.errors')
 
-                <div class="card card-default">
+                <br><div class="card card-default">
                     <div class="card-header">
                         <span class="card-title">{{ __('main.CreateNews') }}</span>
                     </div>

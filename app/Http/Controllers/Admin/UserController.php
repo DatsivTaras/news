@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\User;
+use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 /**
  * Class UserController
@@ -12,6 +16,15 @@ use Illuminate\Http\Request;
  */
 class UserController extends Controller
 {
+
+    private $userRepository;
+
+    public function __construct(
+        UserRepository $userRepository
+    )
+    {
+        $this->userRepository = $userRepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -44,9 +57,10 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(User::$rules);
+        $data = request()->validate(User::$rules);
 
-        $user = User::create($request->all());
+        $data['password'] = Hash::make($data['password']);
+        $this->userRepository->create($data);
 
         return redirect()->route('admin/users.index')
             ->with('success', 'User created successfully.');
@@ -60,7 +74,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
+        $user = $this->userRepository->getOneOrFail($id);
 
         return view('admin/user.show', compact('user'));
     }
@@ -73,7 +87,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
+        $user = $this->userRepository->getOneOrFail($id);
 
         return view('admin/user.edit', compact('user'));
     }
@@ -87,11 +101,11 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        request()->validate(User::$rules);
+        $data = request()->validate(User::$rules);
 
-        $user->update($request->all());
+        $this->userRepository->update($user, $data);
 
-        return redirect()->route('users.index')
+        return redirect()->route('admin.users.index')
             ->with('success', 'User updated successfully');
     }
 
@@ -102,7 +116,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id)->delete();
+        $this->userRepository->getOneOrFail($id)->delete();
 
         return redirect()->route('admin/users.index')
             ->with('success', 'User deleted successfully');

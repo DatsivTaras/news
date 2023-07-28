@@ -14,33 +14,40 @@
 
 <div class="box box-info padding-1">
     @foreach($settings as $key => $settings)
-        {{\App\Models\Setting::getSettingsCategory($key)}}
-        <div class="box-body">
-            @foreach($settings as $setting)
-                <div class="form-group">
-                    @if($setting->type == 5)
-                        {{ Form::label('text',  $setting->name, ['class' => 'form-label']) }}
-                        {{ Form::file($setting->key, [ 'class' => 'form-control' . ($errors->has('$setting->key') ? ' is-invalid' : ''), 'onchange'=> "getImagePreview(event)", "id" => "selectImage"]) }}
-                        {!! $errors->first('image', '<div class="invalid-feedback">:message</div>') !!}
-                        @elseif($setting->type == 1)
-                            {{ Form::label($setting->name) }}
-                            {{ Form::text($setting->key, '', ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'Name']) }}
-                            {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
-                        @elseif($setting->type == 2)
-                            {{ Form::label($setting->name) }}
-                            {{ Form::checkbox($setting->key, '', ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'Name']) }}
-                            {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
-                        @elseif($setting->type == 3)
-                            {{ Form::label($setting->name) }}
-                            {{ Form::textArea($setting->key, $setting->value, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'Name']) }}
-                            {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
-                        @elseif($setting->type == 4)
-                            {{ Form::label($setting->name) }}
-                            {{ Form::select($setting->key, json_decode($setting->params), '', ['class' => 'form-select' . ($errors->has('name') ? ' is-invalid' : '')]) }}
-                            {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
-                    @endif
+        <div class="card card-header-actions mb-4">
+            <div class="card-header">
+                {{\App\Models\Setting::getSettingsCategory($key)}}
+                <div class="form-check form-switch">
+                    <label class="form-check-label" for="flexSwitchCheckChecked"></label>
                 </div>
-            @endforeach
+            </div>
+            <div class="box-body">
+                @foreach($settings as $setting)
+                    <div class="card-body">
+                        @if($setting->type == 5)
+                            {{ Form::label('text',  $setting->name, ['class' => 'form-label']) }}
+                            {{ Form::file($setting->key, [ 'class' => 'form-control' . ($errors->has('$setting->key') ? ' is-invalid' : ''), 'onchange'=> "getImagePreview(event)", "id" => "selectImage"]) }}
+                            {!! $errors->first('image', '<div class="invalid-feedback">:message</div>') !!}
+                            @elseif($setting->type == 1)
+                                {{ Form::label($setting->name) }}
+                                {{ Form::text($setting->key, '', ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => '' ]) }}
+                                {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
+                            @elseif($setting->type == 2)
+                                {{ Form::label($setting->name) }}
+                                {{ Form::checkbox($setting->key, '', ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => '']) }}
+                                {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
+                            @elseif($setting->type == 3)
+                                {{ Form::label($setting->name) }}
+                                {{ Form::textArea($setting->key, $setting->value, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => '']) }}
+                                {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
+                            @elseif($setting->type == 4)
+                                {{ Form::label($setting->name) }}
+                                {{ Form::select($setting->key, json_decode($setting->params), '', ['class' => 'form-select' . ($errors->has('name') ? ' is-invalid' : '')]) }}
+                                {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
+                        @endif
+                    </div>
+                @endforeach
+            </div>
         </div>
     @endforeach
     <div class="box-footer mt20">

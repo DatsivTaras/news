@@ -17,22 +17,15 @@
                             <a class="btn btn-primary" href="{{ route('admin.pages.index') }}"> {{ __('Back') }}</a>
                         </div>
                     </div>
-
                     <div class="card-body">
-
                         <div class="form-group">
-                            <strong>Slug:</strong>
-                            {{ $page->slug }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Title:</strong>
+                            <strong>@lang('main.title')</strong>
                             {{ $page->title }}
                         </div>
                         <div class="form-group">
-                            <strong>Description:</strong>
+                            <strong>@lang('main.description')</strong>
                             {{ $page->description }}
                         </div>
-
                     </div>
                 </div>
             </div>

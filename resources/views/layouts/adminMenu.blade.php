@@ -92,6 +92,10 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                         Настройки
                     </a>
+                    <a class="nav-link" href="/admin/sliders">
+                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                        Слайдер
+                    </a>
                 </div>
             </div>
             <div class="sb-sidenav-footer">

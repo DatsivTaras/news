@@ -31,7 +31,7 @@ class GenerateSettings extends Seeder
                 'category' => Setting::CATEGORY_HEADER,
                 'type' => Setting::TYPE_IMAGE,
                 'description' => 'Дауцауц а  ац ацу ',
-                'created_at' => Carbon::now(),
+                'created_at' => Carbon ::now(),
                 'created_at' => Carbon::now(),
             ],
             [
