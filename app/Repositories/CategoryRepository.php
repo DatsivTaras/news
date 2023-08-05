@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Category;
+use Illuminate\Database\Eloquent\Model;
 
 class CategoryRepository extends BaseRepository
 {
@@ -18,10 +19,34 @@ class CategoryRepository extends BaseRepository
         return $categories;
     }
 
+    public function getCategoryHeaderMenu()
+    {
+        $option = [
+            'limit' => '10',
+        ];
+
+        return $this->get($option);
+    }
+
     public function getCategoryPaginate()
     {
         $categories = $this->getQuery()->paginate('15');
 
         return $categories;
+    }
+    /**
+     * @param Model $model
+     * @param array $data
+     * @return mixed
+     * @throws \Exception
+     */
+    public function update(Model $model, array $data)
+    {
+        $model->fill($data);
+
+        if ($model->save()) {
+            return $model;
+        }
+        throw new \Exception('Cannot update model ' . $this->getModelClass());
     }
 }

@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'password_confirmation' => 'Підтвердження пароля',
+    'password' => 'Пароль',
+    'add' => 'Додати',
     'publish' => 'Опублікувати',
     'draft' => 'Чернетка',
     'simpleNews' => 'Проста новина',
@@ -37,7 +40,8 @@ return [
     'UpdateNews' => 'Редагувати Новину',
     'create' => 'Створити',
     'update' => 'Редагувати',
-    'news' => 'Новина',
+    'new' => 'Новина',
+    'news' => 'Новини',
     'category' => 'Категорія',
     'categories' => 'Категорії',
     'author' => 'Автор',

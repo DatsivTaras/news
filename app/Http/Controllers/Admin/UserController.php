@@ -62,7 +62,7 @@ class UserController extends Controller
         $data['password'] = Hash::make($data['password']);
         $this->userRepository->create($data);
 
-        return redirect()->route('admin/users.index')
+        return redirect()->route('admin.users.index')
             ->with('success', 'User created successfully.');
     }
 
@@ -76,7 +76,7 @@ class UserController extends Controller
     {
         $user = $this->userRepository->getOneOrFail($id);
 
-        return view('admin/user.show', compact('user'));
+        return view('admin.user.show', compact('user'));
     }
 
     /**
@@ -89,7 +89,7 @@ class UserController extends Controller
     {
         $user = $this->userRepository->getOneOrFail($id);
 
-        return view('admin/user.edit', compact('user'));
+        return view('admin.user.edit', compact('user'));
     }
 
     /**
@@ -118,7 +118,7 @@ class UserController extends Controller
     {
         $this->userRepository->getOneOrFail($id)->delete();
 
-        return redirect()->route('admin/users.index')
+        return redirect()->route('admin.users.index')
             ->with('success', 'User deleted successfully');
     }
 }

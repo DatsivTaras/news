@@ -102,6 +102,7 @@ class HomeSliderController extends Controller
      */
     public function destroy($id)
     {
+
         $this->homeSliderRepository->getOneOrFail($id)->delete();
 
         return redirect()->route('admin.sliders.index')

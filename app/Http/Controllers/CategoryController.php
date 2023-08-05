@@ -68,6 +68,7 @@ class CategoryController extends Controller
      */
     public function show($slug)
     {
+
         $category = $this->categoryRepository->getOneOrFail($slug, 'slug');
 
         return view('category.show', compact('category'));

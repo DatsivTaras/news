@@ -17,7 +17,7 @@ class NewsTagRepository extends BaseRepository
     public function getNewsTags(int $id)
     {
         $option = [
-            'filters' => ['news_id' => $id],
+            'filters' => 'news_id',
         ];
 
         return $this->get($option);

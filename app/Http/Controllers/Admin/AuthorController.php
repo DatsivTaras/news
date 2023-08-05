@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Filters\AuthorFilter;
+use App\Filters\NewsFilter;
 use App\Http\Controllers\Controller;
 use App\Models\Author;
+use App\Models\News;
 use App\Repositories\AuthorsRepository;
 use App\Services\AuthorServices;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 /**
  * Class AuthorController
@@ -30,9 +34,9 @@ class AuthorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(AuthorFilter $request)
     {
-        $authors = $this->authorsRepository->getAuthorsPaginate();
+        $authors = Author::filter($request)->paginate('22');
 
         return view('admin.author.index', compact('authors'))
             ->with('i', (request()->input('page', 1) - 1) * $authors->perPage());
@@ -61,6 +65,7 @@ class AuthorController extends Controller
     {
         $data = request()->validate(Author::$rules);
 
+        $data['slug'] = Str::slug($data['surname'], '_');
         $this->authorServices->saveAuthors($data);
 
         return redirect()->route('admin.authors.index')

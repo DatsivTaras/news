@@ -32,7 +32,6 @@
                                         <th>@lang('main.no')</th>
                                         <th>@lang('main.title')</th>
                                         <th>@lang('main.miniDescription')</th>
-                                        <th>@lang('main.Delete')</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -46,7 +45,7 @@
                                                 <form action="{{ route('admin.sliders.destroy',$homeSlider->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i></button>
                                                 </form>
                                             </td>
                                         </tr>

@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Filters\QueryFilter;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -36,7 +38,12 @@ class Author extends Model
      *
      * @var array
      */
-    protected $fillable = ['surname', 'name', 'patronymic', 'biography'];
+    protected $fillable = ['surname', 'slug', 'name', 'patronymic', 'biography'];
+
+    public function scopeFilter(Builder $builder, QueryFilter $filter)
+    {
+        return $filter->apply($builder);
+    }
 
     public function image()
     {

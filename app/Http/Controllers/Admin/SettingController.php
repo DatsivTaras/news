@@ -65,23 +65,24 @@ class SettingController extends Controller
             $model = $this->pageRepository->getOneOrFail($request->id);
         }
 
+        $newName = $model->getName() . ' | ' . $model->getUrl();
+
         if(!strripos($setting->value, $model->getUrl())) {
             $this->settingRepository->update($setting, [
-                'value' => $setting->value . ($setting->value ? PHP_EOL : '') . $model->getName() . ' | ' . $model->getUrl()
+                'value' => $setting->value . ($setting->value ? PHP_EOL : '') . $newName
             ]);
         } else {
+            if (strripos($setting->value, $model->getUrl() . PHP_EOL)) {
+                $val = str_replace( $newName . PHP_EOL, "", $setting->value);
+            } else {
+                $val = str_replace( $newName, "", $setting->value);
+            }
             $this->settingRepository->update($setting, [
-                'value' => str_replace( $model->getName() . ' | ' . $model->getUrl(), "", $setting->value)
+                'value' =>  $val
             ]);
         }
 
         return response()->json($setting->value);
-    }
-
-    public function create()
-    {
-
-        return view('admin.setting.create', compact('setting'));
     }
 
     /**
@@ -106,8 +107,6 @@ class SettingController extends Controller
      */
     public function show($id)
     {
-
-
         return view('setting.show', compact('setting'));
     }
 

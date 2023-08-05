@@ -5,6 +5,8 @@ namespace App\Models;
 use App\Classes\Enum\NewsPublicationType;
 use App\Classes\Enum\NewsStatus;
 use App\Classes\Enum\NewsType;
+use App\Filters\QueryFilter;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -42,6 +44,11 @@ class News extends Model
     ];
 //ate_format:d-m-Y H:i
     protected $perPage = 20;
+
+    public function scopeFilter(Builder $builder, QueryFilter $filter)
+    {
+        return $filter->apply($builder);
+    }
 
     public function home_slider()
     {

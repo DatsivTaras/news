@@ -14,10 +14,15 @@
                             <span id="card_title">
                                 {{ __('main.categories') }}
                             </span>
-
+                            <form action="{{ route('admin.categories.index')  }}" method="get" class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                                <div class="input-group">
+                                    <input name="search" value="{{ isset($_GET['search']) ? $_GET['search'] : '' }}" class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                                    <button class="btn btn-primary" id="btnNavbarSearch" type="submit"><i class="fas fa-search"></i></button>
+                                </div>
+                            </form>
                              <div class="float-right">
                                 <a href="{{ route('admin.categories.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('main.CreateCategory') }}
+                                  {{ __('main.add') }}
                                 </a>
                               </div>
                         </div>
@@ -44,13 +49,13 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
 											<td>{{ $category->name }}</td>
-											<td><input data-id="{{$category->id}}" class="addItemMenu" type="checkbox" {{ !strripos($settingHeadMenu->value, $category->getUrl()) ? '' : 'checked' }}></td>
+											<td><input data-id="{{$category->id}}" class="addItemMenu" type="checkbox" {{ !strripos($settingHeadMenu->value, $category->getUcrl()) ? '' : 'checked' }}></td>
                                             <td>
                                                 <form action="{{ route('admin.categories.destroy',$category->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-success" href="{{ route('admin.categories.edit',$category->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('main.Edit') }}</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('admin.categories.edit',$category->id) }}"><i class="fa fa-fw fa-edit"></i></a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('main.Delete') }}</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i></button>
                                                 </form>
                                             </td>
                                         </tr>

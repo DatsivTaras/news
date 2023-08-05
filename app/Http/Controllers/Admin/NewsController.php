@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Filters\NewsFilter;
 use App\Http\Controllers\Controller;
+use App\Models\HomeSlider;
 use App\Models\News;
 use App\Repositories\AuthorImagesRepository;
 use App\Repositories\AuthorsRepository;
@@ -25,6 +27,7 @@ class NewsController extends Controller
     private $newsServices;
 
     private $categoryRepository;
+    private $homeSliderRepository;
 
     private $authorsRepository;
 
@@ -32,6 +35,7 @@ class NewsController extends Controller
         NewsRepository $newsRepository,
         NewsServices $newsServices,
         CategoryRepository $categoryRepository,
+        HomeSliderRepository $homeSliderRepository,
         AuthorsRepository $authorsRepository
     )
     {
@@ -39,15 +43,16 @@ class NewsController extends Controller
         $this->newsRepository = $newsRepository;
         $this->categoryRepository = $categoryRepository;
         $this->authorsRepository = $authorsRepository;
+        $this->homeSliderRepository = $homeSliderRepository;
     }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(NewsFilter $request)
     {
-        $news = News::paginate();
+        $news = News::filter($request)->paginate('22');
 
         return view('admin.news.index', compact('news'))
             ->with('i', (request()->input('page', 1) - 1) * $news->perPage());

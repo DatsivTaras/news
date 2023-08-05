@@ -20,6 +20,7 @@ use Spatie\Permission\Traits\HasRoles;
  * @property $email
  * @property $email_verified_at
  * @property $password
+ * @property $password_confirmation
  * @property $remember_token
  * @property $created_at
  * @property $updated_at
@@ -32,8 +33,8 @@ class User extends Authenticatable implements MustVerifyEmail
     use Notifiable, HasRoles;
     static $rules = [
 		'name' => 'required',
-		'email' => 'required',
-		'password' => 'required',
+        'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        'password' => ['required', 'string', 'min:8', 'confirmed'],
     ];
 
     protected $perPage = 20;
@@ -43,7 +44,7 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @var array
      */
-    protected $fillable = ['name','email','password'];
+    protected $fillable = ['name','email','password', 'password_confirmation'];
 
 
 

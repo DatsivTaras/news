@@ -26,6 +26,11 @@ class Setting extends Model
     const CATEGORY_HEADER = 2;
     const CATEGORY_FOOTER = 3;
 
+    public function image()
+    {
+        return $this->hasOne(File::class, 'id','value');
+    }
+
     public static function settingsCategory() {
         return [
             self::CATEGORY_GENERAL => __('main.general'),

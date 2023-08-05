@@ -17,6 +17,7 @@ class CreateAuthorsTable extends Migration
             $table->id();
             $table->string('surname');
             $table->string('name');
+            $table->string('slug');
             $table->string('patronymic');
             $table->text('biography');
             $table->timestamps();

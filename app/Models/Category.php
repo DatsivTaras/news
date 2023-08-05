@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Filters\QueryFilter;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -23,6 +25,17 @@ class Category extends Model
 		'name' => 'required',
     ];
 
+    public function news()
+    {
+        return $this->belongsToMany(News::class, 'news_categories', 'category_id', 'news_id')
+            ->withTimestamps();
+    }
+
+    public function scopeFilter(Builder $builder, QueryFilter $filter)
+    {
+        return $filter->apply($builder);
+    }
+
     protected $perPage = 20;
 
     /**
@@ -34,7 +47,7 @@ class Category extends Model
 
     public function getUrl()
     {
-        return route('categories.show', $this->slug);
+        return route('category.show', $this->slug);
     }
 
     public function getName()

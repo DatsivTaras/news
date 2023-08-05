@@ -14,9 +14,15 @@
                             <span id="card_title">
                                 {{ __('main.authors') }}
                             </span>
+                            <form action="{{ route('admin.authors.index')  }}" method="get" class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                                <div class="input-group">
+                                    <input name="search" value="{{ isset($_GET['search']) ? $_GET['search'] : '' }}" class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                                    <button class="btn btn-primary" id="btnNavbarSearch" type="submit"><i class="fas fa-search"></i></button>
+                                </div>
+                            </form>
                              <div class="float-right">
                                 <a href="{{ route('admin.authors.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('main.CreateAuthor') }}
+                                  {{ __('main.add') }}
                                 </a>
                               </div>
                         </div>
@@ -50,11 +56,11 @@
 											<td>{{ $author->biography }}</td>
                                             <td>
                                                 <form action="{{ route('admin.authors.destroy',$author->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('admin.authors.show',$author->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('main.Show') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('admin.authors.edit',$author->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('main.Edit') }}</a>
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('admin.authors.show',$author->id) }}"><i class="fa fa-fw fa-eye"></i></a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('admin.authors.edit',$author->id) }}"><i class="fa fa-fw fa-edit"></i></a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('main.Delete') }}</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i></button>
                                                 </form>
                                             </td>
                                         </tr>

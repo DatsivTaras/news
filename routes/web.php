@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', [App\Http\Controllers\NewsController::class, 'index'])->name('/');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/admin-login', [App\Http\Controllers\Admin\AdminController::class,'login'])->name('admin-login');
 Route::post('/admin/login', [App\Http\Controllers\Admin\AdminLoginController::class,'login'])->name('admin.login');
@@ -33,12 +34,9 @@ Route::group(['middleware' => ['auth']], function() {
     });
 });
 
-Route::resource('categories', \App\Http\Controllers\CategoryController::class);
+Route::resource('category', \App\Http\Controllers\CategoryController::class);
 Route::resource('page', \App\Http\Controllers\PageController::class);
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('author/{slug}', [App\Http\Controllers\AuthorController::class, 'index']);
 
 Auth::routes();
 

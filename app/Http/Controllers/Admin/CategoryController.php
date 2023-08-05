@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Filters\AuthorFilter;
+use App\Filters\CategoryFilter;
 use App\Http\Controllers\Controller;
+use App\Models\Author;
 use App\Models\Category;
 use App\Repositories\CategoryRepository;
 use App\Repositories\SettingRepository;
@@ -34,9 +37,11 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+    public function index(CategoryFilter $request)
     {
-        $categories = $this->categoryRepository->getCategoryPaginate();
+        $categories = Category::filter($request)->paginate('22');
+
         $settingHeadMenu = $this->settingRepository->getOneOrFail('header_items_menu', 'key');
 
         return view('admin.category.index', compact('categories', 'settingHeadMenu'))

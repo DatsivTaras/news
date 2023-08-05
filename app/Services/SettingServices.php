@@ -2,19 +2,10 @@
 
 namespace App\Services;
 
-use App\Models\File;
 use App\Models\Image;
-use App\Repositories\AuthorImagesRepository;
-use App\Repositories\AuthorsRepository;
 use App\Repositories\ImageRepository;
-use App\Repositories\NewsAuthorsRepository;
-use App\Repositories\NewsCategoryRepository;
-use App\Repositories\NewsImageRepository;
-use App\Repositories\NewsRepository;
-use App\Repositories\NewsTagRepository;
 use App\Repositories\SettingRepository;
-use App\Repositories\TagRepository;
-use Carbon\Carbon;
+
 
 /**
  * Class FlightServices
@@ -23,16 +14,26 @@ class SettingServices
 {
 
     private $imageRepository;
+
     private $settingRepository;
 
     public function __construct(
         ImageRepository $imageRepository,
         SettingRepository $settingRepository
     )
-
     {
         $this->imageRepository = $imageRepository;
         $this->settingRepository = $settingRepository;
+    }
+
+    public static function getHeaderLogo()
+    {
+        return app(SettingRepository::class)->getOne('header_image', 'key')->image->name;
+    }
+
+    public static function getFooterLogo()
+    {
+        return app(SettingRepository::class)->getOne('footer_image', 'key')->image->name;
     }
 
     public function saveSettings($request)
