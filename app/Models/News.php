@@ -6,6 +6,7 @@ use App\Classes\Enum\NewsPublicationType;
 use App\Classes\Enum\NewsStatus;
 use App\Classes\Enum\NewsType;
 use App\Filters\QueryFilter;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,6 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property $id
  * @property $title
+ * @property $slug
  * @property $subtitle
  * @property $mini_description
  * @property $description
@@ -32,6 +34,7 @@ class News extends Model
     static $rules = [
         'tags' => 'required',
         'title' => 'required',
+		'slug' => '',
 		'image' => '',
 		'author_id' => '',
 		'subtitle' => 'required',
@@ -42,7 +45,18 @@ class News extends Model
 		'type' => 'required',
 		'date_of_publication' => 'required',
     ];
-//ate_format:d-m-Y H:i
+
+
+    /**
+     * Attributes that should be mass-assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'title', 'slug', 'subtitle', 'mini_description', 'description', 'type_publication',
+        'type', 'date_of_publication'
+    ];
+
     protected $perPage = 20;
 
     public function scopeFilter(Builder $builder, QueryFilter $filter)
@@ -50,10 +64,36 @@ class News extends Model
         return $filter->apply($builder);
     }
 
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    public function getPublicationDate()
+    {
+        return Carbon::parse($this->date_of_publication)->format('d.m.Y H:i');
+    }
+
+    public function getUrl()
+    {
+        return route('news.show', ['slug' => $this->slug]);
+    }
+
+    public function getImageUrl()
+    {
+        return $this->image && isset($this->image[0]) ? asset('/storage/' . $this->image[0]->name) : 'defualtimgae.png';
+    }
+
     public function home_slider()
     {
         return $this->hasOne(HomeSlider::class, 'news_id','id');
     }
+
     public function getTypePublication()
     {
         $statuses = self::typePublicationList();
@@ -107,14 +147,4 @@ class News extends Model
         return $this->belongsToMany(Author::class, 'news_authors', 'news_id', 'author_id')
             ->withTimestamps();
     }
-
-    /**
-     * Attributes that should be mass-assignable.
-     *
-     * @var array
-     */
-    protected $fillable = ['title', 'subtitle', 'mini_description', 'description', 'type_publication', 'type', 'date_of_publication'];
-
-
-
 }

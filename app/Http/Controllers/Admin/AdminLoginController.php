@@ -39,16 +39,10 @@ class AdminLoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-//    public function login(Request $request)
-//    {
-//        gthtdshrf
-//        return parent::login($request);
-//    }
-
     public function authenticated(Request $request, $user)
     {
         if (!$user->hasRole('Admin')) {
-            dd ('');
+            redirect(route('/'));
         }
 
         return redirect(route('admin.admin'));

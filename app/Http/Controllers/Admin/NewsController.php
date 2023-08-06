@@ -21,7 +21,6 @@ use Illuminate\Http\Request;
  */
 class NewsController extends Controller
 {
-
     private $newsRepository;
 
     private $newsServices;
@@ -65,9 +64,9 @@ class NewsController extends Controller
      */
     public function create()
     {
-        $tags = '';
-        $image = '';
+        $tags = $image = '';
         $news = new News();
+        $news->category = request()->get('category_id');
         $categories = $this->categoryRepository->getCategories();
         $authors = $this->authorsRepository->getAuthors();
 

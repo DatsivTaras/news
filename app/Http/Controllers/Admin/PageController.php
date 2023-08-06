@@ -39,7 +39,7 @@ class PageController extends Controller
     public function index()
     {
         $pages = Page::paginate();
-        $settingHeadMenu = $this->settingRepository->getOneOrFail('header_items_menu', 'key');
+        $settingHeadMenu = $this->settingRepository->getOneOrFail('header_menu', 'key');
 
         return view('admin.page.index', compact('pages', 'settingHeadMenu'))
             ->with('i', (request()->input('page', 1) - 1) * $pages->perPage());

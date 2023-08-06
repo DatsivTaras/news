@@ -42,9 +42,10 @@
                     </label>
                     <span>MENU</span>
                 </div>
-                <ul>
+                <ul style="padding-left: 0px;">
+                    <li style="list-style-type: none;"><label><a href="/">Головна</a></label></li>
                     @foreach(\App\Services\CategoryServices::getCategoryHeaderMenu() as $category)
-                        <li><label><a href={{ '/category/'.$category->slug }}>{{$category->name}}</a></label></li>
+                        <li style="list-style-type: none;"><label><a href={{ '/category/'.$category->slug }}>{{$category->name}}</a></label></li>
                     @endforeach
                 </ul>
             </div>

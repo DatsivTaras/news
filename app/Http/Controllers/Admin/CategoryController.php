@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Author;
 use App\Models\Category;
 use App\Repositories\CategoryRepository;
+use App\Repositories\NewsRepository;
 use App\Repositories\SettingRepository;
 use App\Services\SettingServices;
 use Illuminate\Http\Request;
@@ -19,30 +20,31 @@ use Illuminate\Support\Str;
  */
 class CategoryController extends Controller
 {
-
     private $categoryRepository;
-
     private $settingRepository;
+    private $newsRepository;
 
     public function __construct(
         CategoryRepository $categoryRepository,
-        SettingRepository $settingRepository
+        SettingRepository $settingRepository,
+        NewsRepository $newsRepository
     )
     {
         $this->categoryRepository = $categoryRepository;
         $this->settingRepository = $settingRepository;
+        $this->newsRepository = $newsRepository;
     }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
     public function index(CategoryFilter $request)
     {
         $categories = Category::filter($request)->paginate('22');
 
-        $settingHeadMenu = $this->settingRepository->getOneOrFail('header_items_menu', 'key');
+        $settingHeadMenu = $this->settingRepository->getOneOrFail('header_menu', 'key');
 
         return view('admin.category.index', compact('categories', 'settingHeadMenu'))
             ->with('i', (request()->input('page', 1) - 1) * $categories->perPage());
@@ -80,14 +82,23 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param string $slug
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(string $slug)
     {
-        $category = $this->categoryRepository->getOneOrFail($id);
-
-        return view('admin.category.show', compact('category'));
+        $category = $this->categoryRepository->getOneOrFail($slug, 'slug');
+        $categoryId = $category->id;
+        $options = [
+            'whereHas' => [
+                ['category',
+                function ($query) use ($categoryId) {
+                    return $query->where('category_id', $categoryId);
+                }]
+            ]
+        ];
+        $news = $this->newsRepository->table($options);
+        return view('admin.category.show', compact('category', 'news'));
     }
 
     /**
