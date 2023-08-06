@@ -218,7 +218,11 @@ abstract class BaseRepository
     public function table(array $options = [], int $perPage = 10, array $defaultSort = []): LengthAwarePaginator
     {
         /** @var Builder $query */
-        $query = ($this->getModelClass())::query()->sortable($defaultSort);
+        $query = ($this->getModelClass())::query();
+
+        if ($defaultSort) {
+            $query->orderBy($defaultSort['field'], $defaultSort['direction'] ?? 'asc');
+        }
 
         $this->applyFilters($query, $options);
         $this->applyWith($query, $options);

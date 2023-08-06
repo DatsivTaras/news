@@ -16,7 +16,7 @@
 <body class="sb-nav-fixed">
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
     <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3" href="/admin">Adminka</a>
+    <a class="navbar-brand ps-3" href="/admin">Адмін панель</a>
     <!-- Sidebar Toggle-->
     <!-- Navbar Search-->
     <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
@@ -65,39 +65,39 @@
         <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
             <div class="sb-sidenav-menu">
                 <div class="nav">
-                    <a class="nav-link" href="/admin/users">
+                    <a class="nav-link" href="/admin">
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                        Користувачі
+                        Головна
                     </a>
                     <a class="nav-link" href="/admin/categories">
-                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                        <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
                         Категорії
                     </a>
                     <a class="nav-link" href="/admin/news">
-                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                        <div class="sb-nav-link-icon"><i class="fas fa-image"></i></div>
                         Новини
                     </a>
+                    <a class="nav-link" href="/admin/sliders">
+                        <div class="sb-nav-link-icon"><i class="fas fa-images"></i></div>
+                        Слайдер
+                    </a>
                     <a class="nav-link" href="/admin/authors">
-                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                        <div class="sb-nav-link-icon"><i class="fas fa-user-pen"></i></div>
                         Автори
                     </a>
                     <a class="nav-link" href="/admin/pages">
-                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                        <div class="sb-nav-link-icon"><i class="fas fa-file"></i></div>
                         Сторінки
                     </a>
                     <a class="nav-link" href="/admin/settings">
-                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                        Настройки
+                        <div class="sb-nav-link-icon"><i class="fas fa-gear"></i></div>
+                        Налаштуванння
                     </a>
-                    <a class="nav-link" href="/admin/sliders">
-                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                        Слайдер
+                    <a class="nav-link" href="/admin/users">
+                        <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                        Користувачі
                     </a>
                 </div>
-            </div>
-            <div class="sb-sidenav-footer">
-                <div class="small">Logged in as:</div>
-                Start Bootstrap
             </div>
         </nav>
     </div>

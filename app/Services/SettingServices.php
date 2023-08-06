@@ -28,12 +28,14 @@ class SettingServices
 
     public static function getHeaderLogo()
     {
-        return app(SettingRepository::class)->getOne('header_image', 'key')->image->name;
+        $setting = app(SettingRepository::class)->getOne('header_image', 'key');
+        return $setting->image ? $setting->image->name : '';
     }
 
     public static function getFooterLogo()
     {
-        return app(SettingRepository::class)->getOne('footer_image', 'key')->image->name;
+        $setting = app(SettingRepository::class)->getOne('footer_image', 'key');
+        return $setting->image ? $setting->image->name : '';
     }
 
     public function saveSettings($request)

@@ -41,8 +41,6 @@
                                         <th>No</th>
 										<th>@lang('main.title')</th>
 										<th>@lang('main.subtitle')</th>
-                                        <th>@lang('main.miniDescription')</th>
-                                        <th>@lang('main.typePublication')</th>
                                         <th>@lang('main.On Slider')</th>
                                         <th>@lang('main.type')</th>
                                         <th>@lang('main.dateOfPublication')</th>
@@ -54,13 +52,10 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
 											<td>{{ $new->title }}</td>
-											<td>{{ $new->subtitle }}</td>
-											<td>{{ $new->mini_description }}</td>
 											<td>{{ $new->getTypePublication() }}</td>
 											<td><input  data-id="{{ $new->id }}" class="addNewsSlider" type="checkbox" {{ $new->home_slider ? 'checked' : '' }} ></td>
 											<td>{{ $new->getType() }}</td>
 											<td>{{ $new->date_of_publication }}</td>
-{{--                                            { !strripos($settingHeadMenu->value, $new->getUrl()) ? '' : 'checked' }}--}}
                                             <td>
                                                 <form action="{{ route('admin.news.destroy', $new->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('admin.news.show', $new->id) }}"><i class="fa fa-fw fa-eye"></i></a>

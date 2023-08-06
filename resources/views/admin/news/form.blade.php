@@ -15,16 +15,6 @@
 <div class="box box-info padding-1">
     <div class="box-body">
         <div class="mb-3">
-            {{ Form::text('tags', $tags, ['class' => 'form-control' . ($errors->has('tags') ? ' is-invalid' : ''), 'placeholder' => 'Тег...', 'data-role' => 'tagsinput']) }}
-            {!! $errors->first('tags', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
-        <div class="mb-3">
-            {{ Form::label('text',  __('main.image'), ['class' => 'form-label']) }}
-            {{ Form::file('image', [ 'class' => 'form-control' . ($errors->has('image') ? ' is-invalid' : ''), 'onchange'=> "getImagePreview(event)", "public/image/planes/Fh2pmleVODSftbdH0gctY01sr6FH4iQHUkDXxDCd.png","id" => "selectImage"]) }}
-            {!! $errors->first('image', '<div class="invalid-feedback">:message</div>') !!}
-            <img id="preview" width="1620" height="700" src="{{ Storage::url($image) }}" alt="/" class="mt-3" style="{{$image ? '' : 'display:none'}}"/>
-        </div>
-        <div class="mb-3">
             {{ Form::label(__('main.title')) }}
             {{ Form::text('title', $news->title, ['class' => 'form-control' . ($errors->has('title') ? ' is-invalid' : ''), 'placeholder' => __('main.title') ]) }}
             {!! $errors->first('title', '<div class="invalid-feedback">:message</div>') !!}
@@ -35,9 +25,10 @@
             {!! $errors->first('category_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="mb-3">
-            {{ Form::label( __('main.author')) }}
-            {{ Form::select('author_id', $authors, $news->author, ['class' => 'form-select' . ($errors->has('author_id') ? ' is-invalid' : '')]) }}
-            {!! $errors->first('author_id', '<div class="invalid-feedback">:message</div>') !!}
+            {{ Form::label('text',  __('main.image'), ['class' => 'form-label']) }}
+            {{ Form::file('image', [ 'class' => 'form-control' . ($errors->has('image') ? ' is-invalid' : ''), 'onchange'=> "getImagePreview(event)", "public/image/planes/Fh2pmleVODSftbdH0gctY01sr6FH4iQHUkDXxDCd.png","id" => "selectImage"]) }}
+            {!! $errors->first('image', '<div class="invalid-feedback">:message</div>') !!}
+            <img id="preview" width="1620" height="700" src="{{ Storage::url($image) }}" alt="/" class="mt-3" style="{{$image ? '' : 'display:none'}}"/>
         </div>
         <div class="mb-3">
             {{ Form::label( __('main.subtitle')) }}
@@ -53,6 +44,11 @@
             {{ Form::label(__('main.description')) }}
             {{ Form::textarea('description', $news->description, ['class' => 'description form-control' . ($errors->has('description') ? ' is-invalid' : ''), 'placeholder' => __('main.description') ]) }}
             {!! $errors->first('description', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
+        <div class="mb-3">
+            {{ Form::label( __('main.author')) }}
+            {{ Form::select('author_id', $authors, $news->author, ['class' => 'form-select' . ($errors->has('author_id') ? ' is-invalid' : '')]) }}
+            {!! $errors->first('author_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="mb-3">
             <div class="form-check form-check-inline">
@@ -80,6 +76,10 @@
             {{ Form::label(__('main.dateOfPublication')) }}
             {{ Form::dateTimelocal('date_of_publication', date('Y-m-d H:i', strtotime($news->date_of_publication ? date('Y-m-d H:i', strtotime($news->date_of_publication)) : now())), ['class' => 'form-control' . ($errors->has('date_of_publication') ? ' is-invalid' : ''), 'placeholder' => 'Date Of Publication', 'min' => now()->format('Y-m-d H:i') ]) }}
             {!! $errors->first('date_of_publication', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
+        <div class="mb-3">
+            {{ Form::text('tags', $tags, ['class' => 'form-control' . ($errors->has('tags') ? ' is-invalid' : ''), 'placeholder' => 'Тег...', 'data-role' => 'tagsinput']) }}
+            {!! $errors->first('tags', '<div class="invalid-feedback">:message</div>') !!}
         </div>
     </div>
     <div class="box-footer mt20">
