@@ -2,8 +2,10 @@
 
 namespace App\Widgets;
 
+use App\Classes\Enum\NewsPublicationType;
 use App\Repositories\NewsRepository;
 use Arrilot\Widgets\AbstractWidget;
+use Illuminate\Validation\Rules\Enum;
 
 class RecentNews extends AbstractWidget
 {
@@ -47,7 +49,9 @@ class RecentNews extends AbstractWidget
             'direction' => 'DESC'
         ];
         $lastNews = $this->newsRepository->table($options, $this->config['limit'], $sort);
+        $options['filters'] = ['type' => NewsPublicationType::IMPORTANT];
 
-        return view('widgets.recent_news', compact('lastNews'));
+        $mainNews = $this->newsRepository->table($options, $this->config['limit'], $sort);
+        return view('widgets.recent_news', compact('lastNews', 'mainNews'));
     }
 }

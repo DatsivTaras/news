@@ -58,7 +58,7 @@
 											<td>{{ $new->date_of_publication }}</td>
                                             <td>
                                                 <form action="{{ route('admin.news.destroy', $new->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('admin.news.show', $new->id) }}"><i class="fa fa-fw fa-eye"></i></a>
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('news.show', $new->slug) }}"target="_blank"><i class="fa fa-fw fa-eye"></i></a>
                                                     <a class="btn btn-sm btn-success" href="{{ route('admin.news.edit', $new->id) }}"><i class="fa fa-fw fa-edit"></i></a>
                                                     @csrf
                                                     @method('DELETE')

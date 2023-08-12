@@ -12,6 +12,11 @@ class CategoryRepository extends BaseRepository
         return Category::class;
     }
 
+    public function getParentsCategories($id)
+    {
+        return Category::doesnthave('parent',)->where('id' ,'!=', $id)->pluck('name', 'id')->toArray();
+    }
+
     public function getCategories()
     {
         $categories = Category::pluck('name', 'id')->toArray();

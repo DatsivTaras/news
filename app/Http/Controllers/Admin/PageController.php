@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Page;
+use App\Models\Setting;
 use App\Repositories\AuthorImagesRepository;
 use App\Repositories\AuthorsRepository;
 use App\Repositories\CategoryRepository;
@@ -39,7 +40,7 @@ class PageController extends Controller
     public function index()
     {
         $pages = Page::paginate();
-        $settingHeadMenu = $this->settingRepository->getOneOrFail('header_menu', 'key');
+        $settingHeadMenu = $this->settingRepository->getOneOrFail(Setting::HEADER_ITEMS_MENU, 'key');
 
         return view('admin.page.index', compact('pages', 'settingHeadMenu'))
             ->with('i', (request()->input('page', 1) - 1) * $pages->perPage());

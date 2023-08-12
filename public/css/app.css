@@ -5,6 +5,19 @@
     margin: 0;
 }
 
+.category {
+    position: relative;
+    text-align: center;
+}
+
+
+.top-left {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+    color: black;
+}
+
 .container-fluid {
     margin-top: 32%;
 }

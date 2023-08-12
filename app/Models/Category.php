@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property $id
  * @property $name
  * @property $slug
+ * @property $parent_id
  * @property $description
  * @property $created_at
  * @property $updated_at
@@ -23,6 +24,7 @@ class Category extends Model
 {
     static $rules = [
 		'name' => 'required',
+		'parent_id' => '',
 		'description' => 'string',
     ];
 
@@ -38,6 +40,15 @@ class Category extends Model
         return $this->name;
     }
 
+    public function parent()
+    {
+        return $this->hasOne(CategoryRelative::class, 'category_id','id');
+    }
+
+    public function daughterCategory()
+    {
+        return $this->hasOne(CategoryRelative::class, 'parent_id','id');
+    }
     /**
      * @var string
      */

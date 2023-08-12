@@ -28,9 +28,16 @@
             <label class="m-menu__toggle" for="menu">
                 <svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
             </label>
-            <div align="center" class="logo-image">
+            <div class="logo-image">
                 <img src="{{ Storage::url(\App\Services\SettingServices::getHeaderLogo()) }}" class="img-fluid"   width="150" height="41" >
+                <form action="{{ route('search')  }}" method="get" class="header-search d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                    <div class="input-group">
+                        <input name="query" value="{{ isset($_GET['query']) ? $_GET['query'] : '' }}" class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                        <button class="btn btn-primary" id="btnNavbarSearch" type="submit"><i class="fas fa-search"></i></button>
+                    </div>
+                </form>
             </div>
+
             <label class="m-menu__overlay" for="menu"></label>
             <div class="m-menu">
                 <div class="m-menu__header">

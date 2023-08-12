@@ -57,7 +57,7 @@ class SettingController extends Controller
      */
     public function addItemsSettings(Request $request)
     {
-        $setting = $this->settingRepository->getOneOrFail('header_items_menu', 'key');
+        $setting = $this->settingRepository->getOneOrFail(Setting::HEADER_ITEMS_MENU, 'key');
         if ($request->type == 'category') {
             $model = $this->categoryRepository->getOneOrFail($request->id);
         }
