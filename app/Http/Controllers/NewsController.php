@@ -45,6 +45,8 @@ class NewsController extends Controller
     {
         $news = $this->newsRepository->getOneOrFail($slug, 'slug');
 
+        views($news)->record();
+
         return view('news.show', compact('news'));
     }
 
