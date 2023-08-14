@@ -47,7 +47,15 @@ class NewsController extends Controller
 
         views($news)->record();
 
-        return view('news.show', compact('news'));
+        $shareComponent = \Share::page(
+            'http://news-demo.space/news/test_novina_1',
+            $news->title,
+        )
+            ->facebook()
+            ->twitter()
+            ->telegram();
+
+        return view('news.show', compact('news', 'shareComponent'));
     }
 
     public function search(SearchNews $request)
