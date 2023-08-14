@@ -10,9 +10,8 @@ use Carbon\Carbon;
 class GenerateSettings extends Seeder
 {
     private $settingRepository;
-    public function __construct(
-        SettingRepository $settingRepository
-    )
+
+    public function __construct(SettingRepository $settingRepository)
     {
         $this->settingRepository = $settingRepository;
     }
@@ -25,7 +24,7 @@ class GenerateSettings extends Seeder
     {
         $settingsData = [
             [
-                'name' => 'Зміна Лого',
+                'name' => 'Логотип сайту',
                 'value' => '',
                 'key' => Setting::HEADER_IMAGE,
                 'category' => Setting::CATEGORY_HEADER,
@@ -35,7 +34,7 @@ class GenerateSettings extends Seeder
                 'created_at' => Carbon::now(),
             ],
             [
-                'name' => 'Зміна назви сайту',
+                'name' => 'Назва сайту',
                 'value' => '',
                 'key' => Setting::SITE_NAME,
                 'category' => Setting::CATEGORY_GENERAL,
@@ -45,7 +44,7 @@ class GenerateSettings extends Seeder
                 'created_at' => Carbon::now(),
             ],
             [
-                'name' => 'Зміна Фото Футера',
+                'name' => 'Лого футера',
                 'value' => '',
                 'key' => Setting::FOOTER_IMAGE,
                 'category' => Setting::CATEGORY_FOOTER,
