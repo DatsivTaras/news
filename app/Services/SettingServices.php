@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Image;
+use App\Models\Setting;
 use App\Repositories\ImageRepository;
 use App\Repositories\SettingRepository;
 
@@ -28,33 +29,35 @@ class SettingServices
 
     public static function getHeaderLogo()
     {
-        $setting = app(SettingRepository::class)->getOne('header_image', 'key');
+        $setting = app(SettingRepository::class)->getOne(Setting::HEADER_IMAGE, 'key');
         return $setting->image ? $setting->image->name : '';
     }
 
     public static function getFooterLogo()
     {
-        $setting = app(SettingRepository::class)->getOne('footer_image', 'key');
+        $setting = app(SettingRepository::class)->getOne(Setting::FOOTER_IMAGE, 'key');
         return $setting->image ? $setting->image->name : '';
     }
 
     public function saveSettings($request)
     {
         unset($request['_token']);
+
         foreach ($request->all() as $key => $value) {
-            if($value !== null) {
-                if(is_object($value)) {
-                    $data['name'] = $value->store('public/image/header');
-                    $image = $this->imageRepository->create($data);
-
-                    $data['value'] = $image->id;
-                } else {
-                    $data['value'] = $value;
-                }
-
-                $settings = $this->settingRepository->getOneOrFail($key,'key');
-                $this->settingRepository->update($settings, $data);
+            $settings = $this->settingRepository->getOneOrFail($key,'key');
+            $type = $settings->type;
+            if ($type == 5) {
+                $data['name'] = $value->store('public/image/header');
+                $image = $this->imageRepository->create($data);
+                $data['value'] = $image->id;
             }
+            if ($type == 1) {
+                $data['value'] = $value;
+            }
+            if ($type == 6) {
+               $data['value'] = implode(",", $value);
+            }
+            $this->settingRepository->update($settings, $data);
         }
     }
 }

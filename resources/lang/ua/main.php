@@ -3,6 +3,7 @@
 return [
     'password_confirmation' => 'Підтвердження пароля',
     'password' => 'Пароль',
+    'home' => 'Головна',
     'add' => 'Додати',
     'publish' => 'Опублікувати',
     'draft' => 'Чернетка',

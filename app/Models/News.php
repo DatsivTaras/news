@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use CyrildeWit\EloquentViewable\InteractsWithViews;
 use CyrildeWit\EloquentViewable\Contracts\Viewable;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Class News
@@ -50,7 +51,6 @@ class News extends Model implements Viewable
 		'date_of_publication' => 'required',
     ];
 
-
     /**
      * Attributes that should be mass-assignable.
      *
@@ -73,6 +73,14 @@ class News extends Model implements Viewable
         return $this->title;
     }
 
+    public function getNewsType()
+    {
+        if($this->type == NewsPublicationType::IMPORTANT) {
+            return true;
+        }
+        return false;
+    }
+
     public function getDescription()
     {
         return $this->description;
@@ -90,7 +98,12 @@ class News extends Model implements Viewable
 
     public function getImageUrl()
     {
-        return $this->image && isset($this->image[0]) ? asset('/storage/' . $this->image[0]->name) : 'defualtimgae.png';
+        return $this->image && isset($this->image[0]) ? asset(Storage::url( $this->image[0]->name)) : 'defualtimgae.png';
+    }
+
+    public function news_category()
+    {
+        return $this->hasOne(NewsCategory::class, 'news_id','id');
     }
 
     public function home_slider()

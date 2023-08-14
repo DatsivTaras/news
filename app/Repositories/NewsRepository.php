@@ -4,9 +4,10 @@ namespace App\Repositories;
 
 use App\Models\News;
 use App\Repositories\BaseRepository;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
-class NewsRepository extends BaseRepository
+class  NewsRepository extends BaseRepository
 {
     protected function getModelClass(): string
     {
@@ -26,5 +27,16 @@ class NewsRepository extends BaseRepository
         }
 
         throw new \Exception('Cannot create model ' . $this->getModelClass());
+    }
+
+    public function getLastNewsForCategoory($id)
+    {
+        $news = News::with('news_category')
+            ->whereHas('news_category', function ($q) use($id){
+                $q->where('category_id', $id);
+            })
+            ->first();
+
+        return $news;
     }
 }

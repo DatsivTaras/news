@@ -12,6 +12,11 @@ class CategoryRepository extends BaseRepository
         return Category::class;
     }
 
+    public function getParentsCategories($id)
+    {
+        return Category::doesnthave('parent',)->where('id' ,'!=', $id)->pluck('name', 'id')->toArray();
+    }
+
     public function getCategories()
     {
         $categories = Category::pluck('name', 'id')->toArray();
@@ -23,6 +28,15 @@ class CategoryRepository extends BaseRepository
     {
         $option = [
             'limit' => '10',
+        ];
+
+        return $this->get($option);
+    }
+
+    public function getCategoryWhereIn($ids)
+    {
+        $option = [
+            'filters' => ['id' => $ids],
         ];
 
         return $this->get($option);

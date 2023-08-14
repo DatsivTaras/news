@@ -28,9 +28,10 @@
                             {{ Form::label('text',  $setting->name, ['class' => 'form-label']) }}
                             {{ Form::file($setting->key, [ 'class' => 'form-control' . ($errors->has('$setting->key') ? ' is-invalid' : ''), 'onchange'=> "getImagePreview(event)", "id" => "selectImage"]) }}
                             {!! $errors->first('image', '<div class="invalid-feedback">:message</div>') !!}
-                            @elseif($setting->type == 1)
+                            <img id="preview" width="270" height="100" src="{{ Storage::url($setting->image->name) }}" alt="/" class="mt-3" display:none />
+                        @elseif($setting->type == 1)
                                 {{ Form::label($setting->name) }}
-                                {{ Form::text($setting->key, '', ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => '' ]) }}
+                                {{ Form::text($setting->key, $setting->value, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => '' ]) }}
                                 {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
                             @elseif($setting->type == 2)
                                 {{ Form::label($setting->name) }}
@@ -43,6 +44,10 @@
                             @elseif($setting->type == 4)
                                 {{ Form::label($setting->name) }}
                                 {{ Form::select($setting->key, json_decode($setting->params), '', ['class' => 'form-select' . ($errors->has('name') ? ' is-invalid' : '')]) }}
+                                {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
+                            @elseif($setting->type == 6)
+                                {{ Form::label($setting->name) }}
+                                {{ Form::select($setting->key.'[]', $setting->getParams($setting->key), explode(',', $setting->value), ['class' => "form-select" . ($errors->has('name') ? ' is-invalid' : ''), 'multiple'=>'multiple']) }}
                                 {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
                         @endif
                     </div>
@@ -64,15 +69,5 @@
             preview.src = URL.createObjectURL(file)
         }
     }
-    tinymce.init({
-        selector: 'textarea.description',
-        plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
-        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
-        tinycomments_mode: 'embedded',
-        tinycomments_author: 'Author name',
-        mergetags_list: [
-            { value: 'First.Name', title: 'First Name' },
-            { value: 'Email', title: 'Email' },
-        ],
-    });
+
 </script>

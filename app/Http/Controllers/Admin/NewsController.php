@@ -115,8 +115,7 @@ class NewsController extends Controller
         $authors = $this->authorsRepository->getAuthors();
 
         $image = implode("','", $news->image->pluck('name')->toArray());
-        $tags = implode("','", $news->tags->pluck('name')->toArray());
-
+        $tags = implode(",", $news->tags->pluck('name')->toArray());
         return view('admin.news.edit', compact('news','tags', 'image', 'categories', 'authors'));
     }
 

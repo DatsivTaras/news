@@ -7,7 +7,9 @@ use App\Filters\CategoryFilter;
 use App\Http\Controllers\Controller;
 use App\Models\Author;
 use App\Models\Category;
+use App\Models\Setting;
 use App\Repositories\CategoryRepository;
+use App\Repositories\CategoryRelativeRepisitory;
 use App\Repositories\NewsRepository;
 use App\Repositories\SettingRepository;
 use App\Services\SettingServices;
@@ -23,16 +25,19 @@ class CategoryController extends Controller
     private $categoryRepository;
     private $settingRepository;
     private $newsRepository;
+    private $categoryRelativeRepisitory;
 
     public function __construct(
         CategoryRepository $categoryRepository,
         SettingRepository $settingRepository,
-        NewsRepository $newsRepository
+        NewsRepository $newsRepository,
+        CategoryRelativeRepisitory $categoryRelativeRepisitory
     )
     {
         $this->categoryRepository = $categoryRepository;
         $this->settingRepository = $settingRepository;
         $this->newsRepository = $newsRepository;
+        $this->categoryRelativeRepisitory = $categoryRelativeRepisitory;
     }
 
     /**
@@ -44,9 +49,8 @@ class CategoryController extends Controller
     {
         $categories = Category::filter($request)->paginate('22');
 
-        $settingHeadMenu = $this->settingRepository->getOneOrFail('header_menu', 'key');
 
-        return view('admin.category.index', compact('categories', 'settingHeadMenu'))
+        return view('admin.category.index', compact('categories', ))
             ->with('i', (request()->input('page', 1) - 1) * $categories->perPage());
     }
 
@@ -57,9 +61,14 @@ class CategoryController extends Controller
      */
     public function create()
     {
+        $parentCategory = [];
         $category = new Category();
+        $parentCategory +=[
+            '' => 'Виберіть Батьківську Категорію'
+        ];
+        $parentCategory += Category::pluck('name', 'id')->toArray();
 
-        return view('admin.category.create', compact('category'));
+        return view('admin.category.create', compact('category', 'parentCategory'));
     }
 
     /**
@@ -73,7 +82,14 @@ class CategoryController extends Controller
         $data = request()->validate(Category::$rules);
 
         $data['slug'] = Str::slug($data['name'], '_');
-        $this->categoryRepository->create($data);
+        $category = $this->categoryRepository->create($data);
+
+        if ($data['parent_id']) {
+            $this->categoryRelativeRepisitory->create([
+                'parent_id' => $data['parent_id'],
+                'category_id' => $category->id,
+            ]);
+        }
 
         return redirect()->route('admin.categories.index')
             ->with('success', 'Category created successfully.');
@@ -110,8 +126,13 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = $this->categoryRepository->getOneOrFail($id);
+        $parentCategory = [];
+        $parentCategory +=[
+            '' => 'Виберіть Батьківську Категорію'
+        ];
+        $parentCategory += $this->categoryRepository->getParentsCategories($id);
 
-        return view('admin.category.edit', compact('category'));
+        return view('admin.category.edit', compact('category', 'parentCategory'));
     }
 
     /**
@@ -126,7 +147,22 @@ class CategoryController extends Controller
         $data = request()->validate(Category::$rules);
 
         $category->update($data);
-
+        if (!empty($data['parent_id'])){
+            if($category->parent) {
+                $daughtersCategory = $this->categoryRelativeRepisitory->getOneOrFail($category->id, 'category_id');
+                $this->categoryRelativeRepisitory->update($daughtersCategory, [
+                    'parent_id' => $data['parent_id'],
+                    'category_id' => $category->id
+                ]);
+            } else {
+                $this->categoryRelativeRepisitory->create([
+                    'parent_id' => $data['parent_id'],
+                    'category_id' => $category->id,
+                ]);
+            }
+        } elseif($category->parent) {
+            $this->categoryRelativeRepisitory->delete($category->parent);
+        }
         return redirect()->route('admin.categories.index')
             ->with('success', 'Category updated successfully');
     }

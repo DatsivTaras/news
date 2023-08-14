@@ -21,10 +21,19 @@ class Setting extends Model
     const TYPE_TEXTAREA= 3;
     const TYPE_SELECT = 4;
     const TYPE_IMAGE = 5;
+    const TYPE_MULTIPLE = 6;
 
     const CATEGORY_GENERAL = 1;
     const CATEGORY_HEADER = 2;
     const CATEGORY_FOOTER = 3;
+
+    const HEADER_IMAGE = 'header_image';
+    const SITE_NAME = 'site_name';
+    const FOOTER_IMAGE = 'footer_image';
+    const HEADER_ITEMS_MENU = 'header_items_menu';
+    const HEADER_CATEGORY_MENU = 'header_category_menu';
+    const BLOCKS_CATEGORY_HOME_PAGE = 'blocks_cateory_home_page';
+    const HEADER_ITEMS_LEFT_MENU = 'header_items_left_menu';
 
     public function image()
     {
@@ -44,5 +53,24 @@ class Setting extends Model
         $category = self::settingsCategory();
 
         return array_key_exists($key, $category) ?  $category[$key] : "";
+    }
+    public static function getStatus($key)
+    {
+       $setting = Setting::where('key', $key)->first();
+
+        return $setting->type;
+    }
+
+    public static function getParams($key)
+    {
+        if ($key == self::HEADER_ITEMS_LEFT_MENU) {
+            return Category::doesnthave('parent',)->pluck('name', 'id')->toArray();;
+        }
+        if ($key == self::BLOCKS_CATEGORY_HOME_PAGE) {
+            return Category::doesnthave('parent',)->pluck('name', 'id')->toArray();;
+        }
+        if ($key == self::HEADER_CATEGORY_MENU) {
+            return Category::doesnthave('parent',)->pluck('name', 'id')->toArray();;
+        }
     }
 }
