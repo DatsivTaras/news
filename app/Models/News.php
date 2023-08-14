@@ -10,6 +10,8 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use CyrildeWit\EloquentViewable\InteractsWithViews;
+use CyrildeWit\EloquentViewable\Contracts\Viewable;
 use Illuminate\Support\Facades\Storage;
 
 /**
@@ -31,10 +33,10 @@ use Illuminate\Support\Facades\Storage;
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class News extends Model
+class News extends Model implements Viewable
 {
-    use SoftDeletes;
-
+    use SoftDeletes, InteractsWithViews;
+    
     static $rules = [
         'tags' => 'required',
         'title' => 'required',
