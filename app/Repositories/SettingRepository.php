@@ -14,4 +14,16 @@ class SettingRepository extends BaseRepository
         return Setting::class;
     }
 
+    public function getSetting(string $key, int $category = null)
+    {
+        $params = [
+            'key' => $key
+        ];
+
+        if ($category) {
+            $params['category'] = $category;
+        }
+
+        return $this->getOneByConditions($params);
+    }
 }

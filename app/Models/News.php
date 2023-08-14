@@ -9,6 +9,8 @@ use App\Filters\QueryFilter;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use CyrildeWit\EloquentViewable\InteractsWithViews;
+use CyrildeWit\EloquentViewable\Contracts\Viewable;
 
 /**
  * Class News
@@ -29,8 +31,10 @@ use Illuminate\Database\Eloquent\Model;
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class News extends Model
+class News extends Model implements Viewable
 {
+    use InteractsWithViews;
+
     static $rules = [
         'tags' => 'required',
         'title' => 'required',
