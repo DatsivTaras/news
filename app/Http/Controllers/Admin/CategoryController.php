@@ -114,6 +114,7 @@ class CategoryController extends Controller
             ]
         ];
         $news = $this->newsRepository->table($options);
+
         return view('admin.category.show', compact('category', 'news'));
     }
 

@@ -29,6 +29,40 @@ class  NewsRepository extends BaseRepository
         throw new \Exception('Cannot create model ' . $this->getModelClass());
     }
 
+    public function getNewsAuthors(object $author)
+    {
+        return $author->id ;
+    }
+
+    public function getNewsBasket($request)
+    {
+        return News::onlyTrashed()->get();;
+    }
+    public function getNewsDrafts($request)
+    {
+        return News::filter($request)->where('type_publication', 2)->paginate('30');
+    }
+    public function getNews($request)
+    {
+        return News::filter($request)->where('type_publication', 1)->paginate('30');
+    }
+
+    public function restoreNews($id)
+    {
+      return News::onlyTrashed()
+            ->where('id', $id)
+            ->restore();
+    }
+
+    public function finalDelete($id)
+    {
+        $new = News::withTrashed()
+            ->where('id', $id)
+            ->first();
+
+        return $new->forceDelete();
+    }
+
     public function getLastNewsForCategoory($id)
     {
         $news = News::with('news_category')
