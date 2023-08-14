@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Filters\QueryFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Class Author
@@ -49,6 +50,16 @@ class Author extends Model
     {
         return $this->belongsToMany(File::class, 'author_image', 'author_id', 'image_id')
             ->withTimestamps();
+    }
+
+    public function news()
+    {
+        return $this->belongsToMany(News::class, 'news_authors', 'author_id', 'news_id')
+            ->withTimestamps();
+    }
+    public function getImageUrl()
+    {
+        return $this->image && isset($this->image[0]) ? asset(Storage::url( $this->image[0]->name)) : 'defualtimgae.png';
     }
 
 

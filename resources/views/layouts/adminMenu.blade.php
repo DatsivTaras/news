@@ -73,10 +73,18 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
                         Категорії
                     </a>
-                    <a class="nav-link" href="/admin/news">
-                        <div class="sb-nav-link-icon"><i class="fas fa-image"></i></div>
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                         Новини
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
+                    <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" href="/admin/news">Опубліковані</a>
+                            <a class="nav-link" href="/admin/news/drafts">Черновики</a>
+                            <a class="nav-link" href="/admin/news/basket">Кошик</a>
+                        </nav>
+                    </div>
                     <a class="nav-link" href="/admin/sliders">
                         <div class="sb-nav-link-icon"><i class="fas fa-images"></i></div>
                         Слайдер

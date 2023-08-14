@@ -51,7 +51,7 @@ class NewsController extends Controller
      */
     public function index(NewsFilter $request)
     {
-        $news = News::filter($request)->paginate('22');
+        $news = $this->newsRepository->getNews($request);
 
         return view('admin.news.index', compact('news'))
             ->with('i', (request()->input('page', 1) - 1) * $news->perPage());
@@ -154,5 +154,43 @@ class NewsController extends Controller
 
         return redirect()->route('admin.news.index')
             ->with('success', 'News deleted successfully');
+    }
+
+    public function drafts(NewsFilter $request)
+    {
+        $news = $this->newsRepository->getNewsDrafts($request);
+
+        return view('admin.news.drafts', compact('news'));
+    }
+
+    public function basket(NewsFilter $request)
+    {
+        $news = $this->newsRepository->getNewsBasket($request);
+
+
+        return view('admin.news.basket', compact('news'));
+    }
+
+    public function publishNews(Request $request)
+    {
+        $news = $this->newsRepository->getOneOrFail($request->id, 'id');
+        $this->newsRepository->update($news,[
+            'type_publication' => '1'
+        ]);
+        return redirect(route('admin.news.drafts'));
+    }
+
+    public function restorationNews(Request $request)
+    {
+        $this->newsRepository->restoreNews($request->id);
+
+        return redirect(route('admin.news.basket'));
+    }
+
+    public function finalDelete(Request $request)
+    {
+        $this->newsRepository->finalDelete($request->id);
+
+        return redirect(route('admin.news.basket'));
     }
 }

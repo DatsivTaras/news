@@ -9,6 +9,7 @@ use App\Filters\QueryFilter;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use CyrildeWit\EloquentViewable\InteractsWithViews;
 use CyrildeWit\EloquentViewable\Contracts\Viewable;
 use Illuminate\Support\Facades\Storage;
@@ -34,8 +35,8 @@ use Illuminate\Support\Facades\Storage;
  */
 class News extends Model implements Viewable
 {
-    use InteractsWithViews;
-
+    use SoftDeletes, InteractsWithViews;
+    
     static $rules = [
         'tags' => 'required',
         'title' => 'required',
@@ -50,6 +51,8 @@ class News extends Model implements Viewable
 		'type' => 'required',
 		'date_of_publication' => 'required',
     ];
+
+    protected $dates = ['deleted_at'];
 
     /**
      * Attributes that should be mass-assignable.

@@ -60,7 +60,7 @@ class NewsServices
         $homeSlider = $this->homeSliderRepository->getOne($request->id, 'news_id');
 
         if(!$homeSlider) {
-            if($this->homeSliderRepository->count() >= 5) {
+            if($this->homeSliderRepository->count() >= 4) {
                 $this->homeSliderRepository->deleteLastNewsFromSlider();
             }
              $this->homeSliderRepository->create([
