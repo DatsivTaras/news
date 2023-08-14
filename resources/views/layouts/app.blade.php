@@ -57,6 +57,12 @@
                 </ul>
             </div>
         </nav>
+        <hr>
+        <a href="{{route('/')}}">@lang('main.home')</a>
+        @foreach(\App\Services\HomeServices::getCategoryMainMenu() as $category)
+            <a href={{ $category->getUrl() }}>{{ $category->name }}</a>
+        @endforeach
+        <hr>
         <div id="layoutSidenav_content">
             <main>
                 @yield('content')

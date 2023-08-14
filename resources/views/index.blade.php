@@ -52,37 +52,27 @@
                             <div style="background-color:coral "class="top-left">{{ $slide->news->category['0']->name }}</div>
                             <div class="card-body">
                                 <h5 class="card-title">{{ $mainBlock->title }}</h5>
-                                <p class="card-text">{{ $mainBlock->mini_description }}</p>
+{{--                                <p class="card-text">{{ $mainBlock->mini_description }}</p>--}}
                             </div>
                         </div>
                     </a>
                 </div>
             @endif
             @if ($mainBlocktwo)
-                <div class="col-sm-6">
-                    <a href="" style="text-decoration: none; color:black">
-                        <div class="category">
-                            <img class="card-img-top" src="{{ $slide->news->getImageUrl() }}" width="200" height="200" alt="Card image cap">
-                            <div style="background-color:coral" class="top-left"></div>
-                            <div class="card-body">
-                                <h5 class="card-title"></h5>
-                                <p class="card-text"></p>
+                @foreach($mainBlocktwo as $news)
+                    <div class="col-sm-6">
+                        <a href="" style="text-decoration: none; color:black">
+                            <div class="category">
+                                <img class="card-img-top" src="{{ $news->getImageUrl() }}" width="200" height="200" alt="Card image cap">
+                                <div style="background-color:coral" class="top-left"></div>
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $news->title }}</h5>
+                                    <p class="card-text"></p>
+                                </div>
                             </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-sm-6">
-                    <a href="" style="text-decoration: none; color:black">
-                        <div class="category">
-                            <img class="card-img-top" src="{{ $slide->news->getImageUrl() }}" width="200" height="200" alt="Card image cap">
-                            <div style="background-color:coral" class="top-left"></div>
-                            <div class="card-body">
-                                <h5 class="card-title"></h5>
-                                <p class="card-text"></p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                        </a>
+                    </div>
+                @endforeach
             @endif
         </div>
     </div>

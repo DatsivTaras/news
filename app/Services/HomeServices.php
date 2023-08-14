@@ -59,8 +59,7 @@ class HomeServices
         }
 
         if (isset($news1) && isset($news2)) {
-
-          return collect([
+            return collect([
                $news1,
                $news2,
            ]);
@@ -68,7 +67,17 @@ class HomeServices
         }
     }
 
+  public function getCategoryMainMenu()
+  {
+      $setting = app(SettingRepository::class)->getOne(Setting::HEADER_CATEGORY_MENU, 'key');
 
+      $categoryIds = explode( ',', $setting->value);
+//        dd($category);
+      $category = app(CategoryRepository::class)->getCategoryWhereIn($categoryIds);
+
+
+      return $category;
+  }
 
 }
 ?>

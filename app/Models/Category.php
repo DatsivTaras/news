@@ -56,7 +56,6 @@ class Category extends Model
     {
         return route('category.show', $this->slug);
     }
-
     /**
      * @var string
      */

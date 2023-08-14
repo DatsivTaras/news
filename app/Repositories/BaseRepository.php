@@ -115,7 +115,7 @@ abstract class BaseRepository
             return $model;
         }
 
-        throw new \Exception('Cannot create model ' . $this->getModelClass());
+        throw new \Exception('Cannot create model' . $this->getModelClass());
     }
 
     public function firstOrCreate(array $data)

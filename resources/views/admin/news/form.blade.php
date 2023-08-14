@@ -74,11 +74,11 @@
         </div><br><br>
         <div class="mb-3">
             {{ Form::label(__('main.dateOfPublication')) }}
-            {{ Form::dateTimelocal('date_of_publication', date('Y-m-d H:i', strtotime($news->date_of_publication ? date('Y-m-d H:i', strtotime($news->date_of_publication)) : now())), ['class' => 'form-control' . ($errors->has('date_of_publication') ? ' is-invalid' : ''), 'placeholder' => 'Date Of Publication', 'min' => now()->format('Y-m-d H:i') ]) }}
+            {{ Form::dateTimelocal('date_of_publication', date('Y-m-d H:i', strtotime($news->date_of_publication ? date('Y-m-d H:i', strtotime($news->date_of_publication)) : now())), ['class' => 'form-control' . ($errors->has('date_of_publication') ? ' is-invalid' : ''), 'placeholder' => 'Date Of Publication']) }}
             {!! $errors->first('date_of_publication', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="mb-3">
-            {{ Form::text('tags', $tags, ['class' => 'form-control' . ($errors->has('tags') ? ' is-invalid' : ''), 'placeholder' => 'Тег...', 'data-role' => 'tagsinput']) }}
+            {{ Form::text('tags', $tags, ['class' => 'form-control' . ($errors->has('tags') ? 'is-invalid' : ''), 'placeholder' => 'Тег...', 'data-role' => 'tagsinput']) }}
             {!! $errors->first('tags', '<div class="invalid-feedback">:message</div>') !!}
         </div>
     </div>

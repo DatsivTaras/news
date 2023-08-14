@@ -7,7 +7,7 @@ use App\Repositories\BaseRepository;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
-class NewsRepository extends BaseRepository
+class  NewsRepository extends BaseRepository
 {
     protected function getModelClass(): string
     {

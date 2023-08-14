@@ -33,6 +33,15 @@ class CategoryRepository extends BaseRepository
         return $this->get($option);
     }
 
+    public function getCategoryWhereIn($ids)
+    {
+        $option = [
+            'filters' => ['id' => $ids],
+        ];
+
+        return $this->get($option);
+    }
+
     public function getCategoryPaginate()
     {
         $categories = $this->getQuery()->paginate('15');
