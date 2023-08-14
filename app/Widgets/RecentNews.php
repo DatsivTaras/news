@@ -3,6 +3,7 @@
 namespace App\Widgets;
 
 use App\Classes\Enum\NewsPublicationType;
+use App\Models\News;
 use App\Repositories\NewsRepository;
 use Arrilot\Widgets\AbstractWidget;
 use Illuminate\Validation\Rules\Enum;
@@ -52,6 +53,10 @@ class RecentNews extends AbstractWidget
         $options['filters'] = ['type' => NewsPublicationType::IMPORTANT];
 
         $mainNews = $this->newsRepository->table($options, $this->config['limit'], $sort);
-        return view('widgets.recent_news', compact('lastNews', 'mainNews'));
+
+        $options = [];
+        $popularNews = $this->newsRepository->getPopularTable($options, $this->config['limit'], $sort);
+
+        return view('widgets.recent_news', compact('lastNews', 'mainNews', 'popularNews'));
     }
 }

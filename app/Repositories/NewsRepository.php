@@ -4,6 +4,8 @@ namespace App\Repositories;
 
 use App\Models\News;
 use App\Repositories\BaseRepository;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
@@ -27,6 +29,18 @@ class  NewsRepository extends BaseRepository
         }
 
         throw new \Exception('Cannot create model ' . $this->getModelClass());
+    }
+
+    public function getPopularTable(array $options = [], int $perPage = 10): LengthAwarePaginator
+    {
+        /** @var Builder $query */
+        $query = ($this->getModelClass())::query();
+
+        $this->applyFilters($query, $options);
+        $this->applyWith($query, $options);
+        $query->orderByUniqueViews('desc');
+
+        return $query->paginate($perPage);
     }
 
     public function getLastNewsForCategoory($id)
