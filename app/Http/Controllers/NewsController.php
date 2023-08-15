@@ -48,7 +48,7 @@ class NewsController extends Controller
         views($news)->record();
 
         $shareComponent = \Share::page(
-            'http://news-demo.space/news/test_novina_1',
+            $news->getUrl(),
             $news->title,
         )
             ->facebook()

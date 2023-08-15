@@ -46,6 +46,7 @@ class SettingServices
         foreach ($request->all() as $key => $value) {
             $settings = $this->settingRepository->getOneOrFail($key,'key');
             $type = $settings->type;
+            $data = [];
             if ($type == 5) {
                 $data['name'] = $value->store('public/image/header');
                 $image = $this->imageRepository->create($data);
