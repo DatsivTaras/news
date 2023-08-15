@@ -24,47 +24,47 @@
     @yield('meta_tags')
 </head>
 <body>
-    <div class="wrapper">
-        <nav>
-            <input type="checkbox" id="menu" name="menu" class="m-menu__checkbox">
-            <label class="m-menu__toggle" for="menu">
-                <svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-            </label>
-            <div class="logo-image">
-                <img src="{{ Storage::url(\App\Services\SettingServices::getHeaderLogo()) }}" class="img-fluid"   width="150" height="41" >
-                <form action="{{ route('search')  }}" method="get" class="header-search d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                    <div class="input-group">
-                        <input name="query" value="{{ isset($_GET['query']) ? $_GET['query'] : '' }}" class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                        <button class="btn btn-primary" id="btnNavbarSearch" type="submit"><i class="fas fa-search"></i></button>
-                    </div>
-                </form>
-            </div>
-
-            <label class="m-menu__overlay" for="menu"></label>
-            <div class="m-menu">
-                <div class="m-menu__header">
-                    <label class="m-menu__toggle" for="menu">
-                        <svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs">
-                            <line x1="18" y1="6" x2="6" y2="18"></line>
-                            <line x1="6" y1="6" x2="18" y2="18"></line>
-                        </svg>
-                    </label>
-                    <span>MENU</span>
+    <nav>
+        <input type="checkbox" id="menu" name="menu" class="m-menu__checkbox">
+        <label class="m-menu__toggle" for="menu">
+            <svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </label>
+        <div class="logo-image" style="width: 100%; max-height: 40px; border-radius:0px">
+            <img src="{{ Storage::url(\App\Services\SettingServices::getHeaderLogo()) }}" class="img-fluid"   width="150" height="41" >
+            <form action="{{ route('search')  }}" method="get" style="float: right">
+                <div class="input-group">
+                    <input name="query" value="{{ isset($_GET['query']) ? $_GET['query'] : '' }}" class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                    <button class="btn btn-primary" id="btnNavbarSearch" type="submit"><i class="fas fa-search"></i></button>
                 </div>
-                <ul style="padding-left: 0px;">
-                    <li style="list-style-type: none;"><label><a href="/">Головна</a></label></li>
-                    @foreach(\App\Services\CategoryServices::getCategoryHeaderMenu() as $category)
-                        <li style="list-style-type: none;"><label><a href={{ '/category/'.$category->slug }}>{{$category->name}}</a></label></li>
-                    @endforeach
-                </ul>
+            </form>
+        </div>
+
+        <label class="m-menu__overlay" for="menu"></label>
+        <div class="m-menu">
+            <div class="m-menu__header">
+                <label class="m-menu__toggle" for="menu">
+                    <svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </label>
+                <span>MENU</span>
             </div>
-        </nav>
-        <hr>
+            <ul style="padding-left: 0px;">
+                <li style="list-style-type: none;"><label><a href="/">Головна</a></label></li>
+                @foreach(\App\Services\CategoryServices::getCategoryHeaderMenu() as $category)
+                    <li style="list-style-type: none;"><label><a href={{ '/category/'.$category->slug }}>{{$category->name}}</a></label></li>
+                @endforeach
+            </ul>
+        </div>
+    </nav>
+    <div style="text-align: center;">
         <a href="{{route('/')}}">@lang('main.home')</a>
         @foreach(\App\Services\HomeServices::getCategoryMainMenu() as $category)
             <a href={{ $category->getUrl() }}>{{ $category->name }}</a>
         @endforeach
-        <hr>
+    </div>
+    <div class="wrapper">
         <div id="layoutSidenav_content">
             <main>
                 @yield('content')
