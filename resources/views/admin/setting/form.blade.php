@@ -28,7 +28,7 @@
                             {{ Form::label('text',  $setting->name, ['class' => 'form-label']) }}
                             {{ Form::file($setting->key, [ 'class' => 'form-control' . ($errors->has('$setting->key') ? ' is-invalid' : ''), 'onchange'=> "getImagePreview(event)", "id" => "selectImage"]) }}
                             {!! $errors->first('image', '<div class="invalid-feedback">:message</div>') !!}
-                            <img id="preview" width="270" height="100" src="{{ Storage::url($setting->image->name) }}" alt="/" class="mt-3" display:none />
+                            <img id="preview" width="270" height="100" src="{{ $setting->image ? Storage::url($setting->image->name) : '' }}" alt="/" class="mt-3" style="{{$setting->image ? 'display:none' : ''}}" />
                         @elseif($setting->type == 1)
                                 {{ Form::label($setting->name) }}
                                 {{ Form::text($setting->key, $setting->value, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => '' ]) }}

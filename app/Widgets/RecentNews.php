@@ -50,12 +50,11 @@ class RecentNews extends AbstractWidget
             'direction' => 'DESC'
         ];
         $lastNews = $this->newsRepository->table($options, $this->config['limit'], $sort);
-        $options['filters'] = ['type' => NewsPublicationType::IMPORTANT];
+        $popularNews = $this->newsRepository->getPopularTable($options, $this->config['limit'], $sort);
 
+        $options['filters'] = ['type' => NewsPublicationType::IMPORTANT];
         $mainNews = $this->newsRepository->table($options, $this->config['limit'], $sort);
 
-        $options = [];
-        $popularNews = $this->newsRepository->getPopularTable($options, $this->config['limit'], $sort);
 
         return view('widgets.recent_news', compact('lastNews', 'mainNews', 'popularNews'));
     }
