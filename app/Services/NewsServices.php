@@ -138,7 +138,7 @@ class NewsServices
         $category = $this->newsCategoryRepository->getOneOrFail($news->id, 'news_id');
         $this->newsCategoryRepository->update($category, $data);
 
-        $data['author_id'] = $data['author_id'];
+        $data['author_id'] = isset($data['author_id']) ? $data['author_id'] : 0;
         $data['news_id'] = $news->id;
         $authors = $this->newsAuthorsRepository->getOneOrFail($news->id, 'news_id');
         $this->newsAuthorsRepository->update($authors, $data);
