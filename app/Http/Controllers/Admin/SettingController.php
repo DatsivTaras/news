@@ -43,11 +43,11 @@ class SettingController extends Controller
      */
     public function index()
     {
-        $settings = Setting::get()->groupBy(function($data) {
+        $settingsCategories = Setting::get()->groupBy(function($data) {
             return $data->category;
         });
 
-        return view('admin.setting.index', compact('settings'));
+        return view('admin.setting.index', compact('settingsCategories'));
     }
 
     /**

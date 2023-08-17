@@ -14,7 +14,15 @@ class CategoryRepository extends BaseRepository
 
     public function getParentsCategories($id)
     {
-        return Category::doesnthave('parent',)->where('id' ,'!=', $id)->pluck('name', 'id')->toArray();
+        return Category::doesnthave('parent')
+            ->where('id', '!=', $id)
+            ->pluck('name', 'id')
+            ->toArray();
+    }
+
+    public function getFooterCategories()
+    {
+        return Category::doesntHave('parent')->get();
     }
 
     public function getCategories()

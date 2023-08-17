@@ -36,7 +36,7 @@ use Illuminate\Support\Facades\Storage;
 class News extends Model implements Viewable
 {
     use SoftDeletes, InteractsWithViews;
-    
+
     static $rules = [
         'tags' => 'required',
         'title' => 'required',

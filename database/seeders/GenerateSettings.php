@@ -29,9 +29,7 @@ class GenerateSettings extends Seeder
                 'key' => Setting::HEADER_IMAGE,
                 'category' => Setting::CATEGORY_HEADER,
                 'type' => Setting::TYPE_IMAGE,
-                'description' => '',
-                'created_at' => Carbon ::now(),
-                'created_at' => Carbon::now(),
+                'description' => ''
             ],
             [
                 'name' => 'Назва сайту',
@@ -39,9 +37,7 @@ class GenerateSettings extends Seeder
                 'key' => Setting::SITE_NAME,
                 'category' => Setting::CATEGORY_GENERAL,
                 'type' => Setting::TYPE_INPUT,
-                'description' => '',
-                'created_at' => Carbon::now(),
-                'created_at' => Carbon::now(),
+                'description' => ''
             ],
             [
                 'name' => 'Лого футера',
@@ -49,9 +45,55 @@ class GenerateSettings extends Seeder
                 'key' => Setting::FOOTER_IMAGE,
                 'category' => Setting::CATEGORY_FOOTER,
                 'type' => Setting::TYPE_IMAGE,
-                'description' => '',
-                'created_at' => Carbon::now(),
-                'created_at' => Carbon::now(),
+                'description' => ''
+            ],
+            [
+                'name' => 'Наш Facebook',
+                'value' => '',
+                'key' => Setting::FACEBOOK_LINK,
+                'category' => Setting::CATEGORY_FOOTER,
+                'type' => Setting::TYPE_INPUT,
+                'description' => ''
+            ],
+            [
+                'name' => 'Наш Twitter',
+                'value' => '',
+                'key' => Setting::TWITTER_LINK,
+                'category' => Setting::CATEGORY_FOOTER,
+                'type' => Setting::TYPE_INPUT,
+                'description' => ''
+            ],
+            [
+                'name' => 'Наш Telegram',
+                'value' => '',
+                'key' => Setting::TELEGRAM_LINK,
+                'category' => Setting::CATEGORY_FOOTER,
+                'type' => Setting::TYPE_INPUT,
+                'description' => ''
+            ],
+            [
+                'name' => 'Наш Youtube',
+                'value' => '',
+                'key' => Setting::YOUTUBE_LINK,
+                'category' => Setting::CATEGORY_FOOTER,
+                'type' => Setting::TYPE_INPUT,
+                'description' => ''
+            ],
+            [
+                'name' => 'Наш Instagram',
+                'value' => '',
+                'key' => Setting::INSTAGRAM_LINK,
+                'category' => Setting::CATEGORY_FOOTER,
+                'type' => Setting::TYPE_INPUT,
+                'description' => ''
+            ],
+            [
+                'name' => 'Наш TikTok',
+                'value' => '',
+                'key' => Setting::TIKTOK_LINK,
+                'category' => Setting::CATEGORY_FOOTER,
+                'type' => Setting::TYPE_INPUT,
+                'description' => ''
             ],
 //            [
 //                'name' => 'Добавлення пунктів меню',
@@ -59,29 +101,23 @@ class GenerateSettings extends Seeder
 //                'key' => Setting::HEADER_ITEMS_MENU,
 //                'category' => Setting::CATEGORY_HEADER,
 //                'type' => Setting::TYPE_TEXTAREA,
-//                'description' => '',
-//                'created_at' => Carbon::now(),
-//                'created_at' => Carbon::now(),
+//                'description' => ''
 //            ],
             [
-                'name' => 'Добавлення категорій в головне меню',
+                'name' => 'Головне меню',
                 'value' => '',
                 'key' => Setting::HEADER_CATEGORY_MENU,
                 'category' => Setting::CATEGORY_HEADER,
                 'type' => Setting::TYPE_MULTIPLE,
-                'description' => '',
-                'created_at' => Carbon::now(),
-                'created_at' => Carbon::now(),
+                'description' => ''
             ],
             [
-                'name' => 'Добавлення блоків категорій на головній сторінці',
+                'name' => 'КатегоріЇ на головній сторінці',
                 'value' => '',
                 'key' => Setting::BLOCKS_CATEGORY_HOME_PAGE,
                 'category' => Setting::CATEGORY_GENERAL,
                 'type' => Setting::TYPE_MULTIPLE,
-                'description' => '',
-                'created_at' => Carbon::now(),
-                'created_at' => Carbon::now(),
+                'description' => ''
             ],
             [
                 'name' => 'Добавлення категорій в бокове меню',
@@ -89,9 +125,7 @@ class GenerateSettings extends Seeder
                 'key' => Setting::HEADER_ITEMS_LEFT_MENU,
                 'category' => Setting::CATEGORY_GENERAL,
                 'type' => Setting::TYPE_MULTIPLE,
-                'description' => '',
-                'created_at' => Carbon::now(),
-                'created_at' => Carbon::now(),
+                'description' => ''
             ],
         ];
 
@@ -100,10 +134,10 @@ class GenerateSettings extends Seeder
             if (!$setting) {
                 $this->settingRepository->create($settingData);
             } else {
-
                 $setting = $this->settingRepository->getOneOrFail($setting->id);
                 unset($settingData['value']);
-                $this->settingRepository->update($setting, $settingData);            }
+                $this->settingRepository->update($setting, $settingData);
             }
+        }
     }
 }

@@ -24,6 +24,8 @@ class SettingRepository extends BaseRepository
             $params['category'] = $category;
         }
 
-        return $this->getOneByConditions($params);
+        $setting = $this->getOneByConditions($params);
+
+        return $setting ? $setting->value : '';
     }
 }

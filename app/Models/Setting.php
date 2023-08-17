@@ -35,6 +35,13 @@ class Setting extends Model
     const BLOCKS_CATEGORY_HOME_PAGE = 'blocks_cateory_home_page';
     const HEADER_ITEMS_LEFT_MENU = 'header_items_left_menu';
 
+    const FACEBOOK_LINK = 'facebook_link';
+    const TWITTER_LINK = 'twitter_link';
+    const TELEGRAM_LINK = 'telegram_link';
+    const YOUTUBE_LINK = 'youtube_link';
+    const INSTAGRAM_LINK = 'instagram_link';
+    const TIKTOK_LINK = 'tiktok_link';
+
     public function image()
     {
         return $this->hasOne(File::class, 'id','value');

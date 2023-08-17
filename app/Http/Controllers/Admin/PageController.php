@@ -32,6 +32,7 @@ class PageController extends Controller
         $this->pageRepository = $pageRepository;
         $this->settingRepository = $settingRepository;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -40,9 +41,7 @@ class PageController extends Controller
     public function index()
     {
         $pages = Page::paginate();
-        $settingHeadMenu = $this->settingRepository->getOneOrFail(Setting::HEADER_ITEMS_MENU, 'key');
-
-        return view('admin.page.index', compact('pages', 'settingHeadMenu'))
+        return view('admin.page.index', compact('pages'))
             ->with('i', (request()->input('page', 1) - 1) * $pages->perPage());
     }
 
@@ -124,7 +123,7 @@ class PageController extends Controller
      */
     public function destroy($id)
     {
-        $page = $this->pageRepository->getOneOrFail($id)->delete();
+        $this->pageRepository->getOneOrFail($id)->delete();
 
         return redirect()->route('admin.pages.index')
             ->with('success', 'Page deleted successfully');

@@ -13,48 +13,51 @@
 </head>
 
 <div class="box box-info padding-1">
-    @foreach($settings as $key => $settings)
-        <div class="card card-header-actions mb-4">
-            <div class="card-header">
-                {{\App\Models\Setting::getSettingsCategory($key)}}
-                <div class="form-check form-switch">
-                    <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+
+    <div class="accordion" id="accordionExample">
+        @foreach($settingsCategories as $key => $settingsCategory)
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading{{$key}}">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$key}}" aria-expanded="true" aria-controls="collapse{{$key}}">
+                        {{\App\Models\Setting::getSettingsCategory($key)}}
+                    </button>
+                </h2>
+                <div id="collapse{{$key}}" class="accordion-collapse collapse show" aria-labelledby="heading{{$key}}" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        @foreach($settingsCategory as $setting)
+                                @if($setting->type == 5)
+                                    {{ Form::label('text',  $setting->name, ['class' => 'form-label']) }}
+                                    {{ Form::file($setting->key, [ 'class' => 'form-control' . ($errors->has('$setting->key') ? ' is-invalid' : ''), 'onchange'=> "getImagePreview(event)", "id" => "selectImage"]) }}
+                                    {!! $errors->first('image', '<div class="invalid-feedback">:message</div>') !!}
+                                    <img id="preview" width="270" height="100" src="{{ $setting->image ? Storage::url($setting->image->name) : '' }}" alt="/" class="mt-3" style="{{$setting->image ? 'display:none' : ''}}" />
+                                @elseif($setting->type == 1)
+                                    {{ Form::label($setting->name) }}
+                                    {{ Form::text($setting->key, $setting->value, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => '' ]) }}
+                                    {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
+                                @elseif($setting->type == 2)
+                                    {{ Form::label($setting->name) }}
+                                    {{ Form::checkbox($setting->key, '', ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => '']) }}
+                                    {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
+                                @elseif($setting->type == 3)
+                                    {{ Form::label($setting->name) }}
+                                    {{ Form::textArea($setting->key, $setting->value, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => '']) }}
+                                    {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
+                                @elseif($setting->type == 4)
+                                    {{ Form::label($setting->name) }}
+                                    {{ Form::select($setting->key, json_decode($setting->params), '', ['class' => 'form-select' . ($errors->has('name') ? ' is-invalid' : '')]) }}
+                                    {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
+                                @elseif($setting->type == 6)
+                                    {{ Form::label($setting->name) }}
+                                    {{ Form::select($setting->key.'[]', $setting->getParams($setting->key), explode(',', $setting->value), ['class' => "form-select" . ($errors->has('name') ? ' is-invalid' : ''), 'multiple'=>'multiple']) }}
+                                    {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
+                                @endif
+                        @endforeach
+                    </div>
                 </div>
             </div>
-            <div class="box-body">
-                @foreach($settings as $setting)
-                    <div class="card-body">
-                        @if($setting->type == 5)
-                            {{ Form::label('text',  $setting->name, ['class' => 'form-label']) }}
-                            {{ Form::file($setting->key, [ 'class' => 'form-control' . ($errors->has('$setting->key') ? ' is-invalid' : ''), 'onchange'=> "getImagePreview(event)", "id" => "selectImage"]) }}
-                            {!! $errors->first('image', '<div class="invalid-feedback">:message</div>') !!}
-                            <img id="preview" width="270" height="100" src="{{ $setting->image ? Storage::url($setting->image->name) : '' }}" alt="/" class="mt-3" style="{{$setting->image ? 'display:none' : ''}}" />
-                        @elseif($setting->type == 1)
-                                {{ Form::label($setting->name) }}
-                                {{ Form::text($setting->key, $setting->value, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => '' ]) }}
-                                {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
-                            @elseif($setting->type == 2)
-                                {{ Form::label($setting->name) }}
-                                {{ Form::checkbox($setting->key, '', ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => '']) }}
-                                {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
-                            @elseif($setting->type == 3)
-                                {{ Form::label($setting->name) }}
-                                {{ Form::textArea($setting->key, $setting->value, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => '']) }}
-                                {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
-                            @elseif($setting->type == 4)
-                                {{ Form::label($setting->name) }}
-                                {{ Form::select($setting->key, json_decode($setting->params), '', ['class' => 'form-select' . ($errors->has('name') ? ' is-invalid' : '')]) }}
-                                {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
-                            @elseif($setting->type == 6)
-                                {{ Form::label($setting->name) }}
-                                {{ Form::select($setting->key.'[]', $setting->getParams($setting->key), explode(',', $setting->value), ['class' => "form-select" . ($errors->has('name') ? ' is-invalid' : ''), 'multiple'=>'multiple']) }}
-                                {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
-                        @endif
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    @endforeach
+        @endforeach
+    </div>
+
     <div class="box-footer mt20">
         <br><button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
     </div>

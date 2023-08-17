@@ -37,7 +37,6 @@
 										<th>@lang('main.no')</th>
 										<th>@lang('main.title')</th>
 										<th>@lang('main.description')</th>
-                                        <th>@lang('main.OnTopMenu')</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -46,10 +45,9 @@
                                             <td>{{ ++$i }}</td>
 											<td>{{ $page->title }}</td>
 											<td>{{ $page->description }}</td>
-                                            <td><input data-id="{{ $page->id }}" class="addItemMenu" type="checkbox" {{ !strripos($settingHeadMenu->value, $page->getUrl()) ? '' : 'checked' }}></td>
                                             <td>
                                                 <form action="{{ route('admin.pages.destroy',$page->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('admin.pages.show',$page->id) }}"><i class="fa fa-fw fa-eye"></i></a>
+                                                    <a class="btn btn-sm btn-primary " href="{{ $page->getUrl() }}"><i class="fa fa-fw fa-eye"></i></a>
                                                     <a class="btn btn-sm btn-success" href="{{ route('admin.pages.edit',$page->id) }}"><i class="fa fa-fw fa-edit"></i></a>
                                                     @csrf
                                                     @method('DELETE')
