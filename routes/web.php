@@ -18,20 +18,24 @@ Route::get('/admin-login', [App\Http\Controllers\Admin\AdminController::class,'l
 Route::post('/admin/login', [App\Http\Controllers\Admin\AdminLoginController::class,'login'])->name('admin.login');
 
 Route::group(['middleware' => ['auth']], function() {
-    Route::group(['middleware' => ['role:Admin']], function () {
+    Route::group(['middleware' => ['role:Admin|Manager']], function () {
         Route::prefix('admin')->name('admin.')->group(function() {
             Route::get('/', [App\Http\Controllers\Admin\AdminController::class,'index'])->name('admin');
-            Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
             Route::resource('categories', \App\Http\Controllers\Admin\CategoryController::class);
             Route::get('news/drafts', [App\Http\Controllers\Admin\NewsController::class, 'drafts'])->name('news.drafts');
             Route::get('news/basket', [App\Http\Controllers\Admin\NewsController::class, 'basket'])->name('news.basket');
             Route::resource('news', \App\Http\Controllers\Admin\NewsController::class);
             Route::resource('authors', \App\Http\Controllers\Admin\AuthorController::class);
             Route::resource('pages', \App\Http\Controllers\Admin\PageController::class);
-            Route::resource('settings', \App\Http\Controllers\Admin\SettingController::class);
+            Route::resource('profile', \App\Http\Controllers\Admin\ProfileController::class);
+            Route::group(['middleware' => ['role:Admin']], function () {
+                Route::resource('settings', \App\Http\Controllers\Admin\SettingController::class);
+                Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
+            });
             Route::resource('sliders', \App\Http\Controllers\Admin\HomeSliderController::class);
             Route::post('addItemsSettings', [App\Http\Controllers\Admin\SettingController::class, 'addItemsSettings']);
             Route::post('addNewsOnSlider', [App\Http\Controllers\Admin\NewsController::class, 'addNewsOnSlider']);
+            Route::post('changePassword', [App\Http\Controllers\Admin\ProfileController::class, 'changePassword'])->name('changePassword');
             Route::get('publishNews/{id}', [App\Http\Controllers\Admin\NewsController::class, 'publishNews'])->name('publishNews');
             Route::get('restorationNews/{id}', [App\Http\Controllers\Admin\NewsController::class, 'restorationNews'])->name('restorationNews');
             Route::delete('news/finalDelete/{id}', [App\Http\Controllers\Admin\NewsController::class, 'finalDelete'])->name('news.finalDelete');

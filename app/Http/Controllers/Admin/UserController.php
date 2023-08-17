@@ -3,12 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
 use App\Models\User;
+use App\Repositories\RoleRepository;
 use App\Repositories\UserRepository;
+use App\Services\UserServices;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
 /**
  * Class UserController
@@ -16,14 +15,21 @@ use Illuminate\Support\Str;
  */
 class UserController extends Controller
 {
-
     private $userRepository;
 
+    private $userServices;
+
+    private $roleRepository;
+
     public function __construct(
-        UserRepository $userRepository
+        UserRepository $userRepository,
+        RoleRepository  $roleRepository,
+        UserServices  $userServices
     )
     {
+        $this->roleRepository = $roleRepository;
         $this->userRepository = $userRepository;
+        $this->userServices = $userServices;
     }
     /**
      * Display a listing of the resource.
@@ -46,7 +52,9 @@ class UserController extends Controller
     public function create()
     {
         $user = new User();
-        return view('admin/user.create', compact('user'));
+        $role = $this->roleRepository->getRole();
+
+        return view('admin/user.create', compact('user', 'role'));
     }
 
     /**
@@ -59,8 +67,7 @@ class UserController extends Controller
     {
         $data = request()->validate(User::$rules);
 
-        $data['password'] = Hash::make($data['password']);
-        $this->userRepository->create($data);
+        $this->userServices->saveUser($data);
 
         return redirect()->route('admin.users.index')
             ->with('success', 'User created successfully.');

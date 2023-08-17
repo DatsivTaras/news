@@ -14,6 +14,7 @@ use App\Repositories\NewsRepository;
 use App\Repositories\NewsTagRepository;
 use App\Repositories\TagRepository;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 
 /**
  * Class FlightServices
@@ -39,6 +40,7 @@ class AuthorServices
     }
     public function saveAuthors(array $data)
     {
+        $data['slug'] = Str::slug($data['surname'], '_');
         $author = $this->authorsRepository->create($data);
         if (isset($data['image'])) {
             $file = $data['image'];
@@ -51,8 +53,11 @@ class AuthorServices
             $this->authorImagesRepository->create($data);
         }
     }
-    public function updateAuthors($author, $data)
+    public function updateAuthors($id, $data)
     {
+        $author = $this->authorsRepository->getOneOrFail(auth()->id(), 'id');
+
+        $data['slug'] = Str::slug($data['surname'], '_');
         $this->authorsRepository->update($author, $data);
 
         if (isset($data['image'])) {

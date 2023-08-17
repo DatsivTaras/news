@@ -45,6 +45,10 @@
             </a>
 
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/admin/profile">
+                   Профіль
+                </a>
+
                 <a class="dropdown-item" href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -89,22 +93,25 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-images"></i></div>
                         Слайдер
                     </a>
-                    <a class="nav-link" href="/admin/authors">
-                        <div class="sb-nav-link-icon"><i class="fas fa-user-pen"></i></div>
-                        Автори
-                    </a>
+{{--                    <a class="nav-link" href="/admin/authors">--}}
+{{--                        <div class="sb-nav-link-icon"><i class="fas fa-user-pen"></i></div>--}}
+{{--                        Автори--}}
+{{--                    </a>--}}
                     <a class="nav-link" href="/admin/pages">
                         <div class="sb-nav-link-icon"><i class="fas fa-file"></i></div>
                         Сторінки
                     </a>
-                    <a class="nav-link" href="/admin/settings">
-                        <div class="sb-nav-link-icon"><i class="fas fa-gear"></i></div>
-                        Налаштуванння
-                    </a>
-                    <a class="nav-link" href="/admin/users">
-                        <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
-                        Користувачі
-                    </a>
+
+                    @role(['Admin'])
+                        <a class="nav-link" href="/admin/settings">
+                            <div class="sb-nav-link-icon"><i class="fas fa-gear"></i></div>
+                            Налаштуванння
+                        </a>
+                        <a class="nav-link" href="/admin/users">
+                            <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                            Користувачі
+                        </a>
+                    @endrole
                 </div>
             </div>
         </nav>

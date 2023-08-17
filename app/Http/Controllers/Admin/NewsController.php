@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Filters\NewsBasketFilter;
+use App\Filters\NewsDraftsFilter;
 use App\Filters\NewsFilter;
 use App\Http\Controllers\Controller;
 use App\Models\HomeSlider;
@@ -156,17 +158,16 @@ class NewsController extends Controller
             ->with('success', 'News deleted successfully');
     }
 
-    public function drafts(NewsFilter $request)
+    public function drafts(NewsDraftsFilter $request)
     {
         $news = $this->newsRepository->getNewsDrafts($request);
 
         return view('admin.news.drafts', compact('news'));
     }
 
-    public function basket(NewsFilter $request)
+    public function basket(NewsBasketFilter $request)
     {
         $news = $this->newsRepository->getNewsBasket($request);
-
 
         return view('admin.news.basket', compact('news'));
     }

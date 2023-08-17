@@ -27,6 +27,7 @@ class Author extends Model
     static $rules = [
 		'surname' => 'required',
 		'name' => 'required',
+		'user_id' => 'required',
 		'image' => '',
 		'patronymic' => 'required',
 		'biography' => 'required',
@@ -39,8 +40,12 @@ class Author extends Model
      *
      * @var array
      */
-    protected $fillable = ['surname', 'slug', 'name', 'patronymic', 'biography'];
+    protected $fillable = ['surname', 'slug', 'name', 'patronymic', 'biography', 'user_id'];
 
+    public function user()
+    {
+        return $this->hasOne(User::class, 'id','user_id');
+    }
     public function scopeFilter(Builder $builder, QueryFilter $filter)
     {
         return $filter->apply($builder);
