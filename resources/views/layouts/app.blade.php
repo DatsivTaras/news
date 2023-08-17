@@ -30,7 +30,7 @@
             <svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
         </label>
         <div class="logo-image" style="width: 100%; max-height: 40px; border-radius:0px">
-            <img src="{{ Storage::url(\App\Services\SettingServices::getHeaderLogo()) }}" class="img-fluid"   width="150" height="41" >
+            <img src="{{ Storage::url(\App\Services\SettingServices::getHeaderLogo()) }}" class="img-fluid" width="300" height="41" >
             <form action="{{ route('search')  }}" method="get" style="float: right">
                 <div class="input-group">
                     <input name="query" value="{{ isset($_GET['query']) ? $_GET['query'] : '' }}" class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
@@ -48,7 +48,7 @@
                         <line x1="6" y1="6" x2="18" y2="18"></line>
                     </svg>
                 </label>
-                <span>MENU</span>
+                <span></span>
             </div>
             <ul style="padding-left: 0px;">
                 <li style="list-style-type: none;"><label><a href="/">Головна</a></label></li>
@@ -58,11 +58,13 @@
             </ul>
         </div>
     </nav>
-    <div style="text-align: center;">
-        <a href="{{route('/')}}">@lang('main.home')</a>
-        @foreach(\App\Services\HomeServices::getCategoryMainMenu() as $category)
-            <a href={{ $category->getUrl() }}>{{ $category->name }}</a>
-        @endforeach
+    <div style="text-align: center;background-color: white;">
+        <ul style="padding: 10px 0px 10px 0px; margin-bottom: 0px; font-size: 20px;border-top:1px solid black; border-bottom:1px solid black">
+            <li style="display: inline; padding-left: 10px"><a href="{{route('/')}}">@lang('main.home')</a></li>
+            @foreach(\App\Services\HomeServices::getCategoryMainMenu() as $category)
+                <li style="display: inline; padding-left: 10px"><a href={{ $category->getUrl() }}>{{ $category->name }}</a></li>
+            @endforeach
+        </ul>
     </div>
     <div class="wrapper">
         <div id="layoutSidenav_content">

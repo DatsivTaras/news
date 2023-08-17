@@ -21,19 +21,18 @@
     <meta property="og:image:width" content="1920">
     <meta property="og:image:height" content="960">
     <meta name="robots" content="max-image-preview:large">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 @endsection
 
 @section('template_title')
     {{ $news->getTitle() ?? "{{ __('Show')" }}
 @endsection
 
-
 @section('content')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <style>
-        div#social-links {
-            margin: 0 auto;
-            max-width: 500px;
+        div#social-links ul {
+            display: inline-block;
         }
         div#social-links ul li {
             display: inline-block;
@@ -51,9 +50,7 @@
     <div class="container">
         <h1 class="text-center">
             {{$news->getTitle()}}
-
             <img class="card-img-top" src="{{ $news->getImageUrl() }}" width="200" height="600" alt="Card image cap">
-
         </h1>
         <div class="row">
             <i>{{ $news->getPublicationDate() }}</i>
@@ -62,9 +59,51 @@
             {!! $news->getDescription() !!}
         </div>
         <div class="row">
-            {!! $shareComponent !!}
+            <div id="social-links">
+                Поділитися:
+                <ul>
+                    <li>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ $news->getUrl() }}" class="social-button " id="" title="" rel="">
+                            <span class="fab fa-facebook-square"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/intent/tweet?text=fd&amp;url={{ $news->getUrl() }}" class="social-button " id="" title="" rel="">
+                            <span class="fab fa-twitter"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://telegram.me/share/url?url={{ $news->getUrl() . '&text=' . $news->getTitle() }}" class="social-button " id="" title="" rel="">
+                            <span class="fab fa-telegram"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="mailto:news-demo.space?subject={{$news->getTitle() }}&amp;body={{ $news->getUrl() }}" data-provider="" data-share-link="{{ $news->getUrl() }}" data-share-title="{{ $news->getTitle() }}" class="social-button " id="" title="" rel="">
+                            <span class="fab fa-inbox"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="social-button" id="copy-link" title="" rel="">
+                            <span class="fab fa-inbox"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
 
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>
 
+    <script>
+        $(document).ready(function(){
+            $(document).on('click', '#copy-link', function(){
+                var $temp = $("<input>");
+                $("body").append($temp);
+                $temp.val('{{ $news->getUrl() }}').select();
+                document.execCommand("copy");
+                $temp.remove();
+                alert('Посилання успішно скопійовано у буфер обміну')
+            });
+        })
+    </script>
 @endsection

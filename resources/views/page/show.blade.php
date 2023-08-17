@@ -5,37 +5,14 @@
 @endsection
 
 @section('content')
-    <section class="content container-fluid">
+    <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="float-left">
-                            <span class="card-title">{{ __('Show') }} Page</span>
-                        </div>
-                        <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('page.index') }}"> {{ __('Back') }}</a>
-                        </div>
-                    </div>
-
-                    <div class="card-body">
-
-                        <div class="form-group">
-                            <strong>Slug:</strong>
-                            {{ $page->slug }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Title:</strong>
-                            {{ $page->title }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Description:</strong>
-                            {{ $page->description }}
-                        </div>
-
-                    </div>
-                </div>
+                <h1 style="text-align: center">{{ $page->title }}</h1>
+            </div>
+            <div class="col-md-12">
+                {!! $page->description !!}
             </div>
         </div>
-    </section>
+    </div>
 @endsection

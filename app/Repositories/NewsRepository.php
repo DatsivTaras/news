@@ -51,12 +51,12 @@ class  NewsRepository extends BaseRepository
 
     public function getNewsDrafts($request)
     {
-        return News::filter($request)->where('type_publication', NewsType::DRAFT)->paginate('30');
+        return News::filter($request)->where('type_publication', NewsType::DRAFT)->orderBy('created_at', 'desc')->paginate('30');
     }
 
     public function getNews($request)
     {
-        return News::filter($request)->where('type_publication', NewsType::PUBLISH)->paginate('30');
+        return News::filter($request)->where('type_publication', NewsType::PUBLISH)->orderBy('created_at', 'desc')->paginate('30');
     }
 
     public function restoreNews($id)

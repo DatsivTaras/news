@@ -16,9 +16,7 @@ class CategoryServices
 
     private  $categoryRepository;
 
-    public function __construct(
-        CategoryRepository $categoryRepository
-    )
+    public function __construct(CategoryRepository $categoryRepository)
     {
         $this->categoryRepository = $categoryRepository;
     }
@@ -26,6 +24,11 @@ class CategoryServices
     public static function getCategoryHeaderMenu()
     {
         return app(CategoryRepository::class)->getCategoryHeaderMenu();
+    }
+
+    public static function getFooterCategories()
+    {
+        return app(CategoryRepository::class)->getFooterCategories();
     }
 }
 ?>
