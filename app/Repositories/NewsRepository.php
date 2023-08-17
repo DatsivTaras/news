@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Classes\Enum\NewsType;
 use App\Models\News;
 use App\Repositories\BaseRepository;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
@@ -43,22 +44,19 @@ class  NewsRepository extends BaseRepository
         return $query->paginate($perPage);
     }
 
-    public function getNewsAuthors(object $author)
-    {
-        return $author->id ;
-    }
-
     public function getNewsBasket($request)
     {
-        return News::onlyTrashed()->get();;
+        return News::filter($request)->onlyTrashed()->paginate('30');
     }
+
     public function getNewsDrafts($request)
     {
-        return News::filter($request)->where('type_publication', 2)->orderBy('created_at', 'desc')->paginate('30');
+        return News::filter($request)->where('type_publication', NewsType::DRAFT)->orderBy('created_at', 'desc')->paginate('30');
     }
+
     public function getNews($request)
     {
-        return News::filter($request)->where('type_publication', 1)->orderBy('created_at', 'desc')->paginate('30');
+        return News::filter($request)->where('type_publication', NewsType::PUBLISH)->orderBy('created_at', 'desc')->paginate('30');
     }
 
     public function restoreNews($id)

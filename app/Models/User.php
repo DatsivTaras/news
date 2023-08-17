@@ -18,6 +18,9 @@ use Spatie\Permission\Traits\HasRoles;
  * @property $id
  * @property $name
  * @property $email
+ * @property $surname
+ * @property $biography
+ * @property $patronymic
  * @property $email_verified_at
  * @property $password
  * @property $password_confirmation
@@ -33,6 +36,10 @@ class User extends Authenticatable implements MustVerifyEmail
     use Notifiable, HasRoles;
     static $rules = [
 		'name' => 'required',
+		'surname' => 'required',
+		'role' => 'required',
+		'patronymic' => 'required',
+		'biography' => 'required',
         'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
         'password' => ['required', 'string', 'min:8', 'confirmed'],
     ];

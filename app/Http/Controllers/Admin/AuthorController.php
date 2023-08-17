@@ -65,7 +65,6 @@ class AuthorController extends Controller
     {
         $data = request()->validate(Author::$rules);
 
-        $data['slug'] = Str::slug($data['surname'], '_');
         $this->authorServices->saveAuthors($data);
 
         return redirect()->route('admin.authors.index')
@@ -107,11 +106,11 @@ class AuthorController extends Controller
      * @param  Author $author
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Author $author)
+    public function update(Request $request, $id)
     {
         $data = request()->validate(Author::$rules);
 
-        $this->authorServices->updateAuthors($author, $data);
+        $this->authorServices->updateAuthors($id, $data);
 
         return redirect()->route('admin.authors.index')
             ->with('success', 'Author updated successfully');
