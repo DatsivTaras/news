@@ -68,6 +68,7 @@ class NewsController extends Controller
     {
         $tags = $image = '';
         $news = new News();
+        $news->author = auth()->user()->author->id;
         $news->category = request()->get('category_id');
         $categories = $this->categoryRepository->getCategories();
         $authors = $this->authorsRepository->getAuthors();

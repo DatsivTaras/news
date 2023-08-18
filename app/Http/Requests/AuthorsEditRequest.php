@@ -26,6 +26,7 @@ class  AuthorsEditRequest extends FormRequest
         return [
             'name' => 'required',
             'surname' => 'required',
+            'image' => '',
             'patronymic' => 'required',
             'biography' => 'required',
         ];

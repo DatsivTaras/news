@@ -80,6 +80,9 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
+        if(auth()->user()->author->id != $id && !auth()->user()->hasRole('Admin')){
+            abort(404);
+        }
         $author = $this->authorsRepository->getOneOrFail($id, 'id');
 
         return view('admin/profile/edit', compact('author'));

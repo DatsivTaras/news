@@ -54,5 +54,8 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $fillable = ['name','email','password', 'password_confirmation'];
 
 
-
+    public function author()
+    {
+        return $this->hasOne(Author::class, 'user_id','id');
+    }
 }
