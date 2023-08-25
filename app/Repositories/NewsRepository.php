@@ -85,4 +85,9 @@ class  NewsRepository extends BaseRepository
 
         return $news;
     }
+
+    protected function getSearchFields(): array
+    {
+        return ['title','subtitle','mini_description','description'];
+    }
 }

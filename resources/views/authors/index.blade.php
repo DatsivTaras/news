@@ -4,7 +4,7 @@
 @endsection
 
 @section('content')
-    <h1 align="center"> Автор </h1>
+    @include('layouts.categoryMenu')
     <div class="container">
         <div class="card container">
             <div class="main-body">
@@ -13,7 +13,7 @@
                         <div>
                             <div class="card-body">
                                 <div class="d-flex flex-column align-items-center text-center">
-                                    <img src="{{ $author->getImageUrl() }}" alt="Admin" class="rounded-circle" width="350">
+                                    <img src="{{ $author->getImageUrl() }}" alt="Admin" class="" width="350">
                                     <div class="mt-3">
                                         <h4>{{ $author->name }}</h4>
 {{--                                        <p class="text-secondary mb-1">Full Stack Developer</p>--}}

@@ -36,6 +36,7 @@ class AuthorController extends Controller
      */
     public function index(AuthorFilter $request)
     {
+
         $authors = Author::filter($request)->paginate('22');
 
         return view('admin.author.index', compact('authors'))

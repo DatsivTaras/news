@@ -1,15 +1,26 @@
 <?php
 namespace Database\Seeders;
 
+use App\Repositories\AuthorsRepository;
+use App\Repositories\UserRepository;
 use Illuminate\Database\Seeder;
 use App\Enums\RoleEnum;
-use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 
 class GenerateAdminAccounts extends Seeder
 {
+    private $authorsRepository;
+    private $userRepository;
 
+    public function __construct(
+        AuthorsRepository $authorsRepository,
+        UserRepository $userRepository
+    )
+    {
+        $this->authorsRepository = $authorsRepository;
+        $this->userRepository = $userRepository;
+    }
     /**
      * Seed the application's database.
      *
@@ -20,15 +31,25 @@ class GenerateAdminAccounts extends Seeder
         $usersData = [
             [
                 'name' => 'Admin',
-                'email' => 'admin@admin.com',
+                'email' => '123admin@admin.com',
                 'password' => Hash::make('11111111'),
-                'email_verified_at' => Carbon::now()
+                'email_verified_at' => Carbon::now(),
+                'author' => [
+                    'surname' => 'Admin',
+                    'name' => 'Admin',
+                    'slug' => 'Admin',
+                    'patronymic' => 'Admin',
+                    'biography' => 'Admin',
+                ]
             ],
         ];
 
         foreach ($usersData as $userData) {
-            if (!User::where('email', $userData['email'])->exists()) {
-                $user = User::create($userData);
+            if (!$this->userRepository->getOne($userData['email'], 'email')) {
+                $author = $userData['author'];
+                unset($userData['author']);
+                $user = $this->userRepository->create($userData);
+                $this->authorsRepository->create($author);
                 if ($user) {
                     $user->assignRole('Admin');
                 }

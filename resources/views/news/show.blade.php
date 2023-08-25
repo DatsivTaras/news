@@ -47,10 +47,26 @@
         }
     </style>
 
+    @include('layouts.categoryMenu')
+
     <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <hr>
+                <h3>Стрічка новин</h3>
+                <hr>
+                @widget('recentNews')
+            </div>
+            <div class="col-sm-8">
+                <div class="row">
+
         <h1 class="text-center">
             {{$news->getTitle()}}
+            <div class="category">
+
             <img class="card-img-top" src="{{ $news->getImageUrl() }}" width="200" height="600" alt="Card image cap">
+            <div style="background-color:coral "class="top-left">{{ $news->category['0']->name }}</div>
+            </div>
         </h1>
         <div class="row">
             <i>{{ $news->getPublicationDate() }}</i>
@@ -90,9 +106,18 @@
                 </ul>
             </div>
         </div>
-
+        </div>
+            </div>
+            <div class="row">
+                @widget('SimilarNews', ['news_id' => $news->id])
+            </div>
+        </div>
         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>
+    {{ 'Теми :' }}
+    @foreach($news->tags as $tag)
+        {{ $tag->name }}
+    @endforeach
 
     <script>
         $(document).ready(function(){

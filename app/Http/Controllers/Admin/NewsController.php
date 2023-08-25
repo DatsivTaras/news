@@ -8,14 +8,18 @@ use App\Filters\NewsFilter;
 use App\Http\Controllers\Controller;
 use App\Models\HomeSlider;
 use App\Models\News;
+use App\Models\User;
 use App\Repositories\AuthorImagesRepository;
 use App\Repositories\AuthorsRepository;
 use App\Repositories\CategoryRepository;
 use App\Repositories\HomeSliderRepository;
 use App\Repositories\NewsCategoryRepository;
 use App\Repositories\NewsRepository;
+use App\Repositories\UserRepository;
 use App\Services\NewsServices;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * Class NewsController
@@ -28,6 +32,7 @@ class NewsController extends Controller
     private $newsServices;
 
     private $categoryRepository;
+    private $userRepository;
     private $homeSliderRepository;
 
     private $authorsRepository;
@@ -35,6 +40,7 @@ class NewsController extends Controller
     public function __construct(
         NewsRepository $newsRepository,
         NewsServices $newsServices,
+        UserRepository $userRepository,
         CategoryRepository $categoryRepository,
         HomeSliderRepository $homeSliderRepository,
         AuthorsRepository $authorsRepository
@@ -45,6 +51,7 @@ class NewsController extends Controller
         $this->categoryRepository = $categoryRepository;
         $this->authorsRepository = $authorsRepository;
         $this->homeSliderRepository = $homeSliderRepository;
+        $this->userRepository = $userRepository;
     }
     /**
      * Display a listing of the resource.
@@ -53,6 +60,32 @@ class NewsController extends Controller
      */
     public function index(NewsFilter $request)
     {
+//        $usersData = [
+//            [
+//                'name' => 'Admin',
+//                'email' => '112admin@admin.com',
+//                'password' => Hash::make('11111111'),
+//                'email_verified_at' => Carbon::now(),
+//                'author' => [
+//                    'surname' => 'Admin',
+//                    'name' => 'Admin',
+//                    'slug' => 'Admin',
+//                    'patronymic' => 'Admin',
+//                    'biography' => 'Admin',
+//                ]
+//            ],
+//        ];
+//
+//        foreach ($usersData as $userData) {
+//            if (!$this->userRepository->getOne($userData['email'], 'email')) {
+//                $user = $this->userRepository->create($userData);
+//                $this->authorsRepository->create($userData['author']);
+//                if ($user) {
+//                    $user->assignRole('Admin');
+//                }
+//            }
+//        }
+
         $news = $this->newsRepository->getNews($request);
 
         return view('admin.news.index', compact('news'))
@@ -153,8 +186,12 @@ class NewsController extends Controller
     public function destroy($id)
     {
         $news = $this->newsRepository->getOneOrFail($id);
-        $this->newsRepository->delete($news);
-
+        if($this->newsRepository->delete($news)) {
+            if($news->home_slider) {
+                $homeSlider = $this->homeSliderRepository->getOneOrFail($id, 'news_id');
+                $this->homeSliderRepository->delete($homeSlider);
+            }
+        }
         return redirect()->route('admin.news.index')
             ->with('success', 'News deleted successfully');
     }

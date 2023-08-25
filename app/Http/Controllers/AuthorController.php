@@ -21,12 +21,13 @@ class AuthorController extends Controller
         $this->newsRepository = $newsRepository;
     }
 
-    public function index($slug) {
-
+    public function index($slug)
+    {
         $author = $this->authorsRepository->getOneOrFail($slug ,'slug');
-//        $category = $this->categoryRepository->getOneOrFail($slug, 'slug');
+
+//      $category = $this->categoryRepository->getOneOrFail($slug, 'slug');
         $authorId = $author->id;
-        $perPage = 30;
+        $perPage = 15;
         $options = [
             'whereHas' => [
                 ['author',

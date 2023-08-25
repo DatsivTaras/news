@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+    @include('layouts.categoryMenu')
 
-    <div class="container">
+    <br><div class="container">
         <div class="row">
             <div class="col-sm-4">
                 <hr>
@@ -46,10 +47,10 @@
             </div>
             @if ($mainBlock)
                 <div class="col-sm-12" style="margin-bottom: 15px">
-                    <a  href="{{$slide->news->getUrl()}}" style="text-decoration: none; color:black">
+                    <a  href="{{$mainBlock->getUrl()}}" style="text-decoration: none; color:black">
                         <div class="category">
                             <img class="card-img-top" src="{{ $mainBlock->getImageUrl() }}"  width="200" height="400" alt="Card image cap" title=";ddfdf"/>
-                            <div style="background-color:coral "class="top-left">{{ $slide->news->category['0']->name }}</div>
+                            <div style="background-color:coral "class="top-left">{{ $mainBlock->category['0']->name }}</div>
                             <div class="card-body">
                                 <h5 class="card-title">{{ $mainBlock->title }}</h5>
 {{--                                <p class="card-text">{{ $mainBlock->mini_description }}</p>--}}
@@ -61,8 +62,9 @@
             @if ($mainBlocktwo)
                 @foreach($mainBlocktwo as $news)
                     <div class="col-sm-6">
-                        <a href="" style="text-decoration: none; color:black">
+                        <a href="{{ $news->getUrl() }}" style="text-decoration: none; color:black">
                             <div class="category">
+                                <div style="background-color:coral "class="top-left">{{ $news->category['0']->name }}</div>
                                 <img class="card-img-top" src="{{ $news->getImageUrl() }}" width="200" height="200" alt="Card image cap">
                                 <div style="background-color:coral" class="top-left"></div>
                                 <div class="card-body">

@@ -33,7 +33,7 @@
             <img src="{{ Storage::url(\App\Services\SettingServices::getHeaderLogo()) }}" class="img-fluid" width="300" height="41" >
             <form action="{{ route('search')  }}" method="get" style="float: right">
                 <div class="input-group">
-                    <input name="query" value="{{ isset($_GET['query']) ? $_GET['query'] : '' }}" class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                    <input name="query" class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
                     <button class="btn btn-primary" id="btnNavbarSearch" type="submit"><i class="fas fa-search"></i></button>
                 </div>
             </form>
@@ -58,14 +58,7 @@
             </ul>
         </div>
     </nav>
-    <div style="text-align: center;background-color: white;">
-        <ul style="padding: 10px 0px 10px 0px; margin-bottom: 0px; font-size: 20px;border-top:1px solid black; border-bottom:1px solid black">
-            <li style="display: inline; padding-left: 10px"><a href="{{route('/')}}">@lang('main.home')</a></li>
-            @foreach(\App\Services\HomeServices::getCategoryMainMenu() as $category)
-                <li style="display: inline; padding-left: 10px"><a href={{ $category->getUrl() }}>{{ $category->name }}</a></li>
-            @endforeach
-        </ul>
-    </div>
+    
     <div class="wrapper">
         <div id="layoutSidenav_content">
             <main>

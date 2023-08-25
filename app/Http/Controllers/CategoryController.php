@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Classes\Enum\NewsPublicationType;
 use App\Models\Category;
 use App\Repositories\CategoryRepository;
 use App\Repositories\NewsRepository;
+use App\Services\CategoryServices;
 use Illuminate\Http\Request;
 
 /**
@@ -14,15 +16,18 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     private $categoryRepository;
+    private $categoryServices;
     private $newsRepository;
 
     public function __construct(
         CategoryRepository $categoryRepository,
+        CategoryServices $categoryServices,
         NewsRepository $newsRepository
     )
     {
         $this->categoryRepository = $categoryRepository;
         $this->newsRepository = $newsRepository;
+        $this->categoryServices = $categoryServices;
     }
 
     /**
@@ -31,21 +36,10 @@ class CategoryController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show(Request $request ,$slug)
     {
-        $category = $this->categoryRepository->getOneOrFail($slug, 'slug');
+       $type = $request->type;
 
-        $categoryId = $category->id;
-        $options = [
-            'whereHas' => [
-                ['category',
-                    function ($query) use ($categoryId) {
-                        return $query->where('category_id', $categoryId);
-                    }]
-            ]
-        ];
-        $news = $this->newsRepository->table($options);
-
-        return view('category.show', compact('category', 'news'));
+        return view('category.show', $this->categoryServices->showCategoryNews($slug, $type));
     }
 }

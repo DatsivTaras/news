@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Classes\Enum\NewsPublicationType;
 use App\Filters\NewsFilter;
 use App\Filters\SearchNews;
 use App\Models\Category;
@@ -58,11 +59,62 @@ class NewsController extends Controller
         return view('news.show', compact('news', 'shareComponent'));
     }
 
-    public function search(SearchNews $request)
+    public function search(Request $request)
     {
+        $query =  $request['query'];
+        $type = $request['type'];
 
-        $news = News::filter($request)->paginate('22');
+        $options = [
+            'search' => $query
+        ];
+        $sort = [
+            'field' => 'created_at',
+            'direction' => 'DESC'
+        ];
+
+        switch ($type) {
+            case 'last':
+                $news = $this->newsRepository->table($options, 14, $sort);
+                break;
+            case 'popular':
+                $news = $this->newsRepository->getPopularTable($options, 14, $sort);
+                break;
+            case 'main':
+                $options['filters'] = ['type' => NewsPublicationType::IMPORTANT];
+                $news = $this->newsRepository->table($options, 14, $sort);
+                break;
+            default:
+                $news = $this->newsRepository->table($options,14, $sort);
+        }
 
         return view('news.search', compact('news'));
+    }
+
+    public function allNews(Request $request)
+    {
+        $type = $request->type;
+
+        $options = [];
+        $sort = [
+            'field' => 'created_at',
+            'direction' => 'DESC'
+        ];
+
+        switch ($type) {
+            case 'last':
+                $news = $this->newsRepository->table($options, 14, $sort);
+                break;
+            case 'popular':
+                $news = $this->newsRepository->getPopularTable($options, 14, $sort);
+                break;
+            case 'main':
+                $options['filters'] = ['type' => NewsPublicationType::IMPORTANT];
+                $news = $this->newsRepository->table($options, 14, $sort);
+                break;
+            default:
+                $news = $this->newsRepository->table($options,14, $sort);
+        }
+
+        return view('news.index', compact('news'));
     }
 }

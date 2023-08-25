@@ -25,7 +25,7 @@ class RecentNews extends AbstractWidget
      */
     protected $config = [
         'category_id' => null,
-        'limit' => 20
+        'limit' => 14
     ];
 
     /**
@@ -41,7 +41,7 @@ class RecentNews extends AbstractWidget
                     ['category',
                         function ($query) use ($categoryId) {
                             return $query->where('category_id', $categoryId);
-                        }]
+                    }]
                 ]
             ];
         }
@@ -49,6 +49,7 @@ class RecentNews extends AbstractWidget
             'field' => 'created_at',
             'direction' => 'DESC'
         ];
+
         $lastNews = $this->newsRepository->table($options, $this->config['limit'], $sort);
         $popularNews = $this->newsRepository->getPopularTable($options, $this->config['limit'], $sort);
 

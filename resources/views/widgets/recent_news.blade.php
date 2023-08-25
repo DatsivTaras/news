@@ -45,6 +45,8 @@
         @else
             <p>Відсутні</p>
         @endif
+
     </div>
+    <a href="/news"> Читати всі новини </a>
 </div>
 
