@@ -1,17 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('layouts.categoryMenu')
 
     <br><div class="container">
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <hr>
                 <h3>Стрічка новин</h3>
                 <hr>
                 @widget('recentNews')
             </div>
-            <div class="col-sm-8">
+            <div class="col-sm-9">
                 <div class="row">
                     @foreach($sliderNews as $key => $slide)
                         @if ($key == 0)

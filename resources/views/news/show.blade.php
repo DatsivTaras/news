@@ -47,78 +47,45 @@
         }
     </style>
 
-    @include('layouts.categoryMenu')
-
     <div class="container">
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <hr>
                 <h3>Стрічка новин</h3>
                 <hr>
                 @widget('recentNews')
             </div>
-            <div class="col-sm-8">
+
+            <div class="col-sm-9">
                 <div class="row">
+                    <h1 class="text-center">
+                        {{$news->getTitle()}}
+                        <div class="category">
 
-        <h1 class="text-center">
-            {{$news->getTitle()}}
-            <div class="category">
-
-            <img class="card-img-top" src="{{ $news->getImageUrl() }}" width="200" height="600" alt="Card image cap">
-            <div style="background-color:coral "class="top-left">{{ $news->category['0']->name }}</div>
-            </div>
-        </h1>
-        <div class="row">
-            <i>{{ $news->getPublicationDate() }}</i>
-        </div>
-        <div class="row">
-            {!! $news->getDescription() !!}
-        </div>
-        <div class="row">
-            <div id="social-links">
-                Поділитися:
-                <ul>
-                    <li>
-                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ $news->getUrl() }}" class="social-button " id="" title="" rel="">
-                            <span class="fab fa-facebook-square"></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://twitter.com/intent/tweet?text=fd&amp;url={{ $news->getUrl() }}" class="social-button " id="" title="" rel="">
-                            <span class="fab fa-twitter"></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a target="_blank" href="https://telegram.me/share/url?url={{ $news->getUrl() . '&text=' . $news->getTitle() }}" class="social-button " id="" title="" rel="">
-                            <span class="fab fa-telegram"></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a target="_blank" href="mailto:news-demo.space?subject={{$news->getTitle() }}&amp;body={{ $news->getUrl() }}" data-provider="" data-share-link="{{ $news->getUrl() }}" data-share-title="{{ $news->getTitle() }}" class="social-button " id="" title="" rel="">
-                            <span class="fab fa-inbox"></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="social-button" id="copy-link" title="" rel="">
-                            <span class="fab fa-inbox"></span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        </div>
-            </div>
-            <div class="row">
-                @widget('SimilarNews', ['news_id' => $news->id])
+                        <img class="card-img-top" src="{{ $news->getImageUrl() }}" width="200" height="600" alt="Card image cap">
+                        <div style="background-color:coral "class="top-left">{{ $news->category['0']->name }}</div>
+                        </div>
+                    </h1>
+                    <div class="row">
+                        <i>{{ $news->getPublicationDate() }}</i>
+                    </div>
+                    <div class="row">
+                        {!! $news->getDescription() !!}
+                    </div>
+                    <div class="row">
+                        @widget('SimilarNews', ['news_id' => $news->id])
+                    </div>
+                    <div class="row">
+                        {{ 'Теги :' }}
+                        @foreach($news->tags as $tag)
+                            {{ $tag->name }}
+                        @endforeach
+                    </div>
+                </div>
             </div>
         </div>
         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>
-    {{ 'Теги :' }}
-    @foreach($news->tags as $tag)
-        <a href="{{ route('search', 'query='.$tag->name)  }}">{{ $tag->name }}</a>
-
-    @endforeach
 
     <script>
         $(document).ready(function(){
@@ -133,3 +100,36 @@
         })
     </script>
 @endsection
+
+{{--        <div class="row">--}}
+{{--            <div id="social-links">--}}
+{{--                Поділитися:--}}
+{{--                <ul>--}}
+{{--                    <li>--}}
+{{--                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ $news->getUrl() }}" class="social-button " id="" title="" rel="">--}}
+{{--                            <span class="fab fa-facebook-square"></span>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
+{{--                    <li>--}}
+{{--                        <a href="https://twitter.com/intent/tweet?text=fd&amp;url={{ $news->getUrl() }}" class="social-button " id="" title="" rel="">--}}
+{{--                            <span class="fab fa-twitter"></span>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
+{{--                    <li>--}}
+{{--                        <a target="_blank" href="https://telegram.me/share/url?url={{ $news->getUrl() . '&text=' . $news->getTitle() }}" class="social-button " id="" title="" rel="">--}}
+{{--                            <span class="fab fa-telegram"></span>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
+{{--                    <li>--}}
+{{--                        <a target="_blank" href="mailto:news-demo.space?subject={{$news->getTitle() }}&amp;body={{ $news->getUrl() }}" data-provider="" data-share-link="{{ $news->getUrl() }}" data-share-title="{{ $news->getTitle() }}" class="social-button " id="" title="" rel="">--}}
+{{--                            <span class="fab fa-inbox"></span>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
+{{--                    <li>--}}
+{{--                        <a class="social-button" id="copy-link" title="" rel="">--}}
+{{--                            <span class="fab fa-inbox"></span>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
+{{--                </ul>--}}
+{{--            </div>--}}
+{{--        </div>--}}
