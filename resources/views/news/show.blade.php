@@ -75,11 +75,14 @@
                     <div class="row">
                         @widget('SimilarNews', ['news_id' => $news->id])
                     </div>
+
                     <div class="row">
-                        {{ 'Теги :' }}
-                        @foreach($news->tags as $tag)
-                            {{ $tag->name }}
-                        @endforeach
+                        <div class="btn-group">
+                            {{ 'Теги :' }}
+                            @foreach($news->tags as $tag)
+                                <a href='/search?query={{ $tag->name }}'>{{ $tag->name .' '}}  </a>
+                            @endforeach
+                        </div>
                     </div>
                     <div id="fb-root"></div>
                     <div class="fb-comments" data-href="{{ $news->getUrl() }}" data-width=""data-numposts="5"></div>
