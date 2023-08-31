@@ -4,7 +4,6 @@
 @endsection
 
 @section('content')
-    @include('layouts.categoryMenu')
     <div class="container">
         <div class="card container">
             <div class="main-body">

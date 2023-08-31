@@ -12,6 +12,13 @@
     @include('layouts.filterMenu')
     <div class="container">
         <div class="row">
+            <div class="col-sm-3">
+                <hr>
+                <h3>Стрічка новин</h3>
+                <hr>
+                @widget('recentNews')
+            </div>
+
             <div class="col-sm-9">
                 <div class="row">
                     @foreach($news as $new)

@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', getSetting('site_name')) }}</title>
+    <title>{{ getSetting('site_name') ?? config('app.name')  }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -58,10 +58,12 @@
             </ul>
         </div>
     </nav>
-    
+
     <div class="wrapper">
         <div id="layoutSidenav_content">
             <main>
+                @include('layouts.categoryMenu')
+
                 @yield('content')
                 @include('layouts.footer')
             </main>
