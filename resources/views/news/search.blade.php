@@ -18,16 +18,56 @@
                 </div><br>
             </form>
             <div class="col-sm-9">
-                <div class="row">
-                    @foreach($news as $new)
-                        <div class="col-sm-4">
-                            @include('news._news', compact('new'))
-                        </div>
-                    @endforeach
+                <div class="news row">
+                    @include('news._list-news')
                 </div>
             </div>
         </div>
     </div>
+    @if($news->hasMorePages())
+        <div class="more text-center">
+            <button class="btn btn-success load-more-data">Переглянути більше</button>
+        </div>
+    @endif
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+
+        var ENDPOINT = "{{ route('search') }}";
+        var page = 1;
+        var type = '{{$_GET['type'] ?? ''}}'
+
+        $(".load-more-data").click(function(){
+            page++;
+            infinteLoadMore(page);
+        });
+
+        function infinteLoadMore(page) {
+
+            $.ajax({
+                url: ENDPOINT + "?page=" + page,
+                data:{
+                    type: type,
+                    "_token": "{{ csrf_token() }}"
+                },
+                datatype: "html",
+                type: "get",
+                beforeSend: function () {
+                    $('.auto-load').show();
+                }
+            })
+                .done(function (response) {
+                    if (!response.pagin) {
+                        $('.more').remove();
+                    }
+                    $('.auto-load').hide();
+                    $(".news").append(response.html);
+                })
+                .fail(function (jqXHR, ajaxOptions, thrownError) {
+                    console.log('Server error occured');
+                });
+        }
+    </script>
 
 @endsection
 

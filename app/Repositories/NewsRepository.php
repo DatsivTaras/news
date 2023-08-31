@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Classes\Enum\NewsPublicationType;
 use App\Classes\Enum\NewsType;
 use App\Models\News;
 use App\Repositories\BaseRepository;
@@ -43,7 +44,36 @@ class  NewsRepository extends BaseRepository
 
         return $query->paginate($perPage);
     }
+    public function getPaginationNews(array $options = [], int $perPage = 1, array $defaultSort = []): LengthAwarePaginator
+    {
+        /** @var Builder $query */
+        $query = ($this->getModelClass())::query();
 
+        if ($defaultSort) {
+            $query->orderBy($defaultSort['field'], $defaultSort['direction'] ?? 'asc');
+        }
+
+        if (isset($options['search'])) {
+            $query->search($options['search']);
+            unset($options['search']);
+        }
+
+        if (isset($options['viewType'])) {
+
+            if ($options['viewType'] == 'main') {
+                $options['filters'] = ['type' => NewsPublicationType::IMPORTANT];
+            }
+            if ($options['viewType'] == 'popular') {
+                $query->orderByUniqueViews('desc');
+            }
+        }
+
+        $query->where('date_of_publication','<=', now());
+        $this->applyFilters($query, $options);
+        $this->applyWith($query, $options);
+
+        return $query->paginate($perPage);
+    }
     public function getNewsBasket($request)
     {
         return News::filter($request)->onlyTrashed()->paginate('30');

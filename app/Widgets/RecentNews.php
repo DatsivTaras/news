@@ -42,7 +42,8 @@ class RecentNews extends AbstractWidget
                         function ($query) use ($categoryId) {
                             return $query->where('category_id', $categoryId);
                     }]
-                ]
+                ],
+//
             ];
         }
         $sort = [
@@ -50,12 +51,14 @@ class RecentNews extends AbstractWidget
             'direction' => 'DESC'
         ];
 
-        $lastNews = $this->newsRepository->table($options, $this->config['limit'], $sort);
-        $popularNews = $this->newsRepository->getPopularTable($options, $this->config['limit'], $sort);
 
-        $options['filters'] = ['type' => NewsPublicationType::IMPORTANT];
-        $mainNews = $this->newsRepository->table($options, $this->config['limit'], $sort);
+        $lastNews = $this->newsRepository->getPaginationNews($options, $this->config['limit'], $sort);
 
+        $options['viewType'] = 'popular';
+        $popularNews = $this->newsRepository->getPaginationNews($options, $this->config['limit'], $sort);
+
+        $options['viewType'] = 'main';
+        $mainNews = $this->newsRepository->getPaginationNews($options, $this->config['limit'], $sort);
 
         return view('widgets.recent_news', compact('lastNews', 'mainNews', 'popularNews'));
     }

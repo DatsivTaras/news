@@ -76,7 +76,7 @@
                         @widget('SimilarNews', ['news_id' => $news->id])
                     </div>
                     <div class="row">
-                        {{ 'Теми :' }}
+                        {{ 'Теги :' }}
                         @foreach($news->tags as $tag)
                             {{ $tag->name }}
                         @endforeach

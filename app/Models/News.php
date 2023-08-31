@@ -71,6 +71,17 @@ class News extends Model implements Viewable
         return $filter->apply($builder);
     }
 
+    public function scopeSearch($query, $search)
+    {
+        return $query->where('title', 'LIKE', '%'.$search.'%')
+            ->orWhere('subtitle', 'LIKE', '%'.$search.'%')
+            ->orWhere('description', 'LIKE', '%'.$search.'%')
+            ->orWhere('mini_description', 'LIKE', '%'.$search.'%')
+            ->orWhereHas('tags', function ($q) use($search){
+                $q->where('name', 'LIKE', '%'.$search.'%');
+            });
+    }
+
     public function getTitle()
     {
         return $this->title;
@@ -104,6 +115,10 @@ class News extends Model implements Viewable
         return $this->image && isset($this->image[0]) ? asset(Storage::url( $this->image[0]->name)) : 'defualtimgae.png';
     }
 
+    public function tag()
+    {
+        return $this->hasOne(Tag::class, 'id','news_id');
+    }
     public function news_category()
     {
         return $this->hasOne(NewsCategory::class, 'news_id','id');
