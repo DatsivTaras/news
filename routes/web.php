@@ -47,6 +47,8 @@ Route::group(['middleware' => ['auth']], function() {
 Route::resource('category', \App\Http\Controllers\CategoryController::class);
 Route::resource('page', \App\Http\Controllers\PageController::class);
 Route::get('author/{slug}', [App\Http\Controllers\AuthorController::class, 'index']);
+Route::get('allNews', [App\Http\Controllers\NewsController::class, 'allNews'])->name('allNews');
+Route::get('listNews', [App\Http\Controllers\NewsController::class, 'listNews'])->name('listNews');
 Route::get('news', [App\Http\Controllers\NewsController::class, 'allNews'])->name('news');
 Route::get('news/{slug}', [App\Http\Controllers\NewsController::class, 'show'])->name('news.show');
 Route::get('search', [App\Http\Controllers\NewsController::class, 'search'])->name('search');

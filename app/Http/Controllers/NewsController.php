@@ -35,7 +35,13 @@ class NewsController extends Controller
 
         return view('index', compact('sliderNews', 'mainBlock', 'mainBlocktwo'));
     }
+    public function listNews(Request $request)
+    {
+        $news = News::paginate(10);
+        $view = view('news._list-news', compact('news'))->render();
 
+        return response()->json(['html' => $view]);
+    }
     /**
      * Display the specified resource.
      *
@@ -61,58 +67,45 @@ class NewsController extends Controller
 
     public function search(Request $request)
     {
-        $query =  $request['query'];
-        $type = $request['type'];
-
         $options = [
-            'search' => $query
+            'search' => $request['query'],
+            'viewType' => $request['type']
         ];
+
         $sort = [
             'field' => 'created_at',
             'direction' => 'DESC'
         ];
 
-        switch ($type) {
-            case 'last':
-                $news = $this->newsRepository->table($options, 14, $sort);
-                break;
-            case 'popular':
-                $news = $this->newsRepository->getPopularTable($options, 14, $sort);
-                break;
-            case 'main':
-                $options['filters'] = ['type' => NewsPublicationType::IMPORTANT];
-                $news = $this->newsRepository->table($options, 14, $sort);
-                break;
-            default:
-                $news = $this->newsRepository->table($options,14, $sort);
+        $news = $this->newsRepository->getPaginationNews($options,3, $sort);
+
+        if ($request->ajax()) {
+
+            $view = view('news._list-news', compact('news'))->render();
+
+            return response()->json(['html' => $view, 'pagin' => $news->hasMorePages()	]);
         }
+
 
         return view('news.search', compact('news'));
     }
 
     public function allNews(Request $request)
     {
-        $type = $request->type;
-
-        $options = [];
+        $options = [
+            'viewType' => $request['type']
+        ];
         $sort = [
             'field' => 'created_at',
             'direction' => 'DESC'
         ];
 
-        switch ($type) {
-            case 'last':
-                $news = $this->newsRepository->table($options, 14, $sort);
-                break;
-            case 'popular':
-                $news = $this->newsRepository->getPopularTable($options, 14, $sort);
-                break;
-            case 'main':
-                $options['filters'] = ['type' => NewsPublicationType::IMPORTANT];
-                $news = $this->newsRepository->table($options, 14, $sort);
-                break;
-            default:
-                $news = $this->newsRepository->table($options,14, $sort);
+        $news = $this->newsRepository->getPaginationNews($options,2, $sort);
+
+        if ($request->ajax()) {
+            $view = view('news._list-news', compact('news'))->render();
+
+            return response()->json(['html' => $view, 'pagin' => $news->hasMorePages()	]);
         }
 
         return view('news.index', compact('news'));

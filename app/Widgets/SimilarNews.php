@@ -54,7 +54,7 @@ class SimilarNews extends AbstractWidget
             'direction' => 'DESC'
         ];
 
-        $news = $this->newsRepository->table($options, $this->config['limit'], $sort);
+        $news = $this->newsRepository->getPaginationNews($options,2, $sort);
 
         return view('widgets.similar_news', compact('news'));
     }

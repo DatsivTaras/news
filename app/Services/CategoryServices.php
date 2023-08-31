@@ -35,7 +35,7 @@ class CategoryServices
         return app(CategoryRepository::class)->getFooterCategories();
     }
 
-    public function showCategoryNews($slug, $type)
+    public function showCategoryNews($data, $slug)
     {
         $category = $this->categoryRepository->getOneOrFail($slug, 'slug');
         $categoryId = $category->id;
@@ -52,7 +52,7 @@ class CategoryServices
             'direction' => 'DESC'
         ];
 
-        switch ($type) {
+        switch ($data->type) {
             case 'last':
                 $news = $this->newsRepository->table($options, 14, $sort);
                 break;
@@ -64,7 +64,7 @@ class CategoryServices
                 $news = $this->newsRepository->table($options, 14, $sort);
                 break;
             default:
-                $news = $this->newsRepository->table($options,14, $sort);
+                $news = $this->newsRepository->table($options,1, $sort);
         }
 
         $data = [

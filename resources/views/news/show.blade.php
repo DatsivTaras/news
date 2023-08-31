@@ -114,9 +114,10 @@
         </div>
         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>
-    {{ 'Теми :' }}
+    {{ 'Теги :' }}
     @foreach($news->tags as $tag)
-        {{ $tag->name }}
+        <a href="{{ route('search', 'query='.$tag->name)  }}">{{ $tag->name }}</a>
+
     @endforeach
 
     <script>

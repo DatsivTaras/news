@@ -36,10 +36,33 @@ class CategoryController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request ,$slug)
+    public function show(Request $request, $slug)
     {
-       $type = $request->type;
+        $category = $this->categoryRepository->getOneOrFail($slug, 'slug');
+        $categoryId = $category->id;
+        $options = [
+            'whereHas' => [
+                ['category',
+                    function ($query) use ($categoryId) {
+                        return $query->where('category_id', $categoryId);
+                    }]
+            ],
+            'viewType' => $request['type']
+        ];
+        $sort = [
+            'field' => 'created_at',
+            'direction' => 'DESC'
+        ];
 
-        return view('category.show', $this->categoryServices->showCategoryNews($slug, $type));
+        $news = $this->newsRepository->getPaginationNews($options,1, $sort);
+
+//        list($news, $category) = $this->categoryServices->showCategoryNews($data, $slug);
+        if ($request->ajax()) {
+            $view = view('news._list-news', compact('news'))->render();
+
+            return response()->json(['html' => $view, 'pagin' => $news->hasMorePages()	]);
+        }
+
+        return view('category.show', compact('news', 'category'));
     }
 }

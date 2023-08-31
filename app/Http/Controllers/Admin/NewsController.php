@@ -60,37 +60,12 @@ class NewsController extends Controller
      */
     public function index(NewsFilter $request)
     {
-//        $usersData = [
-//            [
-//                'name' => 'Admin',
-//                'email' => '112admin@admin.com',
-//                'password' => Hash::make('11111111'),
-//                'email_verified_at' => Carbon::now(),
-//                'author' => [
-//                    'surname' => 'Admin',
-//                    'name' => 'Admin',
-//                    'slug' => 'Admin',
-//                    'patronymic' => 'Admin',
-//                    'biography' => 'Admin',
-//                ]
-//            ],
-//        ];
-//
-//        foreach ($usersData as $userData) {
-//            if (!$this->userRepository->getOne($userData['email'], 'email')) {
-//                $user = $this->userRepository->create($userData);
-//                $this->authorsRepository->create($userData['author']);
-//                if ($user) {
-//                    $user->assignRole('Admin');
-//                }
-//            }
-//        }
-
         $news = $this->newsRepository->getNews($request);
 
         return view('admin.news.index', compact('news'))
             ->with('i', (request()->input('page', 1) - 1) * $news->perPage());
     }
+
 
     /**
      * Show the form for creating a new resource.
