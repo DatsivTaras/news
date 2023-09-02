@@ -13,6 +13,7 @@ use App\Repositories\NewsCategoryRepository;
 use App\Repositories\NewsImageRepository;
 use App\Repositories\NewsRepository;
 use App\Repositories\NewsTagRepository;
+use App\Repositories\PaidNewsRepository;
 use App\Repositories\TagRepository;
 use Carbon\Carbon;
 
@@ -27,6 +28,7 @@ class NewsServices
     private $newsImageRepository;
     private $tagRepository;
     private  $newsTagRepository;
+    private  $paidNewsRepository;
     private $authorImagesRepository;
     private $authorsRepository;
     private $newsAuthorsRepository;
@@ -42,6 +44,10 @@ class NewsServices
         AuthorsRepository      $authorsRepository,
         NewsAuthorsRepository  $newsAuthorsRepository,
         HomeSliderRepository   $homeSliderRepository
+        AuthorsRepository $authorsRepository,
+        PaidNewsRepository $paidNewsRepository,
+        NewsAuthorsRepository $newsAuthorsRepository,
+        HomeSliderRepository $homeSliderRepository
     )
     {
         $this->newsRepository = $newsRepository;
@@ -51,6 +57,7 @@ class NewsServices
         $this->newsTagRepository = $newsTagRepository;
         $this->newsCategoryRepository = $newsCategoryRepository;
         $this->authorImagesRepository = $authorImagesRepository;
+        $this->paidNewsRepository = $paidNewsRepository;
         $this->authorsRepository = $authorsRepository;
         $this->newsAuthorsRepository = $newsAuthorsRepository;
         $this->homeSliderRepository = $homeSliderRepository;
@@ -68,6 +75,22 @@ class NewsServices
             ]);
         } else {
             $homeSlider->delete();
+        }
+    }
+
+    public function addPaidNews($request)
+    {
+        $paidNews = $this->paidNewsRepository->getOne($request->id, 'news_id');
+
+        if(!$paidNews) {
+            if($this->paidNewsRepository->count() >= 5) {
+                $this->paidNewsRepository->deleteLastNewsFromPaidNews();
+            }
+            $this->paidNewsRepository->create([
+                'news_id' => $request->id,
+            ]);
+        } else {
+            $paidNews->delete();
         }
     }
     public function saveNews(array $data)

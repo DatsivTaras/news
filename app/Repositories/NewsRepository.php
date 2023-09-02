@@ -64,7 +64,18 @@ class  NewsRepository extends BaseRepository
                 $options['filters'] = ['type' => NewsPublicationType::IMPORTANT];
             }
             if ($options['viewType'] == 'popular') {
+
+
+                $selectedOptionValuesIDSort = [117, 115];
+
+                $sortedIds = implode(',', $selectedOptionValuesIDSort);
+                $query->orderByRaw("FIELD(id, {$sortedIds})");
+
+
+
+//                $query->whereDate('created_at','=', now()->format('Ymd'));
                 $query->orderByUniqueViews('desc');
+
             }
         }
 

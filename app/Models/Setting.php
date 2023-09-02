@@ -42,6 +42,8 @@ class Setting extends Model
     const INSTAGRAM_LINK = 'instagram_link';
     const TIKTOK_LINK = 'tiktok_link';
     const EMAIL_ADDRESS = 'email_address';
+    const ADDRESS = 'address';
+    const PHONE = 'phone';
 
     public function image()
     {

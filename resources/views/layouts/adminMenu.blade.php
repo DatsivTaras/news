@@ -99,6 +99,10 @@
                         Файли
                     </a>
 
+                    <a class="nav-link" href="/admin/paidNews">
+                        <div class="sb-nav-link-icon"><i class="fas fa-images"></i></div>
+                        Платні Новини
+                    </a>
 {{--                    <a class="nav-link" href="/admin/authors">--}}
 {{--                        <div class="sb-nav-link-icon"><i class="fas fa-user-pen"></i></div>--}}
 {{--                        Автори--}}

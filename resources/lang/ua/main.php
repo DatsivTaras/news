@@ -3,8 +3,10 @@
 return [
     'password_confirmation' => 'Підтвердження пароля',
     'password' => 'Пароль',
+    'captionToPhoto' => 'Підпис до фото',
     'home' => 'Головна',
     'add' => 'Додати',
+    'OnPaidNews' => 'В Платні новини',
     'publish' => 'Опублікувати',
     'draft' => 'Чернетка',
     'simpleNews' => 'Проста новина',
