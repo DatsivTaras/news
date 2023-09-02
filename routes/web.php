@@ -33,6 +33,7 @@ Route::group(['middleware' => ['auth']], function() {
                 Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
             });
             Route::resource('sliders', \App\Http\Controllers\Admin\HomeSliderController::class);
+            Route::resource('files', \App\Http\Controllers\Admin\FileController::class);
             Route::post('addItemsSettings', [App\Http\Controllers\Admin\SettingController::class, 'addItemsSettings']);
             Route::post('addNewsOnSlider', [App\Http\Controllers\Admin\NewsController::class, 'addNewsOnSlider']);
             Route::post('changePassword', [App\Http\Controllers\Admin\ProfileController::class, 'changePassword'])->name('changePassword');

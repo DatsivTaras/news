@@ -121,7 +121,8 @@ class News extends Model implements Viewable
 
     public function getImageUrl()
     {
-        return $this->image && isset($this->image[0]) ? asset(Storage::url( $this->image[0]->name)) : 'defualtimgae.png';
+        $image = $this->image->first();
+        return $image ? $image->getPath() : '/public/default.png';
     }
 
     public function tag()

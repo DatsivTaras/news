@@ -6,7 +6,7 @@ use App\Models\File;
 use App\Models\Image;
 use App\Repositories\AuthorImagesRepository;
 use App\Repositories\AuthorsRepository;
-use App\Repositories\ImageRepository;
+use App\Repositories\FileRepository;
 use App\Repositories\NewsAuthorsRepository;
 use App\Repositories\NewsCategoryRepository;
 use App\Repositories\NewsImageRepository;
@@ -30,7 +30,7 @@ class AuthorServices
         AuthorImagesRepository $authorImagesRepository,
         AuthorsRepository $authorsRepository,
         NewsAuthorsRepository $newsAuthorsRepository,
-        ImageRepository $imageRepository
+        FileRepository $imageRepository
     )
     {
         $this->authorImagesRepository = $authorImagesRepository;

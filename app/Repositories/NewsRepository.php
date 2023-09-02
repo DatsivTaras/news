@@ -118,6 +118,6 @@ class  NewsRepository extends BaseRepository
 
     protected function getSearchFields(): array
     {
-        return ['title','subtitle','mini_description','description'];
+        return ['title', 'subtitle', 'mini_description', 'description'];
     }
 }

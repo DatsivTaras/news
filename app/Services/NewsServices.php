@@ -7,7 +7,7 @@ use App\Models\Image;
 use App\Repositories\AuthorImagesRepository;
 use App\Repositories\AuthorsRepository;
 use App\Repositories\HomeSliderRepository;
-use App\Repositories\ImageRepository;
+use App\Repositories\FileRepository;
 use App\Repositories\NewsAuthorsRepository;
 use App\Repositories\NewsCategoryRepository;
 use App\Repositories\NewsImageRepository;
@@ -22,7 +22,7 @@ use Carbon\Carbon;
 class NewsServices
 {
     private $newsRepository;
-    private $imageRepository;
+    private $fileRepository;
     private $newsCategoryRepository;
     private $newsImageRepository;
     private $tagRepository;
@@ -32,20 +32,20 @@ class NewsServices
     private $newsAuthorsRepository;
     private $homeSliderRepository;
     public function __construct(
-        NewsRepository $newsRepository,
-        ImageRepository $imageRepository,
-        NewsImageRepository $newsImageRepository,
-        TagRepository $tagRepository,
-        NewsTagRepository $newsTagRepository,
+        NewsRepository         $newsRepository,
+        FileRepository         $fileRepository,
+        NewsImageRepository    $newsImageRepository,
+        TagRepository          $tagRepository,
+        NewsTagRepository      $newsTagRepository,
         NewsCategoryRepository $newsCategoryRepository,
         AuthorImagesRepository $authorImagesRepository,
-        AuthorsRepository $authorsRepository,
-        NewsAuthorsRepository $newsAuthorsRepository,
-        HomeSliderRepository $homeSliderRepository
+        AuthorsRepository      $authorsRepository,
+        NewsAuthorsRepository  $newsAuthorsRepository,
+        HomeSliderRepository   $homeSliderRepository
     )
     {
         $this->newsRepository = $newsRepository;
-        $this->imageRepository = $imageRepository;
+        $this->fileRepository = $fileRepository;
         $this->newsImageRepository = $newsImageRepository;
         $this->tagRepository = $tagRepository;
         $this->newsTagRepository = $newsTagRepository;
@@ -78,7 +78,7 @@ class NewsServices
             $file = $data['image'];
 
             $data['name'] = $file->store('public/image/planes');
-            $image = $this->imageRepository->create($data);
+            $image = $this->fileRepository->create($data);
 
             $data['news_id'] = $news->id;
             $data['image_id'] = $image->id;
@@ -115,7 +115,7 @@ class NewsServices
             $file = $data['image'];
 
             $data['name'] = $file->store('public/image/planes');
-            $image = $this->imageRepository->create($data);
+            $image = $this->fileRepository->create($data);
 
             $data['news_id'] = $news->id;
             $data['image_id'] = $image->id;

@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\Models\Image;
 use App\Models\Setting;
-use App\Repositories\ImageRepository;
+use App\Repositories\FileRepository;
 use App\Repositories\SettingRepository;
 
 
@@ -19,7 +19,7 @@ class SettingServices
     private $settingRepository;
 
     public function __construct(
-        ImageRepository $imageRepository,
+        FileRepository    $imageRepository,
         SettingRepository $settingRepository
     )
     {

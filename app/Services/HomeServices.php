@@ -5,7 +5,7 @@ namespace App\Services;
 use App\Models\Image;
 use App\Models\Setting;
 use App\Repositories\CategoryRepository;
-use App\Repositories\ImageRepository;
+use App\Repositories\FileRepository;
 use App\Repositories\NewsRepository;
 use App\Repositories\SettingRepository;
 
@@ -23,9 +23,9 @@ class HomeServices
     private $categoryRepository;
 
     public function __construct(
-        ImageRepository $imageRepository,
-        SettingRepository $settingRepository,
-        NewsRepository $newsRepository,
+        FileRepository     $imageRepository,
+        SettingRepository  $settingRepository,
+        NewsRepository     $newsRepository,
         CategoryRepository $categoryRepository
     )
     {
