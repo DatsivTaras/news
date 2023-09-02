@@ -16,8 +16,8 @@
                     {!! $errors->first('title', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                 <div class="mb-3">
-                    {{ Form::label( __('main.subtitle')) }}
-                    {{ Form::text('subtitle', $news->subtitle, ['class' => 'form-control' . ($errors->has('subtitle') ? ' is-invalid' : ''), 'placeholder' =>  __('main.subtitle')]) }}
+                    {{ Form::label( __('main.captionToPhoto')) }}
+                    {{ Form::text('subtitle', $news->subtitle, ['class' => 'form-control' . ($errors->has('subtitle') ? ' is-invalid' : ''), 'placeholder' =>  __('main.captionToPhoto')]) }}
                     {!! $errors->first('subtitle', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                 <div class="mb-3">

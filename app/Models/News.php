@@ -114,9 +114,9 @@ class News extends Model implements Viewable
     {
         return route('news.show', ['slug' => $this->slug]);
     }
-    public function getAuthorSlug()
+    public function getAuthor()
     {
-        return $this->author['0']->slug;
+        return $this->author->first();
     }
 
     public function getImageUrl()
@@ -136,6 +136,12 @@ class News extends Model implements Viewable
     public function home_slider()
     {
         return $this->hasOne(HomeSlider::class, 'news_id','id');
+    }
+
+
+    public function paidNews()
+    {
+        return $this->hasOne(PaidNews::class, 'news_id','id');
     }
 
     public function getTypePublication()

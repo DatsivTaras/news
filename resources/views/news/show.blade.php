@@ -61,7 +61,6 @@
                     <h1 class="text-center">
                         {{$news->getTitle()}}
                         <div class="category">
-
                         <img class="card-img-top" src="{{ $news->getImageUrl() }}" width="200" height="600" alt="Card image cap">
                         <div style="background-color:coral "class="top-left">{{ $news->category['0']->name }}</div>
                         </div>
@@ -73,7 +72,7 @@
                         {!! $news->getDescription() !!}
                     </div>
                     <div class="row">
-                        <div align="ceter">Автор: <a href={{ route('author.show', ['slug' => $news->getAuthorSlug()]) }}>{{ $news->getAuthorName() }}</a></div>
+                        <div align="ceter">Автор: <a href= {{ ($news->getAuthor() ? $news->getAuthor()->getUrl() : '') }} }}>{{ $news->getAuthorName() }}</a></div>
                     </div><br><br>
 
                     <div class="row">

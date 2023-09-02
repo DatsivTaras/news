@@ -43,6 +43,7 @@
 										<th>@lang('main.title')</th>
 										<th>@lang('main.subtitle')</th>
                                         <th>@lang('main.On Slider')</th>
+                                        <th>@lang('main.OnPaidNews')</th>
                                         <th>@lang('main.type')</th>
                                         <th>@lang('main.dateOfPublication')</th>
                                         <th></th>
@@ -55,6 +56,7 @@
 											<td>{{ $new->title }}</td>
 											<td>{{ $new->getTypePublication() }}</td>
 											<td><input  data-id="{{ $new->id }}" class="addNewsSlider" type="checkbox" {{ $new->home_slider ? 'checked' : '' }} ></td>
+											<td><input  data-id="{{ $new->id }}" class="addPaidNews" type="checkbox" {{ $new->paidNews ? 'checked' : '' }} ></td>
 											<td>{{ $new->getType() }}</td>
 											<td>{{ $new->date_of_publication }}</td>
                                             <td>
@@ -86,6 +88,20 @@
             $.ajax({
                 method: 'post',
                 url: "/admin/addNewsOnSlider",
+                data:{
+                    id: id,
+                    "_token": "{{ csrf_token() }}"
+                },
+                dataType: 'json',
+            }).done(function(result) {
+                location.reload();
+            });
+        });
+        $(document).on('click', '.addPaidNews', function(){
+            var id = $(this).data('id');
+            $.ajax({
+                method: 'post',
+                url: "/admin/paidNews",
                 data:{
                     id: id,
                     "_token": "{{ csrf_token() }}"
