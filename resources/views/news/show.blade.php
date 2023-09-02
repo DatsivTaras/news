@@ -95,7 +95,7 @@
             </div>
         </div>
         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-        <script async defer crossorigin = "anonymous" src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v17.0&appId= 255331274088195&autoLogAppEvents=1" nonce = "znv8STtW" ></script>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/uk_UA/sdk.js#xfbml=1&version=v17.0&appId= 255331274088195&autoLogAppEvents=1" nonce="znv8STtW" ></script>
     </div>
 
     <script>

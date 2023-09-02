@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class File extends Model
 {
@@ -11,6 +12,10 @@ class File extends Model
 
     protected $table = 'file';
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'path', 'type'];
 
+    public function getPath()
+    {
+        return asset(Storage::url($this->path));
+    }
 }

@@ -93,6 +93,12 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-images"></i></div>
                         Слайдер
                     </a>
+
+                    <a class="nav-link" href="/admin/files">
+                        <div class="sb-nav-link-icon"><i class="fas fa-images"></i></div>
+                        Файли
+                    </a>
+
                     <a class="nav-link" href="/admin/paidNews">
                         <div class="sb-nav-link-icon"><i class="fas fa-images"></i></div>
                         Платні Новини

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
 use App\Repositories\CategoryRepository;
-use App\Repositories\ImageRepository;
+use App\Repositories\FileRepository;
 use App\Repositories\PageRepository;
 use App\Repositories\SettingRepository;
 use App\Services\SettingServices;
