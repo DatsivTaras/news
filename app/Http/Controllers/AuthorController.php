@@ -21,11 +21,10 @@ class AuthorController extends Controller
         $this->newsRepository = $newsRepository;
     }
 
-    public function index($slug)
+    public function index(Request $request, $slug)
     {
         $author = $this->authorsRepository->getOneOrFail($slug ,'slug');
 
-//      $category = $this->categoryRepository->getOneOrFail($slug, 'slug');
         $authorId = $author->id;
         $perPage = 15;
         $options = [
@@ -36,7 +35,17 @@ class AuthorController extends Controller
                     }]
             ]
         ];
-        $news = $this->newsRepository->table($options, $perPage);
+        $sort = [
+            'field' => 'created_at',
+            'direction' => 'DESC'
+        ];
+        $news = $this->newsRepository->getPaginationNews($options,3, $sort);
+
+        if ($request->ajax()) {
+            $view = view('news._list-news', compact('news'))->render();
+
+            return response()->json(['html' => $view, 'pagin' => $news->hasMorePages()	]);
+        }
 
         return view('authors.index', compact('author','news'));
     }

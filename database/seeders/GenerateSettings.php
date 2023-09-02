@@ -88,6 +88,14 @@ class GenerateSettings extends Seeder
                 'description' => ''
             ],
             [
+                'name' => 'Наш Email',
+                'value' => '',
+                'key' => Setting::EMAIL_ADDRESS,
+                'category' => Setting::CATEGORY_HEADER,
+                'type' => Setting::TYPE_INPUT,
+                'description' => ''
+            ],
+            [
                 'name' => 'Наш TikTok',
                 'value' => '',
                 'key' => Setting::TIKTOK_LINK,

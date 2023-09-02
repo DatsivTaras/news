@@ -24,6 +24,8 @@
     @yield('meta_tags')
 </head>
 <body>
+{{  \App\Services\SettingServices::getHeaderEmail() }}
+
     <nav>
         <input type="checkbox" id="menu" name="menu" class="m-menu__checkbox">
         <label class="m-menu__toggle" for="menu">

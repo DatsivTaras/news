@@ -51,6 +51,16 @@ class Author extends Model
         return $filter->apply($builder);
     }
 
+    public function getUrl()
+    {
+        return route('author.show', ['slug' => $this->slug]);
+    }
+
+    public function getAurhorFullName()
+    {
+        return $this->surname . ' ' . $this->name;
+    }
+
     public function image()
     {
         return $this->belongsToMany(File::class, 'author_image', 'author_id', 'image_id')

@@ -94,9 +94,11 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        $role = $this->roleRepository->getRole();
+
         $user = $this->userRepository->getOneOrFail($id);
 
-        return view('admin.user.edit', compact('user'));
+        return view('admin.user.edit', compact('user','role'));
     }
 
     /**
