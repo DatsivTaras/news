@@ -5,75 +5,89 @@
 
 @section('content')
     <div class="container">
-        <div class="card container">
-            <div class="main-body">
-                <div class="row gutters-sm">
-                    <div class="col-md-4 mb-3">
-                        <div>
-                            <div class="card-body">
-                                <div class="d-flex flex-column align-items-center text-center">
-                                    <img src="{{ $author->getImageUrl() }}" alt="Admin" class="" width="350">
-                                    <div class="mt-3">
-                                        <h4>{{ $author->name }}</h4>
-{{--                                        <p class="text-secondary mb-1">Full Stack Developer</p>--}}
-{{--                                        <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>--}}
-{{--                                        <button class="btn btn-primary">Follow</button>--}}
-{{--                                        <button class="btn btn-outline-primary">Message</button>--}}
-                                    </div>
+                <div class="container py-5">
+{{--                    <div class="row">--}}
+{{--                        <div class="col">--}}
+{{--                            <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">--}}
+{{--                                <ol class="breadcrumb mb-0">--}}
+{{--                                    <li class="breadcrumb-item"><a href="#">Home</a></li>--}}
+{{--                                    <li class="breadcrumb-item"><a href="#">User</a></li>--}}
+{{--                                    <li class="breadcrumb-item active" aria-current="page">User Profile</li>--}}
+{{--                                </ol>--}}
+{{--                            </nav>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="card mb-4">
+                                <div class="card-body text-center">
+                                    <h5 class="my-3">{{ $author->getAurhorFullName() }}</h5>
+                                    <img src="{{ $author->getImageUrl() }}" alt="avatar"
+                                         class="img-fluid" style="width: 300px;">
+                                    <br><br><p class="text-muted mb-4">{{ $author->biography }}</p>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-8">
-                        <div class=" mb-3">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <h6 class="mb-0">Повне Імя</h6>
+                        <div class="col-lg-8">
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <div class="col-sm-12">
+                                        <div class="news row">
+                                            @include('news._list-news')
+                                        </div>
                                     </div>
-                                    <div class="col-sm-9 text-secondary">
-                                        {{ $author->surname . '' . $author->name }}
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <h6 class="mb-0">Біографія</h6>
-                                    </div>
-                                    <div class="col-sm-9 text-secondary">
-                                        {{ $author->biography }}
+                                    <div class="d-flex justify-content-center">
+                                        @if($news->hasMorePages())
+                                            <div class="more text-center">
+                                                <button class="btn btn-success load-more-data">Переглянути більше</button>
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
-                                <hr>
+                            </div>
+                            <div class="row">
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
-        <br><br><br><br>
-        <h1 align="center"> Новини Автора </h1>
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="row">
-                    @foreach($news as $new)
-                        <div class="col-sm-4">
-                            <a href="{{$new->getUrl()}}" style="text-decoration: none; color:black">
-                                <div class="card">
-                                    <img class="card-img-top" src="{{ $new->getImageUrl() }}" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{ $new->title }}</h5>
-                                        <p class="card-text">{{ $new->mini_description }}</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-    </div><br>
-    <div class="d-flex justify-content-center">
-        {!! $news->links() !!}
-    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+
+        var ENDPOINT = "{{ $author->getUrl() }}";
+        var page = 1;
+        var type = '{{$_GET['type'] ?? ''}}'
+
+        $(".load-more-data").click(function(){
+            page++;
+            infinteLoadMore(page);
+        });
+
+        function infinteLoadMore(page) {
+
+            $.ajax({
+                url: ENDPOINT + "?page=" + page,
+                data:{
+                    type: type,
+                    "_token": "{{ csrf_token() }}"
+                },
+                datatype: "html",
+                type: "get",
+                beforeSend: function () {
+                    $('.auto-load').show();
+                }
+            })
+                .done(function (response) {
+                    if (!response.pagin) {
+                        $('.more').remove();
+                    }
+                    $('.auto-load').hide();
+                    $(".news").append(response.html);
+                })
+                .fail(function (jqXHR, ajaxOptions, thrownError) {
+                    console.log('Server error occured');
+                });
+        }
+    </script>
 @endsection

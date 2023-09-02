@@ -73,6 +73,10 @@
                         {!! $news->getDescription() !!}
                     </div>
                     <div class="row">
+                        <div align="ceter">Автор: <a href={{ route('author.show', ['slug' => $news->getAuthorSlug()]) }}>{{ $news->getAuthorName() }}</a></div>
+                    </div><br><br>
+
+                    <div class="row">
                         @widget('SimilarNews', ['news_id' => $news->id])
                     </div>
 

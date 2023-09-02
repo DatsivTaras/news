@@ -1,20 +1,19 @@
 <div class="box box-info padding-1">
     <div class="box-body">
-
         <div class="mb-3">
             {{ Form::label( __('main.category')) }}
             {{ Form::select('role', $role, '', ['class' => 'form-select' . ($errors->has('role') ? ' is-invalid' : '')]) }}
             {!! $errors->first('role', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label(__('main.name')) }}
-            {{ Form::text('name', $user->name, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => __('main.name')]) }}
-            {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
-        <div class="form-group">
             {{ Form::label(__('main.surname')) }}
             {{ Form::text('surname', $user->surname, ['class' => 'form-control' . ($errors->has('surname') ? ' is-invalid' : ''), 'placeholder' => __('main.surname')]) }}
             {!! $errors->first('surname', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
+        <div class="form-group">
+            {{ Form::label(__('main.name')) }}
+            {{ Form::text('name', $user->name, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => __('main.name')]) }}
+            {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label(__('main.patronymic')) }}

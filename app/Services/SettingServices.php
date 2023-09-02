@@ -33,6 +33,12 @@ class SettingServices
         return $setting->image ? $setting->image->name : '';
     }
 
+    public static function getHeaderEmail()
+    {
+        $setting = app(SettingRepository::class)->getOne(Setting::EMAIL_ADDRESS, 'key');
+        return $setting->value ;
+    }
+
     public static function getFooterLogo()
     {
         $setting = app(SettingRepository::class)->getOne(Setting::FOOTER_IMAGE, 'key');

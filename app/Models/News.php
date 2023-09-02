@@ -87,6 +87,11 @@ class News extends Model implements Viewable
         return $this->title;
     }
 
+    public function getAuthorName()
+    {
+        return $this->author['0']->surname . ' ' . $this->author['0']->name;
+    }
+
     public function getNewsType()
     {
         if($this->type == NewsPublicationType::IMPORTANT) {
@@ -108,6 +113,10 @@ class News extends Model implements Viewable
     public function getUrl()
     {
         return route('news.show', ['slug' => $this->slug]);
+    }
+    public function getAuthorSlug()
+    {
+        return $this->author['0']->slug;
     }
 
     public function getImageUrl()
