@@ -2,8 +2,6 @@
 
 namespace App\Services;
 
-use App\Models\File;
-use App\Models\Image;
 use App\Repositories\AuthorImagesRepository;
 use App\Repositories\AuthorsRepository;
 use App\Repositories\HomeSliderRepository;
@@ -15,7 +13,6 @@ use App\Repositories\NewsRepository;
 use App\Repositories\NewsTagRepository;
 use App\Repositories\PaidNewsRepository;
 use App\Repositories\TagRepository;
-use Carbon\Carbon;
 
 /**
  * Class FlightServices
@@ -43,11 +40,8 @@ class NewsServices
         AuthorImagesRepository $authorImagesRepository,
         AuthorsRepository      $authorsRepository,
         NewsAuthorsRepository  $newsAuthorsRepository,
-        HomeSliderRepository   $homeSliderRepository
-        AuthorsRepository $authorsRepository,
-        PaidNewsRepository $paidNewsRepository,
-        NewsAuthorsRepository $newsAuthorsRepository,
-        HomeSliderRepository $homeSliderRepository
+        HomeSliderRepository   $homeSliderRepository,
+        PaidNewsRepository $paidNewsRepository
     )
     {
         $this->newsRepository = $newsRepository;
@@ -98,10 +92,7 @@ class NewsServices
         $news = $this->newsRepository->create($data);
 
         if (isset($data['image'])) {
-            $file = $data['image'];
-
-            $data['name'] = $file->store('public/image/planes');
-            $image = $this->fileRepository->create($data);
+            $image = $this->fileRepository->uploadAndCreate($data['image'], $news->title);
 
             $data['news_id'] = $news->id;
             $data['image_id'] = $image->id;
@@ -135,10 +126,7 @@ class NewsServices
             if($imageDelete) {
                 $this->newsImageRepository->delete($imageDelete);
             }
-            $file = $data['image'];
-
-            $data['name'] = $file->store('public/image/planes');
-            $image = $this->fileRepository->create($data);
+            $image = $this->fileRepository->uploadAndCreate($data['image'], $news->title);
 
             $data['news_id'] = $news->id;
             $data['image_id'] = $image->id;

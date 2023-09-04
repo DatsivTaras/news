@@ -71,9 +71,11 @@
                     <div class="row">
                         {!! $news->getDescription() !!}
                     </div>
-                    <div class="row">
-                        <div align="ceter">Автор: <a href= {{ ($news->getAuthor() ? $news->getAuthor()->getUrl() : '') }} }}>{{ $news->getAuthorName() }}</a></div>
-                    </div><br><br>
+                    @if($author = $news->getAuthor())
+                        <div class="row">
+                            <div align="ceter">Автор: <a href= {{ $author->getUrl() }} }}>{{ $author->getFullName() }}</a></div>
+                        </div><br><br>
+                    @endif
 
                     <div class="row">
                         @widget('SimilarNews', ['news_id' => $news->id])

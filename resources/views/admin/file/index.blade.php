@@ -44,10 +44,11 @@
                                             <td>{{ $file->id }}</td>
                                             <td>{{ $file->name }}</td>
                                             <td>
-                                                <a class="btn btn-primary btn-sm copy-link" data-path="{{ $file->getPath() }}">Копіювати посилання</a>
                                                 <form action="{{ route('admin.files.destroy', $file->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
+                                                    <a class="btn btn-default btn-sm" target="_blank" href="{{ $file->getPath() }}">Відкрити</a>
+                                                    <a class="btn btn-primary btn-sm copy-link" data-path="{{ $file->getPath() }}">Копіювати посилання</a>
                                                     <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i></button>
                                                 </form>
                                             </td>

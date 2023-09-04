@@ -31,7 +31,11 @@ class FileController extends Controller
      */
     public function index()
     {
-        $files = $this->repository->table();
+        $sort = [
+            'field' => 'id',
+            'direction' => 'desc'
+        ];
+        $files = $this->repository->table([], 10, $sort);
         return view('admin.file.index', compact('files'));
     }
 
@@ -56,28 +60,14 @@ class FileController extends Controller
     {
         $request->validate([
             'file' => 'required',
+            'name' => 'required|string'
         ]);
 
-        $fileName = time() . '.' . $request->file->extension();
+        $this->repository->uploadAndCreate($request->file, $request->get('name'));
 
-        $request->file->store('public/image/news');
-
-        return back()
+        return redirect(route('admin.files.index'))
             ->with('success', 'You have successfully upload file.')
-            ->with('file', $fileName);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $page = $this->pageRepository->getOneOrFail($id);
-
-        return view('admin.page.show', compact('page'));
+            ->with('file', $request->get('name'));
     }
 
     /**
@@ -87,9 +77,9 @@ class FileController extends Controller
      */
     public function destroy($id)
     {
-        $this->pageRepository->getOneOrFail($id)->delete();
+        $this->repository->getOneOrFail($id)->delete();
 
-        return redirect()->route('admin.pages.index')
-            ->with('success', 'Page deleted successfully');
+        return redirect()->route('admin.files.index')
+            ->with('success', 'File deleted successfully');
     }
 }
