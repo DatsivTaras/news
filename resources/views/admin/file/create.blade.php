@@ -43,7 +43,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         {{ Form::label(__('main.name')) }}
-                                        {{ Form::text('title', '', ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => __('main.name') ]) }}
+                                        {{ Form::text('name', '', ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => __('main.name') ]) }}
                                         {!! $errors->first('title', '<div class="invalid-feedback">:message</div>') !!}
                                     </div>
                                 </div>

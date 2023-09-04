@@ -6,20 +6,14 @@ use App\Filters\NewsBasketFilter;
 use App\Filters\NewsDraftsFilter;
 use App\Filters\NewsFilter;
 use App\Http\Controllers\Controller;
-use App\Models\HomeSlider;
 use App\Models\News;
-use App\Models\User;
-use App\Repositories\AuthorImagesRepository;
 use App\Repositories\AuthorsRepository;
 use App\Repositories\CategoryRepository;
 use App\Repositories\HomeSliderRepository;
-use App\Repositories\NewsCategoryRepository;
 use App\Repositories\NewsRepository;
 use App\Repositories\UserRepository;
 use App\Services\NewsServices;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
 /**
  * Class NewsController
@@ -76,7 +70,7 @@ class NewsController extends Controller
     {
         $tags = $image = '';
         $news = new News();
-        $news->author = auth()->user()->author->id;
+        //$news->author = auth()->user()->author->id;
         $news->category = request()->get('category_id');
         $categories = $this->categoryRepository->getCategories();
         $authors = $this->authorsRepository->getAuthors();
@@ -125,7 +119,7 @@ class NewsController extends Controller
         $categories = $this->categoryRepository->getCategories();
         $authors = $this->authorsRepository->getAuthors();
 
-        $image = implode("','", $news->image->pluck('name')->toArray());
+        $image = implode("','", $news->image->pluck('path')->toArray());
         $tags = implode(",", $news->tags->pluck('name')->toArray());
         return view('admin.news.edit', compact('news','tags', 'image', 'categories', 'authors'));
     }

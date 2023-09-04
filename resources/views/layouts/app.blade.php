@@ -28,7 +28,6 @@
         @yield('meta_tags')
     </head>
     <body>
-    {{  \App\Services\SettingServices::getHeaderEmail() }}
 
     <div class="container">
 
@@ -36,14 +35,14 @@
             <section class="top-bar">
                 <div class="custom-container">
                     <div class="left-side">
-                        <span><img src="{{ asset('/img/map_marker.png') }}">м. Львів, вул. Академіка Лазаренка, 5</span>
+                        <span><img src="{{ asset('/img/map_marker.png') }}">{{ getSetting('address') }}</span>
                     </div>
                     <div class="right-side">
                         <div class="top-bar-email">
-                            <a href="mailto:koroldanylonews@gmail.com"><img src="{{ asset('/img/email_icon.png') }}">koroldanylonews@gmail.com</a>
+                            <a href="mailto:{{ getSetting('email_address') }}"><img src="{{ asset('/img/email_icon.png') }}">{{ getSetting('email_address') }}</a>
                         </div>
                         <div class="top-bar-phone">
-                            <a href=“tel:0800 368 32 79”><img src="{{ asset('/img/Phone_icon.png') }}">0800 368 32 79</a>
+                            <a href=“tel:{{ getSetting('phone') }}”><img src="{{ asset('/img/Phone_icon.png') }}">{{ getSetting('phone') }}</a>
                         </div>
                     </div>
                 </div>

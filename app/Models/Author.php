@@ -51,6 +51,11 @@ class Author extends Model
         return $filter->apply($builder);
     }
 
+    public function getFullName()
+    {
+        return $this->surname . ' ' . $this->name;
+    }
+
     public function getUrl()
     {
         return route('author.show', ['slug' => $this->slug]);
