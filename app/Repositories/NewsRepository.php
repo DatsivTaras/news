@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Classes\Enum\NewsPublicationType;
 use App\Classes\Enum\NewsType;
 use App\Models\News;
+use App\Models\PaidNews;
 use App\Repositories\BaseRepository;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
@@ -49,10 +50,6 @@ class  NewsRepository extends BaseRepository
         /** @var Builder $query */
         $query = ($this->getModelClass())::query();
 
-        if ($defaultSort) {
-            $query->orderBy($defaultSort['field'], $defaultSort['direction'] ?? 'asc');
-        }
-
         if (isset($options['search'])) {
             $query->search($options['search']);
             unset($options['search']);
@@ -65,18 +62,20 @@ class  NewsRepository extends BaseRepository
             }
             if ($options['viewType'] == 'popular') {
 
-
-                $selectedOptionValuesIDSort = [117, 115];
+                $defaultSort = null;
+                $paidNewsId = PaidNews::pluck('news_id')->toArray();
+                $selectedOptionValuesIDSort = $paidNewsId;
 
                 $sortedIds = implode(',', $selectedOptionValuesIDSort);
-                $query->orderByRaw("FIELD(id, {$sortedIds})");
+                $query->orderByRaw("FIELD(id, {$sortedIds}) DESC");
 
-
-
-//                $query->whereDate('created_at','=', now()->format('Ymd'));
+                $query->whereDate('created_at','=', now()->format('Ymd'));
                 $query->orderByUniqueViews('desc');
-
             }
+        }
+
+        if ($defaultSort) {
+            $query->orderBy($defaultSort['field'], $defaultSort['direction'] ?? 'asc');
         }
 
         $query->where('date_of_publication','<=', now());
@@ -120,8 +119,10 @@ class  NewsRepository extends BaseRepository
     {
         $news = News::with('news_category')
             ->whereHas('news_category', function ($q) use($id){
-                $q->where('category_id', $id);
+                $q->where('category_id', $id)
+                    ->where('news.date_of_publication','<=', now());
             })
+            ->orderBy('created_at', 'DESC')
             ->first();
 
         return $news;

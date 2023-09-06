@@ -1,5 +1,6 @@
 <div class="box box-info padding-1">
     <div class="box-body">
+        <input type="hidden" value="{{ $author->user->id }}" name="id">
         <div class="form-group">
             {{ Form::label(__('main.name')) }}
             {{ Form::text('name', $author->name, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => __('main.name')]) }}
@@ -14,6 +15,11 @@
             {{ Form::label(__('main.patronymic')) }}
             {{ Form::text('patronymic', $author->patronymic, ['class' => 'form-control' . ($errors->has('patronymic') ? ' is-invalid' : ''), 'placeholder' => __('main.patronymic')]) }}
             {!! $errors->first('patronymic', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
+        <div class="form-group">
+            {{ Form::label(__('main.email')) }}
+            {{ Form::text('email', $author->user->email, ['class' => 'form-control' . ($errors->has('email') ? ' is-invalid' : ''), 'placeholder' => __('main.email')]) }}
+            {!! $errors->first('email', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('text',  __('main.photo'), ['class' => 'form-label']) }}

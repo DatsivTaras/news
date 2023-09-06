@@ -29,7 +29,7 @@ class NewsController extends Controller
 
     public function index()
     {
-        $sliderNews = $this->homeSliderRepository->get();
+        $sliderNews = $this->homeSliderRepository->getSliderNews();
         $mainBlock = HomeServices::getHeaderMainBlockCategory();
         $mainBlocktwo = HomeServices::getHeaderMainBlockCategorytwo();
 
@@ -41,6 +41,17 @@ class NewsController extends Controller
         $view = view('news._list-news', compact('news'))->render();
 
         return response()->json(['html' => $view]);
+    }
+
+    public function loaderNews(Request $request)
+    {
+        $news = News::where('id', '<', $request->lastNewId )->orderBy('id','DESC')->first();
+        $view = '';
+        if ($news) {
+            $view = view('news._loder_news', compact('news'))->render();
+        }
+
+        return response()->json(['html' => $view, 'newsId' => $news ? $news->id : 0]);
     }
     /**
      * Display the specified resource.

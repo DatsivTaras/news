@@ -20,6 +20,13 @@ class CategoryRepository extends BaseRepository
             ->toArray();
     }
 
+    public function getParentsCategoriesForNews()
+    {
+        return Category::doesnthave('parent')
+            ->pluck('name', 'id')
+            ->toArray();
+    }
+
     public function getFooterCategories()
     {
         return Category::doesntHave('parent')->get();

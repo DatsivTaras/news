@@ -97,6 +97,7 @@ class ProfileController extends Controller
      */
     public function update(AuthorsEditRequest $request, $id)
     {
+        $request->user = $id;
         $data = $request->validated();
 
         $this->authorServices->updateAuthors($id, $data);

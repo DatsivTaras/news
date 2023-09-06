@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class  AuthorsEditRequest extends FormRequest
+class UserUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,14 +23,14 @@ class  AuthorsEditRequest extends FormRequest
      */
     public function rules()
     {
-        $request = request()->all();
         return [
-            'name' => 'required',
-            'surname' => 'required',
-            'email' => ['required', 'email', \Illuminate\Validation\Rule::unique('users')->ignore($request['id'])],
-            'image' => '',
-            'patronymic' => 'required',
-            'biography' => 'required',
+               'name' => 'required',
+               'surname' => 'required',
+               'role' => 'required',
+               'patronymic' => 'required',
+               'biography' => 'required',
+               'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+               'password' => ['required', 'string', 'min:8', 'confirmed'],
         ];
     }
 }

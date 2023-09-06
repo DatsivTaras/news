@@ -64,6 +64,7 @@
                                         <p>Джерело: заява генерального штабу ЗСУ</p>
                                         <a class="home-big-news-read-more" href="{{$slide->news->getUrl()}}">Деталі > </a>
                                     </div>
+
                                 </div>
                             </div>
                         </div>

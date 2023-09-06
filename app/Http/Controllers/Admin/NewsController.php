@@ -68,11 +68,16 @@ class NewsController extends Controller
      */
     public function create()
     {
+        $categories = [];
         $tags = $image = '';
         $news = new News();
         //$news->author = auth()->user()->author->id;
         $news->category = request()->get('category_id');
-        $categories = $this->categoryRepository->getCategories();
+
+        $categories +=[
+            '' => 'Виберіть Батьківську Категорію'
+        ];
+        $categories += $this->categoryRepository->getParentsCategoriesForNews();
         $authors = $this->authorsRepository->getAuthors();
 
         return view('admin.news.create', compact('news', 'tags', 'image', 'categories', 'authors'));

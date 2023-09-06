@@ -12,7 +12,7 @@
         <br>
         <div class="row">
             <form action="{{ route('search')  }}" method="get" style="float: right">
-                <div class="input-group">
+                <div  class="input-group">
                     <input name="query" value="{{ isset($_GET['query']) ? $_GET['query'] : '' }}" class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
                     <button class="btn btn-primary" id="btnNavbarSearch" type="submit"><i class="fas fa-search"></i></button>
                 </div><br>

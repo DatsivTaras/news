@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserUpdateRequest;
 use App\Models\User;
 use App\Repositories\RoleRepository;
 use App\Repositories\UserRepository;
@@ -51,7 +52,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        $user = new User();
+        $user = new
+ User();
         $role = $this->roleRepository->getRole();
 
         return view('admin/user.create', compact('user', 'role'));
@@ -63,9 +65,9 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserUpdateRequest $request)
     {
-        $data = request()->validate(User::$rules);
+        $data = $request->validated();
 
         $this->userServices->saveUser($data);
 

@@ -6,6 +6,7 @@ return [
     'captionToPhoto' => 'Підпис до фото',
     'home' => 'Головна',
     'add' => 'Додати',
+    'parentCategory' => 'Батьківська категорія',
     'OnPaidNews' => 'В Платні новини',
     'publish' => 'Опублікувати',
     'draft' => 'Чернетка',
