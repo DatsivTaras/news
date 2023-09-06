@@ -30,6 +30,11 @@ class HomeSlider extends Model
         return $this->hasOne(News::class, 'id','news_id');
     }
 
+    public function getcategoryName()
+    {
+        return $this->news->category->first()->name;
+    }
+
     static $rules = [
 		'sort_order' => '',
 		'news_id' => 'required',

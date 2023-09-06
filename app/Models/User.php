@@ -34,15 +34,7 @@ use Spatie\Permission\Traits\HasRoles;
 class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable, HasRoles;
-    static $rules = [
-		'name' => 'required',
-		'surname' => 'required',
-		'role' => 'required',
-		'patronymic' => 'required',
-		'biography' => 'required',
-        'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-        'password' => ['required', 'string', 'min:8', 'confirmed'],
-    ];
+   
 
     protected $perPage = 20;
 

@@ -22,6 +22,13 @@
     <meta property="og:image:height" content="960">
     <meta name="robots" content="max-image-preview:large">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <head>
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <title>Load More Data on Button Click using JQuery Laravel - ItSolutionStuff.com</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    </head>
+    <body>
 @endsection
 
 @section('template_title')
@@ -62,7 +69,7 @@
                         {{$news->getTitle()}}
                         <div class="category">
                         <img class="card-img-top" src="{{ $news->getImageUrl() }}" width="200" height="600" alt="Card image cap">
-                        <div style="background-color:coral "class="top-left">{{ $news->category['0']->name }}</div>
+                        <div style="background-color:coral "class="top-left">{{ $news->getCategoryName() }}</div>
                         </div>
                     </h1>
                     <div class="row">
@@ -96,11 +103,28 @@
                 </div>
             </div>
         </div>
+
         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         <script async defer crossorigin="anonymous" src="https://connect.facebook.net/uk_UA/sdk.js#xfbml=1&version=v17.0&appId= 255331274088195&autoLogAppEvents=1" nonce="znv8STtW" ></script>
+        <div class="data-loader"></div>
+        <div class="auto-load text-center" style="display: none;">
+            <svg version="1.1" id="L9" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                 x="0px" y="0px" height="60" viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
+            <path fill="#000"
+                  d="M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50">
+                <animateTransform attributeName="transform" attributeType="XML" type="rotate" dur="1s"
+                                  from="0 50 50" to="360 50 50" repeatCount="indefinite" />
+            </path>
+        </svg>
+        </div>
     </div>
 
     <script>
+        var ENDPOINT = "{{ route('loader-news') }}";
+        var page = 1;
+        var ajaxproces = false;
+        var lastNewId = '{{ $news->id }}';
+
         $(document).ready(function(){
             $(document).on('click', '#copy-link', function(){
                 var $temp = $("<input>");
@@ -111,6 +135,47 @@
                 alert('Посилання успішно скопійовано у буфер обміну')
             });
         })
+
+        $(window).scroll(function () {
+            if ($(window).scrollTop() + $(window).height() >= ($(document).height() - 20)) {
+                page++;
+                infinteLoadMore(page);
+            }
+        });
+        function infinteLoadMore(page) {
+        if ((ajaxproces == true) || (lastNewId == 0)) {
+            return ;
+        }
+            ajaxproces = true
+            $.ajax({
+                url: ENDPOINT,
+                data:{
+                    lastNewId: lastNewId,
+                    "_token": "{{ csrf_token() }}"
+                },
+                datatype: "html",
+                type: "get",
+                beforeSend: function () {
+                    $('.auto-load').show();
+                }
+            })
+                .done(function (response) {
+                    lastNewId = response['newsId'];
+                    ajaxproces = false;
+                    if (response.html == '') {
+                        $('.auto-load').html('');
+                        return;
+                    }
+
+                    $('.auto-load').hide();
+                    $(".data-loader").append(response.html);
+                })
+                .fail(function (jqXHR, ajaxOptions, thrownError) {
+                    ajaxproces = false;
+                    console.log('Server error occured');
+                });
+        }
+
     </script>
 @endsection
 

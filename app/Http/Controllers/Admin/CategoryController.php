@@ -65,7 +65,7 @@ class CategoryController extends Controller
         $parentCategory +=[
             '' => 'Виберіть Батьківську Категорію'
         ];
-        $parentCategory += Category::pluck('name', 'id')->toArray();
+        $parentCategory += $this->categoryRepository->getParentsCategoriesForNews();
 
         return view('admin.category.create', compact('category', 'parentCategory'));
     }

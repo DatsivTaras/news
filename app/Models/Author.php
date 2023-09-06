@@ -29,6 +29,7 @@ class Author extends Model
 		'name' => 'required',
 		'user_id' => 'required',
 		'image' => '',
+		'email' => 'required',
 		'patronymic' => 'required',
 		'biography' => 'required',
     ];
@@ -79,7 +80,7 @@ class Author extends Model
     }
     public function getImageUrl()
     {
-        return $this->image && isset($this->image[0]) ? asset(Storage::url( $this->image[0]->name)) : 'defualtimgae.png';
+        return $this->image && isset($this->image[0]) ? asset(Storage::url( $this->image[0]->path)) : 'defualtimgae.png';
     }
 
 

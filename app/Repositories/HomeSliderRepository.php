@@ -22,4 +22,17 @@ class  HomeSliderRepository extends BaseRepository
     {
         return $this->getQuery()->orderBy('created_at',)->first()->delete();
     }
+    public function getSliderNews()
+    {
+        $options = [
+            'whereHas' => [
+                ['news',
+                    function ($query)  {
+                        return $query->where('date_of_publication', '<=', now());
+                    }]
+            ],
+        ];
+
+        return $this->get($options);
+    }
 }

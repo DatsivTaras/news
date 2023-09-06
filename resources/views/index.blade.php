@@ -18,10 +18,11 @@
                                 <a  href="{{$slide->news->getUrl()}}" style="text-decoration: none; color:black">
                                     <div class="category">
                                         <img class="card-img-top" src="{{ $slide->news->getImageUrl() }}"  width="200" height="400" alt="Card image cap" title=";ddfdf"/>
-                                        <div style="background-color:coral "class="top-left">{{ $slide->news->category['0']->name }}</div>
+                                        <div style="background-color:coral "class="top-left">{{ $slide->getcategoryName() }}</div>
                                         <div class="card-body">
                                             <h5 class="card-title">{{ $slide->news->title }}</h5>
                                             <p class="card-text">{{ $slide->news->mini_description }}</p>
+                                            <b>Джерело :</b> {{ $slide->news->subtitle }}
                                         </div>
                                     </div>
                                 </a>
@@ -31,17 +32,17 @@
                                 <a href="{{$slide->news->getUrl()}}" style="text-decoration: none; color:black">
                                     <div class="category">
                                         <img class="card-img-top" src="{{ $slide->news->getImageUrl() }}" width="200" height="200" alt="Card image cap">
-                                        <div style="background-color:coral" class="top-left">{{ $slide->news->category['0']->name }}</div>
+                                        <div style="background-color:coral "class="top-left">{{ $slide->getcategoryName() }}</div>
                                         <div class="card-body">
                                             <h5 class="card-title">{{ $slide->news->title }}</h5>
                                             <p class="card-text">{{ $slide->news->mini_description }}</p>
+                                            <b>Джерело :</b> {{ $slide->news->subtitle }}
                                         </div>
                                     </div>
                                 </a>
                             </div>
                         @endif
                     @endforeach
-
                 </div>
             </div>
             @if ($mainBlock)
@@ -49,10 +50,11 @@
                     <a  href="{{$mainBlock->getUrl()}}" style="text-decoration: none; color:black">
                         <div class="category">
                             <img class="card-img-top" src="{{ $mainBlock->getImageUrl() }}"  width="200" height="400" alt="Card image cap" title=";ddfdf"/>
-                            <div style="background-color:coral "class="top-left">{{ $mainBlock->category['0']->name }}</div>
+                            <div style="background-color:coral "class="top-left">{{ $mainBlock->getCategoryName()}}</div>
                             <div class="card-body">
                                 <h5 class="card-title">{{ $mainBlock->title }}</h5>
-{{--                                <p class="card-text">{{ $mainBlock->mini_description }}</p>--}}
+                                <b>Джерело :</b> {{ $mainBlock->subtitle }}
+                                {{--<p class="card-text">{{ $mainBlock->mini_description }}</p>--}}
                             </div>
                         </div>
                     </a>
@@ -63,12 +65,13 @@
                     <div class="col-sm-6">
                         <a href="{{ $news->getUrl() }}" style="text-decoration: none; color:black">
                             <div class="category">
-                                <div style="background-color:coral "class="top-left">{{ $news->category['0']->name }}</div>
+                                <div style="background-color:coral "class="top-left">{{ $news->getcategoryName() }}</div>
                                 <img class="card-img-top" src="{{ $news->getImageUrl() }}" width="200" height="200" alt="Card image cap">
                                 <div style="background-color:coral" class="top-left"></div>
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $news->title }}</h5>
                                     <p class="card-text"></p>
+                                    <b>Джерело :</b> {{ $news->subtitle }}
                                 </div>
                             </div>
                         </a>

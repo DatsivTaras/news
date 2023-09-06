@@ -43,9 +43,7 @@ class PaidNewsController extends Controller
      */
     public function create()
     {
-
-        $paidNews = new PaidNews();
-        return view('admin.paid-news.create', compact('paidNews'));
+        ABORT(404);
     }
 
     /**
@@ -69,9 +67,7 @@ class PaidNewsController extends Controller
      */
     public function show($id)
     {
-        $paidNews = PaidNews::find($id);
 
-        return view('admin.paid-news.show', compact('paidNews'));
     }
 
     /**
@@ -82,9 +78,7 @@ class PaidNewsController extends Controller
      */
     public function edit($id)
     {
-        $paidNews = PaidNews::find($id);
 
-        return view('admin.paid-news.edit', compact('paidNews'));
     }
 
     /**
@@ -96,12 +90,7 @@ class PaidNewsController extends Controller
      */
     public function update(Request $request, PaidNews $paidNews)
     {
-        request()->validate(PaidNews::$rules);
 
-        $paidNews->update($request->all());
-
-        return redirect()->route('admin.paid-news.index')
-            ->with('success', 'PaidNews updated successfully');
     }
 
     /**

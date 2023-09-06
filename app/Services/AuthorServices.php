@@ -13,6 +13,7 @@ use App\Repositories\NewsImageRepository;
 use App\Repositories\NewsRepository;
 use App\Repositories\NewsTagRepository;
 use App\Repositories\TagRepository;
+use App\Repositories\UserRepository;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 
@@ -24,29 +25,29 @@ class AuthorServices
     private $authorImagesRepository;
     private $authorsRepository;
     private $newsAuthorsRepository;
+    private $userRepository;
     private $imageRepository;
 
     public function __construct(
         AuthorImagesRepository $authorImagesRepository,
         AuthorsRepository $authorsRepository,
         NewsAuthorsRepository $newsAuthorsRepository,
-        FileRepository $imageRepository
+        UserRepository $userRepository,
+        FileRepository $fileRepository
     )
     {
         $this->authorImagesRepository = $authorImagesRepository;
         $this->authorsRepository = $authorsRepository;
         $this->newsAuthorsRepository = $newsAuthorsRepository;
-        $this->imageRepository = $imageRepository;
+        $this->fileRepository = $fileRepository;
+        $this->userRepository = $userRepository;
     }
     public function saveAuthors(array $data)
     {
         $data['slug'] = Str::slug($data['surname'], '_');
         $author = $this->authorsRepository->create($data);
         if (isset($data['image'])) {
-            $file = $data['image'];
-
-            $data['name'] = $file->store('public/image/author');
-            $image = $this->imageRepository->create($data);
+            $image = $this->fileRepository->uploadAndCreate($data['image'], $author->name);
 
             $data['author_id'] = $author->id;
             $data['image_id'] = $image->id;
@@ -56,19 +57,20 @@ class AuthorServices
     public function updateAuthors($id, $data)
     {
         $author = $this->authorsRepository->getOneOrFail(auth()->user()->author->id, 'id');
+        $user = $this->userRepository->getOneOrFail(auth()->user()->author->user_id, 'id');
 
         $data['slug'] = Str::slug($data['surname'], '_');
         $this->authorsRepository->update($author, $data);
+
+        $this->userRepository->update($user, $data);
 
         if (isset($data['image'])) {
             $imageDelete = $this->authorImagesRepository->getOne($author->id, 'author_id');
             if($imageDelete) {
                 $this->authorImagesRepository->delete($imageDelete);
             }
-            $file = $data['image'];
 
-            $data['name'] = $file->store('public/image/author');
-            $image = $this->imageRepository->create($data);
+            $image = $this->fileRepository->uploadAndCreate($data['image'], $author->name);
 
             $data['author_id'] = $author->id;
             $data['image_id'] = $image->id;
