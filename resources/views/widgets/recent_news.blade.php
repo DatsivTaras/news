@@ -47,6 +47,6 @@
         @endif
 
     </div>
-    <a href="/news"> Читати всі новини </a>
+    <a class="read-all-news" href="/news"> Читати всі новини </a>
 </div>
 

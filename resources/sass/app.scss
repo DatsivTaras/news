@@ -151,6 +151,10 @@
     font-style: italic;
 }
 
+body {
+    background-image: linear-gradient(#ffffff, #d1d1d1);
+}
+
 
 
 .top-bar {
@@ -344,6 +348,440 @@
                 }
             }
         }
+    }
+}
+
+.home-content {
+    .main-widget-left {
+        background-color: #ffffff;
+        border: 1px solid #d1d1d1;
+        padding: 20px 10px;
+        .main-widget-title {
+            font-size: 14px;
+            color: #333d8e;
+            font-family: "Gotham Pro";
+            text-transform: uppercase;
+            text-align: center;
+            border-bottom: 2px solid #585857;
+            padding-bottom: 5px;
+        }
+        #myTab {
+            border: none;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            .nav-item {
+                .nav-link {
+                    border: none;
+                    padding: 0 16px;
+                    font-size: 12px;
+                    color: #56564f;
+                    font-weight: 500;
+                    font-family: "Gotham Pro";
+                    &.active {
+                        color: #333d8e;
+                        border-bottom: 2px solid #fbdf6d;
+                    }
+                    &:hover {
+                        color: #333d8e;
+                        border-bottom: 2px solid #fbdf6d;
+                    }
+                }
+            }
+        }
+        .tab-content {
+            .widget-news-link {
+                div {
+                    .news-description {
+                        font-size: 11px;
+                        color: #56564f;
+                        font-weight: 500;
+                        font-family: "Gotham Pro";
+                        margin-bottom: 0;
+                    }
+                    .news-time {
+                        font-size: 11px;
+                        color: #56564f;
+                        font-weight: 500;
+                        font-family: "Gotham Pro";
+                        margin-bottom: 0;
+                    }
+                    &.main {
+                        .news-description {
+                            color: #333d8e;
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }
+        }
+        .read-all-news {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 25px;
+            font-size: 13px;
+            color: #293564;
+            font-family: "Gotham Pro";
+            background-color: #ffd62c;
+            text-decoration: none;
+        }
+    }
+    .home-left-block {
+        .home-big-news {
+            min-height: 380px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+            padding: 40px;
+            flex-direction: column;
+            a {
+                display: flex;
+                justify-content: flex-end;
+                max-width: 50%;
+                .category {
+                    display: flex;
+                    align-items: flex-end;
+                    flex-direction: column;
+                    .card-body {
+                        margin-top: 10px;
+                        .card-title {
+                            font-size: 27px;
+                            color: #333d8e;
+                            font-weight: 800;
+                            font-family: "Gotham Pro";
+                            text-align: right;
+                            background: #ffffff87;
+                            padding: 0 5px;
+                        }
+                        .card-text {
+                            font-size: 25px;
+                            color: #333d8e;
+                            font-weight: 400;
+                            font-family: "Gotham Pro";
+                            text-align: right;
+                            background: #ffffff87;
+                            line-height: 27px;
+                            margin-top: 5px;
+                            padding: 0 5px;
+                        }
+                    }
+                }
+            }
+            .home-big-news-category {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                height: 28px;
+                max-width: 170px;
+                padding: 0 20px;
+                background-color: #ffd62c;
+                font-size: 10px;
+                color: #1f5e9c;
+                font-weight: 500;
+                font-family: "Gotham Pro";
+                &:after {
+                    content: '';
+                    position: absolute;
+                    left: 100%;
+                    bottom: 0;
+                    width: 0;
+                    height: 0;
+                    border-top: 10px solid transparent;
+                    border-left: 15px solid #ffd62c;
+                    border-bottom: 0 solid transparent;
+                }
+            }
+            .home-big-news-footer {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                margin-top: 40px;
+                div {
+                    display: flex;
+                    width: 100%;
+                    align-items: center;
+                    &.home-big-news-footer-center {
+                        justify-content: center;
+                        .home-big-news-read-more {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            width: 100%;
+                            max-width: none;
+                            font-size: 16px;
+                            color: #293564;
+                            font-family: "Gotham Pro";
+                            height: 29px;
+                            background-color: #ffd62c;
+                            text-decoration: none;
+                        }
+                    }
+                    &.home-big-news-footer-right {
+                        flex-direction: column;
+                        align-items: flex-end;
+                        p {
+                            font-size: 8px;
+                            color: #ffffff;
+                            font-weight: 500;
+                            font-family: "Gotham Pro";
+                            text-align: right;
+                            margin-bottom: 0;
+                        }
+                        a {
+                            font-size: 10px;
+                            color: #ffffff;
+                            font-family: "Gotham Pro";
+                            text-align: right;
+                            text-decoration: none;
+                        }
+                    }
+                }
+            }
+        }
+        .three-news-blocks {
+            margin: 40px 0;
+            .category {
+                position: relative;
+                .three-news-blocks-category {
+                    position: absolute;
+                    top: 10px;
+                    left: 10px;
+                    height: 18px;
+                    border-radius: 1px;
+                    background-color: #ffd62c;
+                    padding: 0 10px 0 5px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    .triangle {
+                        position: relative;
+                        &:after {
+                            content: '';
+                            position: absolute;
+                            right: -10px;
+                            top: 17px;
+                            width: 0;
+                            height: 0;
+                            border-left: 15px solid transparent;
+                            border-right: 0 solid transparent;
+                            border-top: 15px solid #ffd62c;
+                        }
+                    }
+                }
+                .card-img-top {
+                    object-fit: cover;
+                }
+                .card-body {
+                    background: #ffffff;
+                    padding: 10px;
+                    min-height: 141px;
+                    .card-title {
+                        font-size: 14px;
+                        color: #333d8e;
+                        font-weight: bold;
+                        font-family: "Gotham Pro";
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+                    .card-text {
+                        font-size: 10px;
+                        color: #000000;
+                        font-weight: 500;
+                        font-family: "Gotham Pro";
+                        margin-bottom: 0;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 4;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+                    a {
+                        font-size: 12px;
+                        color: #56564f;
+                        font-family: "Gotham Pro";
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+        .home-right-single-news {
+            .home-news-container {
+                position: relative;
+                height: 380px;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+                display: flex;
+                align-items: flex-end;
+                justify-content: flex-start;
+                padding: 40px;
+                flex-direction: column;
+                .category {
+                    display: flex;
+                    flex-direction: column;
+                    height: 100%;
+                    width: 50%;
+                    .home-single-news-category {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        height: 28px;
+                        max-width: 170px;
+                        padding: 0 20px;
+                        background-color: #ffd62c;
+                        font-size: 10px;
+                        color: #1f5e9c;
+                        font-weight: 500;
+                        font-family: "Gotham Pro";
+                        position: absolute;
+                        top: 25px;
+                        left: 25px;
+                        .triang {
+                            position: relative;
+                            &:after {
+                                content: "";
+                                position: absolute;
+                                right: -35px;
+                                bottom: -6px;
+                                width: 0;
+                                height: 0;
+                                border-top: 10px solid transparent;
+                                border-left: 15px solid #ffd62c;
+                                border-bottom: 0 solid transparent;
+                            }
+                        }
+                    }
+                    .card-body {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-end;
+                        .card-title {
+                            font-size: 26px;
+                            line-height: 33px;
+                            color: #333d8e;
+                            font-weight: 800;
+                            font-family: "Gotham Pro";
+                            text-align: right;
+                            padding: 0 5px;
+                            background: rgba(255, 255, 255, 0.5294117647);
+                        }
+                        .card-text {
+                            display: flex;
+                            max-width: 255px;
+                            font-size: 12px;
+                            color: #ffffff;
+                            font-weight: 500;
+                            font-family: "Gotham Pro";
+                            text-align: right;
+                        }
+                    }
+                    .home-single-news-footer-right {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-end;
+                        p {
+                            font-size: 8px;
+                            color: #ffffff;
+                            font-weight: 500;
+                            font-family: "Gotham Pro";
+                        }
+                        a {
+                            font-size: 10px;
+                            color: #ffffff;
+                            font-family: "Gotham Pro";
+                            text-align: right;
+                            text-decoration: none;
+                            ext-shadow: 0px 0px 4px #000000;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .home-two-news-container {
+        margin-top: 40px;
+        .category {
+            position: relative;
+            .home-two-news-category {
+                position: absolute;
+                right: 30px;
+                top: 30px;
+                height: 24px;
+                border-radius: 1px;
+                background-color: #ffd62c;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 13px;
+                color: #1f5e9c;
+                font-weight: 500;
+                font-family: "Gotham Pro";
+                .triangl {
+                    position: relative;
+                    padding: 0 10px;
+                    &:after {
+                        content: "";
+                        position: absolute;
+                        left: 100%;
+                        bottom: -1px;
+                        width: 0;
+                        height: 0;
+                        border-top: 10px solid transparent;
+                        border-left: 15px solid #ffd62c;
+                        border-bottom: 0 solid transparent;
+                    }
+                }
+            }
+            .card-img-top {
+                min-height: 260px;
+                object-fit: cover;
+            }
+            .card-body {
+                background: #ffffff;
+                padding: 10px;
+                min-height: 181px;
+                .card-title {
+                    font-size: 25px;
+                    line-height: 25px;
+                    color: #333d8e;
+                    font-weight: bold;
+                    font-family: "Gotham Pro";
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    margin: 10px 0;
+                }
+                .card-author-date {
+                    font-size: 12px;
+                    color: #56564f;
+                    font-weight: 500;
+                    font-family: "Gotham Pro";
+                    text-transform: uppercase;
+                }
+                .card-source {
+                    font-size: 10px;
+                    color: #000000;
+                    font-weight: 500;
+                    font-family: "Gotham Pro";
+                }
+                a {
+                    font-size: 10px;
+                    color: #56564f;
+                    font-family: "Gotham Pro";
+                }
+            }
+        }
+
     }
 }
 

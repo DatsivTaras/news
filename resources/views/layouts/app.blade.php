@@ -62,10 +62,10 @@
                               @endforeach
                           </ul>
                         </div>
-                        <div class="chose-lang">
+                       <!-- <div class="chose-lang">
                             <a class="language active" href="/">UA</a>
                             <a class="language" href="/">EN</a>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="main-header-center">
                         <span><img src="{{ asset('/img/title_logo.png')}} ">КОРОЛЬ ДАНИЛО</span>
