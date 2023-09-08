@@ -5,17 +5,15 @@
 @endsection
 
 @section('content')
-    <h1 class="text-center">
+    <h1 class="text-center news-category-title">
         {{$category->getName()}}
     </h1>
 
     @include('layouts.filterMenu')
     <div class="container">
-        <div class="row">
-            <div class="col-sm-3">
-                <hr>
-                <h3>Стрічка новин</h3>
-                <hr>
+        <div class="row home-content">
+            <div class="col-sm-3 main-widget-left">
+                <h3 class="main-widget-title">Стрічка новин</h3>
                 @widget('recentNews')
             </div>
 
