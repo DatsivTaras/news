@@ -113,7 +113,7 @@ class NewsServices
         $data['category_id'] = $data['category_id'];
         $this->newsCategoryRepository->create($data);
 
-        $data['author_id'] = $data['category_id'];
+        $data['author_id'] = $data['author_id'];
         $data['news_id'] = $news->id;
         $this->newsAuthorsRepository->create($data);
     }

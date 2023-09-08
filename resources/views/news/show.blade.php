@@ -106,6 +106,7 @@
 
         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         <script async defer crossorigin="anonymous" src="https://connect.facebook.net/uk_UA/sdk.js#xfbml=1&version=v17.0&appId= 255331274088195&autoLogAppEvents=1" nonce="znv8STtW" ></script>
+
         <div class="data-loader"></div>
         <div class="auto-load text-center" style="display: none;">
             <svg version="1.1" id="L9" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"

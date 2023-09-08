@@ -27,6 +27,7 @@ class UserUpdateRequest extends FormRequest
                'name' => 'required',
                'surname' => 'required',
                'role' => 'required',
+               'image' => '',
                'patronymic' => 'required',
                'biography' => 'required',
                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],

@@ -56,8 +56,8 @@ class AuthorServices
     }
     public function updateAuthors($id, $data)
     {
-        $author = $this->authorsRepository->getOneOrFail(auth()->user()->author->id, 'id');
-        $user = $this->userRepository->getOneOrFail(auth()->user()->author->user_id, 'id');
+        $author = $this->authorsRepository->getOneOrFail($id, 'id');
+        $user = $this->userRepository->getOneOrFail($author->user->id, 'id');
 
         $data['slug'] = Str::slug($data['surname'], '_');
         $this->authorsRepository->update($author, $data);

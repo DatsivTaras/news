@@ -64,10 +64,12 @@ class  NewsRepository extends BaseRepository
 
                 $defaultSort = null;
                 $paidNewsId = PaidNews::pluck('news_id')->toArray();
-                $selectedOptionValuesIDSort = $paidNewsId;
+                if($paidNewsId) {
+                    $selectedOptionValuesIDSort = $paidNewsId;
 
-                $sortedIds = implode(',', $selectedOptionValuesIDSort);
-                $query->orderByRaw("FIELD(id, {$sortedIds}) DESC");
+                    $sortedIds = implode(',', $selectedOptionValuesIDSort);
+                    $query->orderByRaw("FIELD(id, {$sortedIds}) DESC");
+                }
 
                 $query->whereDate('created_at','=', now()->format('Ymd'));
                 $query->orderByUniqueViews('desc');
