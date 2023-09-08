@@ -55,40 +55,38 @@
     </style>
 
     <div class="container">
-        <div class="row">
-            <div class="col-sm-3">
-                <hr>
-                <h3>Стрічка новин</h3>
-                <hr>
+        <div class="row home-content">
+            <div class="col-sm-3 main-widget-left">
+                <h3 class="main-widget-title">Стрічка новин</h3>
                 @widget('recentNews')
             </div>
 
             <div class="col-sm-9">
-                <div class="row">
-                    <h1 class="text-center">
+                <div class="row single-news-container">
+                    <div class="category">
+                        <img class="card-img-top" src="{{ $news->getImageUrl() }}"alt="Card image cap">
+                        <div class="top-left"><div class="triangle">{{ $news->getCategoryName() }}</div></div>
+                    </div>
+                    <h1 class="single-news-title">
                         {{$news->getTitle()}}
-                        <div class="category">
-                        <img class="card-img-top" src="{{ $news->getImageUrl() }}" width="200" height="600" alt="Card image cap">
-                        <div style="background-color:coral "class="top-left">{{ $news->getCategoryName() }}</div>
-                        </div>
                     </h1>
-                    <div class="row">
+                   <!-- <div class="row">
                         <i>{{ $news->getPublicationDate() }}</i>
-                    </div>
-                    <div class="row">
-                        {!! $news->getDescription() !!}
-                    </div>
+                    </div> -->
                     @if($author = $news->getAuthor())
-                        <div class="row">
-                            <div align="ceter">Автор: <a href= {{ $author->getUrl() }} }}>{{ $author->getFullName() }}</a></div>
+                        <div class="row single-news-author">
+                            <i>Автор: <b><a href= {{ $author->getUrl() }} }}>{{ $author->getFullName() }}</a></b></i>
                         </div><br><br>
                     @endif
+                    <div class="row single-news-description">
+                        {!! $news->getDescription() !!}
+                    </div>
 
-                    <div class="row">
+                    <div class="row similar-news-container">
                         @widget('SimilarNews', ['news_id' => $news->id])
                     </div>
 
-                    <div class="row">
+                    <div class="row single-news-tags">
                         <div class="btn-group">
                             {{ 'Теги :' }}
                             @foreach($news->tags as $tag)
@@ -110,12 +108,12 @@
         <div class="auto-load text-center" style="display: none;">
             <svg version="1.1" id="L9" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                  x="0px" y="0px" height="60" viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
-            <path fill="#000"
-                  d="M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50">
-                <animateTransform attributeName="transform" attributeType="XML" type="rotate" dur="1s"
-                                  from="0 50 50" to="360 50 50" repeatCount="indefinite" />
-            </path>
-        </svg>
+                <path fill="#000"
+                      d="M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50">
+                    <animateTransform attributeName="transform" attributeType="XML" type="rotate" dur="1s"
+                                      from="0 50 50" to="360 50 50" repeatCount="indefinite" />
+                </path>
+            </svg>
         </div>
     </div>
 
