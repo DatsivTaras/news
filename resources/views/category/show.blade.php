@@ -9,15 +9,17 @@
         {{$category->getName()}}
     </h1>
 
-    @include('layouts.filterMenu')
     <div class="container">
         <div class="row home-content">
             <div class="col-sm-3 main-widget-left">
                 <h3 class="main-widget-title">Стрічка новин</h3>
                 @widget('recentNews')
             </div>
-
             <div class="col-sm-9">
+                <a href = "{{ route('category.show' , $category->slug.'?date='.\Carbon\Carbon::parse($date)->subDays(1)->format('Y-m-d'))  }}" name="dd"> <</a>
+                <b>{{ \Carbon\Carbon::parse($date)->day . ' ' . \App\Helpers\DateHelper::getMonth()[\Carbon\Carbon::parse($date)->format('M')] . ' ' . \Carbon\Carbon::parse($date)->format('Y')}}</b>
+                <a href = "{{ route('category.show' , $category->slug.'?date='.\Carbon\Carbon::parse($date)->addDays(1)->format('Y-m-d'))  }}" name="dd"> ></a>
+
                 <div class="news row">
                     @include('news._list-news')
                 </div>

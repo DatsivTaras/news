@@ -13,6 +13,7 @@ use App\Repositories\NewsRepository;
 use App\Repositories\NewsTagRepository;
 use App\Repositories\PaidNewsRepository;
 use App\Repositories\TagRepository;
+use Illuminate\Support\Str;
 
 /**
  * Class FlightServices
@@ -91,6 +92,9 @@ class NewsServices
     {
         $news = $this->newsRepository->create($data);
 
+        $data['slug'] = Str::slug($data['title']. ' _ ' . $news->id, '_');
+        $this->newsRepository->update($news, $data);
+
         if (isset($data['image'])) {
             $image = $this->fileRepository->uploadAndCreate($data['image'], $news->title);
 
@@ -119,6 +123,7 @@ class NewsServices
     }
     public function updateNews(object $news, array $data)
     {
+        $data['slug'] = Str::slug($data['title']. ' _ ' . $news->id, '_');
         $news->update($data);
 
         if (isset($data['image'])) {

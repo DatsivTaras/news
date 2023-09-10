@@ -72,7 +72,7 @@ class HomeServices
       $setting = app(SettingRepository::class)->getOne(Setting::HEADER_CATEGORY_MENU, 'key');
 
       $categoryIds = explode( ',', $setting->value);
-//        dd($category);
+
       $category = app(CategoryRepository::class)->getCategoryWhereIn($categoryIds);
 
 

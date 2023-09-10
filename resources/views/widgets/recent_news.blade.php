@@ -15,10 +15,24 @@
         </button>
     </li>
 </ul>
+
 <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active " id="home" role="tabpanel" aria-labelledby="home-tab">
         @if ($lastNews)
+            @php
+                {{ $date = ''; }}
+            @endphp
             @foreach($lastNews as $news)
+                @if(empty($date))
+                    @php {{ $date = $news->date_of_publication; }} @endphp
+                    {{\Carbon\Carbon::parse($date)->day . ' ' . \App\Helpers\DateHelper::getMonth()[\Carbon\Carbon::parse($date)->format('M')] }}
+                @endif
+
+                @if((\Carbon\Carbon::parse($date)->format('Y-m-d')  != \Carbon\Carbon::parse($news->date_of_publication)->format('Y-m-d')))
+                    @php {{ $date = $news->date_of_publication; }} @endphp
+                    {{\Carbon\Carbon::parse($date)->day . ' ' . \App\Helpers\DateHelper::getMonth()[\Carbon\Carbon::parse($date)->format('M')] }}
+                @endif
+
                 @include('widgets.parts._news', compact('news'))
                 <hr>
             @endforeach
@@ -27,8 +41,21 @@
         @endif
     </div>
     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-        @if($popularNews)
+        @if($mainNews)
+            @php
+                {{ $date = ''; }}
+            @endphp
             @foreach($mainNews as $news)
+                @if(empty($date))
+                    @php {{ $date = $news->date_of_publication; }} @endphp
+                    {{\Carbon\Carbon::parse($date)->day . ' ' . \App\Helpers\DateHelper::getMonth()[\Carbon\Carbon::parse($date)->format('M')] }}
+                @endif
+
+                @if((\Carbon\Carbon::parse($date)->format('Y-m-d')  != \Carbon\Carbon::parse($news->date_of_publication)->format('Y-m-d')))
+                    @php {{ $date = $news->date_of_publication; }} @endphp
+                    {{\Carbon\Carbon::parse($date)->day . ' ' . \App\Helpers\DateHelper::getMonth()[\Carbon\Carbon::parse($date)->format('M')] }}
+                @endif
+
                 @include('widgets.parts._news', compact('news'))
                 <hr>
             @endforeach
@@ -38,7 +65,20 @@
     </div>
     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
         @if ($popularNews)
+            @php
+                {{ $date = ''; }}
+            @endphp
             @foreach($popularNews as $news)
+                @if(empty($date))
+                    @php {{ $date = $news->date_of_publication; }} @endphp
+                    {{\Carbon\Carbon::parse($date)->day . ' ' . \App\Helpers\DateHelper::getMonth()[\Carbon\Carbon::parse($date)->format('M')] }}
+                @endif
+
+                @if((\Carbon\Carbon::parse($date)->format('Y-m-d')  != \Carbon\Carbon::parse($news->date_of_publication)->format('Y-m-d')))
+                    @php {{ $date = $news->date_of_publication; }} @endphp
+                     {{\Carbon\Carbon::parse($date)->day . ' ' . \App\Helpers\DateHelper::getMonth()[\Carbon\Carbon::parse($date)->format('M')] }}
+                @endif
+
                 @include('widgets.parts._news', compact('news'))
                 <hr>
             @endforeach

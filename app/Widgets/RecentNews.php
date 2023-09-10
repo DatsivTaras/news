@@ -43,11 +43,10 @@ class RecentNews extends AbstractWidget
                             return $query->where('category_id', $categoryId);
                     }]
                 ],
-//
             ];
         }
         $sort = [
-            'field' => 'created_at',
+            'field' => 'date_of_publication',
             'direction' => 'DESC'
         ];
 

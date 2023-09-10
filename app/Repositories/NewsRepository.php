@@ -21,8 +21,6 @@ class  NewsRepository extends BaseRepository
 
     public function create(array $data)
     {
-        $data['slug'] = Str::slug($data['title'], '_');
-
         $modelClass = $this->getModelClass();
         $model = new $modelClass();
         $model->fill($data);
@@ -71,7 +69,7 @@ class  NewsRepository extends BaseRepository
                     $query->orderByRaw("FIELD(id, {$sortedIds}) DESC");
                 }
 
-                $query->whereDate('created_at','=', now()->format('Ymd'));
+                $query->whereDate('date_of_publication','=', now()->format('Ymd'));
                 $query->orderByUniqueViews('desc');
             }
         }
