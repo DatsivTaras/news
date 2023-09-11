@@ -11,7 +11,7 @@
 
     <div class="container">
         <div class="row home-content">
-            <div class="col-sm-3 main-widget-left">
+            <div class="col-sm-3 main-widget-left mobile-hide">
                 <h3 class="main-widget-title">Стрічка новин</h3>
                 @widget('recentNews')
             </div>
