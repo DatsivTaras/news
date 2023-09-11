@@ -24,6 +24,7 @@ class  AuthorsEditRequest extends FormRequest
     public function rules()
     {
         $request = request()->all();
+
         return [
             'name' => 'required',
             'surname' => 'required',

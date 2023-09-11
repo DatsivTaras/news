@@ -9,7 +9,7 @@
         {{ 'Новини' }}
     </h1>
 
-    @include('layouts.filterMenu')
+{{--    @include('layouts.filterMenu')--}}
 
     <div class="container">
         <br>

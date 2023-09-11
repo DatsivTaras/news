@@ -280,7 +280,9 @@ abstract class BaseRepository
                 $query->whereIn($key, $values);
             }
         }
-
+        if (!empty($options['between'])) {
+            $query->whereBetween($options['between']['field'], [$options['between']['from'], $options['between']['to']]);
+        }
         if (!empty($options['filtersNot'])) {
             foreach ($options['filtersNot'] as $key => $values) {
                 if (!is_array($values) and !($values instanceof Collection)) {

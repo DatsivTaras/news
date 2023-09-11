@@ -14,6 +14,7 @@ use App\Repositories\NewsRepository;
 use App\Repositories\SettingRepository;
 use App\Services\SettingServices;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 
 /**
