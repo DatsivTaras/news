@@ -32,7 +32,7 @@
     <div class="container">
 
         <header>
-            <section class="top-bar">
+            <section class="top-bar mobile-hide">
                 <div class="custom-container">
                     <div class="left-side">
                         <span><img src="{{ asset('/img/map_marker.png') }}">{{ getSetting('address') }}</span>
@@ -68,7 +68,7 @@
                         </div> -->
                     </div>
                     <div class="main-header-center">
-                        <span><img src="{{ asset('/img/title_logo.png')}} ">КОРОЛЬ ДАНИЛО</span>
+                        <a href="/"><span><img src="{{ asset('/img/title_logo.png')}} ">КОРОЛЬ ДАНИЛО</span></a>
                     </div>
                     <div class="main-header-right-side">
                         <form action="{{ route('search')  }}" method="get" style="float: right">
