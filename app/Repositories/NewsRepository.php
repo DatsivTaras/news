@@ -43,7 +43,7 @@ class  NewsRepository extends BaseRepository
 
         return $query->paginate($perPage);
     }
-    public function getPaginationNews(array $options = [], int $perPage = 1, array $defaultSort = []): LengthAwarePaginator
+    public function getPaginationNews(array $options = [], int $perPage = 10, array $defaultSort = []): LengthAwarePaginator
     {
         /** @var Builder $query */
         $query = ($this->getModelClass())::query();
