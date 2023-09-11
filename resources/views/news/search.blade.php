@@ -15,9 +15,9 @@
                     <button class="btn btn-primary" id="btnNavbarSearch" type="submit"><i class="fas fa-search"></i></button>
                 </div><br>
             </form>
-            <div class="col-sm-9">
+            <div class="col-sm-12">
                 <div class="news row">
-                    @include('news._list-news')
+                    @include('news._news-search')
                 </div>
             </div>
         </div>
