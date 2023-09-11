@@ -6,7 +6,7 @@
                 <img class="card-img-top" src="{{ $new->getImageUrl() }}" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">{{ $new->title }}</h5>
-<!--                     <p class="card-text">{{ $new->mini_description }}</p> -->
+                    <!--                     <p class="card-text">{{ $new->mini_description }}</p> -->
                     <p class="source"><b>Джерело :</b> {{ $new->subtitle }}</p>
                     <div class="read-more-container">
                         <p class="read-more">Далі > </p>

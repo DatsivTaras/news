@@ -22,7 +22,7 @@
             </div>
             <div class="col-sm-9">
                 <div class="news row">
-                    @include('news._list-news')
+                    @include('news._news-full-width')
                 </div>
             </div>
         </div>
