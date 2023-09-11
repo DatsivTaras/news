@@ -6,8 +6,6 @@
 
 @section('content')
 
-    @include('layouts.filterMenu')
-
     <div class="container">
         <br>
         <div class="row">

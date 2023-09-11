@@ -14,6 +14,7 @@ use App\Repositories\SettingRepository;
 use App\Services\CategoryServices;
 use App\Services\HomeServices;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 class NewsController extends Controller
 {
@@ -29,6 +30,7 @@ class NewsController extends Controller
 
     public function index()
     {
+//        dd( Route::getCurrentRoute()->uri );
         $sliderNews = $this->homeSliderRepository->getSliderNews();
         $mainBlock = HomeServices::getHeaderMainBlockCategory();
         $mainBlocktwo = HomeServices::getHeaderMainBlockCategorytwo();
@@ -61,6 +63,7 @@ class NewsController extends Controller
      */
     public function show($slug)
     {
+
         $news = $this->newsRepository->getOneOrFail($slug, 'slug');
 
         views($news)->record();

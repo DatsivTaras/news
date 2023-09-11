@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use CyrildeWit\EloquentViewable\InteractsWithViews;
 use CyrildeWit\EloquentViewable\Contracts\Viewable;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Storage;
 
 /**
@@ -114,6 +115,13 @@ class News extends Model implements Viewable
         return $this->author->first();
     }
 
+    public function getaDate()
+    {
+
+//        return Date::parse($this->date_of_publication)->format('Y-M-D');
+//        return date('D d M Y, h:m', strtotime($this->date_of_publication)); ;
+    }
+
     public function getImageUrl()
     {
         $image = $this->image->first();
@@ -134,12 +142,10 @@ class News extends Model implements Viewable
        return $this->category()->first()->name;
     }
 
-
     public function home_slider()
     {
         return $this->hasOne(HomeSlider::class, 'news_id','id');
     }
-
 
     public function paidNews()
     {

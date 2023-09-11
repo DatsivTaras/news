@@ -11,6 +11,7 @@ use App\Repositories\AuthorsRepository;
 use App\Repositories\CategoryRepository;
 use App\Repositories\HomeSliderRepository;
 use App\Repositories\NewsRepository;
+use App\Repositories\PaidNewsRepository;
 use App\Repositories\UserRepository;
 use App\Services\NewsServices;
 use Illuminate\Http\Request;
@@ -27,6 +28,7 @@ class NewsController extends Controller
 
     private $categoryRepository;
     private $userRepository;
+    private $paidNewsRepository;
     private $homeSliderRepository;
 
     private $authorsRepository;
@@ -37,9 +39,11 @@ class NewsController extends Controller
         UserRepository $userRepository,
         CategoryRepository $categoryRepository,
         HomeSliderRepository $homeSliderRepository,
-        AuthorsRepository $authorsRepository
+        AuthorsRepository $authorsRepository,
+        PaidNewsRepository $paidNewsRepository
     )
     {
+        $this->paidNewsRepository = $paidNewsRepository;
         $this->newsServices = $newsServices;
         $this->newsRepository = $newsRepository;
         $this->categoryRepository = $categoryRepository;
@@ -164,6 +168,10 @@ class NewsController extends Controller
             if($news->home_slider) {
                 $homeSlider = $this->homeSliderRepository->getOneOrFail($id, 'news_id');
                 $this->homeSliderRepository->delete($homeSlider);
+            }
+            if($news->paidNews) {
+                $paid_news = $this->paidNewsRepository->getOneOrFail($id, 'news_id');
+                $this->paidNewsRepository->delete($paid_news);
             }
         }
         return redirect()->route('admin.news.index')

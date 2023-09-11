@@ -7,7 +7,9 @@ use App\Models\Category;
 use App\Repositories\CategoryRepository;
 use App\Repositories\NewsRepository;
 use App\Services\CategoryServices;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 /**
  * Class CategoryController
@@ -38,6 +40,8 @@ class CategoryController extends Controller
      */
     public function show(Request $request, $slug)
     {
+        $date = $request->get('date');
+        $date = $date ? $date : Carbon::now()->format('Y-m-d');
         $category = $this->categoryRepository->getOneOrFail($slug, 'slug');
         $categoryId = $category->id;
         $options = [
@@ -47,7 +51,12 @@ class CategoryController extends Controller
                         return $query->where('category_id', $categoryId);
                     }]
             ],
-            'viewType' => $request['type']
+            'viewType' => $request['type'],
+            'between' => [
+                'field' => 'date_of_publication',
+                'from' => Carbon::parse($date)->format('Y-m-d 00:00:01'),
+                'to' => Carbon::parse($date)->format('Y-m-d 23:59:59'),
+            ]
         ];
         $sort = [
             'field' => 'created_at',
@@ -63,6 +72,6 @@ class CategoryController extends Controller
             return response()->json(['html' => $view, 'pagin' => $news->hasMorePages()	]);
         }
 
-        return view('category.show', compact('news', 'category'));
+        return view('category.show', compact('news', 'category', 'date'));
     }
 }

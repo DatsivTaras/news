@@ -34,7 +34,7 @@ use Spatie\Permission\Traits\HasRoles;
 class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable, HasRoles;
-   
+
 
     protected $perPage = 20;
 

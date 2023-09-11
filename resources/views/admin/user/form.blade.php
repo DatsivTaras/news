@@ -21,6 +21,12 @@
             {!! $errors->first('patronymic', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
+            {{ Form::label('text',  __('main.photo'), ['class' => 'form-label']) }}
+            {{ Form::file('image', [ 'class' => 'form-control' . ($errors->has('image') ? ' is-invalid' : ''), 'onchange'=> "getImagePreview(event)", "public/image/planes/Fh2pmleVODSftbdH0gctY01sr6FH4iQHUkDXxDCd.png", "id" => "selectImage"]) }}
+            {!! $errors->first('image', '<div class="invalid-feedback">:message</div>') !!}
+            <img id="preview" width="300" height="300" src="" alt="/" class="mt-3" style="{{ 'display:none'}}"/>
+        </div>
+        <div class="form-group">
             {{ Form::label(__('main.email')) }}
             {{ Form::text('email', $user->email, ['class' => 'form-control' . ($errors->has('email') ? ' is-invalid' : ''), 'placeholder' => __('main.email')]) }}
             {!! $errors->first('email', '<div class="invalid-feedback">:message</div>') !!}
@@ -45,3 +51,14 @@
         <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
     </div>
 </div>
+
+<script>
+    selectImage.onchange = evt => {
+        preview = document.getElementById('preview');
+        preview.style.display = 'block';
+        const [file] = selectImage.files
+        if (file) {
+            preview.src = URL.createObjectURL(file)
+        }
+    }
+</script>

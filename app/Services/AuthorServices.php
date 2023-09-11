@@ -44,8 +44,9 @@ class AuthorServices
     }
     public function saveAuthors(array $data)
     {
-        $data['slug'] = Str::slug($data['surname'], '_');
+        $data['slug'] = Str::slug($data['surname'] . '_' .$data['user_id'], '_');
         $author = $this->authorsRepository->create($data);
+
         if (isset($data['image'])) {
             $image = $this->fileRepository->uploadAndCreate($data['image'], $author->name);
 
@@ -56,10 +57,10 @@ class AuthorServices
     }
     public function updateAuthors($id, $data)
     {
-        $author = $this->authorsRepository->getOneOrFail(auth()->user()->author->id, 'id');
-        $user = $this->userRepository->getOneOrFail(auth()->user()->author->user_id, 'id');
+        $author = $this->authorsRepository->getOneOrFail($id, 'id');
+        $user = $this->userRepository->getOneOrFail($author->user->id, 'id');
 
-        $data['slug'] = Str::slug($data['surname'], '_');
+        $data['slug'] = Str::slug($data['surname'] . '_' .$user->id, '_');
         $this->authorsRepository->update($author, $data);
 
         $this->userRepository->update($user, $data);
