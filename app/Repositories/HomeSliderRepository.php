@@ -33,6 +33,6 @@ class  HomeSliderRepository extends BaseRepository
             ],
         ];
 
-        return $this->get($options);
+        return $this->table($options, '30');
     }
 }

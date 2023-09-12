@@ -36,6 +36,7 @@ class FileController extends Controller
             'direction' => 'desc'
         ];
         $files = $this->repository->table([], 10, $sort);
+
         return view('admin.file.index', compact('files'));
     }
 
@@ -47,6 +48,7 @@ class FileController extends Controller
     public function create()
     {
         $file = new File();
+
         return view('admin.file.create', compact('file'));
     }
 

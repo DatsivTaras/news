@@ -10,10 +10,14 @@
         <br>
         <div class="row">
             <form action="{{ route('search')  }}" method="get" style="float: right">
-                <div  class="input-group">
-                    <input name="query" value="{{ isset($_GET['query']) ? $_GET['query'] : '' }}" class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                    <button class="btn btn-primary" id="btnNavbarSearch" type="submit"><i class="fas fa-search"></i></button>
-                </div><br>
+                <div class="input-group">
+                    <input name="query" value="{{ isset($_GET['query']) ? $_GET['query'] : '' }}" class="form-control"
+                           type="text" placeholder="Search for..." aria-label="Search for..."
+                           aria-describedby="btnNavbarSearch"/>
+                    <button class="btn btn-primary" id="btnNavbarSearch" type="submit"><i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <br>
             </form>
             <div class="col-sm-3 main-widget-left">
                 <h3 class="main-widget-title">Стрічка новин</h3>
@@ -21,7 +25,7 @@
             </div>
             <div class="col-sm-9">
                 <div class="news row">
-                    @include('news._news-search', ['type' => 1])
+                    @include('news.parts._news-search', ['type' => 1])
                 </div>
             </div>
         </div>
@@ -39,7 +43,7 @@
         var page = 1;
         var type = '{{$_GET['type'] ?? ''}}'
 
-        $(".load-more-data").click(function(){
+        $(".load-more-data").click(function () {
             page++;
             infinteLoadMore(page);
         });
@@ -48,7 +52,7 @@
 
             $.ajax({
                 url: ENDPOINT + "?page=" + page,
-                data:{
+                data: {
                     type: type,
                     "_token": "{{ csrf_token() }}"
                 },

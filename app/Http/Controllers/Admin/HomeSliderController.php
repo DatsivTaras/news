@@ -28,7 +28,7 @@ class HomeSliderController extends Controller
      */
     public function index()
     {
-        $homeSliders = $this->homeSliderRepository->get();
+        $homeSliders = $this->homeSliderRepository->getSliderNews();
 
         return view('admin.home-slider.index', compact('homeSliders'));
     }

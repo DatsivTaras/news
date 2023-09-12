@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\PaidNews;
 use App\Repositories\HomeSliderRepository;
 use App\Repositories\NewsRepository;
+use App\Repositories\PaidNewsRepository;
 use App\Services\NewsServices;
 use Illuminate\Http\Request;
 
@@ -16,12 +17,15 @@ use Illuminate\Http\Request;
 class PaidNewsController extends Controller
 {
     private $newsServices;
+    private $repository;
 
     public function __construct(
-        NewsServices $newsServices
+        NewsServices $newsServices,
+        PaidNewsRepository $repository
     )
     {
         $this->newsServices = $newsServices;
+        $this->repository = $repository;
     }
     /**
      * Display a listing of the resource.
@@ -30,7 +34,12 @@ class PaidNewsController extends Controller
      */
     public function index()
     {
-        $paidNews = PaidNews::paginate();
+        $sort = [
+            'field' => 'id',
+            'direction' => 'desc'
+        ];
+
+        $paidNews = $this->repository->table([], 30, $sort);
 
         return view('admin.paid-news.index', compact('paidNews'))
             ->with('i', (request()->input('page', 1) - 1) * $paidNews->perPage());

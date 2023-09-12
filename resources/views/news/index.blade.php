@@ -9,7 +9,7 @@
         {{ 'Новини' }}
     </h1>
 
-{{--    @include('layouts.filterMenu')--}}
+    {{--    @include('layouts.filterMenu')--}}
 
     <div class="container">
         <br>
@@ -22,7 +22,7 @@
             </div>
             <div class="col-sm-9">
                 <div class="news row">
-                    @include('news._news-full-width',['date' => ''])
+                    @include('news.parts._news-full-width',['date' => ''])
                 </div>
             </div>
         </div>
@@ -37,7 +37,7 @@
         var ENDPOINT = "{{ route('allNews') }}";
         var page = 1;
         var type = '{{$_GET['type'] ?? ''}}'
-        $(".load-more-data").click(function(){
+        $(".load-more-data").click(function () {
             page++;
             infinteLoadMore(page);
         });
@@ -46,7 +46,7 @@
             var date = $('.date-news').last().data('date');
             $.ajax({
                 url: ENDPOINT + "?page=" + page,
-                data:{
+                data: {
                     type: type,
                     date: date,
                     "_token": "{{ csrf_token() }}"

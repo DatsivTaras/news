@@ -40,7 +40,13 @@ class PageController extends Controller
      */
     public function index()
     {
-        $pages = Page::paginate();
+        $sort = [
+            'field' => 'id',
+            'direction' => 'desc'
+        ];
+
+        $pages = $this->pageRepository->table([], 10, $sort);
+
         return view('admin.page.index', compact('pages'))
             ->with('i', (request()->input('page', 1) - 1) * $pages->perPage());
     }
