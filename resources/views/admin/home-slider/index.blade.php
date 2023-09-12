@@ -55,7 +55,7 @@
                         </div>
                     </div>
                 </div>
-{{--                {!! $homeSliders->links() !!}--}}
+                {!! $homeSliders->links() !!}
             </div>
         </div>
     </div>

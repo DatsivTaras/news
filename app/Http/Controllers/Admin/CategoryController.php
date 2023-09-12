@@ -48,7 +48,7 @@ class CategoryController extends Controller
      */
     public function index(CategoryFilter $request)
     {
-        $categories = Category::filter($request)->paginate('22');
+        $categories = Category::filter($request)->paginate('30');
 
         return view('admin.category.index', compact('categories', ))
             ->with('i', (request()->input('page', 1) - 1) * $categories->perPage());
@@ -113,7 +113,7 @@ class CategoryController extends Controller
                 }]
             ]
         ];
-        $news = $this->newsRepository->table($options,'1');
+        $news = $this->newsRepository->table($options,30);
 
         return view('admin.category.show', compact('category', 'news'));
     }

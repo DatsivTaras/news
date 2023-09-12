@@ -66,6 +66,7 @@
                         </div>
                     </div>
                 </div>
+                {!! $news->links() !!}
             </div>
         </div>
     </div>

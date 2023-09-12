@@ -39,7 +39,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::paginate();
+        $sort = [
+            'field' => 'id',
+            'direction' => 'desc'
+        ];
+        $users = $this->userRepository->table([], 30, $sort);
 
         return view('admin/user.index', compact('users'))
             ->with('i', (request()->input('page', 1) - 1) * $users->perPage());

@@ -63,11 +63,11 @@ class CategoryController extends Controller
             'direction' => 'DESC'
         ];
 
-        $news = $this->newsRepository->getPaginationNews($options,1, $sort);
+        $news = $this->newsRepository->getPaginationNews($options,30, $sort);
 
 //        list($news, $category) = $this->categoryServices->showCategoryNews($data, $slug);
         if ($request->ajax()) {
-            $view = view('news._list-news', compact('news'))->render();
+            $view = view('news.parts._list-news', compact('news'))->render();
 
             return response()->json(['html' => $view, 'pagin' => $news->hasMorePages()	]);
         }
