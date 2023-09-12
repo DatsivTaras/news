@@ -95,7 +95,7 @@ class NewsController extends Controller
 
         if ($request->ajax()) {
 
-            $view = view('news._list-news', compact('news'))->render();
+            $view = view('news._news-search', compact('news'))->render();
 
             return response()->json(['html' => $view, 'pagin' => $news->hasMorePages()	]);
         }
@@ -110,14 +110,15 @@ class NewsController extends Controller
             'viewType' => $request['type']
         ];
         $sort = [
-            'field' => 'created_at',
+            'field' => 'date_of_publication',
             'direction' => 'DESC'
         ];
 
         $news = $this->newsRepository->getPaginationNews($options,2, $sort);
 
         if ($request->ajax()) {
-            $view = view('news._list-news', compact('news'))->render();
+            $date = $request['date'];
+            $view = view('news._news-full-width', compact('news','date'))->render();
 
             return response()->json(['html' => $view, 'pagin' => $news->hasMorePages()	]);
         }
