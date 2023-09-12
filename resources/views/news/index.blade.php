@@ -22,7 +22,7 @@
             </div>
             <div class="col-sm-9">
                 <div class="news row">
-                    @include('news._news-full-width')
+                    @include('news._news-full-width',['date' => ''])
                 </div>
             </div>
         </div>
@@ -43,17 +43,19 @@
         });
 
         function infinteLoadMore(page) {
-
+            var date = $('.date-news').last().data('date');
             $.ajax({
                 url: ENDPOINT + "?page=" + page,
                 data:{
                     type: type,
+                    date: date,
                     "_token": "{{ csrf_token() }}"
                 },
                 datatype: "html",
                 type: "get",
                 beforeSend: function () {
                     $('.auto-load').show();
+
                 }
             })
                 .done(function (response) {

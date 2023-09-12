@@ -15,9 +15,13 @@
                     <button class="btn btn-primary" id="btnNavbarSearch" type="submit"><i class="fas fa-search"></i></button>
                 </div><br>
             </form>
-            <div class="col-sm-12">
+            <div class="col-sm-3 main-widget-left">
+                <h3 class="main-widget-title">Стрічка новин</h3>
+                @widget('recentNews')
+            </div>
+            <div class="col-sm-9">
                 <div class="news row">
-                    @include('news._news-search')
+                    @include('news._news-search', ['type' => 1])
                 </div>
             </div>
         </div>

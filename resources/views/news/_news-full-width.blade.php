@@ -1,4 +1,13 @@
 @foreach ($news as $new)
+    @if(empty($date))
+        @php {{ $date = $new->date_of_publication; }} @endphp
+        <p data-date="{{ $date }} " class="date-news">{{\Carbon\Carbon::parse($date)->day . ' ' . \App\Helpers\DateHelper::getMonth()[\Carbon\Carbon::parse($date)->format('M')] }}</p>
+    @endif
+
+    @if((\Carbon\Carbon::parse($date)->format('Y-m-d')  != \Carbon\Carbon::parse($new->date_of_publication)->format('Y-m-d')))
+        @php {{ $date = $new->date_of_publication; }} @endphp
+        <p data-date="{{ $date }} " class="date-news">{{\Carbon\Carbon::parse($date)->day . ' ' . \App\Helpers\DateHelper::getMonth()[\Carbon\Carbon::parse($date)->format('M')] }}</p>
+    @endif
     <div class="col-sm-12 three-news-blocks">
         <a href="{{$new->getUrl()}}" style="text-decoration: none; color:black">
             <div class="card">

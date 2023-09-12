@@ -1,5 +1,5 @@
 @foreach ($news as $new)
-    <div class="col-sm-12 three-news-blocks">
+    <div class="col-sm-4 three-news-blocks">
         <a href="{{$new->getUrl()}}" style="text-decoration: none; color:black">
             <div class="card">
                 <div class="three-news-blocks-category"><div class="triangle">{{ $new->getcategoryName() }}</div></div>
