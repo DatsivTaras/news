@@ -5,10 +5,6 @@
 @endsection
 
 @section('content')
-    <h1 class="text-center news-category-title">
-        {{$category->getName()}}
-    </h1>
-
     <div class="container">
         <div class="row home-content">
             <div class="col-sm-3 main-widget-left mobile-hide">
@@ -16,7 +12,9 @@
                 @widget('recentNews')
             </div>
             <div class="col-sm-9">
-
+                <h1 class="text-center news-category-title">
+                    {{$category->getName()}}
+                </h1>
                 <div class="news row">
                     @include('news.parts._list-news')
                 </div>
