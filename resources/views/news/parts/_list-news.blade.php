@@ -10,7 +10,7 @@
                     <p class="source"><b>Джерело :</b> {{ $new->subtitle }}</p>
                     <div class="read-more-container">
                         <p class="read-more">Далі > </p>
-                        <p class="date-news">17.04.1992</p>
+                        <p class="date-news">{{ \Carbon\Carbon::parse($new->date_of_publication)->format('d.m.Y') }}</p>
                     </div>
                 </div>
             </div>
