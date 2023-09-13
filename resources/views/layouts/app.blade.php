@@ -27,6 +27,14 @@
 
         @yield('meta_tags')
     </head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SYYQ5EWE81"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-SYYQ5EWE81');
+    </script>
     <body>
 
     <div class="container">
@@ -42,7 +50,7 @@
                             <a href="mailto:{{ getSetting('email_address') }}"><img src="{{ asset('/img/email_icon.png') }}">{{ getSetting('email_address') }}</a>
                         </div>
                         <div class="top-bar-phone">
-                            <a href=“tel:{{ getSetting('phone') }}”><img src="{{ asset('/img/Phone_icon.png') }}">{{ getSetting('phone') }}</a>
+                            <a href="tel:{{ getSetting('phone') }}"><img src="{{ asset('/img/Phone_icon.png') }}">{{ getSetting('phone') }}</a>
                         </div>
                     </div>
                 </div>

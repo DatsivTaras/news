@@ -42,7 +42,7 @@ class AuthorController extends Controller
         $news = $this->newsRepository->getPaginationNews($options,3, $sort);
 
         if ($request->ajax()) {
-            $view = view('news._list-news', compact('news'))->render();
+            $view = view('news.parts._list-news', compact('news'))->render();
 
             return response()->json(['html' => $view, 'pagin' => $news->hasMorePages()	]);
         }
