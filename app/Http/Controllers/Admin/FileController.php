@@ -35,7 +35,7 @@ class FileController extends Controller
             'field' => 'id',
             'direction' => 'desc'
         ];
-        $files = $this->repository->table([], 10, $sort);
+        $files = $this->repository->table([], 20, $sort);
 
         return view('admin.file.index', compact('files'));
     }

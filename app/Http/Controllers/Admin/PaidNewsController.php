@@ -39,7 +39,7 @@ class PaidNewsController extends Controller
             'direction' => 'desc'
         ];
 
-        $paidNews = $this->repository->table([], 30, $sort);
+        $paidNews = $this->repository->table([], 20, $sort);
 
         return view('admin.paid-news.index', compact('paidNews'))
             ->with('i', (request()->input('page', 1) - 1) * $paidNews->perPage());

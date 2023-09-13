@@ -43,7 +43,7 @@ class  NewsRepository extends BaseRepository
 
         return $query->paginate($perPage);
     }
-    public function getPaginationNews(array $options = [], int $perPage = 10, array $defaultSort = []): LengthAwarePaginator
+    public function getPaginationNews(array $options = [], int $perPage = 10, array $defaultSort = [])
     {
         /** @var Builder $query */
         $query = ($this->getModelClass())::query();
@@ -82,21 +82,27 @@ class  NewsRepository extends BaseRepository
         $this->applyFilters($query, $options);
         $this->applyWith($query, $options);
 
+        if (isset($options['type'])) {
+            if ($options['type'] == 'slider') {
+                return $query->limit(20)->get();
+            }
+        }
+
         return $query->paginate($perPage);
     }
     public function getNewsBasket($request)
     {
-        return News::filter($request)->onlyTrashed()->paginate('30');
+        return News::filter($request)->onlyTrashed()->paginate('20');
     }
 
     public function getNewsDrafts($request)
     {
-        return News::filter($request)->where('type_publication', NewsType::DRAFT)->orderBy('created_at', 'desc')->paginate('30');
+        return News::filter($request)->where('type_publication', NewsType::DRAFT)->orderBy('created_at', 'desc')->paginate('20');
     }
 
     public function getNews($request)
     {
-        return News::filter($request)->where('type_publication', NewsType::PUBLISH)->orderBy('created_at', 'desc')->paginate('30');
+        return News::filter($request)->where('type_publication', NewsType::PUBLISH)->orderBy('created_at', 'desc')->paginate('20');
     }
 
     public function restoreNews($id)

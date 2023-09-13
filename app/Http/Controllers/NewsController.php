@@ -39,7 +39,7 @@ class NewsController extends Controller
     }
     public function listNews(Request $request)
     {
-        $news = News::paginate(30);
+        $news = News::paginate(20);
         $view = view('news._list-news', compact('news'))->render();
 
         return response()->json(['html' => $view]);
@@ -91,7 +91,7 @@ class NewsController extends Controller
             'direction' => 'DESC'
         ];
 
-        $news = $this->newsRepository->getPaginationNews($options,30, $sort);
+        $news = $this->newsRepository->getPaginationNews($options,20, $sort);
 
         if ($request->ajax()) {
 
@@ -114,7 +114,7 @@ class NewsController extends Controller
             'direction' => 'DESC'
         ];
 
-        $news = $this->newsRepository->getPaginationNews($options,30, $sort);
+        $news = $this->newsRepository->getPaginationNews($options,20, $sort);
 
         if ($request->ajax()) {
             $date = $request['date'];

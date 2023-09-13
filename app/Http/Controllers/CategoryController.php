@@ -40,8 +40,8 @@ class CategoryController extends Controller
      */
     public function show(Request $request, $slug)
     {
-        $date = $request->get('date');
-        $date = $date ? $date : Carbon::now()->format('Y-m-d');
+//        $date = $request->get('date');
+//        $date = $date ? $date : Carbon::now()->format('Y-m-d');
         $category = $this->categoryRepository->getOneOrFail($slug, 'slug');
         $categoryId = $category->id;
         $options = [
@@ -52,26 +52,26 @@ class CategoryController extends Controller
                     }]
             ],
             'viewType' => $request['type'],
-            'between' => [
-                'field' => 'date_of_publication',
-                'from' => Carbon::parse($date)->format('Y-m-d 00:00:01'),
-                'to' => Carbon::parse($date)->format('Y-m-d 23:59:59'),
-            ]
+//            'between' => [
+//                'field' => 'date_of_publication',
+//                'from' => Carbon::parse($date)->format('Y-m-d 00:00:01'),
+//                'to' => Carbon::parse($date)->format('Y-m-d 23:59:59'),
+//            ]
         ];
         $sort = [
             'field' => 'created_at',
             'direction' => 'DESC'
         ];
 
-        $news = $this->newsRepository->getPaginationNews($options,30, $sort);
+        $news = $this->newsRepository->getPaginationNews($options,20, $sort);
 
 //        list($news, $category) = $this->categoryServices->showCategoryNews($data, $slug);
-        if ($request->ajax()) {
-            $view = view('news.parts._list-news', compact('news'))->render();
+//        if ($request->ajax()) {
+//            $view = view('news.parts._list-news', compact('news'))->render();
+//
+//            return response()->json(['html' => $view, 'pagin' => $news->hasMorePages()	]);
+//        }
 
-            return response()->json(['html' => $view, 'pagin' => $news->hasMorePages()	]);
-        }
-
-        return view('category.show', compact('news', 'category', 'date'));
+        return view('category.show', compact('news', 'category'));
     }
 }

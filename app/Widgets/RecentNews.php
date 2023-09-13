@@ -34,7 +34,10 @@ class RecentNews extends AbstractWidget
      */
     public function run()
     {
-        $options = [];
+        $options = [
+            'type' => 'slider',
+        ];
+
         if ($categoryId = $this->config['category_id']) {
             $options = [
                 'whereHas' => [

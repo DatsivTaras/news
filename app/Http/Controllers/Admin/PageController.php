@@ -45,7 +45,7 @@ class PageController extends Controller
             'direction' => 'desc'
         ];
 
-        $pages = $this->pageRepository->table([], 10, $sort);
+        $pages = $this->pageRepository->table([], 20, $sort);
 
         return view('admin.page.index', compact('pages'))
             ->with('i', (request()->input('page', 1) - 1) * $pages->perPage());

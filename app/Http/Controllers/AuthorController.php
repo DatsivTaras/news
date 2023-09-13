@@ -26,7 +26,7 @@ class AuthorController extends Controller
         $author = $this->authorsRepository->getOneOrFail($slug ,'slug');
 
         $authorId = $author->id;
-        $perPage = 15;
+        $perPage = 20;
         $options = [
             'whereHas' => [
                 ['author',
@@ -39,7 +39,7 @@ class AuthorController extends Controller
             'field' => 'created_at',
             'direction' => 'DESC'
         ];
-        $news = $this->newsRepository->getPaginationNews($options,3, $sort);
+        $news = $this->newsRepository->getPaginationNews($options,20, $sort);
 
         if ($request->ajax()) {
             $view = view('news.parts._list-news', compact('news'))->render();
