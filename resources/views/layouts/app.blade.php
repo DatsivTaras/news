@@ -7,6 +7,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+        <link style="height:20px" rel="icon" type="image/x-icon" href="{{ asset('/img/KD-Logo.ico') }}">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <!-- CSRF Token -->
@@ -27,6 +28,14 @@
 
         @yield('meta_tags')
     </head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SYYQ5EWE81"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-SYYQ5EWE81');
+    </script>
     <body>
 
     <div class="container">
@@ -42,7 +51,7 @@
                             <a href="mailto:{{ getSetting('email_address') }}"><img src="{{ asset('/img/email_icon.png') }}">{{ getSetting('email_address') }}</a>
                         </div>
                         <div class="top-bar-phone">
-                            <a href=“tel:{{ getSetting('phone') }}”><img src="{{ asset('/img/Phone_icon.png') }}">{{ getSetting('phone') }}</a>
+                            <a href="tel:{{ getSetting('phone') }}"><img src="{{ asset('/img/Phone_icon.png') }}">{{ getSetting('phone') }}</a>
                         </div>
                     </div>
                 </div>
@@ -68,12 +77,12 @@
                         </div> -->
                     </div>
                     <div class="main-header-center">
-                        <a href="/"><span><img src="{{ asset('/img/title_logo.png')}} ">КОРОЛЬ ДАНИЛО</span></a>
+                        <a href="/"><img src="{{ asset('/img/KD-Logo-UA-FIN-01.png')}} "></a>
                     </div>
                     <div class="main-header-right-side">
                         <form action="{{ route('search')  }}" method="get" style="float: right">
                             <div class="input-group">
-                                <input name="query" class="form-control search-input" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                                <input name="query" class="form-control search-input" type="text" placeholder="магате...." aria-label="магате...." aria-describedby="btnNavbarSearch" />
                                 <span class="search-show"><img src="{{ asset('/img/search_icon.png') }}"></span>
                             </div>
                         </form>

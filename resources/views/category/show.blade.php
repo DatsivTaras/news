@@ -5,10 +5,6 @@
 @endsection
 
 @section('content')
-    <h1 class="text-center news-category-title">
-        {{$category->getName()}}
-    </h1>
-
     <div class="container">
         <div class="row home-content">
             <div class="col-sm-3 main-widget-left mobile-hide">
@@ -16,12 +12,16 @@
                 @widget('recentNews')
             </div>
             <div class="col-sm-9">
-                <a href="{{ route('category.show' , $category->slug.'?date='.\Carbon\Carbon::parse($date)->subDays(1)->format('Y-m-d'))  }}"
-                   name="dd"> <</a>
-                <b>{{ \Carbon\Carbon::parse($date)->day . ' ' . \App\Helpers\DateHelper::getMonth()[\Carbon\Carbon::parse($date)->format('M')] . ' ' . \Carbon\Carbon::parse($date)->format('Y')}}</b>
-                <a href="{{ route('category.show' , $category->slug.'?date='.\Carbon\Carbon::parse($date)->addDays(1)->format('Y-m-d'))  }}"
-                   name="dd"> {{ \Carbon\Carbon::parse($date)->format('Y-m-d') >= now()->format('Y-m-d') ? '' : '>' }}</a>
-
+                <h1 class="text-center news-category-title">
+                    {{$category->getName()}}
+                </h1>
+                <div class="date-switch">
+                    <a href="{{ route('category.show' , $category->slug.'?date='.\Carbon\Carbon::parse($date)->subDays(1)->format('Y-m-d'))  }}"
+                       name="dd"> < </a>
+                    <b>{{ \Carbon\Carbon::parse($date)->day . ' ' . \App\Helpers\DateHelper::getMonth()[\Carbon\Carbon::parse($date)->format('M')] . ' ' . \Carbon\Carbon::parse($date)->format('Y')}}</b>
+                    <a href="{{ route('category.show' , $category->slug.'?date='.\Carbon\Carbon::parse($date)->addDays(1)->format('Y-m-d'))  }}"
+                       name="dd"> {{ \Carbon\Carbon::parse($date)->format('Y-m-d') >= now()->format('Y-m-d') ? '' : '>' }}</a>
+                </div>
                 <div class="news row">
                     @include('news.parts._list-news')
                 </div>
