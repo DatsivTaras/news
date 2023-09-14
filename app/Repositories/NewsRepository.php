@@ -59,18 +59,15 @@ class  NewsRepository extends BaseRepository
                 $options['filters'] = ['type' => NewsPublicationType::IMPORTANT];
             }
             if ($options['viewType'] == 'popular') {
-
                 $defaultSort = null;
                 $paidNewsId = PaidNews::pluck('news_id')->toArray();
                 if($paidNewsId) {
                     $selectedOptionValuesIDSort = $paidNewsId;
-
                     $sortedIds = implode(',', $selectedOptionValuesIDSort);
                     $query->orderByRaw("FIELD(id, {$sortedIds}) DESC");
                 }
-
-                $query->whereDate('date_of_publication','=', now()->format('Ymd'));
-                $query->orderByUniqueViews('desc');
+//                $query->whereDate('date_of_publication','=', now()->format('Ymd'));
+                $query->orderByUniqueViews('ASC');
             }
         }
 

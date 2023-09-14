@@ -41,11 +41,7 @@ class CategoryRepository extends BaseRepository
 
     public function getCategoryHeaderMenu()
     {
-        $option = [
-            'limit' => '10',
-        ];
-
-        return $this->get($option);
+        return Category::doesnthave('parent')->get();
     }
 
     public function getCategoryWhereIn($ids)
