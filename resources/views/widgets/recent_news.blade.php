@@ -51,13 +51,17 @@
             @endphp
             @foreach($mainNews as $news)
                 @if(empty($date))
-                    @php {{ $date = $news->date_of_publication; }} @endphp
-                    {{\Carbon\Carbon::parse($date)->day . ' ' . \App\Helpers\DateHelper::getMonth()[\Carbon\Carbon::parse($date)->format('M')] }}
+                    <p class="widget-news-date">
+                        @php {{ $date = $news->date_of_publication; }} @endphp
+                        {{\Carbon\Carbon::parse($date)->day . ' ' . \App\Helpers\DateHelper::getMonth()[\Carbon\Carbon::parse($date)->format('M')] }}
+                    </p>
                 @endif
 
                 @if((\Carbon\Carbon::parse($date)->format('Y-m-d')  != \Carbon\Carbon::parse($news->date_of_publication)->format('Y-m-d')))
-                    @php {{ $date = $news->date_of_publication; }} @endphp
-                    {{\Carbon\Carbon::parse($date)->day . ' ' . \App\Helpers\DateHelper::getMonth()[\Carbon\Carbon::parse($date)->format('M')] }}
+                    <p class="widget-news-date">
+                        @php {{ $date = $news->date_of_publication; }} @endphp
+                        {{\Carbon\Carbon::parse($date)->day . ' ' . \App\Helpers\DateHelper::getMonth()[\Carbon\Carbon::parse($date)->format('M')] }}
+                    </p>
                 @endif
 
                 @include('widgets.parts._news', compact('news'))
@@ -74,13 +78,17 @@
             @endphp
             @foreach($popularNews as $news)
                 @if(empty($date))
-                    @php {{ $date = $news->date_of_publication; }} @endphp
-                    {{\Carbon\Carbon::parse($date)->day . ' ' . \App\Helpers\DateHelper::getMonth()[\Carbon\Carbon::parse($date)->format('M')] }}
+                    <p class="widget-news-date">
+                        @php {{ $date = $news->date_of_publication; }} @endphp
+                        {{\Carbon\Carbon::parse($date)->day . ' ' . \App\Helpers\DateHelper::getMonth()[\Carbon\Carbon::parse($date)->format('M')] }}
+                    </p>
                 @endif
 
                 @if((\Carbon\Carbon::parse($date)->format('Y-m-d')  != \Carbon\Carbon::parse($news->date_of_publication)->format('Y-m-d')))
-                    @php {{ $date = $news->date_of_publication; }} @endphp
-                     {{\Carbon\Carbon::parse($date)->day . ' ' . \App\Helpers\DateHelper::getMonth()[\Carbon\Carbon::parse($date)->format('M')] }}
+                     <p class="widget-news-date">
+                        @php {{ $date = $news->date_of_publication; }} @endphp
+                         {{\Carbon\Carbon::parse($date)->day . ' ' . \App\Helpers\DateHelper::getMonth()[\Carbon\Carbon::parse($date)->format('M')] }}
+                    </p>
                 @endif
 
                 @include('widgets.parts._news', compact('news'))
