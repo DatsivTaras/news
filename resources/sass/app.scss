@@ -400,7 +400,7 @@ main {
             display: flex;
             justify-content: space-between;
             flex-wrap: nowrap;
-            margin-bottom: 20px;
+            margin-bottom: 8px;
             .nav-item {
                 .nav-link {
                     border: none;
@@ -462,6 +462,9 @@ main {
                         }
                     }
                 }
+            }
+            hr {
+                margin: 5px 0;
             }
         }
         .read-all-news {
@@ -1055,6 +1058,12 @@ main {
                 font-weight: 500;
                 font-family: "Gotham Pro";
                 margin-bottom: 0;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                min-height: 26px;
             }
             .read-more-container {
                 display: flex;
