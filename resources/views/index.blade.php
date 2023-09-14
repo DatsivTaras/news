@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="container mobile-hide">
-        <div class="row home-content">
+        <div class="row home-content mg-left-0">
             <div class="col-sm-3 main-widget-left">
                 <h3 class="main-widget-title">Стрічка новин</h3>
                 @widget('recentNews')
