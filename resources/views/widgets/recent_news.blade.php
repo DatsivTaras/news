@@ -47,7 +47,7 @@
     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
         @if($mainNews)
             @php
-                {{ $date = ''; }}
+                $date = '';
             @endphp
             @foreach($mainNews as $news)
                 @if(empty($date))
@@ -73,25 +73,9 @@
     </div>
     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
         @if ($popularNews)
-            @php
-                {{ $date = ''; }}
-            @endphp
+            <?php $type = 'popular' ?>
             @foreach($popularNews as $news)
-                @if(empty($date))
-                    <p class="widget-news-date">
-                        @php {{ $date = $news->date_of_publication; }} @endphp
-                        {{\Carbon\Carbon::parse($date)->day . ' ' . \App\Helpers\DateHelper::getMonth()[\Carbon\Carbon::parse($date)->format('M')] }}
-                    </p>
-                @endif
-
-                @if((\Carbon\Carbon::parse($date)->format('Y-m-d')  != \Carbon\Carbon::parse($news->date_of_publication)->format('Y-m-d')))
-                     <p class="widget-news-date">
-                        @php {{ $date = $news->date_of_publication; }} @endphp
-                         {{\Carbon\Carbon::parse($date)->day . ' ' . \App\Helpers\DateHelper::getMonth()[\Carbon\Carbon::parse($date)->format('M')] }}
-                    </p>
-                @endif
-
-                @include('widgets.parts._news', compact('news'))
+                @include('widgets.parts._news', compact('news','type'))
                 <hr>
             @endforeach
         @else
