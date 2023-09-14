@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="container mobile-hide">
-        <div class="row home-content mg-left-0">
+        <div class="row home-content">
             <div class="col-sm-3 main-widget-left">
                 <h3 class="main-widget-title">Стрічка новин</h3>
                 @widget('recentNews')
@@ -47,7 +47,7 @@
                                         <p class="card-text">{{ $slide->news->mini_description }}</p>
                                         <div class="read-more-container">
                                             <a href="{{$slide->news->getUrl()}}">Далі > </a>
-                                            <p class="date-news">17.04.1992</p>
+                                            <p class="date-news">{{ \Carbon\Carbon::parse($slide->news->date_of_publication)->format('d.m.Y') }}</p>
                                         </div>
                                     </div>
                                 </div>

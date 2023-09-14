@@ -142,6 +142,11 @@ class News extends Model implements Viewable
        return $this->category()->first()->name;
     }
 
+    public function getCategory()
+    {
+       return $this->category()->first();
+    }
+
     public function home_slider()
     {
         return $this->hasOne(HomeSlider::class, 'news_id','id');
