@@ -81,9 +81,9 @@
                     </div>
                     <div class="main-header-right-side">
                         <form action="{{ route('search')  }}" method="get" style="float: right">
-                            <div class="input-group">
+                            <div class="input-group header-search">
                                 <input name="query" class="form-control search-input" type="text" placeholder="магате...." aria-label="магате...." aria-describedby="btnNavbarSearch" />
-                                <span class="search-show"><img src="{{ asset('/img/search_icon.png') }}"></span>
+                                <span class="search-show"><i class="fa fa-search" aria-hidden="true"></i></span>
                             </div>
                         </form>
                     </div>
@@ -107,7 +107,7 @@
     <script>
         $(document).ready(function(){
           $( ".search-show" ).on( "click", function() {
-            $(".search-input").toggleClass("show");
+            $(".header-search").toggleClass("show");
           } );
         });
     </script>
