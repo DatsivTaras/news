@@ -306,8 +306,9 @@ main {
                     cursor: pointer;
                 }
                 .search-input {
-                    transition: all 1s ease-out;
-                    width: 0;
+                    transition: all 0.1s ease-out;
+                    width: 200px;
+                    height: 0;
                     padding: 0;
                     border: 0;
                     outline: none !important;
@@ -324,11 +325,22 @@ main {
                         font-weight: bold;
                         color: #333d8e;
                     }
-                    &.show {
-                        width: auto;
+                }
+                &.show {
+                    input {
+                        height: auto;
                         padding: 6px 12px;
                         border: 1px solid #cbcbcb;
                     }
+                    .search-show {
+                        i {
+                            color: #333d8e;
+                        }
+                    }
+                }
+                i {
+                    font-size: 19px;
+                    color: #56564f;
                 }
             }
         }
@@ -1333,6 +1345,206 @@ footer {
     display: none;
 }
 
+.all-new-list {
+    background: #FFFFFF;
+    padding: 15px 35px;
+    .date-news {
+        font-size: 19px;
+        letter-spacing: 4px;
+        color: #333d8e;
+        font-weight: bold;
+        font-family: "Gotham Pro";
+        text-transform: uppercase;
+        text-align: center;
+        border-bottom: 2px solid #585857;
+        padding-bottom: 7px;
+        margin-bottom: 10px;
+    }
+    .three-news-blocks {
+        padding: 0;
+        margin-bottom: 10px;
+        a {
+            .card {
+                border-top: none;
+                border-left: none;
+                border-right: none;
+                .card-body {
+                    padding: 0;
+                    .card-title {
+                        font-size: 12px;
+                        line-height: 13px;
+                        color: #56564f;
+                        font-weight: 500;
+                        font-family: "Gotham Pro";
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        min-height: 36px;
+                        margin-bottom: 0;
+                        &:hover {
+                            color: #333d8e;
+                        }
+                    }
+                }
+            }
+        }
+        &.main-news {
+            a {
+                .card {
+                    .card-body {
+                        .card-title {
+                            color: #333d8e;
+                            font-weight: 800;
+                            &:hover {
+                                color: red;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.search-news-blocks {
+    margin-bottom: 24px;
+    .card {
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        border-radius: 0;
+        .three-news-blocks-category {
+            position: absolute;
+            top: 5px;
+            left: 10px;
+            height: 18px;
+            border-radius: 1px;
+            background-color: #ffd62c;
+            padding: 0 10px 0 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .triangle {
+                position: relative;
+                a {
+                    font-size: 8px;
+                    color: #1f5e9b;
+                    font-weight: 500;
+                    font-family: "Gotham Pro";
+                    text-decoration: none;
+                    text-transform: uppercase;
+                    display: block;
+                    padding-top: 3px;
+                }
+                &:after {
+                    content: "";
+                    position: absolute;
+                    right: -11px;
+                    top: 16px;
+                    width: 0;
+                    height: 0;
+                    border-left: 8px solid transparent;
+                    border-right: 0 solid transparent;
+                    border-top: 8px solid #ffd62c;
+                }
+            }
+            &:hover {
+                background: #ffe887;
+                .triangle {
+                    a {
+                        color: #000000;
+                    }
+                    &:after {
+                        border-top-color: #ffe887;
+                    }
+                }
+            }
+        }
+        .card-img-top {
+            width: 100%;
+            border-radius: 0;
+            object-fit: cover;
+        }
+        .card-body {
+            padding: 15px 30px 8px 0;
+            .card-title {
+                margin-bottom: 5px;
+                a {
+                    font-size: 25px;
+                    color: #333d8e;
+                    font-weight: bold;
+                    font-family: "Gotham Pro";
+                    text-decoration: none;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    min-height: 60px;
+                    &:hover {
+                        color: red;
+                    }
+                }
+            }
+            .card-text {
+                font-size: 12px;
+                color: #56564f;
+                font-weight: 500;
+                font-family: "Gotham Pro";
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                min-height: 42px;
+                margin-bottom: 12px;
+            }
+            .read-more-container {
+                .read-more {
+                    text-align: right;
+                    margin-bottom: 0;
+                    a {
+                        font-size: 10px;
+                        color: #56564f;
+                        font-family: "Gotham Pro";
+                        text-decoration: none;
+                        &:hover {
+                            color: red;
+                            font-weight: 800;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.full-search-input {
+    input {
+        border-radius: 0;
+        border: none !important;
+        box-shadow: none !important;
+        outline: none !important;
+        background: #ffffff;
+        font-size: 16px;
+        color: #333d8e !important;
+        font-weight: bold;
+        font-family: "Gotham Pro";
+        caret-color: #fbcb08;
+    }
+    #btnNavbarSearch {
+        background: #ffffff;
+        border: none !important;
+        border-radius: 0 !important;
+        i {
+            font-size: 19px;
+            color: #333d8e;
+        }
+    }
+}
+
 @media screen and (max-width: 768px) {
 
     body {
@@ -1714,7 +1926,22 @@ footer {
         bottom: -2px;
     }
 
+    .search-news-blocks .card .card-body {
+        padding: 15px 30px 8px 15px;
+    }
 
+    .search-news-blocks .card .card-body .card-title a {
+        font-size: 22px;
+        min-height: 55px;
+    }
+
+
+}
+
+@media (min-width: 576px) {
+    .search-news-blocks .card .card-body {
+        padding: 15px 30px 8px 15px;
+    }
 }
 
 @media (min-width: 768px) {
@@ -1728,6 +1955,16 @@ footer {
     .home-content .home-left-block .home-right-single-news .home-news-container .category {
         width: 65%;
     }
+    .search-news-blocks .card .card-body {
+        padding: 15px 30px 8px 15px;
+    }
+}
+
+@media (min-width: 992px) {
+    .search-news-blocks .card .card-body .card-title a {
+        font-size: 13px;
+        min-height: 30px;
+    }
 }
 
 @media (min-width: 1200px) {
@@ -1737,3 +1974,4 @@ footer {
         min-height: 150px;
     }
 }
+
