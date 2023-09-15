@@ -5,23 +5,22 @@
 @endsection
 
 @section('content')
-    <h1 class="text-center">
+    <h1 class="text-center news-category-title">
         {{ 'Новини' }}
     </h1>
 
     {{--    @include('layouts.filterMenu')--}}
 
     <div class="container">
-        <br>
-        <div class="row">
-            <div class="col-sm-3">
-                <hr>
-                <h3>Стрічка новин</h3>
-                <hr>
-                @widget('recentNews')
+        <div class="row home-content">
+            <div class="col-xl-3 col-lg-3 col-md-4 d-sm-none d-none d-md-block d-md-block">
+                <div class="main-widget-left">
+                    <h3 class="main-widget-title">Стрічка новин</h3>
+                    @widget('recentNews')
+                </div>
             </div>
-            <div class="col-sm-9">
-                <div class="news row">
+            <div class="col-xl-9 col-lg-9 col-md-8 col-sm-12 col-12">
+                <div class="news row all-new-list">
                     @include('news.parts._news-full-width',['date' => ''])
                 </div>
             </div>
