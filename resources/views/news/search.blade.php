@@ -7,23 +7,29 @@
 @section('content')
 
     <div class="container">
-        <br>
-        <div class="row">
-            <form action="{{ route('search')  }}" method="get" style="float: right">
-                <div class="input-group">
-                    <input name="query" value="{{ isset($_GET['query']) ? $_GET['query'] : '' }}" class="form-control"
-                           type="text" placeholder="Search for..." aria-label="Search for..."
-                           aria-describedby="btnNavbarSearch"/>
-                    <button class="btn btn-primary" id="btnNavbarSearch" type="submit"><i class="fas fa-search"></i>
-                    </button>
+        <div class="row home-content">
+            <div class="col-xl-3 col-lg-3 col-md-4 d-sm-none d-none d-md-block d-md-block">
+                <div class="main-widget-left">
+                    <h3 class="main-widget-title">Стрічка новин</h3>
+                    @widget('recentNews')
                 </div>
-                <br>
-            </form>
-            <div class="col-sm-3 main-widget-left">
-                <h3 class="main-widget-title">Стрічка новин</h3>
-                @widget('recentNews')
             </div>
-            <div class="col-sm-9">
+            <div class="col-xl-9 col-lg-9 col-md-8 col-sm-12 col-12">
+                <div class="row">
+                    <div class="col-12">
+                        <form action="{{ route('search')  }}" method="get">
+                            <div class="input-group full-search-input">
+                                <input name="query" value="{{ isset($_GET['query']) ? $_GET['query'] : '' }}" class="form-control"
+                                       type="text" placeholder="Магате...." aria-label="Search for..."
+                                       aria-describedby="btnNavbarSearch"/>
+                                <button class="btn btn-primary" id="btnNavbarSearch" type="submit">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                            <br>
+                        </form>
+                     </div>
+                </div>
                 <div class="news row">
                     @include('news.parts._news-search', ['type' => 1])
                 </div>
