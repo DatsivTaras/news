@@ -30,3 +30,13 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+
+$(document).ready(function(){
+    imgWidth = $('.card-img-top').width();
+    $('.card-img-top').css("height", imgWidth * (9/16));
+
+    $( window ).on( "resize", function() {
+        imgWidth = $('.card-img-top').width();
+        $('.card-img-top').css("height", imgWidth * (9/16));
+    } );
+});

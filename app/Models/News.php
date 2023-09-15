@@ -88,12 +88,9 @@ class News extends Model implements Viewable
         return $this->title;
     }
 
-    public function getNewsType()
+    public function isImportment()
     {
-        if($this->type == NewsPublicationType::IMPORTANT) {
-            return true;
-        }
-        return false;
+        return $this->type == NewsPublicationType::IMPORTANT ? true : false;
     }
 
     public function getDescription()
@@ -146,6 +143,7 @@ class News extends Model implements Viewable
     {
        return $this->category()->first();
     }
+
 
     public function home_slider()
     {
