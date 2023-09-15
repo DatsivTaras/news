@@ -152,7 +152,8 @@
 }
 
 body {
-    background-image: linear-gradient(#ffffff, #d1d1d1);
+    background: rgb(255,255,255);
+    background: linear-gradient(rgb(255, 255, 255) 17%, rgb(209, 209, 209) 30%);
 }
 
 section.main {
@@ -167,6 +168,10 @@ main {
 
 .mg-left-0 {
     margin-left: 0 !important;
+}
+
+.bg-white {
+    background: #FFFFFF;
 }
 
 .top-bar {
@@ -243,6 +248,7 @@ main {
                 padding: 20px 15px;
                 transform: translate(0px, 47px) !important;
                 width: 50vw;
+                background: #ffffffdb;
                 li {
                     .menu-dropdown-item {
                         font-size: 14px;
@@ -252,7 +258,7 @@ main {
                         font-family: "Gotham Pro";
                         text-transform: uppercase;
                         text-decoration: none;
-                        line-height: 24px;
+                        line-height: 20px;
                         &:hover {
                             color: #333d8e;
                             border-bottom: 2px solid #fbdf6d;
@@ -260,6 +266,7 @@ main {
                         &.active {
                             color: #333d8e;
                             border-bottom: 2px solid #fbdf6d;
+                            font-weight: 800;
                         }
                     }
                 }
@@ -314,13 +321,13 @@ main {
                     outline: none !important;
                     box-shadow: none;
                     position: absolute;
-                    top: 100%;
+                    top: 20px;
                     right: 20px;
                     border-radius: 0;
                     caret-color: #fbcb08;
                     font-weight: bold;
                     color: #333d8e;
-                    background: #ffffff;
+                    background: #ffffffdb;
                     &::placeholder {
                         font-weight: bold;
                         color: #333d8e;
@@ -901,13 +908,16 @@ main {
                 font-family: "Gotham Pro";
                 text-transform: uppercase;
                 .triangl {
+                    a {
+                        text-decoration: none;
+                    }
                     position: relative;
                     padding: 0 10px;
                     &:after {
                         content: "";
                         position: absolute;
                         left: 100%;
-                        bottom: -1px;
+                        bottom: -2px;
                         width: 0;
                         height: 0;
                         border-top: 10px solid transparent;
@@ -918,7 +928,9 @@ main {
                 &:hover {
                     background-color: #ffe887;
                     .triangl {
-                        color: #000000;
+                        a {
+                            color: #000000;
+                        }
                         &:after {
                             border-left-color: #ffe887;
                         }
@@ -954,6 +966,7 @@ main {
                     font-family: "Gotham Pro";
                     text-transform: uppercase;
                     margin-bottom: 10px;
+                    min-height: 39px;
                 }
                 .card-source {
                     font-size: 10px;
@@ -1055,6 +1068,7 @@ main {
         .card-img-top {
             width: 100%;
             border-radius: 0;
+            object-fit: cover;
         }
         .three-news-blocks-category {
             position: absolute;
@@ -1184,7 +1198,7 @@ main {
 .single-news-container {
     .category {
         position: relative;
-        .card-img-top {
+        .single-card-img-top {
             width: 100%;
             object-fit: cover;
             min-height: 335px;
@@ -1220,13 +1234,20 @@ main {
             }
         }
     }
+    .single-news-body {
+        padding: 0 12px;
+        .body-container {
+            background: #ffffff;
+        }
+    }
     .single-news-title {
         font-size: 27px;
         color: #333d8e;
         font-weight: 800;
         font-family: "Gotham Pro";
-        text-align: right;
-        margin-top: 40px;
+        text-align: left;
+        padding: 32px 45px 0 20px;
+        margin-bottom: 0;
     }
     .single-news-author {
         font-size: 22px;
@@ -1234,7 +1255,7 @@ main {
         font-weight: 600;
         font-family: "Gotham Pro";
         text-align: right;
-        padding: 0;
+        padding: 0 45px 0 20px;
         i {
             padding: 0;
         }
@@ -1248,11 +1269,13 @@ main {
         color: #56564f;
         font-weight: 500;
         font-family: "Gotham Pro";
+        padding:  10px 45px;
     }
     .single-news-tags {
         font-size: 12px;
         color: #1f5e9c;
         font-family: "Gotham Pro";
+        padding: 10px 20px;
         .btn-group.me-2 {
             margin-left: 30px;
             a {
@@ -1262,10 +1285,10 @@ main {
         }
     }
     .similar-news-container {
-        border-top: 1px solid #f5f5f5;
-        border-bottom: 1px solid #f5f5f5;
-        margin: 20px 0;
-        padding: 20px 0 0 ;
+        border-top: 1px solid #d7d7d7;
+        border-bottom: 1px solid #d7d7d7;
+        margin: 0 0;
+        padding: 30px 40px 0 ;
     }
 }
 
@@ -1945,10 +1968,6 @@ footer {
 }
 
 @media (min-width: 768px) {
-    .three-news-blocks .card .card-img-top {
-        max-height: 125px;
-        min-height: 125px;
-    }
     .home-content .home-left-block .home-big-news div .category {
         width: 80%;
     }
@@ -1967,11 +1986,5 @@ footer {
     }
 }
 
-@media (min-width: 1200px) {
-    .three-news-blocks .card .card-img-top {
-        height: 100%;
-        max-height: 150px;
-        min-height: 150px;
-    }
-}
+
 

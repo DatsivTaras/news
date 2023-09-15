@@ -64,42 +64,47 @@
             </div>
 
             <div class="col-xl-9 col-lg-9 col-md-8 col-sm-12 col-12">
-                <div class="row single-news-container">
-                    <div class="category">
-                        <img class="card-img-top" src="{{ $news->getImageUrl() }}"alt="Card image cap">
-                        <div class="top-left"><div class="triangle">{{ $news->getCategoryName() }}</div></div>
-                    </div>
-                    <h1 class="single-news-title">
-                        {{$news->getTitle()}}
-                    </h1>
-                   <!-- <div class="row">
-                        <i>{{ $news->getPublicationDate() }}</i>
-                    </div> -->
-                    @if($author = $news->getAuthor())
-                        <div class="row single-news-author">
-                            <i>Автор: <b><a href= {{ $author->getUrl() }} }}>{{ $author->getFullName() }}</a></b></i>
-                        </div><br><br>
-                    @endif
-                    <div class="row single-news-description">
-                        {!! $news->getDescription() !!}
-                    </div>
-
-                    <div class="row similar-news-container">
-                        @widget('SimilarNews', ['news_id' => $news->id])
-                    </div>
-
-                    <div class="row single-news-tags">
-                        <div class="btn-group">
-                            {{ 'Теги :' }}
-                            @foreach($news->tags as $tag)
-                                <div class="btn-group me-2" role="group" aria-label="Second group">
-                                <a href='/search?query={{ $tag->name }}'>{{ mb_strtoupper($tag->name) . ' '}}  </a>
-                                </div>
-                            @endforeach
+                <div class="bg-white">
+                    <div class="row single-news-container">
+                        <div class="category">
+                            <img class="single-card-img-top" src="{{ $news->getImageUrl() }}"alt="Card image cap">
+                            <div class="top-left"><div class="triangle">{{ $news->getCategoryName() }}</div></div>
                         </div>
+                        <div class="single-news-body">
+                            <div class="body-container">
+                                <h1 class="single-news-title">
+                                    {{$news->getTitle()}}
+                                </h1>
+                                @if($author = $news->getAuthor())
+                                    <div class="single-news-author">
+                                        <i>Автор: <b><a href= {{ $author->getUrl() }} }}>{{ $author->getFullName() }}</a></b></i>
+                                    </div>
+                                @endif
+                                <div class="single-news-description">
+                                    {!! $news->getDescription() !!}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="similar-news-container">
+                                <div class="row">
+                                    @widget('SimilarNews', ['news_id' => $news->id])
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row single-news-tags">
+                            <div class="btn-group">
+                                {{ 'Теги :' }}
+                                @foreach($news->tags as $tag)
+                                    <div class="btn-group me-2" role="group" aria-label="Second group">
+                                    <a href='/search?query={{ $tag->name }}'>{{ mb_strtoupper($tag->name) . ' '}}  </a>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                        <div id="fb-root"></div>
+                        <div class="fb-comments" data-href="{{ $news->getUrl() }}" data-width=""data-numposts="5"></div>
                     </div>
-                    <div id="fb-root"></div>
-                    <div class="fb-comments" data-href="{{ $news->getUrl() }}" data-width=""data-numposts="5"></div>
                 </div>
             </div>
         </div>
