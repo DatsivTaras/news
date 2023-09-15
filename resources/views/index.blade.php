@@ -19,7 +19,7 @@
                                     <div>
                                         <div class="category">
                                         <!--    <img class="card-img-top" src="{{ $slide->news->getImageUrl() }}"  width="200" height="400" alt="Card image cap" title=";ddfdf"/> -->
-                                            <div class="home-big-news-category"><a href="#">{{ $slide->news->getCategoryName() }}</a></div>
+                                            <div class="home-big-news-category"><a href={{ $slide->news->getCategory()->getUrl() }}>{{ $slide->news->getCategoryName() }}</a></div>
                                             <div class="card-body">
                                                 <a href="{{$slide->news->getUrl()}}">
                                                     <span class="card-title">
@@ -44,7 +44,7 @@
                                 <div class="card">
                                     <div class="three-news-blocks-category">
                                         <div class="triangle">
-                                            <a class="category-link" href="#">{{ $slide->news->getCategoryName() }}</a>
+                                            <a class="category-link" href={{ $slide->news->getCategory()->getUrl() }}>{{ $slide->news->getCategoryName() }}</a>
                                         </div>
                                     </div>
                                     <img class="card-img-top" src="{{ $slide->news->getImageUrl() }}" alt="Card image cap">
@@ -68,7 +68,7 @@
                         <div class="col-sm-12 home-right-single-news">
                             <div class="home-news-container" style="background-image: url('{{ $mainBlock->getImageUrl() }}');">
                                 <div class="category">
-                                    <div class="home-single-news-category"><div class="triang"><a href="#">{{ $mainBlock->getCategoryName() }}</a></div></div>
+                                    <div class="home-single-news-category"><div class="triang"><a href="{{ $mainBlock->getCategory()->getUrl() }}">{{ $mainBlock->getCategoryName() }}</a></div></div>
                                     <div class="card-body">
                                         <a class="home-big-news-read-more" href="{{$mainBlock->getUrl()}}">
                                             <span class="card-title">{{ $mainBlock->title }}</span>
@@ -89,7 +89,7 @@
                 @foreach($mainBlocktwo as $news)
                     <div class="col-sm-6 home-two-news-container">
                         <div class="category">
-                            <div class="home-two-news-category"><div class="triangl">{{ $news->category['0']->name }}</div></div>
+                            <div class="home-two-news-category"><div class="triangl"><a href="{{ $news->getCategory()->getUrl() }}">{{ $news->getCategoryName() }}</a></div></div>
                             <img class="card-img-top" src="{{ $news->getImageUrl() }}" width="200" height="200" alt="Card image cap">
                             <div style="background-color:coral" class="top-left"></div>
                             <div class="card-body">
