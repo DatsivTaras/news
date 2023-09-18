@@ -32,11 +32,37 @@ const app = new Vue({
 });
 
 $(document).ready(function(){
-    imgWidth = $('.card-img-top').width();
-    $('.card-img-top').css("height", imgWidth * (9/16));
+
+
+    $(function() {
+        $(".home-big-news").each(function() {
+            imgWidth = $(this).width();
+            $(this).css("height", imgWidth * (9/16));
+        });
+    });
+
+    $(function() {
+        $(".card-img-top").each(function() {
+            imgWidth = $(this).width();
+            $(this).css("height", imgWidth * (9/16));
+        });
+    });
+
 
     $( window ).on( "resize", function() {
-        imgWidth = $('.card-img-top').width();
-        $('.card-img-top').css("height", imgWidth * (9/16));
+        $(function() {
+            $(".card-img-top").each(function() {
+                imgWidth = $(this).width();
+                $(this).css("height", imgWidth * (9/16));
+            });
+        });
+
+        $(function() {
+            $(".home-big-news").each(function() {
+                imgWidth = $(this).width();
+                $(this).css("height", imgWidth * (9/16));
+            });
+        });
     } );
+
 });
