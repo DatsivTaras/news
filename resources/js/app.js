@@ -30,3 +30,39 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+
+$(document).ready(function(){
+
+
+    $(function() {
+        $(".home-big-news").each(function() {
+            imgWidth = $(this).width();
+            $(this).css("height", imgWidth * (9/16));
+        });
+    });
+
+    $(function() {
+        $(".card-img-top").each(function() {
+            imgWidth = $(this).width();
+            $(this).css("height", imgWidth * (9/16));
+        });
+    });
+
+
+    $( window ).on( "resize", function() {
+        $(function() {
+            $(".card-img-top").each(function() {
+                imgWidth = $(this).width();
+                $(this).css("height", imgWidth * (9/16));
+            });
+        });
+
+        $(function() {
+            $(".home-big-news").each(function() {
+                imgWidth = $(this).width();
+                $(this).css("height", imgWidth * (9/16));
+            });
+        });
+    } );
+
+});
