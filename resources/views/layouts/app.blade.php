@@ -65,7 +65,6 @@
                             <svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
                           </button>
                           <ul class="dropdown-menu">
-                            <li><a class="menu-dropdown-item active" href="/">Головна</a></li>
                               @foreach(\App\Services\CategoryServices::getCategoryHeaderMenu() as $category)
                                 <li><a class="menu-dropdown-item" href={{ '/category/' . $category->slug }}>{{ $category->name }}</a></li>
                               @endforeach
