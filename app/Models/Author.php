@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Storage;
  * @property $id
  * @property $surname
  * @property $name
+ * @property $instagram
+ * @property $facebook
+ * @property $twitter
+ * @property $youTube
+ * @property $tikTok
  * @property $patronymic
  * @property $biography
  * @property $created_at
@@ -28,6 +33,11 @@ class Author extends Model
 		'surname' => 'required',
 		'name' => 'required',
 		'user_id' => 'required',
+		'instagram' => '',
+		'facebook' => '',
+		'twitter' => '',
+		'youTube' => '',
+		'tikTok' => '',
 		'image' => '',
 		'email' => 'required',
 		'patronymic' => 'required',
@@ -41,7 +51,7 @@ class Author extends Model
      *
      * @var array
      */
-    protected $fillable = ['surname', 'slug', 'name', 'patronymic', 'biography', 'user_id'];
+    protected $fillable = ['surname', 'slug', 'name', 'patronymic', 'biography', 'user_id', 'instagram', 'facebook', 'twitter', 'youTube', 'tikTok'];
 
     public function user()
     {

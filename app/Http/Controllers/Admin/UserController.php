@@ -56,8 +56,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $user = new
- User();
+        $user = new User();
         $role = $this->roleRepository->getRole();
 
         return view('admin/user.create', compact('user', 'role'));
@@ -72,7 +71,7 @@ class UserController extends Controller
     public function store(UserUpdateRequest $request)
     {
         $data = $request->validated();
-
+    
         $this->userServices->saveUser($data);
 
         return redirect()->route('admin.users.index')

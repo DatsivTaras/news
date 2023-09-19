@@ -41,7 +41,7 @@ class UserServices
 
         $user = $this->userRepository->create($data);
         $user->assignRole($data['role']);
-
+       
         $data['user_id'] = $user->id;
         $this->authorServices->saveAuthors($data);
     }

@@ -30,6 +30,11 @@ class  AuthorsEditRequest extends FormRequest
             'surname' => 'required',
             'email' => ['required', 'email', \Illuminate\Validation\Rule::unique('users')->ignore($request['id'])],
             'image' => '',
+            'instagram' => '',
+            'facebook' => '',
+            'twitter' => '',
+            'youTube' => '',
+            'tikTok' => '',
             'patronymic' => 'required',
             'biography' => 'required',
         ];
