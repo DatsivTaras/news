@@ -46,6 +46,31 @@
             {{ Form::text('password_confirmation', '', ['class' => 'form-control' . ($errors->has('password_confirmation') ? ' is-invalid' : ''), 'placeholder' => __('main.password_confirmation')]) }}
             {!! $errors->first('password_confirmation', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+        <div class="form-group">
+            {{ Form::label(__('main.instagram')) }}
+            {{ Form::text('instagram', $user->instagram, ['class' => 'form-control' . ($errors->has('instagram') ? ' is-invalid' : ''), 'placeholder' => __('main.instagram')]) }}
+            {!! $errors->first('instagram', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
+        <div class="form-group">
+            {{ Form::label(__('main.facebook')) }}
+            {{ Form::text('facebook', $user->facebook, ['class' => 'form-control' . ($errors->has('facebook') ? ' is-invalid' : ''), 'placeholder' => __('main.facebook')]) }}
+            {!! $errors->first('facebook', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
+        <div class="form-group">
+            {{ Form::label(__('main.twitter')) }}
+            {{ Form::text('twitter', $user->twitter, ['class' => 'form-control' . ($errors->has('twitter') ? ' is-invalid' : ''), 'placeholder' => __('main.twitter')]) }}
+            {!! $errors->first('twitter', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
+        <div class="form-group">
+            {{ Form::label(__('main.youTube')) }}
+            {{ Form::text('youTube', $user->youTube, ['class' => 'form-control' . ($errors->has('youTube') ? ' is-invalid' : ''), 'placeholder' => __('main.youTube')]) }}
+            {!! $errors->first('youTube', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
+        <div class="form-group">
+            {{ Form::label(__('main.tikTok')) }}
+            {{ Form::text('tikTok', $user->tikTok, ['class' => 'form-control' . ($errors->has('tikTok') ? ' is-invalid' : ''), 'placeholder' => __('main.tikTok')]) }}
+            {!! $errors->first('tikTok', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
     </div>
     <br><div class="box-footer mt20">
         <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
