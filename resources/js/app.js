@@ -42,6 +42,13 @@ $(document).ready(function(){
     });
 
     $(function() {
+        $(".home-news-container").each(function() {
+            imgWidth = $(this).width();
+            $(this).css("height", imgWidth * (9/16));
+        });
+    });
+
+    $(function() {
         $(".card-img-top").each(function() {
             imgWidth = $(this).width();
             $(this).css("height", imgWidth * (9/16));
@@ -59,6 +66,13 @@ $(document).ready(function(){
 
         $(function() {
             $(".home-big-news").each(function() {
+                imgWidth = $(this).width();
+                $(this).css("height", imgWidth * (9/16));
+            });
+        });
+
+        $(function() {
+            $(".home-news-container").each(function() {
                 imgWidth = $(this).width();
                 $(this).css("height", imgWidth * (9/16));
             });

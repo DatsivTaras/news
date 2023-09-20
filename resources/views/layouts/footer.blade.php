@@ -3,7 +3,7 @@
         <div class="row justify-content-around mb-0 pt-5 pb-0 ">
             <div class=" col-12">
                 <div class="row justify-content-center">
-                    <div class="col-md-3 col-12 font-italic align-items-center mt-md-3 mt-4">
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-6">
                         <div class="footer-logo-container">
                             <span>
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Шар_1" x="0px" y="0px" viewBox="0 0 538.14 106.58" style="enable-background:new 0 0 538.14 106.58;" xml:space="preserve">
@@ -89,7 +89,7 @@
                             @endif
                         </p>
                     </div>
-                    <div class="col-md-3 col-4 my-sm-0 mt-5 footer-menu-container">
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-6 footer-menu-container">
                         <ul class="list-unstyled">
                             <li class="mt-md-3 mt-4 footer-menu-title">Категорії</li>
                             @if($footerCategories = \App\Services\CategoryServices::getFooterCategories())
@@ -103,7 +103,7 @@
                             @endif
                         </ul>
                     </div>
-                    <div class="col-md-3 col-4 my-sm-0 mt-5 footer-menu-container">
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-6 footer-menu-container">
                         <ul class="list-unstyled">
                             <li class="mt-md-3 mt-4">
                                 <a href="/page/testova_storinka" style="text-decoration: none !important;">Про нас</a>
@@ -119,7 +119,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="col-xl-auto col-md-3 col-4 my-sm-0 mt-5 footer-menu-container">
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-6 footer-menu-container">
                         <ul class="list-unstyled">
                             <li class="mt-md-3 mt-4">
                                 <a href="/page/testova_storinka" style="text-decoration: none !important;">Контакти</a>
@@ -138,8 +138,7 @@
                 </div>
             </div>
         </div>
-        <hr>
-        <div align="center"  class="copy-rights cursor-pointer">&#9400; {{ now()->format('Y') }} {{ getSetting('site_name') }}.Усі права захищено. </div>
+        <div class="copy-rights cursor-pointer">&#9400; {{ now()->format('Y') }} {{ getSetting('site_name') }}.Усі права захищено. </div>
     </footer>
 </div>
 
