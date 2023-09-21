@@ -50,7 +50,7 @@ class ProfileController extends Controller
         //
     }
 
-    /**
+  datskn463@gmail.co  /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -80,6 +80,7 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
+
         if(auth()->user()->author->id != $id && !auth()->user()->hasRole('Admin')){
             abort(404);
         }
@@ -101,6 +102,10 @@ class ProfileController extends Controller
         $data = $request->validated();
 
         $this->authorServices->updateAuthors($id, $data);
+
+        if (auth()->user()->hasRole('Admin'))   {
+            return redirect('/admin/users');
+        }
 
         return redirect('/admin/profile');
     }
