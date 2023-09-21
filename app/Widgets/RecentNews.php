@@ -25,7 +25,8 @@ class RecentNews extends AbstractWidget
      */
     protected $config = [
         'category_id' => null,
-        'limit' => 14
+        'limit' => 14,
+        'type' => 'desctop'
     ];
 
     /**
@@ -34,6 +35,7 @@ class RecentNews extends AbstractWidget
      */
     public function run()
     {
+        $type = $this->config['type'];
         $options = [
             'type' => 'slider',
         ];
@@ -62,6 +64,6 @@ class RecentNews extends AbstractWidget
         $options['viewType'] = 'main';
         $mainNews = $this->newsRepository->getPaginationNews($options, $this->config['limit'], $sort);
 
-        return view('widgets.recent_news', compact('lastNews', 'mainNews', 'popularNews'));
+        return view('widgets.recent_news', compact('type' ,'lastNews', 'mainNews', 'popularNews'));
     }
 }

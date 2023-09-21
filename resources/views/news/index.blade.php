@@ -7,7 +7,7 @@
 @section('content')
     <h1 class="text-center news-category-title">
         {{ 'Новини' }}
-    </h1>
+    login</h1>
 
     {{--    @include('layouts.filterMenu')--}}
 
