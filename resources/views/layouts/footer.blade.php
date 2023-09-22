@@ -3,7 +3,7 @@
         <div class="row justify-content-around mb-0 pt-5 pb-0 ">
             <div class=" col-12">
                 <div class="row justify-content-center">
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-6">
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-6 ">
                         <div class="footer-logo-container">
                             <span>
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Шар_1" x="0px" y="0px" viewBox="0 0 538.14 106.58" style="enable-background:new 0 0 538.14 106.58;" xml:space="preserve">
