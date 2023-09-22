@@ -107,9 +107,15 @@ class News extends Model implements Viewable
     {
         return route('news.show', ['slug' => $this->slug]);
     }
+
     public function getAuthor()
     {
-        return $this->author->first();
+        return $this->author ? $this->author->first() : '';
+    }
+
+    public function getAuthorFullName()
+    {
+        return $this->author ? $this->author->pluck('name')->first() : '';
     }
 
     public function getaDate()

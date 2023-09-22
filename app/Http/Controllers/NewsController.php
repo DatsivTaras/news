@@ -100,7 +100,6 @@ class NewsController extends Controller
             return response()->json(['html' => $view, 'pagin' => $news->hasMorePages()	]);
         }
 
-
         return view('news.search', compact('news'));
     }
 

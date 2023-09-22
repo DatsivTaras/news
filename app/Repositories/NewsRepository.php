@@ -66,7 +66,7 @@ class  NewsRepository extends BaseRepository
                     $sortedIds = implode(',', $selectedOptionValuesIDSort);
                     $query->orderByRaw("FIELD(id, {$sortedIds}) DESC");
                 }
-//                $query->whereDate('date_of_publication','=', now()->format('Ymd'));
+                $query->whereDate('date_of_publication','=', now()->format('Ymd'));
                 $query->orderByUniqueViews('ASC');
             }
         }

@@ -18,18 +18,22 @@ class CreateAuthorsTable extends Migration
             $table->string('surname');
             $table->string('name');
             $table->string('slug');
-            $table->string('instagram');
-            $table->string('facebook');
-            $table->string('twitter');
-            $table->string('youTube');
-            $table->string('tikTok');
+            $table->string('instagram')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('youTube')->nullable();
+            $table->string('tikTok')->nullable();
             $table->string('patronymic');
             $table->text('biography');
-            $table->integer('user_id');
+            $table->unsignedBigInteger('user_id');
+
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
             $table->timestamps();
         });
     }
- 
+
     /**
      * Reverse the migrations.
      *

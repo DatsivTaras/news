@@ -111,7 +111,7 @@ class PaidNewsController extends Controller
     {
         $paidNews = PaidNews::find($id)->delete();
 
-        return redirect()->route('admin.paid-news.index')
+        return redirect()->route('admin.paidNews.index')
             ->with('success', 'PaidNews deleted successfully');
     }
 }

@@ -4,13 +4,13 @@
 
     <div class="container mobile-hide">
         <div class="row home-content">
-            <div class="col-xl-3 col-lg-3 col-md-4 d-sm-none d-none d-md-block d-md-block">
+            <div class="col-xl-3 col-lg-3 col-md-12 d-sm-none d-none d-md-block d-md-block">
                 <div class="main-widget-left">
                     <h3 class="main-widget-title">Стрічка новин</h3>
                     @widget('recentNews')
                 </div>
             </div>
-            <div class="col-xl-9 col-lg-9 col-md-8 col-sm-8 home-left-block">
+            <div class="col-xl-9 col-lg-9 col-md-12 col-sm-8 home-left-block">
                 <div class="row">
                     @foreach($sliderNews as $key => $slide)
                         @if ($key == 0)
@@ -73,7 +73,9 @@
                                         <a class="home-big-news-read-more" href="{{$mainBlock->getUrl()}}">
                                             <span class="card-title">{{ $mainBlock->title }}</span>
                                         </a>
-                                        <p class="card-text">{{ $mainBlock->getAuthor()->name }} — {{ $mainBlock->getaDate() }}</p>
+                                        @if($author = $mainBlock->getAuthor())
+                                            <p class="card-text">{{ $author->getFullName() }} — {{ getDates($mainBlock->date_of_publication) }}</p>
+                                        @endif
                                     </div>
                                     <div class="home-single-news-footer-right">
                                         <p><span>Джерело:</span> {{ $mainBlock->subtitle }}</p>
@@ -96,7 +98,9 @@
                                 <a class="card-title" href="{{ $news->getUrl() }}">
                                     {{ $news->title }}
                                 </a>
-                                <p class="card-author-date">{{ $mainBlock->getAuthor()->name }} — {{ getDates($news->date_of_publication) }} </p>
+                                @if($author = $news->getAuthor())
+                                    <p class="card-author-date">{{ $author->getFullName() }} — {{ getDates($mainBlock->date_of_publication) }}</p>
+                                @endif
                                 <p class="card-source">Джерело: {{ $news->subtitle }}</p>
                                 <a class="home-two-news-read-more-btn" href="{{ $news->getUrl() }}">Деталі > </a>
                             </div>
@@ -141,7 +145,7 @@
                                 <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
                                     <div class="main-widget-left">
                                         <h3 class="main-widget-title">Стрічка новин</h3>
-                                        @widget('recentNews')
+                                        @widget('recentNews', ['type' => 'mobile'])
                                     </div>
                                 </div>
                             @elseif(in_array($key, [1,2,3]))
