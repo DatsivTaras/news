@@ -18,7 +18,7 @@
                                 <div class="home-big-news" style="background-image: url('{{ $slide->news->getImageUrl() }}');">
                                     <div>
                                         <div class="category">
-                                        <!--    <img class="card-img-top" src="{{ $slide->news->getImageUrl() }}"  width="200" height="400" alt="Card image cap" title=";ddfdf"/> -->
+                                            <!--    <img class="card-img-top" src="{{ $slide->news->getImageUrl() }}"  width="200" height="400" alt="Card image cap" title=";ddfdf"/> -->
                                             <div class="home-big-news-category"><a href={{ $slide->news->getCategory()->getUrl() }}>{{ $slide->news->getCategoryName() }}</a></div>
                                             <div class="card-body">
                                                 <a href="{{$slide->news->getUrl()}}">
@@ -26,7 +26,7 @@
                                                         {{ $slide->news->title }}
                                                     </span>
                                                 </a>
-{{--                                            <p class="card-text">{{ $slide->news->mini_description }}</p>--}}
+                                                {{--                                            <p class="card-text">{{ $slide->news->mini_description }}</p>--}}
                                             </div>
                                         </div>
                                     </div>
@@ -59,8 +59,8 @@
                                         </div>
                                     </div>
                                 </div>
-                            </a>
-                        </div>
+                                </a>
+                            </div>
 
                         @endif
                     @endforeach
@@ -112,70 +112,70 @@
     </div>
 
     <div class="container desktop-hide">
-            <div class="row home-content">
-                <div class="col-sm-12 home-left-block">
-                    <div class="row">
-                        @foreach($sliderNews as $key => $slide)
-                            @if ($key == 0)
-                                <div class="col-sm-12">
-                                    <div class="home-big-news" style="background-image: url('{{ $slide->news->getImageUrl() }}');">
-                                        <div>
-                                            <div class="category">
+        <div class="row home-content">
+            <div class="col-sm-12 home-left-block">
+                <div class="row">
+                    @foreach($sliderNews as $key => $slide)
+                        @if ($key == 0)
+                            <div class="col-sm-12">
+                                <div class="home-big-news" style="background-image: url('{{ $slide->news->getImageUrl() }}');">
+                                    <div>
+                                        <div class="category">
                                             <!--    <img class="card-img-top" src="{{ $slide->news->getImageUrl() }}"  width="200" height="400" alt="Card image cap" title=";ddfdf"/> -->
-                                                <div class="home-big-news-category"><a href="#">{{ $slide->news->getCategoryName() }}</a></div>
-                                                <div class="card-body">
-                                                    <a href="{{$slide->news->getUrl()}}">
+                                            <div class="home-big-news-category"><a href="#">{{ $slide->news->getCategoryName() }}</a></div>
+                                            <div class="card-body">
+                                                <a href="{{$slide->news->getUrl()}}">
                                                         <span class="card-title">
                                                             {{ $slide->news->title }}
                                                         </span>
-                                                    </a>
-    {{--                                            <p class="card-text">{{ $slide->news->mini_description }}</p>--}}
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="home-big-news-footer">
-                                            <div class="home-big-news-footer-right">
-                                                <p><span>Джерело:</span> {{ $slide->news->subtitle }}</p>
-                                                <a class="home-big-news-read-more" href="{{$slide->news->getUrl()}}">Деталі> </a>
+                                                </a>
+                                                {{--                                            <p class="card-text">{{ $slide->news->mini_description }}</p>--}}
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
-                                    <div class="main-widget-left">
-                                        <h3 class="main-widget-title">Стрічка новин</h3>
-                                        @widget('recentNews', ['type' => 'mobile'])
+
+                                    <div class="home-big-news-footer">
+                                        <div class="home-big-news-footer-right">
+                                            <p><span>Джерело:</span> {{ $slide->news->subtitle }}</p>
+                                            <a class="home-big-news-read-more" href="{{$slide->news->getUrl()}}">Деталі> </a>
+                                        </div>
                                     </div>
-                                </div>
-                            @elseif(in_array($key, [1,2,3]))
-
-
-                            @endif
-                        @endforeach
-                        @if ($mainBlock)
-                        @endif
-                    </div>
-                </div>
-                @if ($mainBlocktwo)
-                    @foreach($mainBlocktwo as $news)
-                        <div class="col-sm-6 home-two-news-container">
-                            <div class="category">
-                                <div class="home-two-news-category"><div class="triangl">{{ $news->category['0']->name }}</div></div>
-                                <img class="card-img-top" src="{{ $news->getImageUrl() }}" width="200" height="200" alt="Card image cap">
-                                <div style="background-color:coral" class="top-left"></div>
-                                <div class="card-body">
-                                    <a class="card-title" href="{{ $news->getUrl() }}">
-                                        {{ $news->title }}
-                                    </a>
-                                    <p class="card-author-date">{{ $mainBlock->getAuthor()->name }} — {{ getDates($news->date_of_publication) }} </p>
-                                    <p class="card-source">Джерело: {{ $news->subtitle }}</p>
-                                    <a class="home-two-news-read-more-btn" href="{{ $news->getUrl() }}">Деталі > </a>
                                 </div>
                             </div>
-                        </div>
+                            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+                                <div class="main-widget-left">
+                                    <h3 class="main-widget-title">Стрічка новин</h3>
+                                    @widget('recentNews', ['type' => 'mobile'])
+                                </div>
+                            </div>
+                        @elseif(in_array($key, [1,2,3]))
+
+
+                        @endif
                     @endforeach
-                @endif
+                    @if ($mainBlock)
+                    @endif
+                </div>
             </div>
+            @if ($mainBlocktwo)
+                @foreach($mainBlocktwo as $news)
+                    <div class="col-sm-6 home-two-news-container">
+                        <div class="category">
+                            <div class="home-two-news-category"><div class="triangl">{{ $news->category['0']->name }}</div></div>
+                            <img class="card-img-top" src="{{ $news->getImageUrl() }}" width="200" height="200" alt="Card image cap">
+                            <div style="background-color:coral" class="top-left"></div>
+                            <div class="card-body">
+                                <a class="card-title" href="{{ $news->getUrl() }}">
+                                    {{ $news->title }}
+                                </a>
+                                <p class="card-author-date">{{ $mainBlock->getAuthor()->name }} — {{ getDates($news->date_of_publication) }} </p>
+                                <p class="card-source">Джерело: {{ $news->subtitle }}</p>
+                                <a class="home-two-news-read-more-btn" href="{{ $news->getUrl() }}">Деталі > </a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            @endif
         </div>
+    </div>
 @endsection
