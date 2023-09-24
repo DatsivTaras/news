@@ -51,6 +51,8 @@
             background-color: #ccc;
         }
     </style>
+           <a href="{{ route('/') }}">< Повернутися на головну</a>
+    {{ Breadcrumbs::render('news' , $news) }}
 
     <div class="container">
         <div class="row home-content">

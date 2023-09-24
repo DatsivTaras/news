@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+    <a href="{{ route('/') }}">< Повернутися на головну</a>
 
     <div class="container">
         <div class="row home-content">

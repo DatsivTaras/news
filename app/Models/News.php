@@ -85,6 +85,7 @@ class News extends Model implements Viewable
 
     public function getTitle()
     {
+
         return $this->title;
     }
 
