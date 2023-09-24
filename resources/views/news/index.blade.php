@@ -5,9 +5,11 @@
 @endsection
 
 @section('content')
+    <a href="{{ route('/') }}">< Повернутися на головну</a>
+
     <h1 class="text-center news-category-title">
         {{ 'Новини' }}
-    login</h1>
+    </h1>
 
     {{--    @include('layouts.filterMenu')--}}
 

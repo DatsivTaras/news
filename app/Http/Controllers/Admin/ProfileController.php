@@ -50,7 +50,7 @@ class ProfileController extends Controller
         //
     }
 
-  datskn463@gmail.co  /**
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

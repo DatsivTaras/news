@@ -4,6 +4,10 @@
 @endsection
 
 @section('content')
+    <a href="{{ route('/') }}">< Повернутися на головну</a>
+
+    {{ Breadcrumbs::render('author' , $author) }}
+
     <div class="container">
         <div class="container py-5">
             {{--                    <div class="row">--}}
@@ -28,7 +32,7 @@
                             <p class="text-muted mb-4">{{ $author->biography }}</p>
                             <footer>
                             <p class="social mt-md-3 mt-2">
-                                    
+
                                 @if($facebookLink = $author->facebook)
                                     <a href="{{ $facebookLink }}" style="text-decoration: none !important;">
                                         <span class="social-icon"><i class="fa fa-facebook" aria-hidden="true"></i></span>

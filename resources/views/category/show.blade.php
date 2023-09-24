@@ -5,6 +5,10 @@
 @endsection
 
 @section('content')
+    <a href="{{ route('/') }}">< Повернутися на головну</a>
+
+    {{ Breadcrumbs::render('category' , $category) }}
+
     <div class="container">
         <div class="row home-content">
         <h1 class="text-center news-category-title">
