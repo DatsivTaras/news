@@ -40,6 +40,7 @@ class GenerateAdminAccounts extends Seeder
                     'slug' => 'Admin',
                     'patronymic' => 'Admin',
                     'biography' => 'Admin',
+                    'user_id' => '',
                 ]
             ],
         ];
@@ -49,6 +50,7 @@ class GenerateAdminAccounts extends Seeder
                 $author = $userData['author'];
                 unset($userData['author']);
                 $user = $this->userRepository->create($userData);
+                $userData['author']['user_id'] = $user->id;
                 $this->authorsRepository->create($author);
                 if ($user) {
                     $user->assignRole('Admin');

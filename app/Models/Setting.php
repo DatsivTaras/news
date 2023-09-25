@@ -42,6 +42,10 @@ class Setting extends Model
     const INSTAGRAM_LINK = 'instagram_link';
     const TIKTOK_LINK = 'tiktok_link';
     const EMAIL_ADDRESS = 'email_address';
+
+    const PAGE_COMPANY = 'page_company';
+    const PAGE_CONTACTS = 'page_contacts';
+
     const ADDRESS = 'address';
     const PHONE = 'phone';
 
@@ -81,6 +85,12 @@ class Setting extends Model
         }
         if ($key == self::HEADER_CATEGORY_MENU) {
             return Category::doesnthave('parent',)->pluck('name', 'id')->toArray();;
+        }
+        if ($key == self::PAGE_COMPANY) {
+            return Page::pluck('title', 'id')->toArray();;
+        }
+        if ($key == self::PAGE_CONTACTS) {
+            return Page::pluck('title', 'id')->toArray();;
         }
     }
 }

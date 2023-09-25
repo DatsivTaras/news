@@ -119,6 +119,22 @@ class GenerateSettings extends Seeder
                 'type' => Setting::TYPE_INPUT,
                 'description' => ''
             ],
+            [
+                'name' => 'Про компанію',
+                'value' => '',
+                'key' => Setting::PAGE_COMPANY,
+                'category' => Setting::CATEGORY_FOOTER,
+                'type' => Setting::TYPE_MULTIPLE,
+                'description' => ''
+            ],
+            [
+                'name' => 'Контакти',
+                'value' => '',
+                'key' => Setting::PAGE_CONTACTS,
+                'category' => Setting::CATEGORY_FOOTER,
+                'type' => Setting::TYPE_MULTIPLE,
+                'description' => ''
+            ],
 //            [
 //                'name' => 'Добавлення пунктів меню',
 //                'value' => '',

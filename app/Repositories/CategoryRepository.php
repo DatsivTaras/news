@@ -44,6 +44,7 @@ class CategoryRepository extends BaseRepository
         return Category::doesnthave('parent')->get();
     }
 
+
     public function getCategoryWhereIn($ids)
     {
         $option = [
