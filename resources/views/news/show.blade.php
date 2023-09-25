@@ -72,7 +72,7 @@
                     <div class="singl-news-body">
                        <h1 class="single-news-title">
                             {{$news->getTitle()}}
-                        </h1> 
+                        </h1>
                         @if($author = $news->getAuthor())
                             <div class="row single-news-author">
                                 <i>Автор: <b><a href= {{ $author->getUrl() }} }}>{{ $author->getFullName() }}</a></b></i>
