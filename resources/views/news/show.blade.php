@@ -51,7 +51,7 @@
             background-color: #ccc;
         }
     </style>
-           <a href="{{ route('/') }}">< Повернутися на головну</a>
+           <a class="back-home-btn mobile-hide" href="{{ route('/') }}"><spann class="arrow-left"></spann> Повернутися на головну</a>
     {{ Breadcrumbs::render('news' , $news) }}
 
     <div class="container">
