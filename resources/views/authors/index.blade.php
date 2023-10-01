@@ -4,7 +4,7 @@
 @endsection
 
 @section('content')
-    <a href="{{ route('/') }}">< Повернутися на головну</a>
+<a class="back-home-btn mobile-hide" href="{{ route('/') }}"><spann class="arrow-left"></spann> Повернутися на головну</a>
 
     {{ Breadcrumbs::render('author' , $author) }}
 
