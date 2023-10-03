@@ -21,7 +21,7 @@
                     @widget('recentNews')
                 </div>
             </div>
-            <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="news row all-new-list">
                     @include('news.parts._news-full-width',['date' => ''])
                 </div>
