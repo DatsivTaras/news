@@ -7,6 +7,7 @@ use App\Models\Setting;
 use App\Repositories\CategoryRepository;
 use App\Repositories\FileRepository;
 use App\Repositories\NewsRepository;
+use App\Repositories\PageRepository;
 use App\Repositories\SettingRepository;
 
 
@@ -17,7 +18,7 @@ class HomeServices
 {
 
     private $imageRepository;
-
+    private $pageRepository;
     private $settingRepository;
     private $newsRepository;
     private $categoryRepository;
@@ -26,6 +27,7 @@ class HomeServices
         FileRepository     $imageRepository,
         SettingRepository  $settingRepository,
         NewsRepository     $newsRepository,
+        PageRepository     $pageRepository,
         CategoryRepository $categoryRepository
     )
     {
@@ -33,6 +35,7 @@ class HomeServices
         $this->imageRepository = $imageRepository;
         $this->settingRepository = $settingRepository;
         $this->categoryRepository = $categoryRepository;
+        $this->pageRepository = $pageRepository;
     }
 
     public function getHeaderMainBlockCategory()
@@ -75,9 +78,18 @@ class HomeServices
 
       $category = app(CategoryRepository::class)->getCategoryWhereIn($categoryIds);
 
-
       return $category;
   }
 
+    public function getFooterPageCompany($type)
+    {
+        $setting = app(SettingRepository::class)->getOne($type, 'key');
+
+        $pageIds = explode( ',', $setting->value);
+
+        $page = app(PageRepository::class)->getPageWhereIn($pageIds);
+
+        return $page;
+    }
 }
 ?>

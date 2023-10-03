@@ -105,34 +105,28 @@
                     </div>
                     <div class="col-xl-3 col-lg-3 col-md-3 col-6 footer-menu-container">
                         <ul class="list-unstyled">
-                            <li class="mt-md-3 mt-4">
-                                <a href="/page/testova_storinka" style="text-decoration: none !important;">Про нас</a>
-                            </li>
-                            <li>
-                                <a href="/page/testova_storinka" style="text-decoration: none !important;">Редакція</a>
-                            </li>
-                            <li>
-                                <a href="/page/testova_storinka" style="text-decoration: none !important;">Редакційна політика</a>
-                            </li>
-                            <li>
-                                <a href="/page/testova_storinka" style="text-decoration: none !important;">Автори</a>
-                            </li>
+                            @if($footerPageCompany = \App\Services\HomeServices::getFooterPageCompany(\App\Models\Setting::PAGE_COMPANY))
+                                @foreach($footerPageCompany as $pageCompany)
+                                    <li>
+                                        <a href="{{ $pageCompany->getUrl() }}" style="text-decoration: none !important;">
+                                            {{ $pageCompany->getName() }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            @endif
                         </ul>
                     </div>
                     <div class="col-xl-3 col-lg-3 col-md-3 col-6 footer-menu-container">
                         <ul class="list-unstyled">
-                            <li class="mt-md-3 mt-4">
-                                <a href="/page/testova_storinka" style="text-decoration: none !important;">Контакти</a>
-                            </li>
-                            <li>
-                                <a href="/page/testova_storinka" style="text-decoration: none !important;">Політика конфеденційності</a>
-                            </li>
-                            <li>
-                                <a href="/page/testova_storinka" style="text-decoration: none !important;">Технічна інформація</a>
-                            </li>
-                            <li>
-                                <a href="/page/testova_storinka" style="text-decoration: none !important;">Правила кофіденційності</a>
-                            </li>
+                            @if($footerPageCompany = \App\Services\HomeServices::getFooterPageCompany(\App\Models\Setting::PAGE_CONTACTS))
+                                @foreach($footerPageCompany as $pageCompany)
+                                    <li>
+                                        <a href="{{ $pageCompany->getUrl() }}" style="text-decoration: none !important;">
+                                            {{ $pageCompany->getName() }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            @endif
                         </ul>
                     </div>
                 </div>

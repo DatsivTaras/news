@@ -169,7 +169,7 @@
                                     {{ $news->title }}
                                 </a>
                                 <p class="card-author-date">{{ $mainBlock->getAuthor()->name }} — {{ getDates($news->date_of_publication) }} </p>
-                                <p class="card-source">Джерело: {{ $news->subtitle }}</p>
+                                <p class="card-source"><b>Джерело:</b> {{ $news->subtitle }}</p>
                                 <a class="home-two-news-read-more-btn" href="{{ $news->getUrl() }}">Деталі > </a>
                             </div>
                         </div>

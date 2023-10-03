@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <a href="{{ route('/') }}">< Повернутися на головну</a>
+    <a class="back-home-btn mobile-hide" href="{{ route('/') }}"><spann class="arrow-left"></spann> Повернутися на головну</a>
 
     {{ Breadcrumbs::render('category' , $category) }}
 
@@ -14,7 +14,7 @@
         <h1 class="text-center news-category-title">
             {{$category->getName()}}
         </h1>
-            <div class="col-xl-3 col-lg-3 d-sm-none d-none d-md-none">
+            <div class="col-xl-3 col-lg-3 d-sm-none d-none d-md-none d-xl-block d-lg-block">
                 <div class="main-widget-left">
                     <h3 class="main-widget-title">Стрічка новин</h3>
                     @widget('recentNews')
