@@ -13,4 +13,12 @@ class PageRepository extends BaseRepository
         return Page::class;
     }
 
+    public function getPageWhereIn($ids)
+    {
+        $option = [
+            'filters' => ['id' => $ids],
+        ];
+
+        return $this->get($option);
+    }
 }

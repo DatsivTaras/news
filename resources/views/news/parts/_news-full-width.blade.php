@@ -17,4 +17,5 @@
             </div>
         </a>
     </div>
+
 @endforeach

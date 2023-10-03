@@ -3,7 +3,7 @@
             <div class="card">
                 <div class="three-news-blocks-category">
                     <div class="triangle">
-                        <a href="#">
+                        <a href="{{ $new->getCategory()->getUrl() }}">
                             {{ $new->getcategoryName() }}
                         </a>
                     </div>

@@ -3,7 +3,7 @@
             <div class="card">
                 <div class="three-news-blocks-category">
                     <div class="triangle">
-                        <a class="category-link" href="#">{{ $new->getcategoryName() }}</a>
+                        <a class="category-link" >{{ $new->getcategoryName() }}</a>
                     </div>
                 </div>
                 <img class="card-img-top" src="{{ $new->getImageUrl() }}" alt="Card image cap">
