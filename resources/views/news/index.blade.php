@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <a href="{{ route('/') }}">< Повернутися на головну</a>
+<a class="back-home-btn mobile-hide" href="{{ route('/') }}"><spann class="arrow-left"></spann> Повернутися на головну</a>
 
     <h1 class="text-center news-category-title">
         {{ 'Новини' }}
@@ -21,7 +21,7 @@
                     @widget('recentNews')
                 </div>
             </div>
-            <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="news row all-new-list">
                     @include('news.parts._news-full-width',['date' => ''])
                 </div>

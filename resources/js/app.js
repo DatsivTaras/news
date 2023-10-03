@@ -37,21 +37,21 @@ $(document).ready(function(){
     $(function() {
         $(".home-big-news").each(function() {
             imgWidth = $(this).width();
-            $(this).css("height", imgWidth * (9/16));
+            $(this).css("height", imgWidth / 2);
         });
     });
 
     $(function() {
         $(".home-news-container").each(function() {
             imgWidth = $(this).width();
-            $(this).css("height", imgWidth * (9/16));
+            $(this).css("height", imgWidth / 2);
         });
     });
 
     $(function() {
         $(".card-img-top").each(function() {
             imgWidth = $(this).width();
-            $(this).css("height", imgWidth * (9/16));
+            $(this).css("height", imgWidth / 2);
         });
     });
 
@@ -60,21 +60,21 @@ $(document).ready(function(){
         $(function() {
             $(".card-img-top").each(function() {
                 imgWidth = $(this).width();
-                $(this).css("height", imgWidth * (9/16));
+                $(this).css("height", imgWidth / 2);
             });
         });
 
         $(function() {
             $(".home-big-news").each(function() {
                 imgWidth = $(this).width();
-                $(this).css("height", imgWidth * (9/16));
+                $(this).css("height", imgWidth / 2);
             });
         });
 
         $(function() {
             $(".home-news-container").each(function() {
                 imgWidth = $(this).width();
-                $(this).css("height", imgWidth * (9/16));
+                $(this).css("height", imgWidth / 2);
             });
         });
     } );
