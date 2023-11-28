@@ -161,7 +161,7 @@ body {
 }
 
 section.main {
-    min-height: 60vh;
+    min-height: 85vh;
 }
 
 main {
@@ -1930,7 +1930,7 @@ footer {
         }
         .home-two-news-container {
             margin-top: 18px;
-            padding-left: 10px;
+            padding-left: 12px;
             .category {
                 .home-two-news-category {
                     top: 0;
@@ -2127,26 +2127,26 @@ footer {
             }
         }
         &:hover {
-            .card-body {
-                .card-title {
-                    color: red;
-                }
-                p.read-more {
-                    color: red !important;
-                    font-weight: bold;
-                }
-            }
-            .three-news-blocks-category {
-                background-color: #ffffff;
-                .triangle {
-                    .category-link {
-                        color: #000000;
-                    }
-                    &:after {
-                        border-top-color: #ffffff;
-                    }
-                }
-            }
+            // .card-body {
+            //     .card-title {
+            //         color: red;
+            //     }
+            //     p.read-more {
+            //         color: red !important;
+            //         font-weight: bold;
+            //     }
+            // }
+            // .three-news-blocks-category {
+            //     background-color: #ffffff;
+            //     .triangle {
+            //         .category-link {
+            //             color: #000000;
+            //         }
+            //         &:after {
+            //             border-top-color: #ffffff;
+            //         }
+            //     }
+            // }
         }
     }
     .main-header .main-header-container .main-header-left-side .dropdown-menu.show {
@@ -2263,6 +2263,12 @@ footer {
     }
     .home-content .home-left-block .home-big-news .home-big-news-footer {
         margin-top: 0;
+    }
+}
+
+@media (max-width: 342px) {
+    .app-menu .app-menu-container ul li a {
+        font-size: 9px;
     }
 }
 
