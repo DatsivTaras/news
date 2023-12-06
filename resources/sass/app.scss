@@ -153,11 +153,15 @@
 
 body {
     background: rgb(255,255,255);
-    background: linear-gradient(rgb(255, 255, 255) 17%, rgb(209, 209, 209) 30%);
+    background: linear-gradient(rgb(255, 255, 255) 6%, rgb(209, 209, 209) 13%);
+    .container {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
 }
 
 section.main {
-    min-height: 60vh;
+    min-height: 85vh;
 }
 
 main {
@@ -167,7 +171,7 @@ main {
     }
     .back-home-btn {
         position: absolute;
-        top: -48px;
+        top: -26px;
         display: flex;
         align-items: center;
         font-family: "Gotham Pro";
@@ -414,14 +418,15 @@ main {
 
 .app-menu {
     .app-menu-container {
-        padding: 18px 0 0 0;
+        padding: 5px 0 0 0;
         border-top: 1px solid #585857;
-        margin-bottom: 24px;
+        margin-bottom: 3px;
         ul {
             display: flex;
             align-items: center;
             justify-content: center;
             list-style: none;
+            margin-bottom: 0;
             li {
                 margin-right: 30px;
                 &:last-child {
@@ -455,7 +460,7 @@ main {
         height: 100%;
         .main-widget-title {
             font-size: 14px;
-            color: #333d8e;
+            color: #1f5e9c;
             font-family: "Gotham Pro";
             text-transform: uppercase;
             text-align: center;
@@ -512,7 +517,7 @@ main {
                     }
                     &.main {
                         .news-description {
-                            color: #333d8e;
+                            color: #1f5e9c;
                             font-weight: bold;
                         }
                     }
@@ -520,7 +525,7 @@ main {
                 &:hover {
                     div {
                         .news-description {
-                            color: #333d8e;
+                            color: #1f5e9c;
                         }
                         &.main {
                             .news-description {
@@ -561,7 +566,7 @@ main {
             display: flex;
             align-items: flex-end;
             justify-content: space-between;
-            padding: 40px;
+            padding: 40px 35px;
             flex-direction: column;
             margin-bottom: 24px;
             width: 100%;
@@ -584,8 +589,9 @@ main {
                             color: #333d8e;
                             font-weight: 800;
                             font-family: "Gotham Pro";
-                            background: #ffffff87;
-                            line-height: 31px;
+                            background: rgba(255, 255, 255, 0.75);
+                            line-height: 35px;
+                            padding: 1px;
                             &:hover {
                                 color: red;
                             }
@@ -875,7 +881,7 @@ main {
                                 font-family: "Gotham Pro";
                                 text-align: right;
                                 padding: 0 5px;
-                                background: rgba(255, 255, 255, 0.5294117647);
+                                background: rgba(255, 255, 255, 0.75);
                                 &:hover {
                                     color: red;
                                 }
@@ -1262,6 +1268,10 @@ main {
             right: 60px;
             .triangle {
                 position: relative;
+                text-transform: uppercase;
+                color: #1f5e9c;
+                font-weight: 500;
+                font-family: "Gotham Pro";
                 &:after {
                     content: "";
                     position: absolute;
@@ -1300,6 +1310,7 @@ main {
         padding: 0 45px 0 20px;
         i {
             padding: 0;
+            font-weight: 400;
         }
         a {
             text-decoration: none;
@@ -1311,7 +1322,13 @@ main {
         color: #56564f;
         font-weight: 500;
         font-family: "Gotham Pro";
-        padding:  10px 45px;
+        padding:  10px 20px;
+        iframe {
+            width: 100%;
+        }
+        ul {
+            padding-left: 28px;
+        }
     }
     .single-news-tags {
         font-size: 12px;
@@ -1350,6 +1367,39 @@ main {
             width: 100% !important;
             #u_0_0_YR {
                 width: 100% !important;
+            }
+        }
+    }
+}
+
+
+div#social-links {
+    display: flex;
+    justify-content: flex-end;
+    ul {
+        margin-bottom: 0;
+        li {
+            a {
+                padding: 0 !important;
+                border: none !important;
+                margin: 0 !important;
+                font-size: 14px !important;
+                color: #56564f !important;
+                background-color: transparent !important;
+                text-decoration: none;
+                .social-icon {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 25px;
+                    height: 25px;
+                    margin-right: 5px;
+                    border: 1px solid #56564f;
+                    border-radius: 50%;
+                    color: #56564f;
+                    fill: #56564f;
+                    margin-bottom: 5px;
+                }
             }
         }
     }
@@ -1404,6 +1454,7 @@ footer {
         }
     }
     .footer-menu-container {
+        padding-top: 20px;
         li {
             line-height: 10px;
             a {
@@ -1419,7 +1470,7 @@ footer {
              color: #56564f;
              font-weight: bold;
              font-family: "Gotham Pro";
-             margin-top: 15px;
+             margin-top: 0 !important;
          }
         }
     }
@@ -1441,20 +1492,20 @@ footer {
     background: #FFFFFF;
     padding: 15px 35px;
     .date-news {
-        font-size: 19px;
-        letter-spacing: 4px;
-        color: #333d8e;
-        font-weight: bold;
+        font-size: 14px;
+        letter-spacing: 0;
+        color: #56564f;
+        font-weight: 800;
         font-family: "Gotham Pro";
         text-transform: uppercase;
         text-align: center;
         border-bottom: 1px solid #585857;
         padding-bottom: 7px;
-        margin-bottom: 10px;
+        margin-bottom: 5px;
     }
     .three-news-blocks {
         padding: 0;
-        margin-bottom: 10px;
+        margin-bottom: 5px;
         a {
             .card {
                 border-top: none;
@@ -1464,19 +1515,15 @@ footer {
                     padding: 0;
                     .card-title {
                         font-size: 12px;
-                        line-height: 13px;
+                        line-height: 16px;
                         color: #56564f;
                         font-weight: 500;
                         font-family: "Gotham Pro";
-                        display: -webkit-box;
-                        -webkit-line-clamp: 2;
-                        -webkit-box-orient: vertical;
                         overflow: hidden;
-                        text-overflow: ellipsis;
-                        min-height: 36px;
                         margin-bottom: 0;
+                        height: 34px;
                         &:hover {
-                            color: #333d8e;
+                            color: #1f5e9c;
                         }
                     }
                 }
@@ -1487,7 +1534,7 @@ footer {
                 .card {
                     .card-body {
                         .card-title {
-                            color: #333d8e;
+                            color: #1f5e9c;
                             font-weight: 800;
                             &:hover {
                                 color: red;
@@ -1503,7 +1550,7 @@ footer {
 .search-news-blocks {
     margin-bottom: 24px;
     .card {
-        display: flex;
+        display: block;
         flex-direction: row;
         position: relative;
         border-radius: 0;
@@ -1653,8 +1700,25 @@ footer {
 
 @media screen and (max-width: 992px) {
 
+    .main-header {
+        padding: 0;
+    }
+
+    .single-news-container .category .top-left {
+        top: 0;
+        right: auto;
+        left: 12px
+    }
+
+    footer .footer-menu-container li.footer-menu-title,
+    footer .footer-menu-container li a,
+    footer .footer-text-info {
+        color: #000000;
+    }
+
+
     footer .footer-logo-container svg {
-        transform: translateX(-10px);
+        transform: translateX(-6%);
     }
 
     body {
@@ -1666,7 +1730,7 @@ footer {
     }
 
     .mobile-hide {
-        display: none;
+        display: none !important;
     }
     .desktop-hide {
         display: block;
@@ -1692,15 +1756,18 @@ footer {
 
     .app-menu {
         .app-menu-container {
+            margin-bottom: 5px;
+            padding: 5px 0 0 0;
+            border-bottom: 1px solid #585857;
             ul {
                 display: flex;
                 justify-content: space-around;
                 padding: 0 0;
-                margin-bottom: 11px;
+                margin-bottom: 5px;
                 li {
                     margin-right: 0;
                     a {
-                        font-size: 12px;
+                        font-size: 11px;
                         padding:  0 5px;
                         &.active {
                             background: #e6ae19;
@@ -1788,11 +1855,6 @@ footer {
         letter-spacing: 1px;
     }
 
-    .app-menu .app-menu-container {
-        margin-bottom: 15px;
-        padding: 10px 0 0 0;
-    }
-
     .home-content .home-two-news-container .category .card-body {
         .card-title {
             font-size: 20px;
@@ -1868,7 +1930,7 @@ footer {
         }
         .home-two-news-container {
             margin-top: 18px;
-            padding-left: 10px;
+            padding-left: 12px;
             .category {
                 .home-two-news-category {
                     top: 0;
@@ -2019,14 +2081,10 @@ footer {
                     text-decoration: none;
                 }
                 .card-title {
-                    font-size: 13px;
-                    color: #333d8e;
-                    font-weight: bold;
-                    font-family: "Gotham Pro";
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    min-height: 39px;
-                    margin-bottom: 5px;
+                    font-size: 20px;
+                    line-height: 21px;
+                    height: 62px;
+                    margin-bottom: 4px;
                 }
                 .card-text {
                     font-size: 8px;
@@ -2042,12 +2100,9 @@ footer {
                     min-height: 50px;
                 }
                 .source {
-                    font-size: 12px;
-                    color: #000000;
-                    font-weight: 500;
-                    font-family: "Gotham Pro";
-                    margin-bottom: 0;
-                    min-height: 39px;
+                    color: #56564f;
+                    line-height: 11px;
+                    height: 21px;
                 }
                 .read-more-container {
                     display: flex;
@@ -2055,15 +2110,15 @@ footer {
                     align-items: center;
                     padding-top: 7px;
                     .date-news {
-                        font-size: 14px;
-                        color: #56564f;
+                        font-size: 10px;
+                        color: #000000;
                         font-family: "Gotham Pro";
                         text-decoration: none;
                         margin-bottom: 0;
                     }
                     p.read-more {
-                        font-size: 14px;
-                        color: #56564f;
+                        font-size: 10px;
+                        color: #000000;
                         font-family: "Gotham Pro";
                         text-decoration: none;
                         margin-bottom: 0;
@@ -2072,30 +2127,31 @@ footer {
             }
         }
         &:hover {
-            .card-body {
-                .card-title {
-                    color: red;
-                }
-                p.read-more {
-                    color: red !important;
-                    font-weight: bold;
-                }
-            }
-            .three-news-blocks-category {
-                background-color: #ffffff;
-                .triangle {
-                    .category-link {
-                        color: #000000;
-                    }
-                    &:after {
-                        border-top-color: #ffffff;
-                    }
-                }
-            }
+            // .card-body {
+            //     .card-title {
+            //         color: red;
+            //     }
+            //     p.read-more {
+            //         color: red !important;
+            //         font-weight: bold;
+            //     }
+            // }
+            // .three-news-blocks-category {
+            //     background-color: #ffffff;
+            //     .triangle {
+            //         .category-link {
+            //             color: #000000;
+            //         }
+            //         &:after {
+            //             border-top-color: #ffffff;
+            //         }
+            //     }
+            // }
         }
     }
     .main-header .main-header-container .main-header-left-side .dropdown-menu.show {
-        width: calc(100vw - 24px);
+        width: calc(100vw - 13px);
+        transform: translate(-12px, 47px) !important;
     }
 
     .home-content .main-widget-left #myTab .nav-item .nav-link.active {
@@ -2159,7 +2215,7 @@ footer {
             padding: 0;
         }
     }
-     
+
 
 }
 
@@ -2207,6 +2263,12 @@ footer {
     }
     .home-content .home-left-block .home-big-news .home-big-news-footer {
         margin-top: 0;
+    }
+}
+
+@media (max-width: 342px) {
+    .app-menu .app-menu-container ul li a {
+        font-size: 9px;
     }
 }
 

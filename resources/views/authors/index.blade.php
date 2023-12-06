@@ -4,12 +4,12 @@
 @endsection
 
 @section('content')
-    <a href="{{ route('/') }}">< Повернутися на головну</a>
+<a class="back-home-btn mobile-hide" href="{{ route('/') }}"><spann class="arrow-left"></spann> Повернутися на головну</a>
 
     {{ Breadcrumbs::render('author' , $author) }}
 
     <div class="container">
-        <div class="container py-5">
+        <div class="container">
             {{--                    <div class="row">--}}
             {{--                        <div class="col">--}}
             {{--                            <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">--}}
