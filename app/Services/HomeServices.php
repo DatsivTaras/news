@@ -70,6 +70,16 @@ class HomeServices
         }
     }
 
+    public static function getCategoryLeftMenu()
+    {
+        $setting = app(SettingRepository::class)->getOne(Setting::HEADER_ITEMS_LEFT_MENU, 'key');
+
+        $categoryIds = explode( ',', $setting->value);
+
+        $category = app(CategoryRepository::class)->getCategoryWhereIn($categoryIds);
+
+        return $category;
+    }
   public static function getCategoryMainMenu()
   {
       $setting = app(SettingRepository::class)->getOne(Setting::HEADER_CATEGORY_MENU, 'key');

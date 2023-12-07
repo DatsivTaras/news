@@ -2,8 +2,8 @@
     <div class="box-body">
 
         <div class="form-group">
-            {{ Form::label(__('main.name')) }}
-            {{ Form::text('name', $category->name, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => __('main.name')]) }}
+            {{ Form::label(__('Назва')) }}
+            {{ Form::text('name', $category->name, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => __('Назва')]) }}
             {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
@@ -20,6 +20,6 @@
         </div>
     </div>
     <br><div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+        <button type="submit" class="btn btn-primary">{{ __('main.add') }}</button>
     </div>
 </div>

@@ -30,6 +30,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>@lang('main.title')</th>
+                                    <th></th>
                                     <th>@lang('main.On Slider')</th>
                                     <th>@lang('main.type')</th>
                                     <th>@lang('main.dateOfPublication')</th>

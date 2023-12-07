@@ -1,6 +1,6 @@
 <div class="box box-info padding-1">
     <div class="box-body">
-        
+
         <div class="form-group">
             {{ Form::label('sort_order') }}
             {{ Form::text('sort_order', $homeSlider->sort_order, ['class' => 'form-control' . ($errors->has('sort_order') ? ' is-invalid' : ''), 'placeholder' => 'Sort Order']) }}

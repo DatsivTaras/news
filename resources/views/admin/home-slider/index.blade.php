@@ -41,6 +41,7 @@
                                             <td>{{ $homeSlider->id }}</td>
 											<td>{{ $homeSlider->news->title }}</td>
 											<td>{{ $homeSlider->news->mini_description }}</td>
+                                           <td> <input data-id="{{ $homeSlider->id }}"  type="text" class="form-control" value="{{ $homeSlider->sort_order }}" id="sort">
                                             <td>
                                                 <form action="{{ route('admin.sliders.destroy',$homeSlider->id) }}" method="POST">
                                                     @csrf
@@ -58,5 +59,29 @@
                 {!! $homeSliders->links() !!}
             </div>
         </div>
-    </div>
+    </div><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $(document).on('change', '#sort', function(){
+                var value = $(this).val();
+                var id = $(this).data('id');
+                console.log(id);
+                console.log(value);
+                $.ajax({
+                    method: 'post',
+                    url: "/admin/changeSort",
+                    data:{
+                        id: id,
+                        value: value,
+                        "_token": "{{ csrf_token() }}"
+                    },
+                    dataType: 'json',
+                }).done(function(result) {
+                    console.log(result);
+                });
+            });
+
+        });
+    </script>
+
 @endsection

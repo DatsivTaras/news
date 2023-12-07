@@ -38,6 +38,7 @@ Route::group(['middleware' => ['auth']], function() {
             Route::post('addItemsSettings', [App\Http\Controllers\Admin\SettingController::class, 'addItemsSettings']);
             Route::post('addNewsOnSlider', [App\Http\Controllers\Admin\NewsController::class, 'addNewsOnSlider']);
             Route::post('changePassword', [App\Http\Controllers\Admin\ProfileController::class, 'changePassword'])->name('changePassword');
+            Route::post('changeSort', [App\Http\Controllers\Admin\HomeSliderController::class, 'changeSort'])->name('changeSort');
             Route::get('publishNews/{id}', [App\Http\Controllers\Admin\NewsController::class, 'publishNews'])->name('publishNews');
             Route::get('restorationNews/{id}', [App\Http\Controllers\Admin\NewsController::class, 'restorationNews'])->name('restorationNews');
             Route::delete('news/finalDelete/{id}', [App\Http\Controllers\Admin\NewsController::class, 'finalDelete'])->name('news.finalDelete');

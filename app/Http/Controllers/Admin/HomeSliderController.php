@@ -33,6 +33,15 @@ class HomeSliderController extends Controller
         return view('admin.home-slider.index', compact('homeSliders'));
     }
 
+    public function changeSort(Request $request)
+    {
+        $homeSlider = HomeSlider::find($request->id);
+        $homeSlider->sort_order = $request->value;
+        $homeSlider->save();
+
+        return json_encode($request->value);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

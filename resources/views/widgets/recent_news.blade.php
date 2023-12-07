@@ -81,7 +81,6 @@
         @else
             <p>Відсутні</p>
         @endif
-
     </div>
     <a class="read-all-news" href="/news"> Читати всі новини </a>
 </div>

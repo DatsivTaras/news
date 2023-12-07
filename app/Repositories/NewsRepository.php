@@ -52,6 +52,7 @@ class  NewsRepository extends BaseRepository
             $query->search($options['search']);
             unset($options['search']);
         }
+        $options['filters'] = ['type_publication' => 1];
 
         if (isset($options['viewType'])) {
 
@@ -66,7 +67,7 @@ class  NewsRepository extends BaseRepository
                     $sortedIds = implode(',', $selectedOptionValuesIDSort);
                     $query->orderByRaw("FIELD(id, {$sortedIds}) DESC");
                 }
-                $query->whereDate('date_of_publication','=', now()->format('Ymd'));
+                $query->whereDate('date_of_publication','<=', now()->format('Ymd'));
                 $query->orderByUniqueViews('ASC');
             }
         }
@@ -89,7 +90,7 @@ class  NewsRepository extends BaseRepository
     }
     public function getNewsBasket($request)
     {
-        return News::filter($request)->onlyTrashed()->paginate('20');
+        return News::filter($request)->onlyTrashed()->orderBy('deleted_at','DESC')->paginate('20');
     }
 
     public function getNewsDrafts($request)
