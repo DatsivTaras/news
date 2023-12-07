@@ -38,7 +38,7 @@ class HomeServices
         $this->pageRepository = $pageRepository;
     }
 
-    public function getHeaderMainBlockCategory()
+    public static function getHeaderMainBlockCategory()
     {
         $setting = app(SettingRepository::class)->getOne(Setting::BLOCKS_CATEGORY_HOME_PAGE, 'key');
         if (!empty($setting->value)) {
@@ -47,7 +47,7 @@ class HomeServices
         return null;
     }
 
-    public function getHeaderMainBlockCategorytwo()
+    public static function getHeaderMainBlockCategorytwo()
     {
         $setting = app(SettingRepository::class)->getOne(Setting::BLOCKS_CATEGORY_HOME_PAGE, 'key');
 
@@ -70,7 +70,7 @@ class HomeServices
         }
     }
 
-  public function getCategoryMainMenu()
+  public static function getCategoryMainMenu()
   {
       $setting = app(SettingRepository::class)->getOne(Setting::HEADER_CATEGORY_MENU, 'key');
 

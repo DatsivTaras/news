@@ -53,17 +53,21 @@ class SettingServices
             $settings = $this->settingRepository->getOneOrFail($key,'key');
             $type = $settings->type;
             $data = [];
-            if ($type == 5) {
-                $data['name'] = $value->store('public/image/header');
-                $image = $this->imageRepository->create($data);
-                $data['value'] = $image->id;
+            switch ($type) {
+                case Setting::TYPE_IMAGE:
+                    $data['name'] = $value->store('public/image/header');
+                    $image = $this->imageRepository->uploadAndCreate($value);
+                    $data['value'] = $image->id;
+                    break;
+                case Setting::TYPE_TEXTAREA:
+                case Setting::TYPE_INPUT:
+                    $data['value'] = $value;
+                    break;
+                case Setting::TYPE_MULTIPLE:
+                    $data['value'] = implode(",", $value);
+                    break;
             }
-            if ($type == 1) {
-                $data['value'] = $value;
-            }
-            if ($type == 6) {
-               $data['value'] = implode(",", $value);
-            }
+
             $this->settingRepository->update($settings, $data);
         }
     }
