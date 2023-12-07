@@ -6,11 +6,22 @@
  *
  * @return mixed
  */
- function getSetting(string $key, int $category = null)
+function getSetting(string $key, int $category = null)
 {
     return (new \App\Repositories\SettingRepository())->getSetting($key, $category);
 }
 
+function getMetaData($pageMeta = [])
+{
+    $metaData = app(\App\Services\MetaServices::class)->getMetaData();
+
+    return [
+        'url' => !empty($pageMeta['url']) ? $pageMeta['url'] : request()->url(),
+        'title' => !empty($pageMeta['title']) ? $pageMeta['title'] : $metaData['title'],
+        'description' => !empty($pageMeta['description']) ? $pageMeta['description'] : $metaData['description'],
+        'image' => !empty($pageMeta['image']) ? $pageMeta['image'] : $metaData['image'],
+    ];
+}
 
 function getDates($date)
 {

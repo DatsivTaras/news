@@ -7,7 +7,7 @@ namespace App\Helpers;
  */
 class DateHelper
 {
-    public function getDays()
+    public static function getDays()
     {
         return [
             "Mon" => 'Понеділок',
@@ -20,7 +20,7 @@ class DateHelper
         ];
     }
 
-    public function getMonth()
+    public static function getMonth()
     {
         return [
             "Jan" => 'Січень',

@@ -30,7 +30,6 @@ class NewsController extends Controller
 
     public function index()
     {
-//        dd( Route::getCurrentRoute()->uri );
         $sliderNews = $this->homeSliderRepository->getSliderNews();
         $mainBlock = HomeServices::getHeaderMainBlockCategory();
         $mainBlocktwo = HomeServices::getHeaderMainBlockCategorytwo();

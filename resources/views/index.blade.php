@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@include('meta._tags')
+
 @section('content')
 
     <div class="container mobile-hide">

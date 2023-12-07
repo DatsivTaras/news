@@ -1,5 +1,12 @@
 @extends('layouts.app')
 
+@include('meta._tags', [
+    'meta' => [
+        'title' => $category->name,
+        'description' => $category->description
+    ]
+])
+
 @section('template_title')
     {{ $category->name ?? "{{ __('Show') Category" }}
 @endsection
