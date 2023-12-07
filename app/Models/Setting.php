@@ -17,8 +17,8 @@ class Setting extends Model
     ];
 
     const TYPE_INPUT = 1;
-    const TYPE_CHECKBOX= 2;
-    const TYPE_TEXTAREA= 3;
+    const TYPE_CHECKBOX = 2;
+    const TYPE_TEXTAREA = 3;
     const TYPE_SELECT = 4;
     const TYPE_IMAGE = 5;
     const TYPE_MULTIPLE = 6;
@@ -26,6 +26,7 @@ class Setting extends Model
     const CATEGORY_GENERAL = 1;
     const CATEGORY_HEADER = 2;
     const CATEGORY_FOOTER = 3;
+    const CATEGORY_META = 4;
 
     const HEADER_IMAGE = 'header_image';
     const SITE_NAME = 'site_name';
@@ -46,6 +47,12 @@ class Setting extends Model
     const PAGE_COMPANY = 'page_company';
     const PAGE_CONTACTS = 'page_contacts';
 
+    //Мета
+    const META_TITLE = 'meta_title';
+    const META_IMAGE = 'meta_image';
+    const META_DESCRIPTION = 'meta_description';
+    //Мета
+
     const ADDRESS = 'address';
     const PHONE = 'phone';
 
@@ -58,7 +65,8 @@ class Setting extends Model
         return [
             self::CATEGORY_GENERAL => __('main.general'),
             self::CATEGORY_HEADER => __('main.header'),
-            self::CATEGORY_FOOTER => __('main.footer')
+            self::CATEGORY_FOOTER => __('main.footer'),
+            self::CATEGORY_META => __('settings.category.meta')
         ];
     }
 
@@ -68,6 +76,7 @@ class Setting extends Model
 
         return array_key_exists($key, $category) ?  $category[$key] : "";
     }
+
     public static function getStatus($key)
     {
        $setting = Setting::where('key', $key)->first();

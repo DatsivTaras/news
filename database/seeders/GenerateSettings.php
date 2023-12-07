@@ -111,6 +111,34 @@ class GenerateSettings extends Seeder
                 'type' => Setting::TYPE_INPUT,
                 'description' => ''
             ],
+
+            // Мета
+            [
+                'name' => 'Мета Title',
+                'value' => '',
+                'key' => Setting::META_TITLE,
+                'category' => Setting::CATEGORY_META,
+                'type' => Setting::TYPE_INPUT,
+                'description' => ''
+            ],
+            [
+                'name' => 'Мета Description',
+                'value' => '',
+                'key' => Setting::META_DESCRIPTION,
+                'category' => Setting::CATEGORY_META,
+                'type' => Setting::TYPE_TEXTAREA,
+                'description' => ''
+            ],
+            [
+                'name' => 'Мета Image',
+                'value' => '',
+                'key' => Setting::META_IMAGE,
+                'category' => Setting::CATEGORY_META,
+                'type' => Setting::TYPE_IMAGE,
+                'description' => ''
+            ],
+            // МЕТА
+
             [
                 'name' => 'Наш TikTok',
                 'value' => '',

@@ -1,34 +1,19 @@
 @extends('layouts.app')
 
-@section('op:markup_version', 'v1.0')
-@section('og:title', $news->title)
+@include('meta._tags', [
+    'meta' => [
+        'title' => $news->title,
+        'description' => $news->mini_description,
+        'image' => $news->getImageUrl(),
+        'url' => $news->getUrl(),
+    ]
+])
 
-@section('meta_tags')
-    <meta property="op:markup_version" content="v1.0">
-    <meta property="fb:article_style" content="myarticlestyle">
-    <meta name="description" content="<?= $news->mini_description; ?>">
-    <meta property="article:content_tier" content="free">
-    <meta property="og:title" content="<?= $news->title; ?>">
-    <meta property="og:description" content="<?= $news->mini_description; ?>">
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="<?= $news->getUrl(); ?>">
-    <meta name="twitter:card" content="summary_large_image">
-    {{--    <meta name="twitter:site" content="@tweetsNV">--}}
-    <meta name="twitter:title" content="<?= $news->title; ?>">
-    <meta name="twitter:description" content="<?= $news->mini_description; ?>">
-    <meta property="og:image" content="{{ $news->getImageUrl() }}">
-    <meta name="twitter:image" content="{{ $news->getImageUrl() }}">
-    <meta property="og:image:width" content="1920">
-    <meta property="og:image:height" content="960">
-    <meta name="robots" content="max-image-preview:large">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <head>
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>Load More Data on Button Click using JQuery Laravel - ItSolutionStuff.com</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
-    </head>
-    <body>
-@endsection
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<head>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+</head>
 
 @section('template_title')
     {{ $news->getTitle() ?? "{{ __('Show')" }}
