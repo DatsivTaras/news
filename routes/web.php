@@ -55,6 +55,7 @@ Route::get('listNews', [App\Http\Controllers\NewsController::class, 'listNews'])
 Route::get('news', [App\Http\Controllers\NewsController::class, 'allNews'])->name('news');
 Route::get('news/{slug}', [App\Http\Controllers\NewsController::class, 'show'])->name('news.show');
 Route::get('search', [App\Http\Controllers\NewsController::class, 'search'])->name('search');
+Route::get('contacts', [App\Http\Controllers\NewsController::class, 'contacts'])->name('contacts');
 
 Auth::routes();
 

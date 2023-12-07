@@ -88,6 +88,14 @@ class GenerateSettings extends Seeder
                 'description' => ''
             ],
             [
+                'name' => 'Наш Адрес',
+                'value' => '',
+                'key' => Setting::ADDRESS,
+                'category' => Setting::CATEGORY_HEADER,
+                'type' => Setting::TYPE_INPUT,
+                'description' => ''
+            ],
+            [
                 'name' => 'Наш Email',
                 'value' => '',
                 'key' => Setting::EMAIL_ADDRESS,
@@ -96,9 +104,41 @@ class GenerateSettings extends Seeder
                 'description' => ''
             ],
             [
-                'name' => 'Наш Адрес',
+                'name' => 'Консультація та замовлення',
                 'value' => '',
-                'key' => Setting::ADDRESS,
+                'key' => Setting::EMAIL_CONSULTATION,
+                'category' => Setting::CATEGORY_HEADER,
+                'type' => Setting::TYPE_INPUT,
+                'description' => ''
+            ],
+            [
+                'name' => 'Для ЗМІ',
+                'value' => '',
+                'key' => Setting::EMAIL_ZMI,
+                'category' => Setting::CATEGORY_HEADER,
+                'type' => Setting::TYPE_INPUT,
+                'description' => ''
+            ],
+            [
+                'name' => 'Для авторів',
+                'value' => '',
+                'key' => Setting::EMAIL_AUTHOR,
+                'category' => Setting::CATEGORY_HEADER,
+                'type' => Setting::TYPE_INPUT,
+                'description' => ''
+            ],
+            [
+                'name' => 'Маркетинг',
+                'value' => '',
+                'key' => Setting::EMAIL_MARKETING,
+                'category' => Setting::CATEGORY_HEADER,
+                'type' => Setting::TYPE_INPUT,
+                'description' => ''
+            ],
+            [
+                'name' => 'Для корпоративних клієнтів',
+                'value' => '',
+                'key' => Setting::EMAIL_CORPORATE,
                 'category' => Setting::CATEGORY_HEADER,
                 'type' => Setting::TYPE_INPUT,
                 'description' => ''

@@ -44,6 +44,10 @@ class NewsController extends Controller
 
         return response()->json(['html' => $view]);
     }
+    public function contacts(Request $request)
+    {
+        return view('news.contacts');
+    }
 
     public function loaderNews(Request $request)
     {

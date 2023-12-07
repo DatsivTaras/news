@@ -47,6 +47,11 @@ class Setting extends Model
     const PAGE_CONTACTS = 'page_contacts';
 
     const ADDRESS = 'address';
+    const EMAIL_CONSULTATION = 'email_consultation';
+    const EMAIL_ZMI = 'email_zmi';
+    const EMAIL_AUTHOR = 'email_author';
+    const EMAIL_MARKETING = 'email_marketing';
+    const EMAIL_CORPORATE = 'email_corporate';
     const PHONE = 'phone';
 
     public function image()
