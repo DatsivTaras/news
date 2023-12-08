@@ -92,7 +92,7 @@ class CategoryController extends Controller
         }
 
         return redirect()->route('admin.categories.index')
-            ->with('success', 'Category created successfully.');
+            ->with('success', 'Категорія успішно створена.');
     }
 
     /**
@@ -165,7 +165,7 @@ class CategoryController extends Controller
             $this->categoryRelativeRepisitory->delete($category->parent);
         }
         return redirect()->route('admin.categories.index')
-            ->with('success', 'Category updated successfully');
+            ->with('success', 'Категорія успішно редагована');
     }
 
     /**
@@ -178,6 +178,6 @@ class CategoryController extends Controller
         $this->categoryRepository->getOneOrFail($id)->delete();
 
         return redirect()->route('admin.categories.index')
-            ->with('success', 'Category deleted successfully');
+            ->with('success', 'Категорія успішно видалена.');
     }
 }

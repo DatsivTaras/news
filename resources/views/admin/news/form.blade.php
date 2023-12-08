@@ -39,7 +39,12 @@
             <div class="col-sm-4">
                 <div class="mb-3">
                     {{ Form::label('text',  __('main.image'), ['class' => 'form-label']) }}
-                    {{ Form::file('image', [ 'class' => 'form-control' . ($errors->has('image') ? ' is-invalid' : ''), 'onchange'=> "getImagePreview(event)", "public/image/planes/Fh2pmleVODSftbdH0gctY01sr6FH4iQHUkDXxDCd.png","id" => "selectImage"]) }}
+                    {{ Form::file('image', [
+                        'accept' => "image/*",
+                        'class' => 'form-control' . ($errors->has('image') ? ' is-invalid' : ''),
+                        'onchange'=> "getImagePreview(event)",
+                        "public/image/planes/Fh2pmleVODSftbdH0gctY01sr6FH4iQHUkDXxDCd.png",
+                        "id" => "selectImage"]) }}
                     {!! $errors->first('image', '<div class="invalid-feedback">:message</div>') !!}
                     <img id="preview" width="50%" src="{{ Storage::url($image) }}" alt="/" class="mt-3" style="{{$image ? '' : 'display:none'}}"/>
                 </div>

@@ -1,7 +1,7 @@
 @extends('layouts.adminMenu')
 
 @section('template_title')
-    Paid News
+    Платні новини
 @endsection
 
 @section('content')
@@ -11,9 +11,8 @@
                 <div class="card">
                     <div class="card-header">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
-
                             <span id="card_title">
-                                {{ __('Paid News') }}
+                                Платні новини
                             </span>
                         </div>
                     </div>
@@ -30,7 +29,7 @@
                                 <tr>
                                     <th>@lang('main.no')</th>
                                     <th>@lang('main.title')</th>
-                                    <th>@lang('main.miniDescription')</th>
+                                    <th>@lang('main.dateOfPublication')</th>
                                     <th></th>
                                 </tr>
                                 </thead>
@@ -39,9 +38,9 @@
                                     <tr>
                                         <td>{{ $paidNew->id }}</td>
                                         <td>{{ $paidNew->news->title }}</td>
-                                        <td>{{ $paidNew->news->mini_description }}</td>
+                                        <td>{{ $paidNew->news->getPublicationDate() }}</td>
                                         <td>
-                                            <form action="{{ route('admin.paidNews.destroy',$paidNew->id) }}" method="POST">
+                                            <form action="{{ route('admin.paidNews.destroy', $paidNew->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i></button>

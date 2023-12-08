@@ -30,8 +30,8 @@
                                 <tr>
                                     <th>No</th>
                                     <th>@lang('main.title')</th>
-                                    <th></th>
-                                    <th>@lang('main.On Slider')</th>
+                                    <th>Статус</th>
+                                    <th>Слайдер</th>
                                     <th>@lang('main.type')</th>
                                     <th>@lang('main.dateOfPublication')</th>
                                     <th></th>
@@ -45,7 +45,7 @@
                                         <td>{{ $new->getTypePublication() }}</td>
                                         <td><input data-id="{{ $new->id }}" class="addNewsSlider" type="checkbox" {{ $new->home_slider ? 'checked' : '' }} ></td>
                                         <td>{{ $new->getType() }}</td>
-                                        <td>{{ $new->date_of_publication }}</td>
+                                        <td>{{ $new->getPublicationDate() }}</td>
                                         <td>
                                             <form action="{{ route('admin.news.destroy', $new->id) }}" method="POST">
                                                 <a class="btn btn-sm btn-primary " href="{{ route('admin.news.show', $new->id) }}"><i class="fa fa-fw fa-eye"></i></a>

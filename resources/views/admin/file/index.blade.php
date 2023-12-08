@@ -13,7 +13,7 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('main.files') }}
+                                Файли
                             </span>
 
                              <div class="float-right">
@@ -42,12 +42,21 @@
                                     @foreach ($files as $file)
                                         <tr>
                                             <td>{{ $file->id }}</td>
-                                            <td>{{ $file->name }}</td>
+                                            <td>
+                                                @if ($file->isImage())
+                                                    <img src="{{ $file->getPath() }}" alt="{{ $file->name }}" class="img-thumbnail" style="width:100px;">
+                                                @else
+                                                    <i>{{ $file->name }}</i> </br>
+                                                    <a class="btn btn-default btn-sm" target="_blank" href="{{ $file->getPath() }}">Відкрити файл</a>
+                                                @endif
+                                            </td>
+                                            <td>
+                                            </td>
                                             <td>
                                                 <form action="{{ route('admin.files.destroy', $file->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <a class="btn btn-default btn-sm" target="_blank" href="{{ $file->getPath() }}">Відкрити</a>
+                                                    <a class="btn btn-default btn-sm" target="_blank" href="{{ $file->getPath() }}" download>Завантажити</a>
                                                     <a class="btn btn-primary btn-sm copy-link" data-path="{{ $file->getPath() }}">Копіювати посилання</a>
                                                     <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i></button>
                                                 </form>

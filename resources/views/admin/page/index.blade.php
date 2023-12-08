@@ -1,7 +1,7 @@
 @extends('layouts.adminMenu')
 
 @section('template_title')
-    Page
+    Сторінки
 @endsection
 
 @section('content')
@@ -36,7 +36,6 @@
                                     <tr>
 										<th>@lang('main.no')</th>
 										<th>@lang('main.title')</th>
-										<th>@lang('main.description')</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -44,10 +43,9 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
 											<td>{{ $page->title }}</td>
-											<td>{{ $page->description }}</td>
                                             <td>
                                                 <form action="{{ route('admin.pages.destroy',$page->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ $page->getUrl() }}"><i class="fa fa-fw fa-eye"></i></a>
+                                                    <a class="btn btn-sm btn-primary " target="_blank" href="{{ $page->getUrl() }}"><i class="fa fa-fw fa-eye"></i></a>
                                                     <a class="btn btn-sm btn-success" href="{{ route('admin.pages.edit',$page->id) }}"><i class="fa fa-fw fa-edit"></i></a>
                                                     @csrf
                                                     @method('DELETE')

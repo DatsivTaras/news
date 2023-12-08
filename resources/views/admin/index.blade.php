@@ -3,14 +3,14 @@
 @section('content')
     <div class="container-fluid" style="padding-top: 15px">
 
-        <div class="card text-center">
-            <div class="card-header">
-                Аналітика
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">В розробці</h5>
-            </div>
-        </div>
+{{--        <div class="card text-center">--}}
+{{--            <div class="card-header">--}}
+{{--                Аналітика--}}
+{{--            </div>--}}
+{{--            <div class="card-body">--}}
+{{--                <h5 class="card-title">В розробці</h5>--}}
+{{--            </div>--}}
+{{--        </div>--}}
 
         <div class="row" style="margin-top:20px">
 

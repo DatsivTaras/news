@@ -15,11 +15,11 @@ class FileRepository extends BaseRepository
     public function uploadAndCreate(UploadedFile $file, string $name = '')
     {
         $path = $file->store('public/image/planes');
-        $data = [
+
+        return $this->create([
             'name' => $name ?? basename($path),
             'path' => $path,
-        ];
-
-        return $this->create($data);
+            'type' => $file->getClientMimeType()
+        ]);
     }
 }

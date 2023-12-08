@@ -16,7 +16,7 @@
                             </span>
                             <form action="{{ route('admin.categories.index')  }}" method="get" class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                                 <div class="input-group">
-                                    <input name="search" value="{{ isset($_GET['search']) ? $_GET['search'] : '' }}" class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                                    <input name="search" value="{{ isset($_GET['search']) ? $_GET['search'] : '' }}" class="form-control" type="text" placeholder="Ввести..." aria-label="Пошук..." aria-describedby="btnNavbarSearch" />
                                     <button class="btn btn-primary" id="btnNavbarSearch" type="submit"><i class="fas fa-search"></i></button>
                                 </div>
                             </form>
@@ -39,8 +39,7 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>@lang('main.no')</th>
-                                        <th>@lang('main.name')</th>
-                                        <th>@lang('main.OnTopMenu')</th>
+                                        <th>Назва</th>
                                         <th></th>
                                     </tr>
                                 </thead>

@@ -13,7 +13,7 @@
 
                 <br><div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('main.upload-file') }}</span>
+                        <span class="card-title">Завантаження файла</span>
                     </div>
                     <div class="card-body">
 
@@ -22,7 +22,6 @@
                                 <button type="button" class="close" data-dismiss="alert">×</button>
                                 <strong>{{ $message }}</strong>
                             </div>
-{{--                            <img src="uploads/{{ Session::get('file') }}">--}}
                         @endif
 
                         @if (count($errors) > 0)
@@ -42,21 +41,21 @@
 
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        {{ Form::label(__('main.name')) }}
-                                        {{ Form::text('name', '', ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => __('main.name') ]) }}
+                                        {{ Form::label('Назва файлу') }}
+                                        {{ Form::text('name', '', ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'Назва файлу' ]) }}
                                         {!! $errors->first('title', '<div class="invalid-feedback">:message</div>') !!}
                                     </div>
                                 </div>
 
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        {{ Form::label(__('main.file')) }}
-                                        <input type="file" name="file" class="form-control">
+                                        {{ Form::label('Вибрати файл') }}
+                                        <input type="file" name="file" accept="image/*, video/*" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="col-md-12">
-                                    <button type="submit" class="btn btn-success">Upload</button>
+                                    <button type="submit" class="btn btn-success">Завантажити</button>
                                 </div>
 
                             </div>

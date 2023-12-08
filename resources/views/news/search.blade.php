@@ -21,7 +21,7 @@
                         <form action="{{ route('search')  }}" method="get">
                             <div class="input-group full-search-input">
                                 <input name="query" value="{{ isset($_GET['query']) ? $_GET['query'] : '' }}" class="form-control"
-                                       type="text" placeholder="Магате...." aria-label="Search for..."
+                                       type="text" placeholder="Магате...." aria-label="Пошук.."
                                        aria-describedby="btnNavbarSearch"/>
                                 <button class="btn btn-primary" id="btnNavbarSearch" type="submit">
                                     <i class="fa fa-search" aria-hidden="true"></i>
