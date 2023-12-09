@@ -147,7 +147,7 @@ class NewsController extends Controller
         $this->newsServices->updateNews($news, $data);
 
         return redirect()->route('admin.news.index')
-            ->with('success', 'News updated successfully');
+            ->with('success', 'Новина успішно збережена');
     }
 
     public function addNewsOnSlider(Request $request)
@@ -175,7 +175,7 @@ class NewsController extends Controller
             }
         }
         return redirect()->route('admin.news.index')
-            ->with('success', 'News deleted successfully');
+            ->with('success', 'Новина успішно видалена');
     }
 
     public function drafts(NewsDraftsFilter $request)

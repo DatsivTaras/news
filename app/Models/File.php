@@ -14,6 +14,11 @@ class File extends Model
 
     protected $fillable = ['name', 'path', 'type'];
 
+    public function isImage()
+    {
+        return strpos($this->type, 'image') !== false ? true : false;
+    }
+
     public function getPath()
     {
         return asset(Storage::url($this->path));

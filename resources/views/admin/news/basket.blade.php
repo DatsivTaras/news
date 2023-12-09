@@ -16,7 +16,7 @@
                             </span>
                             <form action="{{ route('admin.news.basket')  }}" method="get" class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                                 <div class="input-group">
-                                    <input name="search" value="{{ isset($_GET['search']) ? $_GET['search'] : '' }}" class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                                    <input name="search" value="{{ isset($_GET['search']) ? $_GET['search'] : '' }}" class="form-control" type="text" placeholder="Пошук.." aria-label="Пошук.." aria-describedby="btnNavbarSearch" />
                                     <button class="btn btn-primary" id="btnNavbarSearch" type="submit"><i class="fas fa-search"></i></button>
                                 </div>
                             </form>
@@ -36,8 +36,8 @@
                                 <tr>
                                     <th>No</th>
                                     <th>@lang('main.title')</th>
-                                    <th>@lang('main.subtitle')</th>
-                                    <th>@lang('main.On Slider')</th>
+                                    <th>Статус</th>
+                                    <th>Тип</th>
                                     <th>@lang('main.dateOfPublication')</th>
                                     <th>Публікація</th>
                                     <th></th>
@@ -50,7 +50,7 @@
                                         <td>{{ $new->title }}</td>
                                         <td>{{ $new->getTypePublication() }}</td>
                                         <td>{{ $new->getType() }}</td>
-                                        <td>{{ $new->date_of_publication }}</td>
+                                        <td>{{ $new->getPublicationDate() }}</td>
                                         <td>
                                             <form action="{{ route('admin.news.finalDelete', $new->id) }}" method="POST">
                                                 <a class="btn btn-sm btn-success " href={{ route('admin.restorationNews', $new->id) }}>Відновити</a>

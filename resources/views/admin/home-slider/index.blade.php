@@ -32,6 +32,7 @@
                                         <th>@lang('main.no')</th>
                                         <th>@lang('main.title')</th>
                                         <th>@lang('main.miniDescription')</th>
+                                        <th>Сортування</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -41,7 +42,7 @@
                                             <td>{{ $homeSlider->id }}</td>
 											<td>{{ $homeSlider->news->title }}</td>
 											<td>{{ $homeSlider->news->mini_description }}</td>
-                                           <td> <input data-id="{{ $homeSlider->id }}"  type="text" class="form-control" value="{{ $homeSlider->sort_order }}" id="sort">
+                                            <td> <input data-id="{{ $homeSlider->id }}"  type="text" class="form-control" value="{{ $homeSlider->sort_order }}" id="sort">
                                             <td>
                                                 <form action="{{ route('admin.sliders.destroy',$homeSlider->id) }}" method="POST">
                                                     @csrf

@@ -17,7 +17,7 @@
                             </span>
                             <form action="{{ route('admin.news.index')  }}" method="get" class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                                 <div class="input-group">
-                                    <input name="search" value="{{ isset($_GET['search']) ? $_GET['search'] : '' }}" class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                                    <input name="search" value="{{ isset($_GET['search']) ? $_GET['search'] : '' }}" class="form-control" type="text" placeholder="Пошук..." aria-label="Пошук..." aria-describedby="btnNavbarSearch" />
                                     <button class="btn btn-primary" id="btnNavbarSearch" type="submit"><i class="fas fa-search"></i></button>
                                 </div>
                             </form>
@@ -41,9 +41,9 @@
                                     <tr>
                                         <th>No</th>
 										<th>@lang('main.title')</th>
-										<th>@lang('main.subtitle')</th>
-                                        <th>@lang('main.On Slider')</th>
-                                        <th>@lang('main.OnPaidNews')</th>
+										<th>Статус</th>
+                                        <th>Слайдер</th>
+                                        <th>Платна</th>
                                         <th>@lang('main.type')</th>
                                         <th>@lang('main.dateOfPublication')</th>
                                         <th></th>
@@ -58,7 +58,7 @@
 											<td><input  data-id="{{ $new->id }}" class="addNewsSlider" type="checkbox" {{ $new->home_slider ? 'checked' : '' }} ></td>
 											<td><input  data-id="{{ $new->id }}" class="addPaidNews" type="checkbox" {{ $new->paidNews ? 'checked' : '' }} ></td>
 											<td>{{ $new->getType() }}</td>
-											<td>{{ $new->date_of_publication }}</td>
+											<td>{{ $new->getPublicationDate() }}</td>
                                             <td>
                                                 <form action="{{ route('admin.news.destroy', $new->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('news.show', $new->slug) }}"target="_blank"><i class="fa fa-fw fa-eye"></i></a>
