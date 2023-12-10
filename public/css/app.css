@@ -12072,6 +12072,9 @@ body .container {
   padding-left: 12px;
   padding-right: 12px;
 }
+body contact-bg {
+  background: #ffffff !important;
+}
 
 section.main {
   min-height: 85vh;

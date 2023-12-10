@@ -153,6 +153,8 @@
     font-style: italic;
 }
 
+
+
 body {
     background: rgb(255,255,255);
     background: linear-gradient(rgb(255, 255, 255) 6%, rgb(209, 209, 209) 13%);
@@ -160,6 +162,10 @@ body {
         padding-left: 12px;
         padding-right: 12px;
     }
+    contact-bg {
+       background: #ffffff !important;
+    }
+
 }
 
 section.main {
