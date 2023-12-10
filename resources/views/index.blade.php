@@ -17,22 +17,21 @@
                     @foreach($sliderNews as $key => $slide)
                         @if ($key == 0)
                             <div class="col-sm-12">
-                                <div class="home-big-news" style="background-image: url('{{ $slide->news->getImageUrl() }}');">
-                                    <div>
-                                        <div class="category">
-                                            <!--    <img class="card-img-top" src="{{ $slide->news->getImageUrl() }}"  width="200" height="400" alt="Card image cap" title=";ddfdf"/> -->
-                                            <div class="home-big-news-category"><a href={{ $slide->news->getCategory()->getUrl() }}>{{ $slide->news->getCategoryName() }}</a></div>
-                                            <div class="card-body">
-                                                <a href="{{$slide->news->getUrl()}}">
+                                <div class="home-big-news-main-title">
+                                    <div class="category">
+                                        <div class="home-big-news-category">
+                                            <a href={{ $slide->news->getCategory()->getUrl() }}>{{ $slide->news->getCategoryName() }}</a>
+                                        </div>
+                                        <div class="card-body">
+                                            <a href="{{$slide->news->getUrl()}}">
                                                     <span class="card-title">
                                                         {{ $slide->news->title }}
                                                     </span>
-                                                </a>
-                                                {{--                                            <p class="card-text">{{ $slide->news->mini_description }}</p>--}}
+                                            </a>
                                             </div>
-                                        </div>
                                     </div>
-
+                                </div>
+                                <div class="home-big-news" style="background-image: url('{{ $slide->news->getImageUrl() }}');">
                                     <div class="home-big-news-footer">
                                         <div class="home-big-news-footer-right">
                                             <p><span>Джерело:</span> {{ $slide->news->subtitle }}</p>
@@ -67,25 +66,33 @@
                         @endif
                     @endforeach
                     @if ($mainBlock)
-                        <div class="col-sm-12 home-right-single-news">
-                            <div class="home-news-container" style="background-image: url('{{ $mainBlock->getImageUrl() }}');">
-                                <div class="category">
-                                    <div class="home-single-news-category"><div class="triang"><a href="{{ $mainBlock->getCategory()->getUrl() }}">{{ $mainBlock->getCategoryName() }}</a></div></div>
-                                    <div class="card-body">
-                                        <a class="home-big-news-read-more" href="{{$mainBlock->getUrl()}}">
-                                            <span class="card-title">{{ $mainBlock->title }}</span>
-                                        </a>
-                                        @if($author = $mainBlock->getAuthor())
-                                            <p class="card-text">{{ $author->getFullName() }} — {{ getDates($mainBlock->date_of_publication) }}</p>
-                                        @endif
+                            <div class="col-sm-12">
+                                <div class="home-big-news-main-title">
+                                    <div class="category">
+                                        <div class="home-big-news-category">
+                                            <a href="{{ $mainBlock->getCategory()->getUrl() }}">{{ $mainBlock->getCategoryName() }}</a>
+                                        </div>
+                                        <div class="card-body">
+                                            <a href="{{$mainBlock->getUrl()}}">
+                                                <span class="card-title">
+                                                    {{ $mainBlock->title }}
+                                                </span>
+                                                @if($author = $mainBlock->getAuthor())
+                                                    <p class="card-text-author">{{ $author->getFullName() }} — {{ getDates($mainBlock->date_of_publication) }}</p>
+                                                @endif
+                                            </a>
+                                        </div>
                                     </div>
-                                    <div class="home-single-news-footer-right">
-                                        <p><span>Джерело:</span> {{ $mainBlock->subtitle }}</p>
-                                        <a class="home-big-news-read-more" href="{{$mainBlock->getUrl()}}">Деталі> </a>
+                                </div>
+                                <div class="home-big-news" style="background-image: url('{{ $mainBlock->getImageUrl() }}'); margin-bottom: 0">
+                                    <div class="home-big-news-footer">
+                                        <div class="home-big-news-footer-right">
+                                            <p><span>Джерело:</span> {{ $mainBlock->subtitle }}</p>
+                                            <a class="home-big-news-read-more" href="{{$mainBlock->getUrl()}}">Деталі> </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                     @endif
                 </div>
             </div>
@@ -120,22 +127,21 @@
                     @foreach($sliderNews as $key => $slide)
                         @if ($key == 0)
                             <div class="col-sm-12">
-                                <div class="home-big-news" style="background-image: url('{{ $slide->news->getImageUrl() }}');">
-                                    <div>
-                                        <div class="category">
-                                            <!--    <img class="card-img-top" src="{{ $slide->news->getImageUrl() }}"  width="200" height="400" alt="Card image cap" title=";ddfdf"/> -->
-                                            <div class="home-big-news-category"><a href="#">{{ $slide->news->getCategoryName() }}</a></div>
-                                            <div class="card-body">
-                                                <a href="{{$slide->news->getUrl()}}">
-                                                        <span class="card-title">
-                                                            {{ $slide->news->title }}
-                                                        </span>
-                                                </a>
-                                                {{--                                            <p class="card-text">{{ $slide->news->mini_description }}</p>--}}
-                                            </div>
+                                <div class="home-big-news-main-title">
+                                    <div class="category">
+                                        <div class="home-big-news-category">
+                                            <a href={{ $slide->news->getCategory()->getUrl() }}>{{ $slide->news->getCategoryName() }}</a>
+                                        </div>
+                                        <div class="card-body">
+                                            <a href="{{$slide->news->getUrl()}}">
+                                                    <span class="card-title">
+                                                        {{ $slide->news->title }}
+                                                    </span>
+                                            </a>
                                         </div>
                                     </div>
-
+                                </div>
+                                <div class="home-big-news" style="background-image: url('{{ $slide->news->getImageUrl() }}');">
                                     <div class="home-big-news-footer">
                                         <div class="home-big-news-footer-right">
                                             <p><span>Джерело:</span> {{ $slide->news->subtitle }}</p>
