@@ -12072,7 +12072,8 @@ body .container {
   padding-left: 12px;
   padding-right: 12px;
 }
-body contact-bg {
+
+.contact-bg {
   background: #ffffff !important;
 }
 
