@@ -12149,7 +12149,7 @@ main .breadcrumb .back-home-icon {
   width: 50%;
 }
 .top-bar .custom-container .left-side span {
-  font-size: 10px;
+  font-size: 12px;
   color: #56564f;
   font-family: "Raleway", sans-serif;
 }
@@ -12167,7 +12167,7 @@ main .breadcrumb .back-home-icon {
 .top-bar .custom-container .right-side .top-bar-email a {
   text-transform: none;
   text-decoration: none;
-  font-size: 10px;
+  font-size: 12px;
   color: #56564f;
   font-family: "Raleway", sans-serif;
 }
@@ -12180,7 +12180,7 @@ main .breadcrumb .back-home-icon {
 .top-bar .custom-container .right-side .top-bar-phone a {
   text-transform: none;
   text-decoration: none;
-  font-size: 10px;
+  font-size: 12px;
   color: #56564f;
   font-family: "Raleway", sans-serif;
 }
@@ -12214,7 +12214,7 @@ main .breadcrumb .back-home-icon {
   background: rgba(255, 255, 255, 0.8588235294);
 }
 .main-header .main-header-container .main-header-left-side .dropdown-menu.show li .menu-dropdown-item {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 20px;
   color: #56564f;
   font-weight: 500;
@@ -12229,7 +12229,7 @@ main .breadcrumb .back-home-icon {
   font-weight: 800;
 }
 .main-header .main-header-container .main-header-left-side .chose-lang .language {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 13px;
   color: #56564f;
   font-weight: 500;
@@ -12302,7 +12302,7 @@ main .breadcrumb .back-home-icon {
   color: #333d8e;
 }
 .main-header .main-header-container .main-header-right-side .input-group i {
-  font-size: 19px;
+  font-size: 21px;
   color: #56564f;
 }
 .main-header .dropdown .btn-secondary {
@@ -12335,7 +12335,7 @@ main .breadcrumb .back-home-icon {
   margin-right: 0;
 }
 .app-menu .app-menu-container ul li a {
-  font-size: 14px;
+  font-size: 18px;
   color: #56564f;
   font-weight: 500;
   font-family: "Raleway", sans-serif;
@@ -12357,7 +12357,7 @@ main .breadcrumb .back-home-icon {
   height: 100%;
 }
 .home-content .main-widget-left .main-widget-title {
-  font-size: 14px;
+  font-size: 16px;
   color: #1f5e9c;
   font-family: "Raleway", sans-serif;
   text-transform: uppercase;
@@ -12375,7 +12375,7 @@ main .breadcrumb .back-home-icon {
 .home-content .main-widget-left #myTab .nav-item .nav-link {
   border: none;
   padding: 0;
-  font-size: 12px;
+  font-size: 16px;
   color: #56564f;
   font-weight: 500;
   font-family: "Raleway", sans-serif;
@@ -12397,14 +12397,14 @@ main .breadcrumb .back-home-icon {
   justify-content: space-between;
 }
 .home-content .main-widget-left .tab-content .widget-news-link div .news-description {
-  font-size: 11px;
+  font-size: 13px;
   color: #56564f;
   font-weight: 500;
   font-family: "Raleway", sans-serif;
   margin-bottom: 0;
 }
 .home-content .main-widget-left .tab-content .widget-news-link div .news-time {
-  font-size: 11px;
+  font-size: 13px;
   color: rgba(86, 86, 79, 0.8784313725);
   font-weight: 400;
   font-family: "Raleway", sans-serif;
@@ -12428,7 +12428,7 @@ main .breadcrumb .back-home-icon {
   justify-content: center;
   align-items: center;
   height: 25px;
-  font-size: 13px;
+  font-size: 15px;
   color: #293564;
   font-family: "Raleway", sans-serif;
   background-color: #ffd62c;
@@ -12444,6 +12444,7 @@ main .breadcrumb .back-home-icon {
 .home-content .home-left-block .home-big-news-main-title {
   background: #ffffff;
   border: 1px solid #bcbcbc;
+  border-bottom: none;
   padding: 10px 5px;
 }
 .home-content .home-left-block .home-big-news-main-title .category {
@@ -12469,7 +12470,7 @@ main .breadcrumb .back-home-icon {
   color: red;
 }
 .home-content .home-left-block .home-big-news-main-title .category .card-body .card-text {
-  font-size: 25px;
+  font-size: 27px;
   color: #333d8e;
   font-weight: 400;
   font-family: "Raleway", sans-serif;
@@ -12562,7 +12563,7 @@ main .breadcrumb .back-home-icon {
   align-items: center;
   width: 100%;
   max-width: none;
-  font-size: 16px;
+  font-size: 18px;
   color: #293564;
   font-family: "Raleway", sans-serif;
   height: 29px;
@@ -12574,7 +12575,7 @@ main .breadcrumb .back-home-icon {
   align-items: flex-end;
 }
 .home-content .home-left-block .home-big-news .home-big-news-footer div.home-big-news-footer-right p {
-  font-size: 10px;
+  font-size: 12px;
   color: #d9d9d9;
   font-weight: 500;
   font-family: "Raleway", sans-serif;
@@ -12585,7 +12586,7 @@ main .breadcrumb .back-home-icon {
   color: #ffffff;
 }
 .home-content .home-left-block .home-big-news .home-big-news-footer div.home-big-news-footer-right a {
-  font-size: 10px;
+  font-size: 12px;
   color: #ffffff;
   font-family: "Raleway", sans-serif;
   text-align: right;
@@ -12637,7 +12638,7 @@ main .breadcrumb .back-home-icon {
   min-height: 141px;
 }
 .home-content .home-left-block .three-news-blocks .category .card-body .card-title {
-  font-size: 13px;
+  font-size: 15px;
   color: #56564f;
   font-weight: bold;
   font-family: "Raleway", sans-serif;
@@ -12645,7 +12646,7 @@ main .breadcrumb .back-home-icon {
   min-height: 40px;
 }
 .home-content .home-left-block .three-news-blocks .category .card-body .card-text {
-  font-size: 10px;
+  font-size: 12px;
   color: #000000;
   font-weight: 500;
   font-family: "Raleway", sans-serif;
@@ -12658,7 +12659,7 @@ main .breadcrumb .back-home-icon {
   text-overflow: ellipsis;
 }
 .home-content .home-left-block .three-news-blocks .category .card-body a {
-  font-size: 12px;
+  font-size: 14px;
   color: #56564f;
   font-family: "Raleway", sans-serif;
   text-decoration: none;
@@ -12673,7 +12674,7 @@ main .breadcrumb .back-home-icon {
 }
 .home-content .home-left-block .three-news-blocks .category .card-body .read-more-container .date-news {
   margin: 0;
-  font-size: 12px;
+  font-size: 14px;
   color: #56564f;
   font-family: "Raleway", sans-serif;
 }
@@ -12763,7 +12764,7 @@ main .breadcrumb .back-home-icon {
   text-align: right;
 }
 .home-content .home-left-block .home-right-single-news .home-news-container .category .card-body a .card-title {
-  font-size: 26px;
+  font-size: 28px;
   line-height: normal;
   color: #333d8e;
   font-weight: 800;
@@ -12778,7 +12779,7 @@ main .breadcrumb .back-home-icon {
 .home-content .home-left-block .home-right-single-news .home-news-container .category .card-body .card-text {
   display: flex;
   max-width: 255px;
-  font-size: 12px;
+  font-size: 14px;
   color: #ffffff;
   font-weight: 500;
   font-family: "Raleway", sans-serif;
@@ -12797,7 +12798,7 @@ main .breadcrumb .back-home-icon {
   align-items: flex-end;
 }
 .home-content .home-left-block .home-right-single-news .home-news-container .category .home-single-news-footer-right p {
-  font-size: 10px;
+  font-size: 12px;
   color: #d9d9d9;
   font-weight: 500;
   font-family: "Raleway", sans-serif;
@@ -12808,7 +12809,7 @@ main .breadcrumb .back-home-icon {
   color: #ffffff;
 }
 .home-content .home-left-block .home-right-single-news .home-news-container .category .home-single-news-footer-right a {
-  font-size: 10px;
+  font-size: 12px;
   color: #ffffff;
   font-family: "Raleway", sans-serif;
   text-align: right;
@@ -12889,7 +12890,7 @@ main .breadcrumb .back-home-icon {
   color: red;
 }
 .home-content .home-two-news-container .category .card-body .card-author-date {
-  font-size: 12px;
+  font-size: 14px;
   color: #56564f;
   font-weight: 500;
   font-family: "Raleway", sans-serif;
@@ -12898,7 +12899,7 @@ main .breadcrumb .back-home-icon {
   min-height: 39px;
 }
 .home-content .home-two-news-container .category .card-body .card-source {
-  font-size: 10px;
+  font-size: 12px;
   color: #000000;
   font-weight: 500;
   font-family: "Raleway", sans-serif;
@@ -12907,7 +12908,7 @@ main .breadcrumb .back-home-icon {
   overflow: hidden;
 }
 .home-content .home-two-news-container .category .card-body .home-two-news-read-more-btn {
-  font-size: 10px;
+  font-size: 12px;
   color: #56564f;
   font-family: "Raleway", sans-serif;
   text-decoration: none;
@@ -12936,7 +12937,7 @@ main .breadcrumb .back-home-icon {
   border-bottom: 2px solid #ffd62c;
 }
 .news-menu-container ul .news-menu-item .btn {
-  font-size: 14px;
+  font-size: 16px;
   color: #56564f;
   font-weight: 500;
   font-family: "Raleway", sans-serif;
@@ -12949,7 +12950,7 @@ main .breadcrumb .back-home-icon {
 }
 
 .news-category-title {
-  font-size: 19px;
+  font-size: 21px;
   color: #333d8e;
   font-weight: bold;
   font-family: "Raleway", sans-serif;
@@ -12975,7 +12976,7 @@ main .breadcrumb .back-home-icon {
   border-radius: 50%;
   text-decoration: none;
   font-weight: 800;
-  font-size: 22px;
+  font-size: 24px;
   color: #56564f;
 }
 .date-switch a:hover {
@@ -13047,7 +13048,7 @@ main .breadcrumb .back-home-icon {
   text-decoration: none;
 }
 .three-news-blocks .card .card-body .card-title {
-  font-size: 13px;
+  font-size: 12px;
   color: #333d8e;
   font-weight: bold;
   font-family: "Raleway", sans-serif;
@@ -13059,7 +13060,7 @@ main .breadcrumb .back-home-icon {
   color: red;
 }
 .three-news-blocks .card .card-body .card-text {
-  font-size: 10px;
+  font-size: 12px;
   color: #000000;
   font-weight: 500;
   font-family: "Raleway", sans-serif;
@@ -13072,7 +13073,7 @@ main .breadcrumb .back-home-icon {
   min-height: 50px;
 }
 .three-news-blocks .card .card-body .source {
-  font-size: 10px;
+  font-size: 12px;
   color: #000000;
   font-weight: 500;
   font-family: "Raleway", sans-serif;
@@ -13091,14 +13092,14 @@ main .breadcrumb .back-home-icon {
   padding-top: 7px;
 }
 .three-news-blocks .card .card-body .read-more-container .date-news {
-  font-size: 10px;
+  font-size: 12px;
   color: #56564f;
   font-family: "Raleway", sans-serif;
   text-decoration: none;
   margin-bottom: 0;
 }
 .three-news-blocks .card .card-body .read-more-container p.read-more {
-  font-size: 10px;
+  font-size: 12px;
   color: #56564f;
   font-family: "Raleway", sans-serif;
   text-decoration: none;
@@ -13123,6 +13124,10 @@ main .breadcrumb .back-home-icon {
      object-fit: cover;
   min-height: 335px;
 }
+.single-news-container .category .card-img-top {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
 .single-news-container .category .top-left {
   position: absolute;
   display: flex;
@@ -13132,7 +13137,7 @@ main .breadcrumb .back-home-icon {
   max-width: 170px;
   padding: 0 20px;
   background-color: #ffd62c;
-  font-size: 10px;
+  font-size: 12px;
   color: #1f5e9c;
   font-weight: 500;
   font-family: "Raleway", sans-serif;
@@ -13164,7 +13169,7 @@ main .breadcrumb .back-home-icon {
   background: #ffffff;
 }
 .single-news-container .single-news-title {
-  font-size: 27px;
+  font-size: 29px;
   color: #333d8e;
   font-weight: 800;
   font-family: "Raleway", sans-serif;
@@ -13173,7 +13178,7 @@ main .breadcrumb .back-home-icon {
   margin-bottom: 0;
 }
 .single-news-container .single-news-author {
-  font-size: 22px;
+  font-size: 24px;
   color: #333d8e;
   font-weight: 600;
   font-family: "Raleway", sans-serif;
@@ -13189,7 +13194,7 @@ main .breadcrumb .back-home-icon {
   color: #333d8e;
 }
 .single-news-container .single-news-description {
-  font-size: 13px;
+  font-size: 15px;
   color: #56564f;
   font-weight: 500;
   font-family: "Raleway", sans-serif;
@@ -13202,7 +13207,7 @@ main .breadcrumb .back-home-icon {
   padding-left: 28px;
 }
 .single-news-container .single-news-tags {
-  font-size: 12px;
+  font-size: 14px;
   color: #1f5e9c;
   font-family: "Raleway", sans-serif;
   padding: 10px 20px;
@@ -13251,7 +13256,7 @@ div#social-links ul li a {
   padding: 0 !important;
   border: none !important;
   margin: 0 !important;
-  font-size: 14px !important;
+  font-size: 16px !important;
   color: #56564f !important;
   background-color: transparent !important;
   text-decoration: none;
@@ -13313,7 +13318,7 @@ footer .footer-menu-container {
   padding-top: 20px;
 }
 footer .footer-menu-container li {
-  line-height: 10px;
+  line-height: 12px;
 }
 footer .footer-menu-container li a {
   font-size: 12px;
@@ -13324,7 +13329,7 @@ footer .footer-menu-container li a:hover {
   color: #1F5EA7;
 }
 footer .footer-menu-container li.footer-menu-title {
-  font-size: 12px;
+  font-size: 14px;
   color: #56564f;
   font-weight: bold;
   font-family: "Raleway", sans-serif;
@@ -13347,7 +13352,7 @@ footer .footer-text-info {
   padding: 15px 35px;
 }
 .all-new-list .date-news {
-  font-size: 14px;
+  font-size: 16px;
   letter-spacing: 0;
   color: #56564f;
   font-weight: 800;
@@ -13371,7 +13376,7 @@ footer .footer-text-info {
   padding: 0;
 }
 .all-new-list .three-news-blocks a .card .card-body .card-title {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 16px;
   color: #56564f;
   font-weight: 500;
@@ -13413,7 +13418,7 @@ footer .footer-text-info {
   align-items: center;
 }
 .search-news-blocks .card .three-news-blocks-category .triangle a {
-  font-size: 10px;
+  font-size: 12px;
   color: #1f5e9b;
   font-weight: 500;
   font-family: "Raleway", sans-serif;
@@ -13455,7 +13460,7 @@ footer .footer-text-info {
   margin-bottom: 5px;
 }
 .search-news-blocks .card .card-body .card-title a {
-  font-size: 25px;
+  font-size: 27px;
   color: #333d8e;
   font-weight: bold;
   font-family: "Raleway", sans-serif;
@@ -13471,7 +13476,7 @@ footer .footer-text-info {
   color: red;
 }
 .search-news-blocks .card .card-body .card-text {
-  font-size: 12px;
+  font-size: 14px;
   color: #56564f;
   font-weight: 500;
   font-family: "Raleway", sans-serif;
@@ -13488,7 +13493,7 @@ footer .footer-text-info {
   margin-bottom: 0;
 }
 .search-news-blocks .card .card-body .read-more-container .read-more a {
-  font-size: 10px;
+  font-size: 12px;
   color: #56564f;
   font-family: "Raleway", sans-serif;
   text-decoration: none;
@@ -13504,7 +13509,7 @@ footer .footer-text-info {
   box-shadow: none !important;
   outline: none !important;
   background: #ffffff;
-  font-size: 16px;
+  font-size: 18px;
   color: #333d8e !important;
   font-weight: bold;
   font-family: "Raleway", sans-serif;
@@ -13517,7 +13522,7 @@ footer .footer-text-info {
   border-radius: 0 !important;
 }
 .full-search-input #btnNavbarSearch i {
-  font-size: 19px;
+  font-size: 21px;
   color: #333d8e;
 }
 
@@ -13527,7 +13532,7 @@ footer .footer-text-info {
   justify-content: center;
   width: 100%;
   padding: 20px 0;
-  font-size: 10px;
+  font-size: 12px;
   line-height: 25px;
   color: #56564f;
   font-weight: 500;
@@ -13536,7 +13541,7 @@ footer .footer-text-info {
 }
 
 .page-title {
-  font-size: 25px;
+  font-size: 27px;
   color: #333d8e;
   font-weight: bold;
   font-family: "Raleway", sans-serif;
@@ -13711,13 +13716,13 @@ footer .footer-text-info {
     padding: 2px 5px;
   }
   .home-content .home-two-news-container .category .card-body .card-title {
-    font-size: 20px;
+    font-size: 22px;
     line-height: 21px;
     height: 62px;
     margin-bottom: 4px;
   }
   .home-content .home-two-news-container .category .card-body .card-author-date {
-    font-size: 11px;
+    font-size: 13px;
     margin-bottom: 5px;
     height: 20px;
     min-height: auto;
@@ -13755,7 +13760,7 @@ footer .footer-text-info {
     margin-top: 20px;
   }
   .home-content .home-left-block .home-right-single-news .home-news-container .category .card-body .card-title {
-    font-size: 18px;
+    font-size: 20px;
     -webkit-line-clamp: 2;
     width: 70%;
   }
@@ -13764,12 +13769,12 @@ footer .footer-text-info {
     padding-left: 15px;
   }
   .home-content .home-left-block .home-right-single-news .home-news-container .category .home-single-news-footer-right p {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: normal;
     margin-bottom: 0;
   }
   .home-content .home-left-block .home-right-single-news .home-news-container .category .home-single-news-footer-right a {
-    font-size: 12px;
+    font-size: 14px;
     padding-top: 7px;
   }
   .home-content .home-two-news-container {
@@ -13796,7 +13801,7 @@ footer .footer-text-info {
     text-align: center;
   }
   footer > div.pt-5 > div > div > div.mt-4 .footer-logo-container a {
-    font-size: 24px;
+    font-size: 26px;
   }
   footer > div.pt-5 > div > div > div.mt-4 .footer-logo-container a span {
     display: flex;
@@ -13811,7 +13816,7 @@ footer .footer-text-info {
   footer .social a .social-icon {
     width: 20px;
     height: 20px;
-    font-size: 10px;
+    font-size: 12px;
   }
   footer .footer-menu-container {
     margin-top: 0 !important;
@@ -13827,16 +13832,16 @@ footer .footer-text-info {
     fill: #213d77 !important;
   }
   .three-news-blocks .card .card-body .card-title {
-    font-size: 16px;
+    font-size: 18px;
   }
   .three-news-blocks .card .card-body .source {
-    font-size: 10px;
+    font-size: 12px;
   }
   .three-news-blocks .card .card-body .read-more-container .read-more {
-    font-size: 14px;
+    font-size: 16px;
   }
   .three-news-blocks .card .card-body .read-more-container .date-news {
-    font-size: 14px;
+    font-size: 16px;
   }
   .news-category-title {
     padding-top: 10px;
@@ -13894,13 +13899,13 @@ footer .footer-text-info {
     text-decoration: none;
   }
   .three-news-blocks .card .card-body .card-title {
-    font-size: 20px;
+    font-size: 22px;
     line-height: 21px;
     height: 62px;
     margin-bottom: 4px;
   }
   .three-news-blocks .card .card-body .card-text {
-    font-size: 10px;
+    font-size: 12px;
     color: #000000;
     font-weight: 500;
     font-family: "Raleway", sans-serif;
@@ -13924,14 +13929,14 @@ footer .footer-text-info {
     padding-top: 7px;
   }
   .three-news-blocks .card .card-body .read-more-container .date-news {
-    font-size: 10px;
+    font-size: 12px;
     color: #000000;
     font-family: "Raleway", sans-serif;
     text-decoration: none;
     margin-bottom: 0;
   }
   .three-news-blocks .card .card-body .read-more-container p.read-more {
-    font-size: 10px;
+    font-size: 12px;
     color: #000000;
     font-family: "Raleway", sans-serif;
     text-decoration: none;
@@ -13954,7 +13959,7 @@ footer .footer-text-info {
     padding: 15px 30px 8px 15px;
   }
   .search-news-blocks .card .card-body .card-title a {
-    font-size: 22px;
+    font-size: 24px;
     min-height: 55px;
   }
   .home-content .main-widget-left {
@@ -13976,11 +13981,11 @@ footer .footer-text-info {
     margin-right: 0;
   }
   .single-news-container .single-news-title {
-    font-size: 16px;
+    font-size: 18px;
     padding: 10px 0 0 0;
   }
   .single-news-container .single-news-author {
-    font-size: 14px;
+    font-size: 16px;
     padding: 10px 15px;
   }
   .single-news-container .single-news-description {
@@ -14005,7 +14010,7 @@ footer .footer-text-info {
 }
 @media (min-width: 992px) {
   .search-news-blocks .card .card-body .card-title a {
-    font-size: 13px;
+    font-size: 15px;
     min-height: 30px;
   }
 }
@@ -14024,7 +14029,7 @@ footer .footer-text-info {
     align-items: center;
   }
   .home-content .home-left-block .home-big-news div .category .card-body .card-title {
-    font-size: 17px;
+    font-size: 19px;
     line-height: 21px;
   }
   .home-content .home-left-block .home-big-news .home-big-news-footer {
@@ -14033,10 +14038,13 @@ footer .footer-text-info {
 }
 @media (max-width: 575px) {
   .app-menu .app-menu-container ul li a {
-    font-size: 9px;
+    font-size: 12px;
   }
   .home-content .home-left-block .home-big-news-main-title .category .card-body .card-title {
     font-size: 18px;
     line-height: 20px;
+  }
+  .home-content .home-left-block .home-big-news {
+    padding: 5px 10px;
   }
 }
