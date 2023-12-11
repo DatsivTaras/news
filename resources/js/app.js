@@ -36,7 +36,7 @@ $(document).ready(function(){
 
     $(function() {
         $(".home-big-news").each(function() {
-            imgWidth = $(this).width();
+            imgWidth = $(this).width() + 20;
             $(this).css("height", imgWidth / 2);
         });
     });
@@ -66,7 +66,7 @@ $(document).ready(function(){
 
         $(function() {
             $(".home-big-news").each(function() {
-                imgWidth = $(this).width();
+                imgWidth = $(this).width() + 20;
                 $(this).css("height", imgWidth / 2);
             });
         });

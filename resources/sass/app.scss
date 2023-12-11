@@ -244,7 +244,7 @@ main {
         .left-side {
             width: 50%;
             span {
-                font-size: 10px;
+                font-size: 12px;
                 color: #56564f;
                 font-family: 'Raleway', sans-serif;
                 img {
@@ -261,7 +261,7 @@ main {
                 a {
                     text-transform: none;
                     text-decoration: none;
-                    font-size: 10px;
+                    font-size: 12px;
                     color: #56564f;
                     font-family: 'Raleway', sans-serif;
                     &:hover {
@@ -276,7 +276,7 @@ main {
                 a {
                     text-transform: none;
                     text-decoration: none;
-                    font-size: 10px;
+                    font-size: 12px;
                     color: #56564f;
                     font-family: 'Raleway', sans-serif;
                     &:hover {
@@ -311,7 +311,7 @@ main {
                 background: #ffffffdb;
                 li {
                     .menu-dropdown-item {
-                        font-size: 14px;
+                        font-size: 16px;
                         line-height: 20px;
                         color: #56564f;
                         font-weight: 500;
@@ -329,7 +329,7 @@ main {
             }
             .chose-lang {
                 .language {
-                    font-size: 14px;
+                    font-size: 16px;
                     line-height: 13px;
                     color: #56564f;
                     font-weight: 500;
@@ -404,7 +404,7 @@ main {
                     }
                 }
                 i {
-                    font-size: 19px;
+                    font-size: 21px;
                     color: #56564f;
                 }
             }
@@ -441,7 +441,7 @@ main {
                     margin-right: 0;
                 }
                 a {
-                    font-size: 14px;
+                    font-size: 18px;
                     color: #56564f;
                     font-weight: 500;
                     font-family: 'Raleway', sans-serif;
@@ -467,7 +467,7 @@ main {
         padding: 20px 10px;
         height: 100%;
         .main-widget-title {
-            font-size: 14px;
+            font-size: 16px;
             color: #1f5e9c;
             font-family: 'Raleway', sans-serif;
             text-transform: uppercase;
@@ -485,7 +485,7 @@ main {
                 .nav-link {
                     border: none;
                     padding: 0;
-                    font-size: 12px;
+                    font-size: 16px;
                     color: #56564f;
                     font-weight: 500;
                     font-family: 'Raleway', sans-serif;
@@ -510,14 +510,14 @@ main {
             .widget-news-link {
                 div {
                     .news-description {
-                        font-size: 11px;
+                        font-size: 13px;
                         color: #56564f;
                         font-weight: 500;
                         font-family: 'Raleway', sans-serif;
                         margin-bottom: 0;
                     }
                     .news-time {
-                        font-size: 11px;
+                        font-size: 13px;
                         color: #56564fe0;
                         font-weight: 400;
                         font-family: 'Raleway', sans-serif;
@@ -552,7 +552,7 @@ main {
             justify-content: center;
             align-items: center;
             height: 25px;
-            font-size: 13px;
+            font-size: 15px;
             color: #293564;
             font-family: 'Raleway', sans-serif;
             background-color: #ffd62c;
@@ -570,6 +570,7 @@ main {
         .home-big-news-main-title {
             background: #ffffff;
             border: 1px solid #bcbcbc;
+            border-bottom: none;
             padding: 10px 5px;
             .category {
                 display: flex;
@@ -592,7 +593,7 @@ main {
                         }
                     }
                     .card-text {
-                        font-size: 25px;
+                        font-size: 27px;
                         color: #333d8e;
                         font-weight: 400;
                         font-family: 'Raleway', sans-serif;
@@ -619,7 +620,7 @@ main {
                     background-color: #ffd62c;
                     a {
                         text-decoration: none;
-                        font-size: 10px;
+                        font-size: 10px; //////
                         color: #1d5ea7;
                         font-weight: 500;
                         font-family: 'Raleway', sans-serif;
@@ -684,7 +685,7 @@ main {
                             align-items: center;
                             width: 100%;
                             max-width: none;
-                            font-size: 16px;
+                            font-size: 18px;
                             color: #293564;
                             font-family: 'Raleway', sans-serif;
                             height: 29px;
@@ -696,7 +697,7 @@ main {
                         flex-direction: column;
                         align-items: flex-end;
                         p {
-                            font-size: 10px;
+                            font-size: 12px;
                             color: #d9d9d9;
                             font-weight: 500;
                             font-family: 'Raleway', sans-serif;
@@ -707,7 +708,7 @@ main {
                             }
                         }
                         a {
-                            font-size: 10px;
+                            font-size: 12px;
                             color: #ffffff;
                             font-family: 'Raleway', sans-serif;
                             text-align: right;
@@ -759,7 +760,7 @@ main {
                     padding: 10px;
                     min-height: 141px;
                     .card-title {
-                        font-size: 13px;
+                        font-size: 15px;
                         color: #56564f;
                         font-weight: bold;
                         font-family: 'Raleway', sans-serif;
@@ -767,7 +768,7 @@ main {
                         min-height: 40px;
                     }
                     .card-text {
-                        font-size: 10px;
+                        font-size: 12px;
                         color: #000000;
                         font-weight: 500;
                         font-family: 'Raleway', sans-serif;
@@ -780,7 +781,7 @@ main {
                         text-overflow: ellipsis;
                     }
                     a {
-                        font-size: 12px;
+                        font-size: 14px;
                         color: #56564f;
                         font-family: 'Raleway', sans-serif;
                         text-decoration: none;
@@ -794,7 +795,7 @@ main {
                         margin-top: 10px;
                         .date-news {
                             margin: 0;
-                            font-size: 12px;
+                            font-size: 14px;
                             color: #56564f;
                             font-family: 'Raleway', sans-serif;
                         }
@@ -887,7 +888,7 @@ main {
                             text-decoration: none;
                             text-align: right;
                             .card-title {
-                                font-size: 26px;
+                                font-size: 28px;
                                 line-height: normal;
                                 color: #333d8e;
                                 font-weight: 800;
@@ -903,7 +904,7 @@ main {
                         .card-text {
                             display: flex;
                             max-width: 255px;
-                            font-size: 12px;
+                            font-size: 14px;
                             color: #ffffff;
                             font-weight: 500;
                             font-family: 'Raleway', sans-serif;
@@ -922,7 +923,7 @@ main {
                         flex-direction: column;
                         align-items: flex-end;
                         p {
-                            font-size: 10px;
+                            font-size: 12px;
                             color: #d9d9d9;
                             font-weight: 500;
                             font-family: 'Raleway', sans-serif;
@@ -933,7 +934,7 @@ main {
                             }
                         }
                         a {
-                            font-size: 10px;
+                            font-size: 12px;
                             color: #ffffff;
                             font-family: 'Raleway', sans-serif;
                             text-align: right;
@@ -1018,7 +1019,7 @@ main {
                     }
                 }
                 .card-author-date {
-                    font-size: 12px;
+                    font-size: 14px;
                     color: #56564f;
                     font-weight: 500;
                     font-family: 'Raleway', sans-serif;
@@ -1027,7 +1028,7 @@ main {
                     min-height: 39px;
                 }
                 .card-source {
-                    font-size: 10px;
+                    font-size: 12px;
                     color: #000000;
                     font-weight: 500;
                     font-family: 'Raleway', sans-serif;
@@ -1036,7 +1037,7 @@ main {
                     overflow: hidden;
                 }
                 .home-two-news-read-more-btn {
-                    font-size: 10px;
+                    font-size: 12px;
                     color: #56564f;
                     font-family: 'Raleway', sans-serif;
                     text-decoration: none;
@@ -1069,7 +1070,7 @@ main {
                 }
             }
             .btn {
-                font-size: 14px;
+                font-size: 16px;
                 color: #56564f;
                 font-weight: 500;
                 font-family: 'Raleway', sans-serif;
@@ -1085,7 +1086,7 @@ main {
 }
 
 .news-category-title {
-    font-size: 19px;
+    font-size: 21px;
     color: #333d8e;
     font-weight: bold;
     font-family: 'Raleway', sans-serif;
@@ -1109,7 +1110,7 @@ main {
         border-radius: 50%;
         text-decoration: none;
         font-weight: 800;
-        font-size: 22px;
+        font-size: 24px;
         color: #56564f;
         &:hover {
             color: #333d8e;
@@ -1144,7 +1145,7 @@ main {
             width: 100px;
             .triangle {
                 .category-link {
-                    font-size: 10px;
+                    font-size: 10px; //////
                     color: #1f5e9b;
                     font-weight: 500;
                     font-family: 'Raleway', sans-serif;
@@ -1184,7 +1185,7 @@ main {
                 text-decoration: none;
             }
             .card-title {
-                font-size: 13px;
+                font-size: 12px;
                 color: #333d8e;
                 font-weight: bold;
                 font-family: 'Raleway', sans-serif;
@@ -1196,7 +1197,7 @@ main {
                 }
             }
             .card-text {
-                font-size: 10px;
+                font-size: 12px;
                 color: #000000;
                 font-weight: 500;
                 font-family: 'Raleway', sans-serif;
@@ -1209,7 +1210,7 @@ main {
                 min-height: 50px;
             }
             .source {
-                font-size: 10px;
+                font-size: 12px;
                 color: #000000;
                 font-weight: 500;
                 font-family: 'Raleway', sans-serif;
@@ -1227,14 +1228,14 @@ main {
                 align-items: center;
                 padding-top: 7px;
                 .date-news {
-                    font-size: 10px;
+                    font-size: 12px;
                     color: #56564f;
                     font-family: 'Raleway', sans-serif;
                     text-decoration: none;
                     margin-bottom: 0;
                 }
                 p.read-more {
-                    font-size: 10px;
+                    font-size: 12px;
                     color: #56564f;
                     font-family: 'Raleway', sans-serif;
                     text-decoration: none;
@@ -1264,6 +1265,9 @@ main {
             object-fit: cover;
             min-height: 335px;
         }
+        .card-img-top {
+            object-fit: cover;
+        }
         .top-left {
             position: absolute;
             display: flex;
@@ -1273,7 +1277,7 @@ main {
             max-width: 170px;
             padding: 0 20px;
             background-color: #ffd62c;
-            font-size: 10px;
+            font-size: 12px;
             color: #1f5e9c;
             font-weight: 500;
             font-family: 'Raleway', sans-serif;
@@ -1306,7 +1310,7 @@ main {
         }
     }
     .single-news-title {
-        font-size: 27px;
+        font-size: 29px;
         color: #333d8e;
         font-weight: 800;
         font-family: 'Raleway', sans-serif;
@@ -1315,7 +1319,7 @@ main {
         margin-bottom: 0;
     }
     .single-news-author {
-        font-size: 22px;
+        font-size: 24px;
         color: #333d8e;
         font-weight: 600;
         font-family: 'Raleway', sans-serif;
@@ -1331,7 +1335,7 @@ main {
         }
     }
     .single-news-description {
-        font-size: 13px;
+        font-size: 15px;
         color: #56564f;
         font-weight: 500;
         font-family: 'Raleway', sans-serif;
@@ -1344,7 +1348,7 @@ main {
         }
     }
     .single-news-tags {
-        font-size: 12px;
+        font-size: 14px;
         color: #1f5e9c;
         font-family: 'Raleway', sans-serif;
         padding: 10px 20px;
@@ -1396,7 +1400,7 @@ div#social-links {
                 padding: 0 !important;
                 border: none !important;
                 margin: 0 !important;
-                font-size: 14px !important;
+                font-size: 16px !important;
                 color: #56564f !important;
                 background-color: transparent !important;
                 text-decoration: none;
@@ -1469,7 +1473,7 @@ footer {
     .footer-menu-container {
         padding-top: 20px;
         li {
-            line-height: 10px;
+            line-height: 12px;
             a {
                 font-size: 12px;
                 color: #56564f;
@@ -1479,7 +1483,7 @@ footer {
                 }
             }
          &.footer-menu-title {
-             font-size: 12px;
+             font-size: 14px;
              color: #56564f;
              font-weight: bold;
              font-family: 'Raleway', sans-serif;
@@ -1505,7 +1509,7 @@ footer {
     background: #FFFFFF;
     padding: 15px 35px;
     .date-news {
-        font-size: 14px;
+        font-size: 16px;
         letter-spacing: 0;
         color: #56564f;
         font-weight: 800;
@@ -1527,7 +1531,7 @@ footer {
                 .card-body {
                     padding: 0;
                     .card-title {
-                        font-size: 12px;
+                        font-size: 14px;
                         line-height: 16px;
                         color: #56564f;
                         font-weight: 500;
@@ -1580,7 +1584,7 @@ footer {
             align-items: center;
             .triangle {
                 a {
-                    font-size: 10px;
+                    font-size: 12px;
                     color: #1f5e9b;
                     font-weight: 500;
                     font-family: 'Raleway', sans-serif;
@@ -1623,7 +1627,7 @@ footer {
             .card-title {
                 margin-bottom: 5px;
                 a {
-                    font-size: 25px;
+                    font-size: 27px;
                     color: #333d8e;
                     font-weight: bold;
                     font-family: 'Raleway', sans-serif;
@@ -1640,7 +1644,7 @@ footer {
                 }
             }
             .card-text {
-                font-size: 12px;
+                font-size: 14px;
                 color: #56564f;
                 font-weight: 500;
                 font-family: 'Raleway', sans-serif;
@@ -1657,7 +1661,7 @@ footer {
                     text-align: right;
                     margin-bottom: 0;
                     a {
-                        font-size: 10px;
+                        font-size: 12px;
                         color: #56564f;
                         font-family: 'Raleway', sans-serif;
                         text-decoration: none;
@@ -1679,7 +1683,7 @@ footer {
         box-shadow: none !important;
         outline: none !important;
         background: #ffffff;
-        font-size: 16px;
+        font-size: 18px;
         color: #333d8e !important;
         font-weight: bold;
         font-family: 'Raleway', sans-serif;
@@ -1691,7 +1695,7 @@ footer {
         border: none !important;
         border-radius: 0 !important;
         i {
-            font-size: 19px;
+            font-size: 21px;
             color: #333d8e;
         }
     }
@@ -1703,7 +1707,7 @@ footer {
     justify-content: center;
     width: 100%;
     padding: 20px 0;
-    font-size: 10px;
+    font-size: 12px;
     line-height: 25px;
     color: #56564f;
     font-weight: 500;
@@ -1712,7 +1716,7 @@ footer {
 }
 
 .page-title {
-    font-size: 25px;
+    font-size: 27px;
     color: #333d8e;
     font-weight: bold;
     font-family: 'Raleway', sans-serif;
@@ -1918,14 +1922,14 @@ footer {
 
     .home-content .home-two-news-container .category .card-body {
         .card-title {
-            font-size: 20px;
+            font-size: 22px;
             line-height: 21px;
             height: 62px;
             margin-bottom: 4px;
         }
 
         .card-author-date {
-            font-size: 11px;
+            font-size: 13px;
             margin-bottom: 5px;
             height: 20px;
             min-height: auto;
@@ -1967,7 +1971,7 @@ footer {
                             align-items: flex-end;
                             margin-top: 20px;
                             .card-title {
-                                font-size: 18px;
+                                font-size: 20px;
                                 -webkit-line-clamp: 2;
                                 width: 70%;
                             }
@@ -1976,12 +1980,12 @@ footer {
                             align-items: flex-start;
                             padding-left: 15px;
                             p {
-                                font-size: 12px;
+                                font-size: 14px;
                                 font-weight: normal;
                                 margin-bottom: 0;
                             }
                             a {
-                                font-size: 12px;
+                                font-size: 14px;
                                 padding-top: 7px;
                             }
                         }
@@ -2014,7 +2018,7 @@ footer {
                        .footer-logo-container {
                            text-align: center;
                            a {
-                               font-size: 24px;
+                               font-size: 26px;
                                span {
                                    display: flex;
                                    align-items: center;
@@ -2034,7 +2038,7 @@ footer {
                 .social-icon {
                     width: 20px;
                     height: 20px;
-                    font-size: 10px;
+                    font-size: 12px;
                 }
             }
         }
@@ -2066,17 +2070,17 @@ footer {
         .card {
             .card-body {
                 .card-title {
-                    font-size: 16px;
+                    font-size: 18px;
                 }
                 .source {
-                    font-size: 10px;
+                    font-size: 12px;
                 }
                 .read-more-container {
                     .read-more {
-                        font-size: 14px;
+                        font-size: 16px;
                     }
                     .date-news {
-                        font-size: 14px;
+                        font-size: 16px;
                     }
                 }
             }
@@ -2115,7 +2119,7 @@ footer {
                 align-items: center;
                 .triangle {
                     .category-link {
-                        font-size: 10px;
+                        font-size: 10px; ///////
                         color: #1f5e9b;
                         font-weight: 500;
                         font-family: 'Raleway', sans-serif;
@@ -2142,13 +2146,13 @@ footer {
                     text-decoration: none;
                 }
                 .card-title {
-                    font-size: 20px;
+                    font-size: 22px;
                     line-height: 21px;
                     height: 62px;
                     margin-bottom: 4px;
                 }
                 .card-text {
-                    font-size: 10px;
+                    font-size: 12px;
                     color: #000000;
                     font-weight: 500;
                     font-family: 'Raleway', sans-serif;
@@ -2171,14 +2175,14 @@ footer {
                     align-items: center;
                     padding-top: 7px;
                     .date-news {
-                        font-size: 10px;
+                        font-size: 12px;
                         color: #000000;
                         font-family: 'Raleway', sans-serif;
                         text-decoration: none;
                         margin-bottom: 0;
                     }
                     p.read-more {
-                        font-size: 10px;
+                        font-size: 12px;
                         color: #000000;
                         font-family: 'Raleway', sans-serif;
                         text-decoration: none;
@@ -2208,7 +2212,7 @@ footer {
     }
 
     .search-news-blocks .card .card-body .card-title a {
-        font-size: 22px;
+        font-size: 24px;
         min-height: 55px;
     }
 
@@ -2240,11 +2244,11 @@ footer {
     }
     .single-news-container {
         .single-news-title {
-            font-size: 16px;
+            font-size: 18px;
             padding: 10px 0 0 0;
         }
         .single-news-author {
-            font-size: 14px;
+            font-size: 16px;
             padding: 10px 15px;
         }
         .single-news-description {
@@ -2275,7 +2279,7 @@ footer {
 
 @media (min-width: 992px) {
     .search-news-blocks .card .card-body .card-title a {
-        font-size: 13px;
+        font-size: 15px;
         min-height: 30px;
     }
 }
@@ -2297,7 +2301,7 @@ footer {
     }
 
     .home-content .home-left-block .home-big-news div .category .card-body .card-title {
-        font-size: 17px;
+        font-size: 19px;
         line-height: 21px;
     }
     .home-content .home-left-block .home-big-news .home-big-news-footer {
@@ -2307,11 +2311,15 @@ footer {
 
 @media (max-width: 575px) {
     .app-menu .app-menu-container ul li a {
-        font-size: 9px;
+        font-size: 12px;
     }
     .home-content .home-left-block .home-big-news-main-title .category .card-body .card-title {
         font-size: 18px;
         line-height: 20px;
+    }
+
+    .home-content .home-left-block .home-big-news {
+        padding: 5px 10px;
     }
 }
 
