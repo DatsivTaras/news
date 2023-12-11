@@ -51,13 +51,13 @@
        <div class="row">
            <div class="custom-content-style col-xl-8 col-lg-8 col-md-6 col-sm-6 col-6">
                <img class="map-marker" src="/img/contact-map-marker.png" alt="">
-               <span class="ardes-content">Адреса офісу: <br> м. львів, вул. Академіка Лазаренка, 5</span>
+               <span class="ardes-content">Адреса офісу: <br> {{ getSetting('address') }} </span>
            </div>
            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-6 contact-phone">
                <span>Тел. багатоканальний:</span>
                <div>
                    <img src="/img/phone-contact-icon.png" alt="">
-                   <span><a href="tel:0800 368 32 79">0800 368 32 79</a></span>
+                   <span><a href="tel:{{ getSetting('phone') }}">{{ getSetting('phone') }}</a></span>
                </div>
            </div>
        </div>
@@ -65,22 +65,25 @@
            <div class="col-lg-8 deteil-info">
                <img class="mail-icon" src="/img/contact-mail-icon.png" alt="">
                <span class="deteil-info-content">
-                    <span>Консультації та замовлення</span> – koroldanylonews@gmail.com <br>
-                    <span>Для ЗМІ</span> –  koroldanylonews2@gmail.com <br>
-                    <span>Для авторів</span> –  koroldanylonews-autors@gmail.com <br>
-                    <span>Маркетинг</span> –  koroldanylonews-marketing@gmail.com <br>
-                    <span>Для корпоративних клієнтів</span> – koroldanylonews@gmail.com <br>
+                    @if($link = getSetting('email_consultation'))
+                       <span>Консультації та замовлення</span> – {{ $link }} <br>
+                    @endif
+                    @if($link = getSetting('email_zmi'))
+                        <span>Для ЗМІ</span> –  {{ $link }} <br>
+                    @endif
+                    @if($link = getSetting('email_author'))
+                        <span>Для авторів</span> –  {{ $link }} <br>
+                    @endif
+                    @if($link = getSetting('email_marketing'))
+                        <span>Маркетинг</span> –  {{ $link }} <br>
+                    @endif
+                    @if($link = getSetting('email_corporate'))
+                        <span>Для корпоративних клієнтів</span> – {{ $link }} <br>
+                    @endif
                </span>
            </div>
        </div>
     </div>
-{{--    {{ getSetting('address') }}--}}
-{{--    {{ getSetting('phone') }}--}}
-{{--    {{ getSetting('email_consultation') }}--}}
-{{--    {{ getSetting('email_zmi') }}--}}
-{{--    {{ getSetting('email_author') }}--}}
-{{--    {{ getSetting('email_marketing') }}--}}
-{{--    {{ getSetting('email_corporate') }}--}}
 
 
     <div class="contact-social-container">
