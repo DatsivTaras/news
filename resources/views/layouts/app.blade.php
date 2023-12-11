@@ -72,30 +72,74 @@
                                       @endforeach
                                   </div>
                                   <div class="menu-category menu-sub-category">
-                                      <span class="menu-category-title">ТЕМИ</span>
-                                      <li><a class="menu-dropdown-item" href="#">Верховна Рада</a></li>
-                                      <li><a class="menu-dropdown-item" href="#">Борис Джонсон</a></li>
-                                      <li><a class="menu-dropdown-item" href="#">Зеленський</a></li>
-                                  </div>
-                                  <div class="menu-category menu-sub-category">
-                                      <span class="menu-category-title">СПЕЦПРОЄКТИ</span>
-                                      <li>
-                                          <a class="menu-dropdown-item" href="#">
-                                              Бізнес, нове обладнання та навчання педагогів.
-                                          </a>
-                                      </li>
-                                      <li>
-                                          <a class="menu-dropdown-item" href="#">
-                                              Чому розвиток профтехосвіти критично важливий
-                                              під час війни
-                                          </a>
-                                      </li>
-                                      <li>
-                                          <a class="menu-dropdown-item" href="#">
-                                              Якщо необхідно допомогти близьким та Україні: п’ять
-                                              зручних сервісів для переказу грошей
-                                          </a>
-                                      </li>
+                                      <span class="menu-category-title">ПОПУЛЯРНЕ</span>
+                                      <div class="tag-conteiner">
+                                          <a class="menu-dropdown-item" href="#">#новини</a>
+                                          <a class="menu-dropdown-item" href="#">#війна</a>
+                                          <a class="menu-dropdown-item" href="#">#львів</a>
+                                          <a class="menu-dropdown-item" href="#">#єс</a>
+                                          <a class="menu-dropdown-item" href="#">#війна</a>
+                                          <a class="menu-dropdown-item" href="#">#львів</a>
+                                          <a class="menu-dropdown-item" href="#">#єс</a>
+                                          <a class="menu-dropdown-item" href="#">#2024</a>
+                                          <a class="menu-dropdown-item" href="#">#тцк</a>
+                                          <a class="menu-dropdown-item" href="#">#новини</a>
+                                          <a class="menu-dropdown-item" href="#">#війна</a>
+                                          <a class="menu-dropdown-item" href="#">#львів</a>
+                                          <a class="menu-dropdown-item" href="#">#єс</a>
+                                          <a class="menu-dropdown-item" href="#">#війна</a>
+                                          <a class="menu-dropdown-item" href="#">#львів</a>
+                                          <a class="menu-dropdown-item" href="#">#єс</a>
+                                          <a class="menu-dropdown-item" href="#">#2024</a>
+                                          <a class="menu-dropdown-item" href="#">#тцк</a>
+                                          <a class="menu-dropdown-item" href="#">#новини</a>
+                                          <a class="menu-dropdown-item" href="#">#війна</a>
+                                          <a class="menu-dropdown-item" href="#">#львів</a>
+                                          <a class="menu-dropdown-item" href="#">#єс</a>
+                                          <a class="menu-dropdown-item" href="#">#війна</a>
+                                          <a class="menu-dropdown-item" href="#">#львів</a>
+                                          <a class="menu-dropdown-item" href="#">#єс</a>
+                                          <a class="menu-dropdown-item" href="#">#2024</a>
+                                          <a class="menu-dropdown-item" href="#">#тцк</a>
+                                          <a class="menu-dropdown-item" href="#">#новини</a>
+                                          <a class="menu-dropdown-item" href="#">#війна</a>
+                                          <a class="menu-dropdown-item" href="#">#львів</a>
+                                          <a class="menu-dropdown-item" href="#">#єс</a>
+                                          <a class="menu-dropdown-item" href="#">#війна</a>
+                                          <a class="menu-dropdown-item" href="#">#львів</a>
+                                          <a class="menu-dropdown-item" href="#">#єс</a>
+                                          <a class="menu-dropdown-item" href="#">#2024</a>
+                                          <a class="menu-dropdown-item" href="#">#тцк</a>
+                                          <a class="menu-dropdown-item" href="#">#новини</a>
+                                          <a class="menu-dropdown-item" href="#">#війна</a>
+                                          <a class="menu-dropdown-item" href="#">#львів</a>
+                                          <a class="menu-dropdown-item" href="#">#єс</a>
+                                          <a class="menu-dropdown-item" href="#">#війна</a>
+                                          <a class="menu-dropdown-item" href="#">#львів</a>
+                                          <a class="menu-dropdown-item" href="#">#єс</a>
+                                          <a class="menu-dropdown-item" href="#">#2024</a>
+                                          <a class="menu-dropdown-item" href="#">#тцк</a>
+                                          <a class="menu-dropdown-item" href="#">#новини</a>
+                                          <a class="menu-dropdown-item" href="#">#війна</a>
+                                          <a class="menu-dropdown-item" href="#">#львів</a>
+                                          <a class="menu-dropdown-item" href="#">#єс</a>
+                                          <a class="menu-dropdown-item" href="#">#війна</a>
+                                          <a class="menu-dropdown-item" href="#">#львів</a>
+                                          <a class="menu-dropdown-item" href="#">#єс</a>
+                                          <a class="menu-dropdown-item" href="#">#2024</a>
+                                          <a class="menu-dropdown-item" href="#">#тцк</a>
+                                          <a class="menu-dropdown-item" href="#">#новини</a>
+                                          <a class="menu-dropdown-item" href="#">#війна</a>
+                                          <a class="menu-dropdown-item" href="#">#львів</a>
+                                          <a class="menu-dropdown-item" href="#">#єс</a>
+                                          <a class="menu-dropdown-item" href="#">#війна</a>
+                                          <a class="menu-dropdown-item" href="#">#львів</a>
+                                          <a class="menu-dropdown-item" href="#">#єс</a>
+                                          <a class="menu-dropdown-item" href="#">#2024</a>
+                                          <a class="menu-dropdown-item" href="#">#тцк</a>
+
+                                      </div>
+
                                   </div>
                               </div>
 

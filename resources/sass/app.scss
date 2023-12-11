@@ -181,14 +181,18 @@ body {
             font-family: 'Raleway', sans-serif;
         }
         &.menu-sub-category {
-            li {
-                line-height: 14px;
-                margin-bottom: 12px;
-            }
-            .menu-dropdown-item {
-                font-size: 12px !important;
-                line-height: 10px !important;
-                text-transform: none !important;
+            padding-right: 0;
+            .tag-conteiner {
+                display: flex;
+                flex-wrap: wrap;
+                .menu-dropdown-item {
+                    font-size: 12px !important;
+                    line-height: 10px !important;
+                    text-transform: none !important;
+                    margin-bottom: 10px;
+                    margin-right: 5px;
+                    text-decoration: none;
+                }
             }
         }
     }
@@ -2378,6 +2382,7 @@ footer {
             border-bottom: 1px solid #bcbcbc;
             margin-right: 0;
             min-width: 150px;
+            padding-bottom: 5px;
             &:last-child {
                 margin-right: 0;
             }
@@ -2388,14 +2393,20 @@ footer {
                 font-family: 'Raleway', sans-serif;
             }
             &.menu-sub-category {
-                li {
-                    line-height: 14px;
-                    margin-bottom: 5px;
-                }
-                .menu-dropdown-item {
-                    font-size: 12px !important;
-                    line-height: 10px !important;
-                    text-transform: none !important;
+                padding-right: 0;
+                margin-top: 5px;
+                .tag-conteiner {
+                    display: flex;
+                    flex-wrap: wrap;
+                    margin-top: 10px;
+                    .menu-dropdown-item {
+                        font-size: 16px !important;
+                        line-height: 10px !important;
+                        text-transform: none !important;
+                        margin-bottom: 13px;
+                        margin-right: 8px;
+                        text-decoration: none;
+                    }
                 }
             }
         }
