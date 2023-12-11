@@ -12073,6 +12073,35 @@ body .container {
   padding-right: 12px;
 }
 
+.main-menu-container {
+  display: flex;
+}
+.main-menu-container .menu-category {
+  padding-right: 20px;
+  border-right: 1px solid #bcbcbc;
+  margin-right: 15px;
+  min-width: 150px;
+}
+.main-menu-container .menu-category:last-child {
+  border: none;
+  margin-right: 0;
+}
+.main-menu-container .menu-category .menu-category-title {
+  font-size: 10px;
+  color: #333d8e;
+  font-weight: 500;
+  font-family: "Raleway", sans-serif;
+}
+.main-menu-container .menu-category.menu-sub-category li {
+  line-height: 14px;
+  margin-bottom: 12px;
+}
+.main-menu-container .menu-category.menu-sub-category .menu-dropdown-item {
+  font-size: 12px !important;
+  line-height: 10px !important;
+  text-transform: none !important;
+}
+
 .contact-bg {
   background: #ffffff !important;
 }
@@ -12211,7 +12240,7 @@ main .breadcrumb .back-home-icon {
   padding: 20px 15px;
   transform: translate(0px, 47px) !important;
   width: 50vw;
-  background: rgba(255, 255, 255, 0.8588235294);
+  background: rgba(255, 255, 255, 0.9411764706);
 }
 .main-header .main-header-container .main-header-left-side .dropdown-menu.show li .menu-dropdown-item {
   font-size: 16px;
@@ -12920,6 +12949,10 @@ main .breadcrumb .back-home-icon {
 .home-content .home-two-news-container .category .card-img-top {
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.desktop-hide .home-content .main-widget-left .read-all-news {
+  margin-bottom: 20px;
 }
 
 .news-menu-container ul {
@@ -13820,10 +13853,13 @@ footer .footer-text-info {
   }
   footer .footer-menu-container {
     margin-top: 0 !important;
-    padding-top: 15px;
+    padding-top: 13px;
   }
   footer .footer-menu-container ul li:first-child {
     margin-top: 0 !important;
+  }
+  footer .footer-menu-container .footer-menu-title {
+    text-transform: uppercase;
   }
   footer .footer-logo-container span svg .st0 {
     fill: #213d77 !important;
@@ -13943,8 +13979,8 @@ footer .footer-text-info {
     margin-bottom: 0;
   }
   .main-header .main-header-container .main-header-left-side .dropdown-menu.show {
-    width: calc(100vw - 13px);
-    transform: translate(-12px, 47px) !important;
+    width: calc(100vw - 148px);
+    transform: translate(0, 37px) !important;
   }
   .home-content .main-widget-left #myTab .nav-item .nav-link.active {
     padding: 0 10px;
@@ -14037,8 +14073,18 @@ footer .footer-text-info {
   }
 }
 @media (max-width: 575px) {
+  .app-menu .app-menu-container {
+    overflow-x: scroll;
+  }
+  .app-menu .app-menu-container ul {
+    justify-content: flex-start;
+  }
+  .app-menu .app-menu-container ul li {
+    margin-right: 4px;
+  }
   .app-menu .app-menu-container ul li a {
-    font-size: 12px;
+    font-size: 14px;
+    white-space: nowrap;
   }
   .home-content .home-left-block .home-big-news-main-title .category .card-body .card-title {
     font-size: 18px;
@@ -14046,5 +14092,37 @@ footer .footer-text-info {
   }
   .home-content .home-left-block .home-big-news {
     padding: 5px 10px;
+  }
+  .main-menu-container {
+    flex-direction: column;
+  }
+  .main-menu-container .menu-category {
+    padding-right: 20px;
+    border-right: none;
+    border-bottom: 1px solid #bcbcbc;
+    margin-right: 0;
+    min-width: 150px;
+  }
+  .main-menu-container .menu-category:last-child {
+    margin-right: 0;
+  }
+  .main-menu-container .menu-category .menu-category-title {
+    font-size: 10px;
+    color: #333d8e;
+    font-weight: 500;
+    font-family: "Raleway", sans-serif;
+  }
+  .main-menu-container .menu-category.menu-sub-category li {
+    line-height: 14px;
+    margin-bottom: 5px;
+  }
+  .main-menu-container .menu-category.menu-sub-category .menu-dropdown-item {
+    font-size: 12px !important;
+    line-height: 10px !important;
+    text-transform: none !important;
+  }
+  .main-header .main-header-container .main-header-left-side .dropdown-menu.show {
+    width: calc(100vw - 23px);
+    transform: translate(0, 37px) !important;
   }
 }

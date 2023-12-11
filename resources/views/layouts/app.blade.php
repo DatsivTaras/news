@@ -64,9 +64,41 @@
                             <svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
                           </button>
                           <ul class="dropdown-menu">
-                              @foreach(\App\Services\HomeServices::getCategoryLeftMenu() as $category)
-                                <li><a class="menu-dropdown-item" href={{ '/category/' . $category->slug }}>{{ $category->name }}</a></li>
-                              @endforeach
+                              <div class="main-menu-container">
+                                  <div class="menu-category">
+                                      <span class="menu-category-title">ВСІ КАТЕГОРІЇ </span>
+                                      @foreach(\App\Services\HomeServices::getCategoryLeftMenu() as $category)
+                                          <li><a class="menu-dropdown-item" href={{ '/category/' . $category->slug }}>{{ $category->name }}</a></li>
+                                      @endforeach
+                                  </div>
+                                  <div class="menu-category menu-sub-category">
+                                      <span class="menu-category-title">ТЕМИ</span>
+                                      <li><a class="menu-dropdown-item" href="#">Верховна Рада</a></li>
+                                      <li><a class="menu-dropdown-item" href="#">Борис Джонсон</a></li>
+                                      <li><a class="menu-dropdown-item" href="#">Зеленський</a></li>
+                                  </div>
+                                  <div class="menu-category menu-sub-category">
+                                      <span class="menu-category-title">СПЕЦПРОЄКТИ</span>
+                                      <li>
+                                          <a class="menu-dropdown-item" href="#">
+                                              Бізнес, нове обладнання та навчання педагогів.
+                                          </a>
+                                      </li>
+                                      <li>
+                                          <a class="menu-dropdown-item" href="#">
+                                              Чому розвиток профтехосвіти критично важливий
+                                              під час війни
+                                          </a>
+                                      </li>
+                                      <li>
+                                          <a class="menu-dropdown-item" href="#">
+                                              Якщо необхідно допомогти близьким та Україні: п’ять
+                                              зручних сервісів для переказу грошей
+                                          </a>
+                                      </li>
+                                  </div>
+                              </div>
+
                           </ul>
                         </div>
                        <!-- <div class="chose-lang">

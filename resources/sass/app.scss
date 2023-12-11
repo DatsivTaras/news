@@ -163,6 +163,36 @@ body {
         padding-right: 12px;
     }
 }
+.main-menu-container {
+    display: flex;
+    .menu-category {
+        padding-right: 20px;
+        border-right: 1px solid #bcbcbc;
+        margin-right: 15px;
+        min-width: 150px;
+        &:last-child {
+            border: none;
+            margin-right: 0;
+        }
+        .menu-category-title {
+            font-size: 10px;
+            color: #333d8e;
+            font-weight: 500;
+            font-family: 'Raleway', sans-serif;
+        }
+        &.menu-sub-category {
+            li {
+                line-height: 14px;
+                margin-bottom: 12px;
+            }
+            .menu-dropdown-item {
+                font-size: 12px !important;
+                line-height: 10px !important;
+                text-transform: none !important;
+            }
+        }
+    }
+}
 
 .contact-bg {
     background: #ffffff !important;
@@ -308,7 +338,7 @@ main {
                 padding: 20px 15px;
                 transform: translate(0px, 47px) !important;
                 width: 50vw;
-                background: #ffffffdb;
+                background: #fffffff0;
                 li {
                     .menu-dropdown-item {
                         font-size: 16px;
@@ -1054,6 +1084,10 @@ main {
     }
 }
 
+.desktop-hide .home-content .main-widget-left .read-all-news {
+    margin-bottom: 20px;
+}
+
 .news-menu-container {
     ul {
         list-style: none;
@@ -1145,7 +1179,7 @@ main {
             width: 100px;
             .triangle {
                 .category-link {
-                    font-size: 10px; //////
+                    font-size: 10px;
                     color: #1f5e9b;
                     font-weight: 500;
                     font-family: 'Raleway', sans-serif;
@@ -2044,13 +2078,16 @@ footer {
         }
         .footer-menu-container {
             margin-top: 0 !important;
-            padding-top: 15px;
+            padding-top: 13px;
             ul {
                 li {
                     &:first-child {
                         margin-top: 0 !important;
                     }
                 }
+            }
+            .footer-menu-title {
+                text-transform: uppercase;
             }
         }
         .footer-logo-container {
@@ -2193,8 +2230,8 @@ footer {
         }
     }
     .main-header .main-header-container .main-header-left-side .dropdown-menu.show {
-        width: calc(100vw - 13px);
-        transform: translate(-12px, 47px) !important;
+        width: calc(100vw - 148px);
+        transform: translate(0, 37px) !important;
     }
 
     .home-content .main-widget-left #myTab .nav-item .nav-link.active {
@@ -2310,9 +2347,20 @@ footer {
 }
 
 @media (max-width: 575px) {
-    .app-menu .app-menu-container ul li a {
-        font-size: 12px;
+    .app-menu .app-menu-container {
+        overflow-x: scroll;
+        ul {
+            justify-content: flex-start;
+            li {
+                margin-right: 4px;
+                a {
+                    font-size: 14px;
+                    white-space: nowrap;
+                }
+            }
+        }
     }
+
     .home-content .home-left-block .home-big-news-main-title .category .card-body .card-title {
         font-size: 18px;
         line-height: 20px;
@@ -2321,6 +2369,42 @@ footer {
     .home-content .home-left-block .home-big-news {
         padding: 5px 10px;
     }
+
+    .main-menu-container {
+        flex-direction: column;
+        .menu-category {
+            padding-right: 20px;
+            border-right: none;
+            border-bottom: 1px solid #bcbcbc;
+            margin-right: 0;
+            min-width: 150px;
+            &:last-child {
+                margin-right: 0;
+            }
+            .menu-category-title {
+                font-size: 10px;
+                color: #333d8e;
+                font-weight: 500;
+                font-family: 'Raleway', sans-serif;
+            }
+            &.menu-sub-category {
+                li {
+                    line-height: 14px;
+                    margin-bottom: 5px;
+                }
+                .menu-dropdown-item {
+                    font-size: 12px !important;
+                    line-height: 10px !important;
+                    text-transform: none !important;
+                }
+            }
+        }
+    }
+    .main-header .main-header-container .main-header-left-side .dropdown-menu.show {
+        width: calc(100vw - 23px);
+        transform: translate(0, 37px) !important;
+    }
+
 }
 
 
