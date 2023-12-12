@@ -4,11 +4,13 @@ namespace App\Services;
 
 use App\Models\Image;
 use App\Models\Setting;
+use App\Models\Tag;
 use App\Repositories\CategoryRepository;
 use App\Repositories\FileRepository;
 use App\Repositories\NewsRepository;
 use App\Repositories\PageRepository;
 use App\Repositories\SettingRepository;
+use App\Repositories\TagRepository;
 
 
 /**
@@ -21,6 +23,7 @@ class HomeServices
     private $pageRepository;
     private $settingRepository;
     private $newsRepository;
+    private $tagRepository;
     private $categoryRepository;
 
     public function __construct(
@@ -28,10 +31,12 @@ class HomeServices
         SettingRepository  $settingRepository,
         NewsRepository     $newsRepository,
         PageRepository     $pageRepository,
+        TagRepository     $tagRepository,
         CategoryRepository $categoryRepository
     )
     {
         $this->newsRepository = $newsRepository;
+        $this->tagRepository = $tagRepository;
         $this->imageRepository = $imageRepository;
         $this->settingRepository = $settingRepository;
         $this->categoryRepository = $categoryRepository;
@@ -79,6 +84,11 @@ class HomeServices
         $category = app(CategoryRepository::class)->getCategoryWhereIn($categoryIds);
 
         return $category;
+    }
+
+    public static function getTopTags()
+    {
+        return app(TagRepository::class)->getTopTags();
     }
   public static function getCategoryMainMenu()
   {
