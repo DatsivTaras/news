@@ -36,8 +36,7 @@
 
         gtag('config', 'G-SYYQ5EWE81');
     </script>
-    <body>
-
+    <body class="{{ app(\Illuminate\Routing\Route::class)->getActionMethod() == 'contacts' ? 'contact-bg' : ''  }}">
     <div class="container">
 
         <header>
@@ -65,9 +64,85 @@
                             <svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
                           </button>
                           <ul class="dropdown-menu">
-                              @foreach(\App\Services\HomeServices::getCategoryLeftMenu() as $category)
-                                <li><a class="menu-dropdown-item" href={{ '/category/' . $category->slug }}>{{ $category->name }}</a></li>
-                              @endforeach
+                              <div class="main-menu-container">
+                                  <div class="menu-category">
+                                      <span class="menu-category-title">ВСІ КАТЕГОРІЇ </span>
+                                      @foreach(\App\Services\HomeServices::getCategoryLeftMenu() as $category)
+                                          <li><a class="menu-dropdown-item" href={{ '/category/' . $category->slug }}>{{ $category->name }}</a></li>
+                                      @endforeach
+                                  </div>
+                                  <div class="menu-category menu-sub-category">
+                                      <span class="menu-category-title">ПОПУЛЯРНЕ</span>
+                                      <div class="tag-conteiner">
+                                          <a class="menu-dropdown-item" href="#">#новини</a>
+                                          <a class="menu-dropdown-item" href="#">#війна</a>
+                                          <a class="menu-dropdown-item" href="#">#львів</a>
+                                          <a class="menu-dropdown-item" href="#">#єс</a>
+                                          <a class="menu-dropdown-item" href="#">#війна</a>
+                                          <a class="menu-dropdown-item" href="#">#львів</a>
+                                          <a class="menu-dropdown-item" href="#">#єс</a>
+                                          <a class="menu-dropdown-item" href="#">#2024</a>
+                                          <a class="menu-dropdown-item" href="#">#тцк</a>
+                                          <a class="menu-dropdown-item" href="#">#новини</a>
+                                          <a class="menu-dropdown-item" href="#">#війна</a>
+                                          <a class="menu-dropdown-item" href="#">#львів</a>
+                                          <a class="menu-dropdown-item" href="#">#єс</a>
+                                          <a class="menu-dropdown-item" href="#">#війна</a>
+                                          <a class="menu-dropdown-item" href="#">#львів</a>
+                                          <a class="menu-dropdown-item" href="#">#єс</a>
+                                          <a class="menu-dropdown-item" href="#">#2024</a>
+                                          <a class="menu-dropdown-item" href="#">#тцк</a>
+                                          <a class="menu-dropdown-item" href="#">#новини</a>
+                                          <a class="menu-dropdown-item" href="#">#війна</a>
+                                          <a class="menu-dropdown-item" href="#">#львів</a>
+                                          <a class="menu-dropdown-item" href="#">#єс</a>
+                                          <a class="menu-dropdown-item" href="#">#війна</a>
+                                          <a class="menu-dropdown-item" href="#">#львів</a>
+                                          <a class="menu-dropdown-item" href="#">#єс</a>
+                                          <a class="menu-dropdown-item" href="#">#2024</a>
+                                          <a class="menu-dropdown-item" href="#">#тцк</a>
+                                          <a class="menu-dropdown-item" href="#">#новини</a>
+                                          <a class="menu-dropdown-item" href="#">#війна</a>
+                                          <a class="menu-dropdown-item" href="#">#львів</a>
+                                          <a class="menu-dropdown-item" href="#">#єс</a>
+                                          <a class="menu-dropdown-item" href="#">#війна</a>
+                                          <a class="menu-dropdown-item" href="#">#львів</a>
+                                          <a class="menu-dropdown-item" href="#">#єс</a>
+                                          <a class="menu-dropdown-item" href="#">#2024</a>
+                                          <a class="menu-dropdown-item" href="#">#тцк</a>
+                                          <a class="menu-dropdown-item" href="#">#новини</a>
+                                          <a class="menu-dropdown-item" href="#">#війна</a>
+                                          <a class="menu-dropdown-item" href="#">#львів</a>
+                                          <a class="menu-dropdown-item" href="#">#єс</a>
+                                          <a class="menu-dropdown-item" href="#">#війна</a>
+                                          <a class="menu-dropdown-item" href="#">#львів</a>
+                                          <a class="menu-dropdown-item" href="#">#єс</a>
+                                          <a class="menu-dropdown-item" href="#">#2024</a>
+                                          <a class="menu-dropdown-item" href="#">#тцк</a>
+                                          <a class="menu-dropdown-item" href="#">#новини</a>
+                                          <a class="menu-dropdown-item" href="#">#війна</a>
+                                          <a class="menu-dropdown-item" href="#">#львів</a>
+                                          <a class="menu-dropdown-item" href="#">#єс</a>
+                                          <a class="menu-dropdown-item" href="#">#війна</a>
+                                          <a class="menu-dropdown-item" href="#">#львів</a>
+                                          <a class="menu-dropdown-item" href="#">#єс</a>
+                                          <a class="menu-dropdown-item" href="#">#2024</a>
+                                          <a class="menu-dropdown-item" href="#">#тцк</a>
+                                          <a class="menu-dropdown-item" href="#">#новини</a>
+                                          <a class="menu-dropdown-item" href="#">#війна</a>
+                                          <a class="menu-dropdown-item" href="#">#львів</a>
+                                          <a class="menu-dropdown-item" href="#">#єс</a>
+                                          <a class="menu-dropdown-item" href="#">#війна</a>
+                                          <a class="menu-dropdown-item" href="#">#львів</a>
+                                          <a class="menu-dropdown-item" href="#">#єс</a>
+                                          <a class="menu-dropdown-item" href="#">#2024</a>
+                                          <a class="menu-dropdown-item" href="#">#тцк</a>
+
+                                      </div>
+
+                                  </div>
+                              </div>
+
                           </ul>
                         </div>
                        <!-- <div class="chose-lang">
