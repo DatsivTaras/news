@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Tag;
 use App\Repositories\AuthorImagesRepository;
 use App\Repositories\AuthorsRepository;
 use App\Repositories\HomeSliderRepository;
@@ -102,17 +103,23 @@ class NewsServices
             $data['image_id'] = $image->id;
             $this->newsImageRepository->create($data);
         }
-        $tags = explode(',', $data['tags']);
 
-        foreach($tags as $tag) {
-            $data['name'] = $tag;
-            $tag = $this->tagRepository->create($data);
+        $Alltags = explode(",", $data['tags']);
 
-            $data['news_id'] = $news->id;
-            $data['tags_id'] = $tag->id;
-            $this->newsTagRepository ->create($data);
+        foreach ($Alltags as $ds){
+           $tag = Tag::where('name', $ds)->first();
+           if($tag) {
+                $data['news_id'] = $news->id;
+                $data['tags_id'] = $tag->id;
+            } else {
+                $data['name'] = $ds;
+                $ff = $this->tagRepository ->create($data);
+
+                $data['news_id'] = $news->id;
+                $data['tags_id'] = $ff->id;
+           }
+           $this->newsTagRepository->create($data);
         }
-
         $data['news_id'] = $news->id;
         $data['category_id'] = $data['category_id'];
         $this->newsCategoryRepository->create($data);
@@ -120,6 +127,7 @@ class NewsServices
         $data['author_id'] = $data['author_id'];
         $data['news_id'] = $news->id;
         $this->newsAuthorsRepository->create($data);
+
     }
     public function updateNews(object $news, array $data)
     {
@@ -141,13 +149,21 @@ class NewsServices
 
         $this->newsTagRepository->massDeleteByConditions( ['news_id' => $news->id]);
 
-        foreach($tags as $tag) {
-            $data['name'] = $tag;
-            $tag = $this->tagRepository->create($data);
+        $Alltags = explode(",", $data['tags']);
 
-            $data['news_id'] = $news->id;
-            $data['tags_id'] = $tag->id;
-            $this->newsTagRepository ->create($data);
+        foreach ($Alltags as $ds){
+            $tag = Tag::where('name', $ds)->first();
+            if($tag) {
+                $data['news_id'] = $news->id;
+                $data['tags_id'] = $tag->id;
+            } else {
+                $data['name'] = $ds;
+                $ff = $this->tagRepository ->create($data);
+
+                $data['news_id'] = $news->id;
+                $data['tags_id'] = $ff->id;
+            }
+            $this->newsTagRepository->create($data);
         }
         $data['category_id'] = $data['category_id'];
         $data['news_id'] = $news->id;

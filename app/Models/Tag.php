@@ -17,7 +17,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Tag extends Model
 {
-    
+
     static $rules = [
 		'name' => 'required',
     ];
@@ -32,5 +32,8 @@ class Tag extends Model
     protected $fillable = ['name'];
 
 
-
+    public function newsTag()
+    {
+        return $this->hasMany(NewsTag::class, 'tags_id','id');
+    }
 }

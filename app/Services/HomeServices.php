@@ -71,7 +71,6 @@ class HomeServices
                $news1,
                $news2,
            ]);
-
         }
     }
 

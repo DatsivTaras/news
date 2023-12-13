@@ -6,6 +6,7 @@ use App\Classes\Enum\NewsPublicationType;
 use App\Classes\Enum\NewsType;
 use App\Models\News;
 use App\Models\PaidNews;
+use App\Models\Tag;
 use App\Repositories\BaseRepository;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
@@ -112,6 +113,14 @@ class  NewsRepository extends BaseRepository
 
     public function finalDelete($id)
     {
+        Tag::doesntHave('newsTag', 'and', function($q) use($id){
+            $q->where('news_id', '!=', $id);
+        })->whereHas('newsTag', function($q) use($id){
+            $q->where('news_id', $id);
+        })->delete();
+
+
+
         $new = News::withTrashed()
             ->where('id', $id)
             ->first();

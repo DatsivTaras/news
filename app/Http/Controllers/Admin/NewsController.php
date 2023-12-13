@@ -7,11 +7,13 @@ use App\Filters\NewsDraftsFilter;
 use App\Filters\NewsFilter;
 use App\Http\Controllers\Controller;
 use App\Models\News;
+use App\Models\Tag;
 use App\Repositories\AuthorsRepository;
 use App\Repositories\CategoryRepository;
 use App\Repositories\HomeSliderRepository;
 use App\Repositories\NewsRepository;
 use App\Repositories\PaidNewsRepository;
+use App\Repositories\TagRepository;
 use App\Repositories\UserRepository;
 use App\Services\NewsServices;
 use Illuminate\Http\Request;
@@ -28,6 +30,7 @@ class NewsController extends Controller
 
     private $categoryRepository;
     private $userRepository;
+    private $tagRepository;
     private $paidNewsRepository;
     private $homeSliderRepository;
 
@@ -36,6 +39,7 @@ class NewsController extends Controller
     public function __construct(
         NewsRepository $newsRepository,
         NewsServices $newsServices,
+        TagRepository $tagRepository,
         UserRepository $userRepository,
         CategoryRepository $categoryRepository,
         HomeSliderRepository $homeSliderRepository,
@@ -44,6 +48,7 @@ class NewsController extends Controller
     )
     {
         $this->paidNewsRepository = $paidNewsRepository;
+        $this->tagRepository = $tagRepository;
         $this->newsServices = $newsServices;
         $this->newsRepository = $newsRepository;
         $this->categoryRepository = $categoryRepository;
