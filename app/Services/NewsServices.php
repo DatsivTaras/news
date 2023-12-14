@@ -147,6 +147,12 @@ class NewsServices
         }
         $tags = explode(',', $data['tags']);
 
+        Tag::doesntHave('newsTag', 'and', function($q) use($news){
+            $q->where('news_id', '!=', $news->id);
+        })->whereHas('newsTag', function($q) use($news){
+            $q->where('news_id', $news->id);
+        })->delete();
+
         $this->newsTagRepository->massDeleteByConditions( ['news_id' => $news->id]);
 
         $Alltags = explode(",", $data['tags']);

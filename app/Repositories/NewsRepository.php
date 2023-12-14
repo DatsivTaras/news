@@ -119,8 +119,6 @@ class  NewsRepository extends BaseRepository
             $q->where('news_id', $id);
         })->delete();
 
-
-
         $new = News::withTrashed()
             ->where('id', $id)
             ->first();
